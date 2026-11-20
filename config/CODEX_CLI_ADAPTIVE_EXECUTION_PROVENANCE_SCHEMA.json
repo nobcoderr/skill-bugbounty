@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:codex-cli-security-audit:adaptive-execution-provenance:v11",
+  "title": "Codex CLI Adaptive Specialist Execution Provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "transcript_path",
+    "transcript_sha256",
+    "root_session_id",
+    "adaptive_triggered",
+    "spawn_attempts",
+    "spawn_successes",
+    "spawn_failures",
+    "wait_calls",
+    "unique_specialist_ids",
+    "separate_specialist_input",
+    "separate_specialist_output",
+    "root_consumed_specialist_output",
+    "specialists",
+    "adaptive_execution_proven",
+    "failure_reasons"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "transcript_path": {"type": "string", "minLength": 1},
+    "transcript_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "root_session_id": {"type": "string"},
+    "adaptive_triggered": {"type": "boolean"},
+    "spawn_attempts": {"type": "integer", "minimum": 0},
+    "spawn_successes": {"type": "integer", "minimum": 0},
+    "spawn_failures": {"type": "integer", "minimum": 0},
+    "wait_calls": {"type": "integer", "minimum": 0},
+    "unique_specialist_ids": {"type": "integer", "minimum": 0},
+    "separate_specialist_input": {"enum": ["PASS", "FAIL"]},
+    "separate_specialist_output": {"enum": ["PASS", "FAIL"]},
+    "root_consumed_specialist_output": {"enum": ["PASS", "FAIL"]},
+    "specialists": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "spawn_call_id",
+          "task_name",
+          "specialist_id",
+          "input_sha256",
+          "output_sha256",
+          "result_token",
+          "root_receipt_found"
+        ],
+        "properties": {
+          "spawn_call_id": {"type": "string", "minLength": 1},
+          "task_name": {"type": "string"},
+          "specialist_id": {"type": "string", "minLength": 1},
+          "input_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "output_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "result_token": {"type": "string", "minLength": 16},
+          "root_receipt_found": {"const": true}
+        }
+      }
+    },
+    "adaptive_execution_proven": {"type": "boolean"},
+    "failure_reasons": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

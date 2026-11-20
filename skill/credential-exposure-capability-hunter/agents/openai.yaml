@@ -1,0 +1,4 @@
+interface:
+  display_name: "Credential Exposure Capability Hunter"
+  short_description: "Validate exposed credentials and resource scope safely"
+  default_prompt: "Use $credential-exposure-capability-hunter to assess an authorized exposed-credential candidate, including public CI-log leaks, prove the assigned principal and resource-scoped effective capability without unsafe replay, separate provider execution from source-system RCE, and coordinate revocation plus residual-copy cleanup. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."

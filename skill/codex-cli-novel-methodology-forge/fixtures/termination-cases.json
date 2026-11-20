@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "name": "trigger_forge",
+      "expected": "RUN_METHODOLOGY_FORGE_WAVE_1",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [], "executions": []}
+    },
+    {
+      "name": "no_gap_stop",
+      "expected": "TERMINATE_NO_VALID_FINDING",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [], "forge_waves": [], "executions": []}
+    },
+    {
+      "name": "survivor_returns_normal",
+      "expected": "RETURN_TO_NORMAL_VERIFICATION",
+      "state": {"surviving_count": 1, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": false, "coverage_gaps": [], "forge_waves": [], "executions": []}
+    },
+    {
+      "name": "freeze_first",
+      "expected": "FREEZE_NORMAL_AUDIT_STATE",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": false, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [], "executions": []}
+    },
+    {
+      "name": "approved_execution",
+      "expected": "EXECUTE_NEXT_APPROVED_METHODOLOGY",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [{"wave": 1, "method_count": 2, "approved_not_executed": 1, "new_evidence_ids": []}], "executions": [{"gap_id": "GAP-A", "new_material_evidence_count": 0}]}
+    },
+    {
+      "name": "two_zero_gain_stop",
+      "expected": "NOVEL_METHODOLOGY_EXPANSION_EXHAUSTED",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [{"wave": 1, "method_count": 2, "approved_not_executed": 0, "new_evidence_ids": []}], "executions": [{"gap_id": "GAP-A", "new_material_evidence_count": 0}, {"gap_id": "GAP-A", "new_material_evidence_count": 0}]}
+    },
+    {
+      "name": "material_gain",
+      "expected": "POOL_AND_AGGRESSIVELY_FALSIFY_NEW_EVIDENCE",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [{"wave": 1, "method_count": 1, "approved_not_executed": 0, "new_evidence_ids": ["EVID-A"]}], "executions": [{"gap_id": "GAP-A", "new_material_evidence_count": 1}]}
+    }
+  ],
+  "invalid_cases": [
+    {
+      "name": "runaway_execution",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [{"wave": 1, "method_count": 4, "approved_not_executed": 0, "new_evidence_ids": []}], "executions": [{"gap_id": "GAP-A", "new_material_evidence_count": 1}, {"gap_id": "GAP-B", "new_material_evidence_count": 1}, {"gap_id": "GAP-C", "new_material_evidence_count": 1}, {"gap_id": "GAP-D", "new_material_evidence_count": 1}, {"gap_id": "GAP-E", "new_material_evidence_count": 1}, {"gap_id": "GAP-F", "new_material_evidence_count": 1}, {"gap_id": "GAP-G", "new_material_evidence_count": 1}]}
+    },
+    {
+      "name": "wave_two_without_new_gap",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL", "introduced_in_wave": 1}], "forge_waves": [{"wave": 1, "method_count": 1, "approved_not_executed": 0, "new_evidence_ids": []}, {"wave": 2, "method_count": 1, "approved_not_executed": 1, "new_evidence_ids": []}], "executions": []}
+    },
+    {
+      "name": "third_zero_same_gap",
+      "state": {"surviving_count": 0, "valid_finding_count": 0, "pending_verification_count": 0, "normal_audit_frozen": true, "coverage_gaps": [{"gap_id": "GAP-A", "status": "MATERIAL"}], "forge_waves": [{"wave": 1, "method_count": 3, "approved_not_executed": 0, "new_evidence_ids": []}], "executions": [{"gap_id": "GAP-A", "new_material_evidence_count": 0}, {"gap_id": "GAP-A", "new_material_evidence_count": 0}, {"gap_id": "GAP-A", "new_material_evidence_count": 0}]}
+    }
+  ]
+}

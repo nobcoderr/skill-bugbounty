@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "cases": [
+    {"id": "E1_VALID_PERSISTED_TRANSCRIPT", "scenario": "VALID_PERSISTED", "expect_proven": true},
+    {"id": "E2_VALID_EXEC_STREAM", "scenario": "VALID_EXEC_STREAM", "expect_proven": true},
+    {"id": "E2B_VALID_CURRENT_PERSISTED_EVENT", "scenario": "VALID_CURRENT_PERSISTED_EVENT", "expect_proven": true},
+    {"id": "E3_NARRATIVE_ONLY", "scenario": "NARRATIVE_ONLY", "expect_proven": false},
+    {"id": "E4_WAIT_ONLY", "scenario": "WAIT_ONLY", "expect_proven": false},
+    {"id": "E5_SPAWN_FAILURE", "scenario": "SPAWN_FAILURE", "expect_proven": false},
+    {"id": "E6_OUTPUT_MISSING", "scenario": "OUTPUT_MISSING", "expect_proven": false},
+    {"id": "E7_ROOT_RECEIPT_MISSING", "scenario": "ROOT_RECEIPT_MISSING", "expect_proven": false},
+    {"id": "E8_PRESEEDED_TOKEN", "scenario": "PRESEEDED_TOKEN", "expect_proven": false},
+    {"id": "E9_DUPLICATE_SPECIALIST_ID", "scenario": "DUPLICATE_SPECIALIST_ID", "expect_proven": false}
+  ]
+}

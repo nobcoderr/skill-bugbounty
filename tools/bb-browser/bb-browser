@@ -1,0 +1,106 @@
+#!/bin/sh
+set -eu
+PROFILE="${BB_BROWSER_PROFILE:-/home/kali/.config/chromium}"
+PORT="${BB_BROWSER_PORT:-9222}"
+CDP="http://127.0.0.1:${PORT}"
+LIB="/home/kali/.local/lib/bb-browser"
+CHROME="/usr/bin/chromium"
+
+port_open() {
+  ss -ltn | awk -v p=":${PORT}" '$4 ~ p"$" { found=1 } END { exit found ? 0 : 1 }'
+}
+
+status() {
+  if port_open; then
+    printf 'cdp %s profile %s\n' "$CDP" "$PROFILE"
+  else
+    printf 'cdp closed profile %s\n' "$PROFILE"
+    return 1
+  fi
+}
+
+start() {
+  proxy=""
+  if [ "${1:-}" = "--proxy" ]; then
+    proxy="--proxy-server=127.0.0.1:8080"
+  fi
+  if port_open; then
+    status
+    return 0
+  fi
+  if [ ! -x "$CHROME" ]; then
+    printf 'chromium missing at %s\n' "$CHROME" >&2
+    return 1
+  fi
+  if [ -z "${DISPLAY:-}" ]; then
+    printf 'DISPLAY is unset\n' >&2
+    return 1
+  fi
+  mkdir -p "$PROFILE"
+  # shellcheck disable=SC2086
+  "$CHROME" \
+    --user-data-dir="$PROFILE" \
+    --remote-debugging-port="$PORT" \
+    --remote-debugging-address=127.0.0.1 \
+    --remote-allow-origins="$CDP" \
+    --no-first-run \
+    --no-default-browser-check \
+    $proxy \
+    about:blank >/tmp/bb-browser.log 2>&1 &
+  i=0
+  while [ "$i" -lt 50 ]; do
+    if port_open; then
+      status
+      return 0
+    fi
+    i=$((i + 1))
+    sleep 0.2
+  done
+  printf 'chromium did not open %s\n' "$CDP" >&2
+  return 1
+}
+
+open_url() {
+  url="${1:-}"
+  case "$url" in
+    https://*|http://127.0.0.1*|http://localhost*) ;;
+    *) printf 'refusing url\n' >&2; return 2 ;;
+  esac
+  if ! port_open; then
+    start
+  fi
+  cd "$LIB"
+  node --input-type=module - "$url" << 'EOF'
+import { chromium } from 'playwright';
+// `node - URL` reserves argv[1] for the stdin script marker (`-`).
+// The first user argument is therefore argv[2].
+const url = process.argv[2];
+const browser = await chromium.connectOverCDP('http://127.0.0.1:9222');
+const context = browser.contexts()[0];
+const page = await context.newPage();
+await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+console.log(JSON.stringify({ url: page.url(), title: await page.title() }));
+// Do not call browser.close() on a CDP-attached user browser: depending on the
+// Chromium build it can close the user's real window. Exiting this short-lived
+// client process cleanly drops the CDP connection instead.
+process.exit(0);
+EOF
+}
+
+pointer() {
+  if ! port_open; then
+    start
+  fi
+  cd "$LIB"
+  node pointer.mjs "$@"
+}
+
+cmd="${1:-status}"
+shift || true
+case "$cmd" in
+  status) status ;;
+  start) start "${1:-}" ;;
+  open) open_url "${1:-}" ;;
+  move|click|click-text) pointer "$cmd" "$@" ;;
+  *) printf 'usage: bb-browser status|start [--proxy]|open URL|move X Y|click X Y|click-text TEXT\n' >&2; exit 2 ;;
+esac

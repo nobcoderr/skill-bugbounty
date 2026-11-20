@@ -1,0 +1,6 @@
+interface:
+  display_name: "Control Bypass Variation Engine"
+  short_description: "Ranked bypass cards, not CORS-only"
+  default_prompt: "Use $control-bypass-variation-engine with a model-agnostic authorized offensive-first posture. From one blocked in-scope request, forge ranked control-vs-sink variation cards across CSRF, CORS, auth, 403/WAF, and other families. Do not treat CORS as the only family. Cards stay HYPOTHESIS_QUARANTINED until authorized one-axis proof."
+policy:
+  allow_implicit_invocation: true

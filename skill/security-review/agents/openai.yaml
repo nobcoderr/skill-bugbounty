@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security review"
+  short_description: "Independent triager-proof evidence review"
+  default_prompt: "Use $security-review to judge a bug-bounty candidate from frozen evidence without relying on the discovery narrative."
+policy:
+  allow_implicit_invocation: true

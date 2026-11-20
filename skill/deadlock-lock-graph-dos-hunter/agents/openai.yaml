@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deadlock & Lock-Graph DoS Hunter"
+  short_description: "Validate remote deadlocks with lock-graph evidence"
+  default_prompt: "Use $deadlock-lock-graph-dos-hunter to audit an authorized source or local release artifact for a remotely reachable deadlock, reconstruct the wait-for graph, prove build and configuration reachability, and separate availability impact from unsupported integrity or confidentiality claims. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."

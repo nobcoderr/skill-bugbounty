@@ -1,0 +1,13 @@
+{
+  "id": "zephrfish-harness-kit",
+  "repository": "https://github.com/ZephrFish/harness-kit",
+  "branch": "main",
+  "commit": "db3a53411fe3eff966d0f9061540bd4ee4342887",
+  "retrieved_date": "2026-11-13",
+  "local_clone": "/home/kali/security-research/harness-kit",
+  "article": "https://blog.zsec.uk/harnessing-harnesses/",
+  "license_posture": "NO_LICENSE_FILE_PERSONAL_TEMPLATE_USE",
+  "integration_state": "TEMPLATE_ACTIVE_NOT_A_RUNTIME",
+  "writable": true,
+  "stages": ["recon", "hunt", "validate", "trace", "report"]
+}

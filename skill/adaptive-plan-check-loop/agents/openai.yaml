@@ -1,0 +1,6 @@
+interface:
+  display_name: "Adaptive Plan-Check Loop"
+  short_description: "Plan, verify, adapt, and retry with new techniques"
+  default_prompt: "Use $adaptive-plan-check-loop with a model-agnostic authorized offensive-first posture to plan this task, verify each result, retry on failure, and switch to a materially different technique until a bounded stop."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Program Impact Boundary Gate"
+  short_description: "Reject N/A, Informative, and no-delta candidates"
+  default_prompt: "Use $program-impact-boundary-gate to compare starting and resulting capabilities, require a shipped protected consumer, and test exact negative controls. Treat reapproved configuration inside a trusted workspace and metadata effects from dependencies that already execute build scripts as zero-delta unless a finer protected boundary is proven. Promote only concrete cross-authority impact and keep the authorized offensive-first posture. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

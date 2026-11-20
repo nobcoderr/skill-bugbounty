@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "description": "Abstract non-blind development regressions for authorization invariant and KILL decisions.",
+  "cases": [
+    {
+      "id": "route-authorized-body-consumed-resource-mismatch",
+      "protected_operation": true,
+      "attacker_reaches_operation": true,
+      "authorized_resource": "resource-a",
+      "consumed_resource": "resource-b",
+      "control_state": "configured",
+      "decision": "ALLOW",
+      "handler_dispatched": true,
+      "intent_documented": false,
+      "no_authority_transition_proven": false,
+      "expected": "DO_NOT_KILL"
+    },
+    {
+      "id": "omitted-provider-implicitly-defaults-to-success",
+      "protected_operation": true,
+      "attacker_reaches_operation": true,
+      "authorized_resource": "tenant-b-report",
+      "consumed_resource": "tenant-b-report",
+      "control_state": "absent_implicit_success",
+      "decision": "ALLOW",
+      "handler_dispatched": true,
+      "intent_documented": false,
+      "no_authority_transition_proven": false,
+      "expected": "DO_NOT_KILL"
+    },
+    {
+      "id": "explicit-noop-on-documented-public-operation",
+      "protected_operation": false,
+      "attacker_reaches_operation": true,
+      "authorized_resource": "public-status",
+      "consumed_resource": "public-status",
+      "control_state": "explicit_noop",
+      "decision": "ALLOW",
+      "handler_dispatched": true,
+      "intent_documented": true,
+      "no_authority_transition_proven": true,
+      "expected": "KILL_ALLOWED"
+    },
+    {
+      "id": "omitted-provider-fails-closed",
+      "protected_operation": true,
+      "attacker_reaches_operation": true,
+      "authorized_resource": "private-object",
+      "consumed_resource": "private-object",
+      "control_state": "absent_fail_closed",
+      "decision": "ERROR",
+      "handler_dispatched": false,
+      "intent_documented": true,
+      "no_authority_transition_proven": true,
+      "expected": "KILL_ALLOWED"
+    },
+    {
+      "id": "authenticator-error-is-converted-to-success",
+      "protected_operation": true,
+      "attacker_reaches_operation": true,
+      "authorized_resource": "private-object",
+      "consumed_resource": "private-object",
+      "control_state": "error_fail_open",
+      "decision": "ALLOW",
+      "handler_dispatched": true,
+      "intent_documented": false,
+      "no_authority_transition_proven": false,
+      "expected": "DO_NOT_KILL"
+    },
+    {
+      "id": "same-resource-enforced-and-denied",
+      "protected_operation": true,
+      "attacker_reaches_operation": true,
+      "authorized_resource": "resource-b",
+      "consumed_resource": "resource-b",
+      "control_state": "configured",
+      "decision": "DENY",
+      "handler_dispatched": false,
+      "intent_documented": true,
+      "no_authority_transition_proven": true,
+      "expected": "KILL_ALLOWED"
+    }
+  ]
+}

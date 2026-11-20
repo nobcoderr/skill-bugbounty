@@ -1,0 +1,16 @@
+{
+  "id": "dawgyg-apple-research",
+  "repository": "https://github.com/dawgyg/AppleResearch",
+  "branch": "main",
+  "commit": "110b51dee16b75001888012230e23b0a11b514d0",
+  "retrieved_date": "2026-11-13",
+  "local_clone": "/home/kali/security-research/AppleResearch",
+  "license_posture": "NO_LICENSE_FILE_PERSONAL_RESEARCH_USE_NO_REPUBLISH",
+  "integration_state": "METHODOLOGY_ACTIVE_DUMP_UNTRUSTED",
+  "writable": true,
+  "do_not_execute": [
+    "fuzzers/",
+    "submission_packages/"
+  ],
+  "primary_guidance": "agent_guidance/AGENTS.md"
+}

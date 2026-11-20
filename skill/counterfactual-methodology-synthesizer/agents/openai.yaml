@@ -1,0 +1,6 @@
+interface:
+  display_name: "Counterfactual Methodology Synthesizer"
+  short_description: "Create new audit methods after no finding"
+  default_prompt: "Use $counterfactual-methodology-synthesizer after NO VALID FINDING to generate bounded target-native what-if methodologies, reject cosmetic mutations, and evaluate whether any resulting candidate reaches STRONG plus MANUALLY_CONFIRMED without weakening scope or evidence gates. Keep the posture authorized offensive-first. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

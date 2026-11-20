@@ -1,0 +1,6 @@
+interface:
+  display_name: "Chromium V8 Variant Hunter"
+  short_description: "Patch-led Chromium and V8 variant analysis"
+  default_prompt: "Use $chromium-v8-variant-hunter with a model-agnostic authorized offensive-first posture to audit a public fixed Chromium or V8 root cause, compute attacker-state capability deltas, and link only runtime-proven chain edges."
+policy:
+  allow_implicit_invocation: true

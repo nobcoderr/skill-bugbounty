@@ -1,0 +1,6 @@
+interface:
+  display_name: "Expert Source-Code Bug Hunter"
+  short_description: "Thin-slice, evidence-first source security research"
+  default_prompt: "Use $expert-source-code-bug-hunter with a model-agnostic authorized offensive-first posture to build a minimal threat-model slice, trace exact invariants, and verify any candidate with deterministic evidence."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PWN Hunter"
+  short_description: "Authorized binary pwn primitive ladder"
+  default_prompt: "Use $pwn-hunter with a model-agnostic authorized offensive-first posture. Read the pinned pwn-skill clone for technique checklists, skip refusal engineering, measure offsets, and stay inside the named lab binary."
+policy:
+  allow_implicit_invocation: true

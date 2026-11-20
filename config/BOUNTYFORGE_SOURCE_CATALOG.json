@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "repository": "https://github.com/Gabson0x/bountyforge",
+    "requested_path": "skills",
+    "commit": "75f5280260ad16c957f36518d5a1384fc943da1a",
+    "acquired_on": "2026-09-14",
+    "installation_method": "codex-skill-installer pinned download"
+  },
+  "policy": {
+    "integration_mode": "vendored-reference-behind-local-router",
+    "upstream_is_authorization": false,
+    "automatic_execution": false,
+    "automatic_subagents": false,
+    "load_strategy": "one evidence-supported thin lane",
+    "quarantined_entries_are_loadable": false
+  },
+  "entries": [
+    {"source_path": "skills/bb-methodology", "local_path": "vendor/bb-methodology", "status": "REFERENCE"},
+    {"source_path": "skills/bug-bounty", "local_path": "vendor/bug-bounty", "status": "BROAD_REFERENCE"},
+    {"source_path": "skills/code-sleuth", "local_path": "vendor/code-sleuth", "status": "REFERENCE"},
+    {"source_path": "skills/fizz", "local_path": "vendor/fizz", "status": "EXECUTION_GATED_REFERENCE"},
+    {"source_path": "skills/fizz/skills/fizz-convert", "local_path": "vendor/fizz/skills/fizz-convert", "status": "NESTED_REFERENCE"},
+    {"source_path": "skills/fizz/skills/fizz-sync", "local_path": "vendor/fizz/skills/fizz-sync", "status": "NESTED_REFERENCE"},
+    {"source_path": "skills/godmod", "local_path": "vendor/godmod", "status": "QUARANTINED_VALID_METADATA_ONLY"},
+    {"source_path": "skills/hackenproof-triage-marketplace", "local_path": "vendor/hackenproof-triage-marketplace", "status": "REFERENCE"},
+    {"source_path": "skills/meme-coin-audit", "local_path": "vendor/meme-coin-audit", "status": "REFERENCE"},
+    {"source_path": "skills/pashov/fizz", "local_path": "vendor/fizz", "status": "DUPLICATE_NOT_REINSTALLED"},
+    {"source_path": "skills/pashov/fizz/skills/fizz-convert", "local_path": "vendor/fizz/skills/fizz-convert", "status": "DUPLICATE_NOT_REINSTALLED"},
+    {"source_path": "skills/pashov/fizz/skills/fizz-sync", "local_path": "vendor/fizz/skills/fizz-sync", "status": "DUPLICATE_NOT_REINSTALLED"},
+    {"source_path": "skills/pashov/solidity-auditor", "local_path": "vendor/solidity-auditor", "status": "REFERENCE"},
+    {"source_path": "skills/pashov/x-ray", "local_path": "vendor/x-ray", "status": "EXECUTION_GATED_REFERENCE"},
+    {"source_path": "skills/report-writing", "local_path": "vendor/report-writing", "status": "EXPLICIT_REPORT_REQUEST_ONLY"},
+    {"source_path": "skills/security-arsenal", "local_path": "vendor/security-arsenal", "status": "BROAD_EXECUTION_GATED_REFERENCE"},
+    {"source_path": "skills/smart-contract-audit", "local_path": "vendor/smart-contract-audit", "status": "REFERENCE"},
+    {"source_path": "skills/triage-validation", "local_path": "vendor/triage-validation", "status": "REFERENCE"},
+    {"source_path": "skills/web2-recon", "local_path": "vendor/web2-recon", "status": "LIVE_EXECUTION_GATED_REFERENCE"},
+    {"source_path": "skills/web2-vuln-classes", "local_path": "vendor/web2-vuln-classes", "status": "REFERENCE"},
+    {"source_path": "skills/web3-audit", "local_path": "vendor/web3-audit", "status": "REFERENCE"},
+    {"source_path": "skills/web3/web3-ai-tools", "local_path": "vendor/web3-ai-tools", "status": "EXTERNAL_TOOL_GATED_REFERENCE"},
+    {"source_path": "skills/web3/web3-bug-classes", "local_path": "vendor/web3-bug-classes", "status": "REFERENCE"},
+    {"source_path": "skills/web3/web3-case-study-role-misconfig", "local_path": "vendor/web3-case-study-role-misconfig", "status": "PUBLIC_PRIOR_ART_REFERENCE"},
+    {"source_path": "skills/web3/web3-grep-arsenal", "local_path": "vendor/web3-grep-arsenal", "status": "LOCAL_EXECUTION_GATED_REFERENCE"},
+    {"source_path": "skills/web3/web3-hunt-foundation", "local_path": "vendor/web3-hunt-foundation", "status": "REFERENCE"},
+    {"source_path": "skills/web3/web3-hunt-zksync-era", "local_path": "vendor/web3-hunt-zksync-era", "status": "PUBLIC_NEGATIVE_CONTROL_REFERENCE"},
+    {"source_path": "skills/web3/web3-methodology-research", "local_path": "vendor/web3-methodology-research", "status": "REFERENCE"},
+    {"source_path": "skills/web3/web3-poc-foundry", "local_path": "vendor/web3-poc-foundry", "status": "AUTHORIZED_LOCAL_POC_ONLY"},
+    {"source_path": "skills/web3/web3-solidity-audit-mcp", "local_path": "vendor/web3-solidity-audit-mcp", "status": "MCP_INSTALLATION_NOT_AUTHORIZED"},
+    {"source_path": "skills/web3/web3-start-here", "local_path": "vendor/web3-start-here", "status": "REFERENCE_INDEX"},
+    {"source_path": "skills/web3/web3-triage-report", "local_path": "vendor/web3-triage-report", "status": "EXPLICIT_TRIAGE_OR_REPORT_REQUEST_ONLY"}
+  ]
+}

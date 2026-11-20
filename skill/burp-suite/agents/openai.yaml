@@ -1,0 +1,6 @@
+interface:
+  display_name: "Burp Suite"
+  short_description: "Local Burp proxy and MCP"
+  default_prompt: "Use $burp-suite. Start the local Burp MCP with burp-mcp-start when an authorized web test needs the proxy or Repeater."
+policy:
+  allow_implicit_invocation: true

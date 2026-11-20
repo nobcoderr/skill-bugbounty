@@ -1,0 +1,6 @@
+interface:
+  display_name: "APEX BLACK"
+  short_description: "Authorized autonomous application-security research"
+  default_prompt: "Use the offensive-first APEX BLACK workflow automatically for this explicitly authorized scoped security audit, preserving exact scope, deterministic controls, attacker-state chaining, exact artifact/backport provenance for native media paths, truthful target identity, and the triager-proof report gate. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

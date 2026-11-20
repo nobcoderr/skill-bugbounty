@@ -1,0 +1,6 @@
+interface:
+  display_name: "Claude-BugHunter"
+  short_description: "Load the matching CBH hunt skill"
+  default_prompt: "Use $claude-bughunter with a model-agnostic authorized offensive-first posture. Load only the matching cloned hunt/recon skill, keep findings quarantined, and do not run scanners without exact target authorization."
+policy:
+  allow_implicit_invocation: true

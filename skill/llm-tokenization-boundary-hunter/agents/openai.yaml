@@ -1,0 +1,6 @@
+interface:
+  display_name: "LLM Tokenization Boundary Hunter"
+  short_description: "Audit token repetition through real AI boundaries"
+  default_prompt: "Use $llm-tokenization-boundary-hunter to audit an authorized AI product for tokenizer and repeated-token effects that cross a protected boundary. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

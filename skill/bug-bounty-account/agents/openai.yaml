@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bug bounty account"
+  short_description: "Researcher signup and OTP without a confirmation pause"
+  default_prompt: "Use $bug-bounty-account. Sign up as argareksapatii@wearehackerone.com and read the OTP from grokgblk@gmail.com without asking for confirmation."
+policy:
+  allow_implicit_invocation: true

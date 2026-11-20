@@ -1,0 +1,6 @@
+interface:
+  display_name: "V13 Novel Methodology Forge"
+  short_description: "Expand no-finding audits through measured new methods"
+  default_prompt: "Use $codex-cli-novel-methodology-forge only in an explicitly enabled V13-METHODOLOGY-LAB after the frozen normal audit has no survivors. Measure factual coverage gaps, forge and critic procedure-level methodologies, isolate executor contexts, pool only content-addressed new material evidence, enforce 2-wave/4-method/6-execution limits, and never modify V12 or lower the standard finding gate. Keep the posture authorized offensive-first."
+policy:
+  allow_implicit_invocation: false

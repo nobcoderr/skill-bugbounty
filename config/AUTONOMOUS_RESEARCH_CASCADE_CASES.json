@@ -1,0 +1,216 @@
+{
+  "package_version": "2026.09.04-xchain-lab-v1-live-audit-only",
+  "schema_version": 1,
+  "classification": "RULE_REGRESSION_NOT_DISCOVERY_BENCHMARK",
+  "acceptance_targets": {
+    "pattern_replay": 0,
+    "prior_art_leakage": 0,
+    "false_positive_bounty_grade": 0,
+    "hard_failure": 0,
+    "context_contamination": 0,
+    "deterministic_validator_bypass": 0,
+    "target_native_hypotheses_min": 1,
+    "cascade_generated_leads_min": 1,
+    "harness_false_anomalies": 0,
+    "held_out_blind_pass_min_families": 3
+  },
+  "current_capability_status": {
+    "external_tracks": "NOT_RUN",
+    "held_out_historical": "NOT_RUN",
+    "blind_generalization": "NOT_PROVEN"
+  },
+  "external_blind_tracks": [
+    {
+      "id": "V9-A",
+      "target": "fresh target-native hypothesis",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V9-B",
+      "target": "anomaly to second-order discovery",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V9-C",
+      "target": "shared semantic reuse",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V9-D",
+      "target": "clean-probe novel behavior",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V9-E",
+      "target": "safe anti-overfitting repository",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    }
+  ],
+  "historical_held_out_protocol": {
+    "family_count_min": 3,
+    "family_count_max": 5,
+    "exclude_all_v1_v9_development_lineages": true,
+    "curator_gate_required": true,
+    "auditor_ground_truth_isolation_required": true,
+    "status": "NOT_STARTED"
+  },
+  "rule_cases": [
+    {
+      "id": "R1",
+      "name": "micro-inspiration anchoring trap",
+      "expected_valid": false,
+      "context_contamination_probe": true,
+      "expected_error": "micro_inspiration_scope must remain atomic",
+      "overrides": {
+        "micro_inspiration_scope": "This fragment combines an ownership contract, several unrelated API examples, multiple lifecycle branches, numerous expected output descriptions, several speculative root causes, complete subsystem architecture, unrelated dependency behavior, historical implementation commentary, alternative patch ideas, broad sink inventories, repeated attack-surface suggestions, cross-feature chains, multiple expected verdicts, deployment assumptions, evaluator hints, target counts, file locations, consumer names, hidden acceptance criteria, and enough narrative detail to anchor generation on a preselected family instead of one semantic rule. It therefore intentionally exceeds the atomic context budget used by the cascade engine."
+      }
+    },
+    {
+      "id": "R2",
+      "name": "pattern replay rejection",
+      "expected_valid": false,
+      "pattern_replay_probe": true,
+      "expected_error": "PATTERN_REPLAY is rejected",
+      "overrides": {
+        "derivation_origin": "PATTERN_REPLAY"
+      }
+    },
+    {
+      "id": "R3",
+      "name": "generic evaluator retains an unknown anomaly",
+      "expected_valid": true,
+      "overrides": {
+        "stage": "ANOMALY",
+        "anomaly_fingerprint": "unexpected protected-state transition with frozen baseline",
+        "anomaly_origin": "UNKNOWN"
+      }
+    },
+    {
+      "id": "R4",
+      "name": "clean versus dirty differentiation",
+      "expected_valid": false,
+      "expected_error": "non-clean probe cannot advance without semantic proof",
+      "overrides": {
+        "stage": "INVARIANT_PROOF",
+        "probe_cleanliness": "DIRTY",
+        "probe_semantic_proof": "",
+        "anomaly_fingerprint": "ambiguous-parser behavior"
+      }
+    },
+    {
+      "id": "R5",
+      "name": "shared semantic domain mismatch hypothesis",
+      "expected_valid": true,
+      "overrides": {
+        "shared_semantic_domains": ["fixture producer", "fixture consumer"],
+        "hypothesis": "the shared identity resolver applies a producer rule during consumption"
+      }
+    },
+    {
+      "id": "R6",
+      "name": "second-order cascade lead",
+      "expected_valid": true,
+      "overrides": {
+        "stage": "CASCADE_LEAD",
+        "anomaly_fingerprint": "independent identity mismatch observation",
+        "harness_independent_reproduction": true,
+        "independent_runners": ["runner-a", "runner-b"],
+        "anomaly_origin": "TARGET_CONFIRMED",
+        "cascade_parent": "root-observation-a",
+        "observation_parent": "observation-a",
+        "invariant_parent": "identity-invariant-a",
+        "cascade_depth": 1,
+        "derived_detection_strategy": "compare sibling delayed consumers using the same identity resolver"
+      }
+    },
+    {
+      "id": "R7",
+      "name": "cross-feature conceptual jump",
+      "expected_valid": true,
+      "overrides": {
+        "stage": "CASCADE_LEAD",
+        "anomaly_fingerprint": "cross-feature protected-state mismatch",
+        "harness_independent_reproduction": true,
+        "independent_runners": ["runner-a", "runner-c"],
+        "anomaly_origin": "TARGET_CONFIRMED",
+        "shared_semantic_domains": ["queued metadata producer", "privileged delayed consumer"],
+        "composition_paths": ["stored metadata -> queue -> authority-bearing consumer"],
+        "cascade_parent": "cascade-lead-a",
+        "observation_parent": "observation-b",
+        "invariant_parent": "provenance-invariant-b",
+        "cascade_depth": 2,
+        "derived_detection_strategy": "trace other authority-bearing consumers of the stored representation"
+      }
+    },
+    {
+      "id": "R8",
+      "name": "harness-generated false anomaly",
+      "expected_valid": false,
+      "harness_false_anomaly_probe": true,
+      "expected_error": "harness-confirmed anomaly cannot advance",
+      "overrides": {
+        "stage": "ANOMALY",
+        "anomaly_fingerprint": "runner-local state leakage",
+        "anomaly_origin": "HARNESS_CONFIRMED"
+      }
+    },
+    {
+      "id": "R9",
+      "name": "harness-suppressed target anomaly recovered independently",
+      "expected_valid": true,
+      "overrides": {
+        "stage": "ANOMALY",
+        "anomaly_fingerprint": "same target state transition through independent runners",
+        "harness_independent_reproduction": true,
+        "independent_runners": ["runner-a", "runner-b"],
+        "anomaly_origin": "TARGET_CONFIRMED"
+      }
+    },
+    {
+      "id": "R10",
+      "name": "deterministic validator bypass attempt",
+      "expected_valid": false,
+      "deterministic_validator_bypass_probe": true,
+      "expected_error": "deterministic_validator must identify versioned code",
+      "overrides": {
+        "deterministic_validator": "MODEL:accept-if-convincing"
+      }
+    },
+    {
+      "id": "R11",
+      "name": "context contamination",
+      "expected_valid": false,
+      "context_contamination_probe": true,
+      "prior_art_leakage_probe": true,
+      "expected_error": "research cascade context is contaminated",
+      "overrides": {
+        "research_cascade": {
+          "stage_isolation": {
+            "target_answer_leakage": true
+          }
+        },
+        "prior_art": {
+          "status": "NO_OVERLAP_FOUND",
+          "sources_checked": ["premature vulnerability-answer source"]
+        }
+      }
+    },
+    {
+      "id": "R12",
+      "name": "safe repository produces no bounty-grade finding",
+      "expected_valid": true,
+      "safe_repository_case": true,
+      "overrides": {
+        "stage": "KILLED",
+        "anomaly_fingerprint": "",
+        "anomaly_origin": "UNKNOWN",
+        "verdict": "KILL"
+      }
+    }
+  ]
+}

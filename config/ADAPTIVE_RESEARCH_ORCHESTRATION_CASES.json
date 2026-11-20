@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "cases": [
+    {"id": "R1_VALID_CORE_STOP", "scenario": "VALID_CORE_STOP", "expect_valid": true},
+    {"id": "R2_EXHAUSTED_REASSIGNMENT", "scenario": "EXHAUSTED_REASSIGNMENT", "expect_valid": false},
+    {"id": "R3_VALID_ADAPTIVE_WAVE", "scenario": "VALID_ADAPTIVE_WAVE", "expect_valid": true},
+    {"id": "R4_ADAPTIVE_WITHOUT_GAP", "scenario": "ADAPTIVE_WITHOUT_GAP", "expect_valid": false},
+    {"id": "R5_ADAPTIVE_OVER_CAP", "scenario": "ADAPTIVE_OVER_CAP", "expect_valid": false},
+    {"id": "R6_CONVERGENCE_AS_EVIDENCE", "scenario": "CONVERGENCE_AS_EVIDENCE", "expect_valid": false},
+    {"id": "R7_CONVERGENCE_NO_REDIRECT", "scenario": "CONVERGENCE_NO_REDIRECT", "expect_valid": false},
+    {"id": "R8_VALID_MATERIAL_REOPEN", "scenario": "VALID_MATERIAL_REOPEN", "expect_valid": true},
+    {"id": "R9_REOPEN_WITHOUT_NEW_EVIDENCE", "scenario": "REOPEN_WITHOUT_NEW_EVIDENCE", "expect_valid": false},
+    {"id": "R10_VALID_DIRECT_IMPACT", "scenario": "VALID_DIRECT_IMPACT", "expect_valid": true},
+    {"id": "R11_STRONG_BLOCKED_PRIMITIVE", "scenario": "STRONG_BLOCKED_PRIMITIVE", "expect_valid": false},
+    {"id": "R12_DEPENDENCY_DOCS_ONLY", "scenario": "DEPENDENCY_DOCS_ONLY", "expect_valid": false},
+    {"id": "R13_VALID_EXACT_DEPENDENCY", "scenario": "VALID_EXACT_DEPENDENCY", "expect_valid": true},
+    {"id": "R14_FAILED_TRANSITION_VALIDATED", "scenario": "FAILED_TRANSITION_VALIDATED", "expect_valid": false},
+    {"id": "R15_CONTINUE_WITHOUT_MATERIAL_REASON", "scenario": "CONTINUE_WITHOUT_MATERIAL_REASON", "expect_valid": false}
+  ]
+}

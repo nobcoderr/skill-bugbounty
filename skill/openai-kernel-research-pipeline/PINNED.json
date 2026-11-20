@@ -1,0 +1,26 @@
+{
+  "id": "openai-kernel-research-pipeline",
+  "kind": "VENDOR_ANNOUNCEMENT",
+  "title": "One thousand fewer paths to root",
+  "publisher": "OpenAI",
+  "published_date": "2026-11-05",
+  "retrieved_date": "2026-11-13",
+  "integration_state": "METHODOLOGY_ACTIVE_CLAIMS_UNTRUSTED",
+  "execution_authorized": false,
+  "claim_status": "UPSTREAM_CLAIM",
+  "unverified_claim_classes": [
+    "candidate_and_validated_counts",
+    "working_leak_and_lpe_counts",
+    "api_cost",
+    "novel_technique_count",
+    "hypothetical_bounty_value"
+  ],
+  "adopted_pipeline": [
+    "discovery",
+    "isolated_dynamic_validation",
+    "leak_vs_lpe_screening",
+    "stock_protection_exploitability",
+    "candidate_patch_after_proof",
+    "human_review_before_maintainer_report"
+  ]
+}

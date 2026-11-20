@@ -1,0 +1,6 @@
+interface:
+  display_name: "Authorized Offensive Tool Loop"
+  short_description: "Analyze, tool, install, evaluate, adapt"
+  default_prompt: "Use $authorized-offensive-tool-loop with a model-agnostic authorized offensive-first posture. Analyze the target environment, select and run in-scope tools, install only with exact authorization, evaluate command results, and adjust the next attack step."
+policy:
+  allow_implicit_invocation: true

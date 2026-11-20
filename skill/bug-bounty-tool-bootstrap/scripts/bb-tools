@@ -1,0 +1,358 @@
+#!/usr/bin/env python3
+"""Plan or install a fixed set of user-local bug-bounty analysis tools."""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+import urllib.parse
+import urllib.request
+
+
+CATALOG = {
+    "web": (
+        {"command": "arjun", "package": "arjun", "version": "2.2.7"},
+        {"command": "uro", "package": "uro", "version": "1.0.2"},
+    ),
+    "source": (
+        {"command": "semgrep", "package": "semgrep", "version": "1.185.0"},
+    ),
+    "web3": (
+        {"command": "slither", "package": "slither-analyzer", "version": "0.11.6"},
+        {"command": "solc-select", "package": "solc-select", "version": "1.2.0"},
+    ),
+    "supply-chain": (
+        {"command": "checkov", "package": "checkov", "version": "3.4.5"},
+    ),
+    "ci": (
+        {"command": "zizmor", "package": "zizmor", "version": "1.32.0"},
+    ),
+}
+
+PYPI_INDEX = "https://pypi.org/simple"
+
+
+def normalize_package(value: str) -> str:
+    return value.lower().replace("_", "-").replace(".", "-")
+
+
+def pipx_environment_value(pipx: str, key: str) -> str:
+    completed = subprocess.run(
+        [pipx, "environment", "--value", key],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    return completed.stdout.strip() if completed.returncode == 0 else ""
+
+
+def pipx_inventory(pipx: str | None) -> dict[str, dict[str, object]]:
+    if not pipx:
+        return {}
+    completed = subprocess.run(
+        [pipx, "list", "--json"],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    start = completed.stdout.find("{")
+    if completed.returncode != 0 or start < 0:
+        return {}
+    try:
+        payload = json.loads(completed.stdout[start:])
+    except json.JSONDecodeError:
+        return {}
+
+    venv_root = pipx_environment_value(pipx, "PIPX_LOCAL_VENVS")
+    result: dict[str, dict[str, object]] = {}
+    for env_name, env_data in payload.get("venvs", {}).items():
+        main = env_data.get("metadata", {}).get("main_package", {})
+        package = str(main.get("package") or env_name)
+        result[normalize_package(package)] = {
+            "version": str(main.get("package_version") or ""),
+            "apps": tuple(str(item) for item in main.get("apps", ())),
+            "venv": str(Path(venv_root) / env_name) if venv_root else "",
+        }
+    return result
+
+
+def executable_sha256(path: str) -> str:
+    target = Path(path).resolve()
+    digest = hashlib.sha256()
+    with target.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def sha256_file(path: Path) -> str:
+    return executable_sha256(str(path))
+
+
+def download_verified_artifact(row: dict[str, str], destination: Path) -> tuple[Path, str]:
+    package = urllib.parse.quote(row["package"], safe="")
+    version = urllib.parse.quote(row["version"], safe="")
+    metadata_url = f"https://pypi.org/pypi/{package}/{version}/json"
+    request = urllib.request.Request(metadata_url, headers={"User-Agent": "bb-tools/1"})
+    with urllib.request.urlopen(request, timeout=30) as response:
+        metadata = json.load(response)
+    trusted = {
+        item["filename"]: item.get("digests", {}).get("sha256", "")
+        for item in metadata.get("urls", ())
+        if not item.get("yanked") and item.get("digests", {}).get("sha256")
+    }
+    if not trusted:
+        raise RuntimeError(f'PyPI exposes no trusted release digests for {row["spec"]}')
+
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "pip",
+            "download",
+            "--no-deps",
+            "--dest",
+            str(destination),
+            "--index-url",
+            PYPI_INDEX,
+            row["spec"],
+        ],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    files = tuple(path for path in destination.iterdir() if path.is_file())
+    if completed.returncode != 0 or len(files) != 1:
+        raise RuntimeError(f'artifact download failed for {row["spec"]}: {completed.stdout[-2000:]}')
+    artifact = files[0]
+    actual = sha256_file(artifact)
+    expected = trusted.get(artifact.name)
+    if not expected or actual != expected:
+        raise RuntimeError(f'PyPI digest mismatch for {artifact.name}')
+    return artifact, actual
+
+
+def parser() -> argparse.ArgumentParser:
+    result = argparse.ArgumentParser(
+        description="Plan or install allowlisted, pinned, user-local tools."
+    )
+    mode = result.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--plan", choices=CATALOG)
+    mode.add_argument("--apply", choices=CATALOG)
+    result.add_argument("--program")
+    result.add_argument("--scope-file", type=Path)
+    result.add_argument("--action")
+    return result
+
+
+def records_for(profile: str) -> list[dict[str, str]]:
+    pipx = shutil.which("pipx")
+    inventory = pipx_inventory(pipx)
+    rows = []
+    for item in CATALOG[profile]:
+        path = shutil.which(item["command"])
+        installed = inventory.get(normalize_package(item["package"]))
+        app_names = {
+            Path(value).name for value in installed.get("apps", ())
+        } if installed else set()
+        expected_path = (
+            Path(str(installed["venv"])) / "bin" / item["command"]
+            if installed and installed.get("venv") else None
+        )
+        path_is_expected = bool(
+            path and expected_path and expected_path.is_file()
+            and Path(path).resolve() == expected_path.resolve()
+            and item["command"] in app_names
+        )
+        if not path:
+            status = "missing"
+        elif not installed:
+            status = "present-unverified"
+        elif installed["version"] != item["version"]:
+            status = "version-mismatch"
+        elif not path_is_expected:
+            status = "path-collision"
+        else:
+            status = "present-verified"
+        rows.append(
+            {
+                **item,
+                "spec": f'{item["package"]}=={item["version"]}',
+                "status": status,
+                "path": path or "",
+            }
+        )
+    return rows
+
+
+def require_apply_context(args: argparse.Namespace) -> dict[str, object]:
+    if not args.program or not args.program.strip():
+        raise ValueError("--program is required and must be non-empty")
+    if not args.action or not args.action.strip():
+        raise ValueError("--action is required and must be non-empty")
+    if args.scope_file is None or not args.scope_file.is_file():
+        raise ValueError("--scope-file must name an existing regular file")
+    if args.scope_file.stat().st_size == 0:
+        raise ValueError("--scope-file must be non-empty")
+    try:
+        scope = json.loads(args.scope_file.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise ValueError(f"--scope-file must be valid UTF-8 JSON: {error}") from error
+    if not isinstance(scope, dict):
+        raise ValueError("--scope-file root must be a JSON object")
+    if str(scope.get("program", "")).strip().casefold() != args.program.strip().casefold():
+        raise ValueError("scope program must match --program")
+    if not str(scope.get("source_url", "")).strip():
+        raise ValueError("scope source_url must be non-empty")
+    source = urllib.parse.urlparse(str(scope["source_url"]).strip())
+    if source.scheme != "https" or not source.hostname:
+        raise ValueError("scope source_url must be an absolute HTTPS URL")
+    if scope.get("source_kind") not in {"official_program", "official_repository"}:
+        raise ValueError("scope source_kind must be official_program or official_repository")
+    try:
+        captured = dt.datetime.fromisoformat(str(scope.get("captured_at", "")).replace("Z", "+00:00"))
+    except ValueError as error:
+        raise ValueError("scope captured_at must be ISO-8601") from error
+    if captured.tzinfo is None:
+        raise ValueError("scope captured_at must include a timezone")
+    age = dt.datetime.now(dt.timezone.utc) - captured.astimezone(dt.timezone.utc)
+    if age < dt.timedelta(minutes=-5) or age > dt.timedelta(days=7):
+        raise ValueError("scope captured_at must be current within seven days")
+    policy_name = str(scope.get("policy_file", "")).strip()
+    claimed_policy_sha = str(scope.get("policy_sha256", "")).strip().lower()
+    if not policy_name or not re.fullmatch(r"[0-9a-f]{64}", claimed_policy_sha):
+        raise ValueError("scope policy_file and 64-character policy_sha256 are required")
+    if Path(policy_name).name != policy_name:
+        raise ValueError("scope policy_file must be a filename beside the scope JSON")
+    scope_dir = args.scope_file.parent.resolve()
+    policy_path = (scope_dir / policy_name).resolve()
+    if policy_path.parent != scope_dir:
+        raise ValueError("scope policy_file must remain inside the scope directory")
+    if not policy_path.is_file() or sha256_file(policy_path) != claimed_policy_sha:
+        raise ValueError("scope policy file is missing or its SHA-256 does not match")
+    assets = scope.get("assets")
+    if not isinstance(assets, list) or not assets:
+        raise ValueError("scope assets must be a non-empty array")
+    for asset in assets:
+        if not isinstance(asset, dict) or not str(asset.get("asset", "")).strip():
+            raise ValueError("each scope asset must be an object with a non-empty asset")
+        if asset.get("status") != "in_scope":
+            raise ValueError("each scope asset must have status in_scope")
+    return scope
+
+
+def append_log(payload: dict[str, object]) -> None:
+    state_dir = Path.home() / ".local" / "state" / "bb-tools"
+    state_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+    os.chmod(state_dir, 0o700)
+    log_path = state_dir / "install-log.jsonl"
+    with log_path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(payload, sort_keys=True) + "\n")
+    os.chmod(log_path, 0o600)
+
+
+def apply(profile: str, args: argparse.Namespace) -> int:
+    scope = require_apply_context(args)
+    pipx = shutil.which("pipx")
+    if not pipx:
+        raise RuntimeError("pipx is not installed; no package was changed")
+
+    rows = records_for(profile)
+    conflicts = [
+        row for row in rows
+        if row["status"] not in {"missing", "present-verified"}
+    ]
+    if conflicts:
+        summary = ", ".join(
+            f'{row["command"]}:{row["status"]}' for row in conflicts
+        )
+        raise RuntimeError(f"profile preflight failed; no installation started: {summary}")
+
+    failure = False
+    for row in rows:
+        status = row["status"]
+        detail = "verified existing pipx command left untouched"
+        artifact_sha256 = ""
+        if status == "missing":
+            with tempfile.TemporaryDirectory(prefix="bb-tools-") as temp_name:
+                artifact, artifact_sha256 = download_verified_artifact(row, Path(temp_name))
+                completed = subprocess.run(
+                    [pipx, "install", str(artifact), "--index-url", PYPI_INDEX],
+                    check=False,
+                    text=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                )
+            if completed.returncode == 0:
+                refreshed = next(
+                    item for item in records_for(profile)
+                    if item["package"] == row["package"]
+                )
+                if refreshed["status"] == "present-verified":
+                    status = "installed-verified"
+                    detail = "installed from a pinned PyPI artifact with a verified release digest"
+                else:
+                    status = "failed-verification"
+                    detail = f'post-install status: {refreshed["status"]}'
+                    failure = True
+            else:
+                status = "failed"
+                detail = completed.stdout[-2000:]
+                failure = True
+        elif status != "present-verified":
+            detail = "existing command provenance or pinned version could not be verified"
+            failure = True
+
+        path = shutil.which(row["command"]) or row["path"]
+        sha256 = executable_sha256(path) if path else ""
+        event = {
+            "timestamp": dt.datetime.now(dt.timezone.utc).isoformat(),
+            "program": args.program.strip(),
+            "profile": profile,
+            "action": args.action.strip(),
+            "scope_file": str(args.scope_file.resolve()),
+            "scope_source_url": str(scope["source_url"]).strip(),
+            "scope_asset_count": len(scope["assets"]),
+            "policy_sha256": str(scope["policy_sha256"]).strip().lower(),
+            "command": row["command"],
+            "package": row["package"],
+            "version": row["version"],
+            "status": status,
+            "path": path,
+            "artifact_sha256": artifact_sha256,
+            "executable_sha256": sha256,
+            "index_url": PYPI_INDEX,
+            "detail": detail,
+        }
+        append_log(event)
+        print(json.dumps(event, sort_keys=True))
+    return 1 if failure else 0
+
+
+def main() -> int:
+    args = parser().parse_args()
+    profile = args.plan or args.apply
+    if args.plan:
+        print(json.dumps({"profile": profile, "tools": records_for(profile)}, indent=2))
+        return 0
+    try:
+        return apply(profile, args)
+    except (OSError, RuntimeError, ValueError) as error:
+        print(f"bb-tools: {error}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

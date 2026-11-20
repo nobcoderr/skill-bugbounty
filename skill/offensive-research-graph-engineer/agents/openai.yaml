@@ -1,0 +1,6 @@
+interface:
+  display_name: "Offensive Research Graph Engineer"
+  short_description: "Graph-based red-team research with evidence gates"
+  default_prompt: "Use $offensive-research-graph-engineer to design an authorized offensive-first bug-hunting graph with isolated workers, fresh evidence verification, and bounded severity escalation. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.codex.invalid/schemas/operation-evidence.json",
+  "title": "Operation Evidence Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "operation_id",
+    "campaign_id",
+    "method_id",
+    "definition_hash",
+    "scope_authorized",
+    "identity_label",
+    "resource_ownership",
+    "request",
+    "response",
+    "evidence_hash",
+    "observed_at"
+  ],
+  "properties": {
+    "operation_id": {"type": "string", "pattern": "^op_[A-Za-z0-9_-]+$"},
+    "campaign_id": {"type": "string", "minLength": 1},
+    "method_id": {"type": "string", "minLength": 1},
+    "definition_hash": {"type": "string", "pattern": "^[a-fA-F0-9]{16,128}$"},
+    "scope_authorized": {"const": true},
+    "identity_label": {"type": "string", "minLength": 1},
+    "resource_ownership": {
+      "enum": ["SELF", "SECOND_RESEARCHER_OWNED", "NONEXISTENT_CONTROL", "PUBLIC", "UNKNOWN"]
+    },
+    "auth_mode": {"type": "string"},
+    "backend_cohort": {"type": ["string", "null"]},
+    "representation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "wire_format": {"type": "string"},
+        "content_type": {"type": "string"},
+        "encoding": {"type": "string"},
+        "schema_hash": {"type": ["string", "null"]},
+        "decoder": {"type": ["string", "null"]}
+      }
+    },
+    "resource_binding": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "requested_parent": {"type": ["string", "null"]},
+        "consumed_child": {"type": ["string", "null"]},
+        "canonical_parent": {"type": ["string", "null"]},
+        "authorization_parent": {"type": ["string", "null"]}
+      }
+    },
+    "authority_context": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "end_user_identity": {"type": ["string", "null"]},
+        "frontend_identity": {"type": ["string", "null"]},
+        "execution_identity": {"type": ["string", "null"]},
+        "target_method_policy_evidence": {"type": ["string", "null"]}
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "redacted_url", "headers_digest", "body_digest"],
+      "properties": {
+        "method": {"type": "string"},
+        "redacted_url": {"type": "string"},
+        "headers_digest": {"type": "string"},
+        "body_digest": {"type": "string"},
+        "typed_parameters": {"type": "object"}
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "headers_digest", "body_digest", "body_class"],
+      "properties": {
+        "status": {"type": "integer", "minimum": 100, "maximum": 599},
+        "headers_digest": {"type": "string"},
+        "body_digest": {"type": "string"},
+        "body_class": {"type": "string"},
+        "normalized_rejection_stage": {"type": ["string", "null"]},
+        "authoritative_post_state": {"type": ["object", "null"]}
+      }
+    },
+    "baseline_operation_id": {"type": ["string", "null"]},
+    "negative_control_operation_id": {"type": ["string", "null"]},
+    "replay_of_operation_id": {"type": ["string", "null"]},
+    "cleanup_operation_id": {"type": ["string", "null"]},
+    "provider_stop_instruction": {"type": ["string", "null"]},
+    "evidence_hash": {"type": "string", "pattern": "^[a-fA-F0-9]{32,128}$"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "notes": {"type": "string"}
+  }
+}

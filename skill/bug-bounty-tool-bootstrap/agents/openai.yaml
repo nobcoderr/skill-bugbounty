@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bug bounty tool bootstrap"
+  short_description: "Plan and install allowlisted local tools"
+  default_prompt: "Use $bug-bounty-tool-bootstrap to identify and install only the missing local tools required by this authorized bug-bounty lane."
+policy:
+  allow_implicit_invocation: true

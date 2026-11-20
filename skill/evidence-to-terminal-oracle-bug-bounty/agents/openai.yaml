@@ -1,0 +1,6 @@
+interface:
+  display_name: "Evidence-to-Terminal-Oracle Bug Bounty"
+  short_description: "Turn security leads into terminal proof"
+  default_prompt: "Use $evidence-to-terminal-oracle-bug-bounty to analyze this authorized candidate offensive-first, prove each representation, authority or arithmetic domain, state, release/topology, and terminal-oracle edge with controls, and return an evidence-backed verdict without treating public case studies as authorization. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

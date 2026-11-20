@@ -1,0 +1,6 @@
+interface:
+  display_name: "Target system model"
+  short_description: "Understand the system before vulnerability tests"
+  default_prompt: "Use $target-system-model first. Learn the system, then recon, fingerprint, threat-model, and map the attack surface before testing bug classes."
+policy:
+  allow_implicit_invocation: true

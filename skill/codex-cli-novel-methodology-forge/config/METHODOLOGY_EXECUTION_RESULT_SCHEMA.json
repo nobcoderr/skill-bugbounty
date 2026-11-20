@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "v13-methodology-execution-result.schema.json",
+  "title": "V13 isolated methodology execution result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "execution_id",
+    "methodology_id",
+    "gap_id",
+    "run_mode",
+    "child_context",
+    "source_snapshot_digest",
+    "input_capsule_digest",
+    "output_digest",
+    "capsule_allowlist",
+    "forbidden_inputs_present",
+    "observations",
+    "new_material_evidence_count",
+    "new_material_evidence",
+    "new_research_paths",
+    "new_candidates",
+    "duplicate_existing_candidates",
+    "killed_observations",
+    "blocked_observations",
+    "methodology_execution_result",
+    "registry_mutation",
+    "transcript_digest",
+    "root_receipt_digest"
+  ],
+  "properties": {
+    "record_type": {"const": "METHODOLOGY_EXECUTION"},
+    "execution_id": {"type": "string", "pattern": "^EXEC-[A-Z0-9-]+$"},
+    "methodology_id": {"type": "string", "pattern": "^METH-(V12|[0-9]{4})-[A-Z0-9-]+$"},
+    "gap_id": {"type": "string", "pattern": "^GAP-[A-Z0-9-]+$"},
+    "run_mode": {"enum": ["DISCOVERY", "REPRODUCTION", "BLIND", "PATCHED_CONTROL"]},
+    "target_family": {"type": "string", "minLength": 1},
+    "blind_seed_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "independent_executor": {"type": "boolean"},
+    "child_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fresh_context", "child_id", "assignment_token_digest"],
+      "properties": {
+        "fresh_context": {"const": true},
+        "child_id": {"type": "string", "minLength": 3},
+        "assignment_token_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "source_snapshot_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "input_capsule_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "output_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "capsule_allowlist": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string"}},
+    "forbidden_inputs_present": {"const": false},
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["classification", "statement", "artifact_pointer"],
+        "properties": {
+          "classification": {"enum": ["FACT", "INFERENCE", "HYPOTHESIS"]},
+          "statement": {"type": "string", "minLength": 3},
+          "artifact_pointer": {"type": "string"}
+        }
+      }
+    },
+    "new_material_evidence_count": {"type": "integer", "minimum": 0},
+    "new_material_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evidence_id", "semantic_identity", "fact", "artifact_pointer", "artifact_sha256", "snapshot_digest", "oracle_result"],
+        "properties": {
+          "evidence_id": {"type": "string", "pattern": "^EVID-[A-Z0-9-]+$"},
+          "semantic_identity": {"type": "string", "minLength": 8},
+          "fact": {"type": "string", "minLength": 8},
+          "artifact_pointer": {"type": "string", "minLength": 1},
+          "artifact_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "snapshot_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "oracle_result": {"enum": ["PASS", "FAIL", "BLOCKED"]}
+        }
+      }
+    },
+    "new_research_paths": {"type": "array", "items": {"type": "string"}},
+    "new_candidates": {"type": "array", "items": {"type": "string"}},
+    "duplicate_existing_candidates": {"type": "array", "items": {"type": "string"}},
+    "killed_observations": {"type": "array", "items": {"type": "string"}},
+    "blocked_observations": {"type": "array", "items": {"type": "string"}},
+    "methodology_execution_result": {"enum": ["MATERIAL_GAIN", "NO_MATERIAL_GAIN", "EXECUTION_DEFERRED"]},
+    "registry_mutation": {"const": false},
+    "transcript_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "root_receipt_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sequence": {"type": "integer", "minimum": 1},
+    "previous_record_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "record_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

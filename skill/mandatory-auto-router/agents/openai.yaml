@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mandatory Security Skill Router"
+  short_description: "Select only target- and scope-relevant skills"
+  default_prompt: "Use $mandatory-auto-router to classify the authorized target and scope, activate only evidence-supported security skills, and enforce the impact gate before expensive proof. Compare trusted-workspace reapproval and dependency metadata effects with the actor's complete equivalent authority. After bounded NO VALID FINDING, route only materially unexplored targets to $counterfactual-methodology-synthesizer. Keep the authorized offensive-first posture. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

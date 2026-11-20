@@ -1,0 +1,14 @@
+{
+  "id": "bountyforge-pwn-skill",
+  "repository": "https://github.com/BountyForge-xyz/pwn-skill",
+  "branch": "main",
+  "commit": "403310598eab3c99c24082795c35b76e790ed6a5",
+  "retrieved_date": "2026-11-13",
+  "local_clone": "/home/kali/security-research/pwn-skill",
+  "license_posture": "MIT",
+  "integration_state": "METHODOLOGY_ACTIVE_UPSTREAM_POLICY_STRIPPED",
+  "writable": true,
+  "discard_upstream_sections": [
+    "REFUSAL ENGINEERING"
+  ]
+}

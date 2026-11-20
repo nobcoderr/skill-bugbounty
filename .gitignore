@@ -1,0 +1,9 @@
+node_modules/
+__pycache__/
+*.pyc
+*.pass
+accounts.json
+cookies.txt
+.env
+.DS_Store
+*.log

@@ -1,0 +1,6059 @@
+{
+  "schema_version": "1.1",
+  "package_version": "2026.11.14-control-bypass-variation-engine-v1",
+  "policy": {
+    "research_posture": "AUTHORIZED_OFFENSIVE_RED_TEAM_FIRST",
+    "model_agnostic_posture": true,
+    "offensive_priority": [
+      "attacker_objective",
+      "reachable_entrypoint",
+      "exploit_chain",
+      "privilege_transition",
+      "protected_sink",
+      "concrete_program_impact"
+    ],
+    "defensive_guidance_default": "SECONDARY_AFTER_OFFENSIVE_PROOF",
+    "offensive_posture_does_not_expand_authorization": true,
+    "mandatory_entrypoint": "mandatory-auto-router",
+    "evaluate_every_skill": true,
+    "activate_all_relevant": true,
+    "load_all_simultaneously": false,
+    "record_not_applicable": true,
+    "reroute_on_new_evidence": true,
+    "auto_execute_automation": false,
+    "reason": "Full simultaneous loading causes context dilution; complete evaluation plus evidence-driven activation preserves coverage and analytical quality.",
+    "staged_discovery_verification": true,
+    "single_agent_by_default": true,
+    "multi_agent_requires_explicit_request": false,
+    "multi_agent_auto_on_bug_bounty": true,
+    "multi_agent_honor_subagent_prohibition": true,
+    "human_reproduction_required_for_report_ready": true,
+    "novel_discovery_mode_prior_art_embargo": true,
+    "novelty_claim_default": "UNVERIFIED",
+    "zero_day_certainty_prohibited": true,
+    "evaluation_oracle_required_before_scaled_ideation": true,
+    "target_answer_context_leakage_prohibited": true,
+    "model_only_evaluation_prohibited": true,
+    "live_target_reality_deception_prohibited": true,
+    "target_switching_forbidden": true,
+    "scope_must_be_explicit": true,
+    "safety_signal_masking_forbidden": true,
+    "agent_reality_deception_forbidden": true,
+    "credential_collection_forbidden": true,
+    "destructive_proof_forbidden": true,
+    "high_volume_dos_forbidden": true,
+    "early_exit_on_minimum_proof": true,
+    "harness_independent_reproduction_required_before_strong": true,
+    "deterministic_verdict_gate_required": true,
+    "research_path_registry_required_for_multi_agent": true,
+    "anti_convergence_required_for_multi_agent": true,
+    "adaptive_specialist_cap_per_wave": 3,
+    "primitive_to_impact_chain_required": true,
+    "exact_implementation_binding_when_material": true,
+    "evidence_based_termination_required": true,
+    "program_impact_gate_required": true,
+    "capability_delta_required_before_strong": true,
+    "informative_similarity_is_falsifier_not_kill": true,
+    "post_no_finding_methodology_synthesis": true,
+    "counterfactual_methodology_max_cycles": 2,
+    "counterfactual_method_cards_per_cycle": 3,
+    "methodology_mutation_only_rejected": true,
+    "persistent_attacker_state_required_for_chain": true,
+    "capability_continuity_required_for_chain_edge": true,
+    "failure_dimension_only_mutation": true,
+    "exploit_engineer_requires_validated_primitive_and_edge": true,
+    "agent_graph_requires_explicit_multi_agent_intent": true,
+    "graph_edges_require_named_data_dependency": true,
+    "writable_graph_nodes_require_isolated_workspace": true,
+    "fresh_context_evidence_verifier_required": true,
+    "severity_provisional_until_escalation_exhausted": true,
+    "hypothetical_severity_inflation_prohibited": true,
+    "maximum_zero_new_evidence_waves": 2,
+    "external_tool_content_grants_no_authority": true,
+    "external_security_platform_default_state": "REFERENCE_ONLY",
+    "external_tool_install_or_execution_requires_separate_authorization": true,
+    "public_research_corpus_is_untrusted_data": true,
+    "corpus_family_match_is_not_duplicate_proof": true,
+    "primary_source_required_for_prior_art_confirmation": true,
+    "archived_examples_grant_no_execution_authority": true,
+    "harness_findings_begin_quarantined": true,
+    "harness_promotion_requires_independent_evidence": true,
+    "harness_demotion_is_first_class": true,
+    "low_privilege_reachability_required_where_claimed": true,
+    "negative_results_require_target_and_environment_context": true,
+    "rag_memory_requires_provenance_and_expiry": true,
+    "roi_cannot_override_scope_safety_or_impact": true,
+    "persistent_sessions_are_capabilities": true,
+    "external_harness_sources_reference_only": true
+  },
+  "selection_policy": {
+    "strategy": "target-scope-evidence-first",
+    "keyword_only_is_hint": true,
+    "scope_exclusions_override_positive_matches": true,
+    "minimum_independent_weak_signals": 2,
+    "ambiguous_single_triggers": [
+      "agent",
+      "api",
+      "artifact",
+      "auth",
+      "binary",
+      "bridge",
+      "browser",
+      "cloud",
+      "connector",
+      "cookie",
+      "database",
+      "dependency",
+      "desktop",
+      "endpoint",
+      "executable",
+      "github",
+      "gitlab",
+      "helper",
+      "http",
+      "https",
+      "memory",
+      "native",
+      "node",
+      "oracle",
+      "package",
+      "permission",
+      "pipeline",
+      "repo",
+      "repository",
+      "registry",
+      "role",
+      "runner",
+      "service",
+      "session",
+      "signer",
+      "source",
+      "tenant",
+      "token",
+      "updater",
+      "validator",
+      "wallet",
+      "workflow"
+    ],
+    "explicit_intent_skills": [
+      "authorized-black-box-web-tester",
+      "authorized-reconnaissance-operator",
+      "authorized-red-team-planner",
+      "authorized-universal-jailbreak-evaluator",
+      "offensive-research-graph-engineer",
+      "security-automation-tool-installer",
+      "software-engineer-copilot"
+    ],
+    "explicit_intent_phrases": {
+      "authorized-black-box-web-tester": [
+        "black-box test",
+        "black box test",
+        "test live target",
+        "use proxy testing",
+        "three-account test",
+        "a/b/c authorization test",
+        "uji black box",
+        "uji target live",
+        "pengujian target langsung"
+      ],
+      "authorized-reconnaissance-operator": [
+        "run recon",
+        "perform recon",
+        "enumerate subdomains",
+        "scan ports",
+        "crawl target",
+        "discover assets",
+        "jalankan recon",
+        "lakukan recon",
+        "enumerasi subdomain",
+        "pindai port",
+        "temukan aset"
+      ],
+      "authorized-red-team-planner": [
+        "plan red team",
+        "create rules of engagement",
+        "create assessment plan",
+        "plan threat emulation",
+        "rencanakan red team",
+        "buat rules of engagement"
+      ],
+      "authorized-universal-jailbreak-evaluator": [
+        "evaluate universal jailbreak",
+        "run jailbreak evaluation",
+        "evaluasi universal jailbreak"
+      ],
+      "offensive-research-graph-engineer": [
+        "offensive security agent graph",
+        "red team agent graph",
+        "bug hunting agent graph",
+        "graph engineering security audit",
+        "parallel security agents",
+        "parallel bug hunting agents",
+        "multi-agent severity escalation",
+        "build agent graph",
+        "1000 agent loops",
+        "graf agent ofensif",
+        "agent paralel bug bounty"
+      ],
+      "security-automation-tool-installer": [
+        "install tools",
+        "setup tools",
+        "install nuclei",
+        "install ffuf",
+        "install projectdiscovery",
+        "pasang tools",
+        "instal tools",
+        "pasang nuclei",
+        "pasang ffuf"
+      ],
+      "software-engineer-copilot": [
+        "implement fix",
+        "fix code",
+        "write patch",
+        "refactor code",
+        "write tests",
+        "implement remediation",
+        "implementasikan perbaikan",
+        "perbaiki kode",
+        "buat patch",
+        "refactor kode",
+        "tulis test",
+        "buat regression test"
+      ]
+    },
+    "surface_terms": {
+      "source": [
+        "source",
+        "source code",
+        "kode sumber",
+        "repository",
+        "repositories",
+        "repositori",
+        "repo",
+        "github",
+        "gitlab",
+        "code review",
+        "call graph",
+        "pull request"
+      ],
+      "web": [
+        "web",
+        "website",
+        "websites",
+        "situs web",
+        "web app",
+        "web apps",
+        "web application",
+        "web applications",
+        "aplikasi web",
+        "http://",
+        "https://",
+        "browser",
+        "xss",
+        "csrf",
+        "dom clobbering",
+        "wordpress"
+      ],
+      "api": [
+        "api",
+        "rest api",
+        "wordpress rest",
+        "graphql",
+        "grpc",
+        "webhook",
+        "openapi",
+        "swagger",
+        "api endpoint",
+        "_jsonp",
+        "_method",
+        "_envelope"
+      ],
+      "mobile": [
+        "mobile",
+        "seluler",
+        "android",
+        "ios",
+        "mobile app",
+        "mobile apps",
+        "mobile application",
+        "mobile applications",
+        "aplikasi mobile",
+        "aplikasi seluler",
+        "apk",
+        "ipa",
+        "webview",
+        "deep link"
+      ],
+      "binary": [
+        "binary",
+        "binaries",
+        "berkas biner",
+        "desktop",
+        "native binary",
+        "desktop app",
+        "desktop application",
+        "aplikasi desktop",
+        "executable",
+        "executables",
+        "installer",
+        "updater",
+        "privileged helper",
+        "windows service",
+        "elf binary",
+        "pe binary"
+      ],
+      "windows": [
+        "windows",
+        "win32",
+        "ntfs",
+        "windows registry",
+        "registry hive",
+        "windows service",
+        "kernel driver",
+        "reparse point",
+        "oplock",
+        "defender",
+        "winre",
+        "bitlocker"
+      ],
+      "cloud": [
+        "cloud",
+        "metadata cloud",
+        "aws",
+        "gcp",
+        "azure",
+        "metadata service",
+        "cloud metadata",
+        "kubernetes",
+        "k8s",
+        "iam",
+        "service account",
+        "container runtime",
+        "docker hub",
+        "docker image",
+        "container image",
+        "oci image",
+        "image layer",
+        "container registry",
+        "image digest",
+        "oci manifest"
+      ],
+      "ci-cd": [
+        "ci/cd",
+        "ci-cd",
+        "ci log",
+        "public ci log",
+        "taskcluster",
+        "github actions",
+        "gitlab ci",
+        "build pipeline",
+        "ci runner",
+        "workflow file",
+        "release pipeline"
+      ],
+      "supply-chain": [
+        "software supply chain",
+        "supply chain",
+        "dependency confusion",
+        "package registry",
+        "artifact signing",
+        "release artifact",
+        "package provenance",
+        "docker hub",
+        "docker image",
+        "container image",
+        "oci image",
+        "image layer",
+        "container registry",
+        "image digest",
+        "oci manifest"
+      ],
+      "web3": [
+        "web3",
+        "blockchain",
+        "cosmos sdk",
+        "x/group",
+        "endblocker",
+        "finalizeblock",
+        "chain halt",
+        "smart contract",
+        "smart contracts",
+        "solidity",
+        "defi",
+        "evm",
+        "cross-chain",
+        "mempool",
+        "staking",
+        "governance contract",
+        "erc20",
+        "erc721",
+        "bridge contract",
+        "validator node",
+        "crypto wallet"
+      ],
+      "ai": [
+        "artificial intelligence",
+        "ai model",
+        "ai models",
+        "model ai",
+        "ai agent",
+        "ai agents",
+        "agen ai",
+        "ai analytics",
+        "ai query",
+        "natural language query",
+        "natural language to sql",
+        "browser agent",
+        "agen browser",
+        "llm",
+        "rag",
+        "mcp",
+        "prompt injection",
+        "injeksi prompt",
+        "model inference",
+        "ai connector",
+        "model hosting"
+      ],
+      "auth": [
+        "auth",
+        "authentication",
+        "autentikasi",
+        "authorization",
+        "otorisasi",
+        "oauth",
+        "oidc",
+        "saml",
+        "login",
+        "account takeover",
+        "ambil alih akun",
+        "pengambilalihan akun",
+        "magic link",
+        "tautan ajaib",
+        "password reset",
+        "reset kata sandi",
+        "session fixation",
+        "idor",
+        "bola",
+        "tenant isolation",
+        "isolasi tenant",
+        "fail-open authentication",
+        "missing authentication provider",
+        "nil authentication callback",
+        "no-op authentication",
+        "optional authentication middleware",
+        "authorized resource mismatch",
+        "protocol injection to session state",
+        "redis session deserialization consumer",
+        "session deserialization consumer",
+        "dynamic object session boundary"
+      ],
+      "collaboration": [
+        "slack",
+        "microsoft teams",
+        "teams channel",
+        "chat file",
+        "collaboration platform",
+        "internal channel",
+        "public slack channel",
+        "ticket system"
+      ],
+      "patch": [
+        "patch diff",
+        "analisis patch",
+        "patch variant",
+        "incomplete guard",
+        "error domain",
+        "cve",
+        "security advisory",
+        "fixed version",
+        "versi diperbaiki",
+        "regression",
+        "changelog",
+        "release notes",
+        "catatan rilis"
+      ]
+    },
+    "primary_surface_skills": {
+      "source": [
+        "expert-source-code-bug-hunter",
+        "secure-code-reviewer"
+      ],
+      "web": [
+        "web-target-auditor"
+      ],
+      "api": [
+        "api-security-reviewer"
+      ],
+      "mobile": [
+        "expert-mobile-client-hunter"
+      ],
+      "binary": [
+        "executable-binary-auditor",
+        "expert-reverse-engineer"
+      ],
+      "windows": [
+        "expert-windows-internals-vulnerability-researcher"
+      ],
+      "cloud": [
+        "expert-cloud-ci-cd-supply-chain-hunter"
+      ],
+      "ci-cd": [
+        "expert-cloud-ci-cd-supply-chain-hunter"
+      ],
+      "supply-chain": [
+        "expert-cloud-ci-cd-supply-chain-hunter"
+      ],
+      "web3": [
+        "web3-smart-contract-auditor"
+      ],
+      "ai": [
+        "expert-ai-model-bug-bounty-auditor"
+      ],
+      "auth": [
+        "expert-authentication-authorization-hunter"
+      ],
+      "patch": [
+        "patch-diff-root-cause-analyzer"
+      ]
+    },
+    "skill_surface_requirements": {
+      "api-security-reviewer": [
+        "api"
+      ],
+      "evidence-linked-api-research-orchestrator": [
+        "api"
+      ],
+      "evidence-to-terminal-oracle-bug-bounty": [
+        "source",
+        "web",
+        "api",
+        "binary",
+        "windows",
+        "auth",
+        "web3"
+      ],
+      "external-ai-security-tool-governor": [
+        "source",
+        "cloud",
+        "supply-chain",
+        "ai"
+      ],
+      "authorized-black-box-web-tester": [
+        "web",
+        "api"
+      ],
+      "authorized-reconnaissance-operator": [
+        "web",
+        "api"
+      ],
+      "authorized-universal-jailbreak-evaluator": [
+        "ai"
+      ],
+      "bluehammer-defensive-researcher": [
+        "windows"
+      ],
+      "credential-exposure-capability-hunter": [
+        "source",
+        "api",
+        "cloud",
+        "ci-cd",
+        "supply-chain",
+        "auth",
+        "collaboration"
+      ],
+      "chromium-v8-variant-hunter": [
+        "source",
+        "binary",
+        "web",
+        "patch"
+      ],
+      "modern-web-guidance": [
+        "web",
+        "source"
+      ],
+      "control-bypass-variation-engine": [
+        "web",
+        "api",
+        "auth"
+      ],
+      "ai-web3-security-hub": [
+        "web3"
+      ],
+      "exploit-chain-research-orchestrator": [
+        "source",
+        "web",
+        "api",
+        "mobile",
+        "binary",
+        "windows",
+        "cloud",
+        "ci-cd",
+        "supply-chain",
+        "web3",
+        "ai",
+        "auth",
+        "patch"
+      ],
+      "apex-black": [
+        "source",
+        "web",
+        "api",
+        "mobile",
+        "binary",
+        "cloud",
+        "ci-cd",
+        "supply-chain",
+        "web3",
+        "ai",
+        "auth"
+      ],
+      "offensive-research-graph-engineer": [
+        "source",
+        "web",
+        "api",
+        "mobile",
+        "binary",
+        "windows",
+        "cloud",
+        "ci-cd",
+        "supply-chain",
+        "web3",
+        "ai",
+        "auth",
+        "patch"
+      ],
+      "cross-language-script-injection-hunter": [
+        "source",
+        "api",
+        "web"
+      ],
+      "deadlock-lock-graph-dos-hunter": [
+        "source",
+        "api",
+        "binary"
+      ],
+      "dynamic-filter-evaluator-rce-hunter": [
+        "web",
+        "api",
+        "source"
+      ],
+      "executable-binary-auditor": [
+        "binary"
+      ],
+      "executable-rce-hunter": [
+        "binary"
+      ],
+      "expert-ai-model-bug-bounty-auditor": [
+        "ai"
+      ],
+      "expert-authentication-authorization-hunter": [
+        "auth"
+      ],
+      "expert-cache-proxy-parser-differential-hunter": [
+        "web",
+        "api",
+        "source",
+        "ai"
+      ],
+      "expert-cloud-ci-cd-supply-chain-hunter": [
+        "cloud",
+        "ci-cd",
+        "supply-chain"
+      ],
+      "expert-mobile-client-hunter": [
+        "mobile"
+      ],
+      "expert-reverse-engineer": [
+        "binary"
+      ],
+      "expert-source-code-bug-hunter": [
+        "source"
+      ],
+      "expert-web-api-business-logic-hunter": [
+        "web",
+        "api"
+      ],
+      "expert-windows-internals-vulnerability-researcher": [
+        "windows"
+      ],
+      "greatxml-defensive-researcher": [
+        "windows"
+      ],
+      "greenplasma-defensive-researcher": [
+        "windows"
+      ],
+      "github-actions-fork-trust-hunter": [
+        "source",
+        "ci-cd",
+        "supply-chain"
+      ],
+      "legacyhive-defensive-researcher": [
+        "windows"
+      ],
+      "llm-tokenization-boundary-hunter": [
+        "ai"
+      ],
+      "native-js-binding-lifetime-hunter": [
+        "source",
+        "binary",
+        "web"
+      ],
+      "miniplasma-defensive-researcher": [
+        "windows"
+      ],
+      "redsun-defensive-researcher": [
+        "windows"
+      ],
+      "rogueplanet-defensive-researcher": [
+        "windows"
+      ],
+      "secure-code-reviewer": [
+        "source"
+      ],
+      "undefend-defensive-researcher": [
+        "windows"
+      ],
+      "wallet-node-bridge-reviewer": [
+        "web3"
+      ],
+      "web-target-auditor": [
+        "web"
+      ],
+      "web3-smart-contract-auditor": [
+        "web3"
+      ],
+      "yellowkey-defensive-researcher": [
+        "windows"
+      ]
+    }
+  },
+  "always_active_skills": [
+    "mandatory-auto-router",
+    "authorized-security-autopilot",
+    "expert-bug-hunter",
+    "ai-assisted-bug-bounty-orchestrator",
+    "expert-authorized-hacker",
+    "bug-bounty-auditor",
+    "bug-bounty-triage",
+    "novel-vulnerability-hypothesis-engine",
+    "autonomous-research-cascade-engine",
+    "program-impact-boundary-gate",
+    "bounty-auto",
+    "adaptive-plan-check-loop",
+    "capability-gap-skill-builder",
+    "hunt-director",
+    "hunt-orchestrator",
+    "hunt-severity-climb"
+  ],
+  "reroute_events": [
+    "new repository, package, artifact, deployment, or scoped component discovered",
+    "new language/runtime/build system identified",
+    "new platform or privilege boundary identified",
+    "new attacker-controlled input or representation identified",
+    "new parser, serializer, cache, queue, state transition, or trust handoff identified",
+    "new dynamic method, protocol framing, persisted import state, execution consumer, or optional interpreter activation identified",
+    "new archive object type, filesystem identity, browser normalization, secondary renderer, inline loader, or framework option namespace identified",
+    "new decode/reparse stage, secondary configuration grammar, signed-to-ambient provenance shift, or generated setter assignment identified",
+    "new sensitive sink or intermediate primitive identified",
+    "patch/advisory/prior-art evidence changes candidate lineage",
+    "runtime verification changes reachability or exploitability prerequisites",
+    "candidate moves from discovery into independent falsification, specialist verification, final judgment, or manual reproduction",
+    "new anomaly, harness attribution, shared semantic reuse edge, or cascade child identified",
+    "new signed-state representation, secret-role reuse, passive-evidence lead, exploit-state transition, or terminal-oracle evidence identified",
+    "new economic invariant, bounded arithmetic domain, producer-checker residue relation, commit/finality state, or consensus deployment evidence identified"
+  ],
+  "skill_routes": {
+    "ai-assisted-bug-bounty-orchestrator": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "orchestration",
+        "multi-surface"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/MASTER_PROMPT_AI_BUG_BOUNTY.md"
+      ]
+    },
+    "api-security-reviewer": {
+      "mode": "conditional",
+      "tags": [
+        "api",
+        "rest",
+        "graphql",
+        "grpc",
+        "webhook"
+      ],
+      "triggers": [
+        "api",
+        "rest",
+        "graphql",
+        "grpc",
+        "webhook",
+        "openapi",
+        "swagger",
+        "api token disclosure",
+        "jira api token",
+        "netlify api token",
+        "netlify authentication token",
+        "selected_access_site_ids",
+        "wordpress rest global parameters",
+        "repository import",
+        "bulk import",
+        "import pipeline",
+        "remote import metadata",
+        "import metadata to delayed execution",
+        "dynamic resource api response",
+        "bulk import uploads pipeline",
+        "archive upload symlink",
+        "framework url option namespace",
+        "generated html api response",
+        "signed multipart field provenance",
+        "remote attachment virtual setter",
+        "repository import config grammar",
+        "_jsonp",
+        "_method",
+        "_envelope",
+        "uploads rewriter path capture",
+        "git ref option grammar",
+        "search api sibling scope",
+        "rdoc javascript gadget",
+        "natural language to sql",
+        "dataset entitlement bypass",
+        "cross-user ai memory",
+        "sas export authorization"
+      ],
+      "companions": [
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "evidence-linked-api-research-orchestrator": {
+      "mode": "conditional",
+      "tags": [
+        "api",
+        "schema-driven",
+        "discovery-document",
+        "openapi",
+        "protobuf",
+        "graphql-sdl",
+        "operation-evidence",
+        "replay-validation",
+        "coverage-gate",
+        "error-normalization"
+      ],
+      "triggers": [
+        "schema driven api research",
+        "schema-driven api research",
+        "discovery document",
+        "api discovery document",
+        "operation id evidence",
+        "operation-linked evidence",
+        "replayable api evidence",
+        "api coverage gate",
+        "endpoint group classification",
+        "graphql query path coverage",
+        "response hash grouping",
+        "rejection stage normalization",
+        "machine readable api fuzzing",
+        "machine-readable api fuzzing",
+        "descriptor leak capability",
+        "opaque response decoding",
+        "semantic endpoint counterpart",
+        "deployment propagation drift",
+        "parent child resource binding",
+        "high entropy identifier oracle",
+        "privileged workflow task",
+        "internal rpc consumer",
+        "service identity rpc authority",
+        "alternate workflow execution path"
+      ],
+      "companions": [
+        "skill/evidence-linked-api-research-orchestrator/prompts/API_RESEARCH_ROOT_PROMPT.md",
+        "skill/evidence-linked-api-research-orchestrator/prompts/SURFACE_COMPILER_PROMPT.md",
+        "skill/evidence-linked-api-research-orchestrator/prompts/PROBE_PLANNER_PROMPT.md",
+        "skill/evidence-linked-api-research-orchestrator/prompts/ERROR_NORMALIZER_PROMPT.md",
+        "skill/evidence-linked-api-research-orchestrator/prompts/PRIVILEGED_CONSUMER_CHAIN_ANALYZER_PROMPT.md",
+        "skill/evidence-linked-api-research-orchestrator/prompts/EVIDENCE_JUDGE_PROMPT.md",
+        "skill/evidence-linked-api-research-orchestrator/references/SCHEMA_DRIVEN_CAMPAIGN_METHOD.md",
+        "skill/evidence-linked-api-research-orchestrator/references/OPERATION_EVIDENCE_REPLAY_METHOD.md",
+        "skill/evidence-linked-api-research-orchestrator/references/REJECTION_STAGE_NORMALIZATION_METHOD.md",
+        "skill/evidence-linked-api-research-orchestrator/references/PRIVILEGED_CONSUMER_CHAIN_METHOD.md",
+        "skill/evidence-linked-api-research-orchestrator/references/BRUTECAT_AI_GOOGLE_RESEARCH_LESSONS.md",
+        "skill/evidence-linked-api-research-orchestrator/references/STUBZERO_CLOUD_RPC_CHAIN_LESSONS.md",
+        "skill/evidence-linked-api-research-orchestrator/config/OPERATION_EVIDENCE_SCHEMA.json"
+      ]
+    },
+    "evidence-to-terminal-oracle-bug-bounty": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "signed-client-state",
+        "secret-reuse",
+        "unsafe-deserialization",
+        "passive-evidence-analysis",
+        "state-machine",
+        "terminal-oracle"
+      ],
+      "triggers": [
+        "flask signed session",
+        "signed session secret reuse",
+        "signed cookie secret reuse",
+        "client-carried signing key",
+        "signing key stored in signed state",
+        "oauth client secret flask secret key",
+        "signed cookie deserialization",
+        "forged session deserialization",
+        "pickle.loads forged session",
+        "integrity to deserialization",
+        "passive evidence analyst",
+        "blind evidence review",
+        "captured traffic analyst",
+        "evidence to terminal oracle",
+        "protected terminal oracle",
+        "failure-driven exploit state machine",
+        "official challenge oracle",
+        "kvmctf state machine",
+        "consensus accounting invariant",
+        "dual accumulator overflow",
+        "ledger supply invariant",
+        "native supply invariant",
+        "same-width accumulator chain",
+        "modular arithmetic invariant bypass",
+        "bookstep xrpnotcreated",
+        "xrpl infinite mint",
+        "release binary overflow semantics"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EVIDENCE_TO_TERMINAL_ORACLE_BUG_BOUNTY.md",
+        "prompts/HERMES_PASSIVE_EVIDENCE_ANALYST.md",
+        "references/EVIDENCE_TO_TERMINAL_ORACLE_BUG_BOUNTY_METHOD.md",
+        "references/CONSENSUS_ACCOUNTING_INVARIANT_CHAIN_METHOD.md",
+        "references/STATE_MACHINE_SECURITY_METHOD.md",
+        "references/HARNESS_FALSIFICATION_METHOD.md",
+        "skill/evidence-to-terminal-oracle-bug-bounty/agents/evidence-chain-analyst.md"
+      ]
+    },
+    "external-ai-security-tool-governor": {
+      "mode": "conditional",
+      "tags": [
+        "external-security-tool",
+        "ai-agent-platform",
+        "mcp",
+        "execution-governance",
+        "supply-chain",
+        "reference-only"
+      ],
+      "triggers": [
+        "hackerai",
+        "hackerai-tech",
+        "hexstrike",
+        "hexstrike-ai",
+        "external ai security tool",
+        "external security agent platform",
+        "security mcp tool broker",
+        "mcp command broker",
+        "agent security platform integration",
+        "autonomous scanner orchestration",
+        "anthropic oss scanner",
+        "anthropics/oss-scanner",
+        "oss scanner",
+        "reverse engineer anything",
+        "rea-agents",
+        "morluto/rea",
+        "raptor security harness",
+        "defending code reference harness",
+        "baby naptime",
+        "visa vulnerability agentic harness",
+        "visa/visa-vulnerability-agentic-harness",
+        "sequester-ag/bug-bounty-triage",
+        "harness-kit"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXTERNAL_AI_SECURITY_TOOL_INTEGRATION.md",
+        "prompts/HERMES_EXTERNAL_SECURITY_TOOL_EVIDENCE_ANALYST.md",
+        "references/EXTERNAL_AI_SECURITY_TOOL_INTEGRATION_METHOD.md",
+        "config/EXTERNAL_AI_SECURITY_TOOL_SOURCE_CATALOG.json",
+        "skill/external-ai-security-tool-governor/agents/external-tool-policy-analyst.md",
+        "skill/external-ai-security-tool-governor/agents/openai.yaml"
+      ]
+    },
+    "agentic-security-research-harness": {
+      "mode": "conditional",
+      "tags": [
+        "agentic-security",
+        "research-harness",
+        "evidence-gating",
+        "finding-quarantine",
+        "mcp",
+        "rag-memory",
+        "reference-only"
+      ],
+      "triggers": [
+        "agentic security research harness",
+        "vulnerability research harness",
+        "security research harness",
+        "hallucination bin",
+        "finding quarantine",
+        "jenny was a friend of mine",
+        "harnessing harnesses",
+        "zephrfish harness kit",
+        "raptor security harness",
+        "defending code reference harness",
+        "baby naptime",
+        "evilsocket audit",
+        "visa vulnerability agentic harness",
+        "visa/visa-vulnerability-agentic-harness",
+        "anthropic oss scanner",
+        "anthropics/oss-scanner",
+        "sequester-ag bug-bounty-triage",
+        "sequester-ag/bug-bounty-triage",
+        "morluto rea",
+        "morluto/rea",
+        "reverse engineer anything",
+        "thousand fewer paths to root",
+        "openai kernel pipeline",
+        "zephrfish/harness-kit",
+        "mcps and friends"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_AGENTIC_SECURITY_RESEARCH_HARNESS.md",
+        "prompts/HERMES_AGENTIC_HARNESS_EVIDENCE_ANALYST.md",
+        "references/AGENTIC_SECURITY_RESEARCH_HARNESS_METHOD.md",
+        "config/AGENTIC_SECURITY_HARNESS_SOURCE_CATALOG.json",
+        "automation/validate-agentic-security-research-harness.py",
+        "skill/agentic-security-research-harness/agents/harness-evidence-analyst.md",
+        "skill/agentic-security-research-harness/agents/openai.yaml"
+      ]
+    },
+    "bountyforge-research-suite": {
+      "mode": "conditional",
+      "tags": [
+        "bountyforge",
+        "web2-research",
+        "web3-research",
+        "smart-contract-audit",
+        "solidity-fuzzing",
+        "hackenproof-triage",
+        "focused-reference-corpus"
+      ],
+      "triggers": [
+        "bountyforge",
+        "bounty forge",
+        "bountyforge research suite",
+        "bountyforge methodology",
+        "bountyforge web2 recon",
+        "bountyforge web3 audit",
+        "bountyforge solidity fuzzing",
+        "bountyforge hackenproof triage",
+        "fizz echidna medusa harness",
+        "code sleuth storage safety"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_BOUNTYFORGE_RESEARCH_SUITE.md",
+        "references/BOUNTYFORGE_ADAPTIVE_RESEARCH_METHOD.md",
+        "config/BOUNTYFORGE_SOURCE_CATALOG.json",
+        "skill/bountyforge-research-suite/agents/bountyforge-evidence-agent.md"
+      ]
+    },
+    "authorized-security-autopilot": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "autopilot",
+        "authorized-security"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/SYSTEM_PROMPT_AUTHORIZED_OFFENSIVE_IMPACT_GATE.md",
+        "prompts/MASTER_PROMPT_AI_BUG_BOUNTY.md",
+        "references/BUGBOUNTY_INFO_ATTACK_SURFACE_CHAIN_TOOLING_METHOD.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "config/PROGRAM_IMPACT_POSITIVE_CONTROL_CASES.json"
+      ]
+    },
+    "authorized-black-box-web-tester": {
+      "mode": "conditional",
+      "tags": [
+        "black-box",
+        "web",
+        "api",
+        "ab-testing"
+      ],
+      "triggers": [
+        "black box",
+        "black-box",
+        "live target",
+        "three accounts",
+        "a/b/c",
+        "proxy testing"
+      ],
+      "companions": [
+        "references/BLACKBOX_EVIDENCE_WORKSHEET.md"
+      ]
+    },
+    "authorized-reconnaissance-operator": {
+      "mode": "conditional",
+      "tags": [
+        "recon",
+        "asset-discovery",
+        "dns",
+        "url"
+      ],
+      "triggers": [
+        "recon",
+        "subdomain",
+        "dns",
+        "asset discovery",
+        "historical url",
+        "crawl",
+        "port scan"
+      ],
+      "companions": [
+        "config/scope.example.txt",
+        "automation/authorized-recon.sh"
+      ]
+    },
+    "authorized-offensive-tool-loop": {
+      "mode": "conditional",
+      "tags": [
+        "operator-loop",
+        "tooling",
+        "live-hunt",
+        "command-evaluation"
+      ],
+      "triggers": [
+        "analyze target environment",
+        "analisa lingkungan target",
+        "select tools",
+        "pilih tools",
+        "run tools",
+        "jalankan tools",
+        "install needed tools",
+        "pasang tools yang dibutuhkan",
+        "evaluate command results",
+        "evaluasi hasil perintah",
+        "adjust attack",
+        "sesuaikan langkah serangan",
+        "operator loop",
+        "authorized tool loop",
+        "live hunt tooling"
+      ],
+      "companions": [
+        "prompts/SYSTEM_PROMPT_AUTHORIZED_OFFENSIVE_IMPACT_GATE.md",
+        "automation/install-authorized-blackbox-tools.sh",
+        "automation/authorized-recon.sh",
+        "config/scope.example.txt",
+        "references/BLACKBOX_EVIDENCE_WORKSHEET.md",
+        "skill/authorized-offensive-tool-loop/references/OPERATOR_LOOP_METHOD.md",
+        "skill/authorized-offensive-tool-loop/agents/openai.yaml"
+      ]
+    },
+    "authorized-red-team-planner": {
+      "mode": "conditional",
+      "tags": [
+        "red-team",
+        "planning",
+        "roe"
+      ],
+      "triggers": [
+        "red team",
+        "rules of engagement",
+        "roe",
+        "assessment plan",
+        "threat emulation"
+      ],
+      "companions": []
+    },
+    "authorized-universal-jailbreak-evaluator": {
+      "mode": "conditional",
+      "tags": [
+        "ai-safety",
+        "jailbreak",
+        "authorized-evaluation"
+      ],
+      "triggers": [
+        "universal jailbreak",
+        "jailbreak evaluation",
+        "ai safety bounty",
+        "biosafety bounty"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_AUTHORIZED_UNIVERSAL_JAILBREAK_EVAL.md",
+        "references/UNIVERSAL_JAILBREAK_EVIDENCE_WORKSHEET.md"
+      ]
+    },
+    "bluehammer-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "vss",
+        "oplock"
+      ],
+      "triggers": [
+        "bluehammer",
+        "vss",
+        "cloud files",
+        "oplock"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "bug-bounty-auditor": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "scope",
+        "reachability",
+        "evidence"
+      ],
+      "triggers": [],
+      "companions": [
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md"
+      ]
+    },
+    "bug-bounty-triage": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "triage",
+        "duplicate",
+        "falsification"
+      ],
+      "triggers": [],
+      "companions": [
+        "references/EXPERT_CANDIDATE_LEDGER.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md",
+        "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md"
+      ]
+    },
+    "codex-cli-multi-agent-audit-orchestrator": {
+      "mode": "conditional",
+      "tags": [
+        "codex-cli",
+        "cursor",
+        "any-runtime",
+        "multi-agent",
+        "orchestration",
+        "falsification",
+        "research-path-registry",
+        "adaptive-wave",
+        "adaptive-execution-provenance",
+        "real-spawn",
+        "anti-convergence",
+        "primitive-chain",
+        "bug-bounty-auto"
+      ],
+      "triggers": [
+        "bug bounty",
+        "bugbounty",
+        "bounty program",
+        "bug bounty testing",
+        "vrp",
+        "google vrp",
+        "hackerone",
+        "bugcrowd",
+        "intigriti",
+        "yeswehack",
+        "vulnerability research",
+        "vulnerability hunt",
+        "authorized hunt",
+        "live hunt",
+        "buruan bug",
+        "cari bug",
+        "cari celah",
+        "use subagents",
+        "spawn subagents",
+        "delegate to agents",
+        "delegasi",
+        "gunakan subagent",
+        "parallel agents",
+        "parallel agent audit",
+        "agent paralel",
+        "multi-agent audit",
+        "multi-agent review",
+        "review multi-agent",
+        "role-separated agents",
+        "adaptive multi-agent audit",
+        "research path registry",
+        "coverage gap agents",
+        "auditable specialist provenance",
+        "cursor subagents",
+        "cursor task agents"
+      ],
+      "companions": [
+        "skill/codex-cli-multi-agent-audit-orchestrator/agents/openai.yaml",
+        "prompts/MASTER_PROMPT_CODEX_CLI_MULTI_AGENT_AUDIT.md",
+        "references/CODEX_CLI_MULTI_AGENT_WORKFLOW.md",
+        "references/ADAPTIVE_RESEARCH_PATH_ORCHESTRATION_METHOD.md",
+        "config/CODEX_CLI_CANDIDATE_SCHEMA.json",
+        "config/CODEX_CLI_RESEARCH_PATH_REGISTRY_SCHEMA.json",
+        "config/CODEX_CLI_ADAPTIVE_EXECUTION_PROVENANCE_SCHEMA.json",
+        "automation/validate-adaptive-research-orchestration.py",
+        "config/ADAPTIVE_RESEARCH_ORCHESTRATION_CASES.json",
+        "automation/test-adaptive-research-orchestration.py",
+        "automation/validate-adaptive-execution-provenance.py",
+        "config/ADAPTIVE_EXECUTION_PROVENANCE_CASES.json",
+        "automation/test-adaptive-execution-provenance.py",
+        "automation/run-v11-adaptive-execution-smoke.py",
+        "prompts/MASTER_PROMPT_OFFENSIVE_RESEARCH_GRAPH_ENGINEERING.md",
+        "references/OFFENSIVE_RESEARCH_GRAPH_ENGINEERING_METHOD.md",
+        "references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md",
+        "config/OFFENSIVE_RESEARCH_GRAPH_SCHEMA.json",
+        "config/SEVERITY_ESCALATION_SCHEMA.json"
+      ]
+    },
+    "apex-black": {
+      "mode": "conditional",
+      "tags": [
+        "implicit-routing",
+        "authorized-security",
+        "autonomous-research",
+        "application-interaction",
+        "deterministic-verification",
+        "attacker-state",
+        "triager-proof"
+      ],
+      "triggers": [
+        "authorized security audit",
+        "authorized penetration test",
+        "autonomous security audit",
+        "application security assessment",
+        "pentest aplikasi",
+        "audit keamanan aplikasi",
+        "uji keamanan aplikasi",
+        "bug bounty testing",
+        "user-like security testing",
+        "interact with application as a user",
+        "autonomous pentest",
+        "apex black"
+      ],
+      "companions": [
+        "skill/apex-black/prompts/APEX_BLACK_ROOT_PROMPT.md",
+        "skill/apex-black/references/APEX_BLACK_METHOD.md",
+        "skill/apex-black/agents/openai.yaml"
+      ]
+    },
+    "offensive-research-graph-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "explicit-opt-in",
+        "multi-agent",
+        "dag-scheduling",
+        "red-team",
+        "offensive-security",
+        "bug-hunting",
+        "fresh-context-verification",
+        "workspace-isolation",
+        "severity-escalation",
+        "evidence-anchored"
+      ],
+      "triggers": [
+        "offensive security agent graph",
+        "red team agent graph",
+        "bug hunting agent graph",
+        "graph engineering security audit",
+        "parallel security agents",
+        "parallel bug hunting agents",
+        "multi-agent severity escalation",
+        "build agent graph",
+        "1000 agent loops",
+        "graf agent ofensif",
+        "agent paralel bug bounty"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_OFFENSIVE_RESEARCH_GRAPH_ENGINEERING.md",
+        "references/OFFENSIVE_RESEARCH_GRAPH_ENGINEERING_METHOD.md",
+        "references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md",
+        "config/OFFENSIVE_RESEARCH_GRAPH_SCHEMA.json",
+        "config/SEVERITY_ESCALATION_SCHEMA.json",
+        "skill/offensive-research-graph-engineer/agents/graph-worker-node.md",
+        "skill/offensive-research-graph-engineer/agents/fresh-evidence-verifier-node.md",
+        "skill/offensive-research-graph-engineer/agents/severity-escalation-node.md"
+      ]
+    },
+    "compositional-exploit-chain-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "multi-stage",
+        "composition",
+        "authority-bridge",
+        "agentic-browser",
+        "parser-differential",
+        "ssrf-cloud",
+        "auth-recovery"
+      ],
+      "triggers": [
+        "exploit chain",
+        "multi-stage exploit",
+        "chained vulnerability",
+        "compositional exploit",
+        "indirect prompt injection",
+        "ambient authority",
+        "intent collision",
+        "confused deputy",
+        "parser differential",
+        "dom clobbering",
+        "jsonp",
+        "same origin method execution",
+        "email token oracle",
+        "magic link takeover",
+        "metadata ssrf",
+        "ssrf to metadata",
+        "kubernetes service account",
+        "service account token",
+        "xss to rce",
+        "ssrf to rce",
+        "filter to evaluator",
+        "query evaluator to rce",
+        "dynamic filter rce",
+        "cross-language script injection",
+        "generated script rce",
+        "runtime bridge rce",
+        "repeated token attack",
+        "instruction blackout to tool",
+        "model divergence to tool",
+        "tokenization to tool",
+        "credential exposure to control plane",
+        "credential to control plane",
+        "artifact credential bridge",
+        "public ci log credential bridge",
+        "public ci log to saas control plane",
+        "ci log credential to deployment",
+        "fork runner credential supply chain",
+        "workspace to secret authority bridge",
+        "xss2shell",
+        "cve-2026-64638",
+        "ghsa-52p2-r8wf-jcrf",
+        "wordpress login xss to rce",
+        "dom clobbering to application password",
+        "jsonp some application password",
+        "application password to plugin upload",
+        "stored xss gadget chain",
+        "selector consumer mismatch",
+        "repository import local transport",
+        "url validator protocol consumer",
+        "consensus error to chain halt",
+        "dynamic object to protocol injection",
+        "redis framing to session deserialization",
+        "import metadata to delayed execution",
+        "optional dependency to interpreter",
+        "sawyer resource redis",
+        "bulk import metadata to shell",
+        "wikicloth lua sandbox",
+        "archive symlink to file read",
+        "browser route to file deletion",
+        "upload metadata to secondary renderer",
+        "premailer resource loader",
+        "inline document option to dynamic loader",
+        "framework url option to html consumer",
+        "decoded recovery text to markup reparse",
+        "stored metadata to generated html document",
+        "url data to configuration grammar",
+        "signed multipart provenance to ambient parameter",
+        "import attribute to virtual setter",
+        "path read to signing capability",
+        "cli overwrite to protected capability",
+        "sanitizer to javascript gadget",
+        "file read capability bridge",
+        "context poisoning",
+        "workflow context poisoning",
+        "shared context identity overwrite",
+        "reserved output key collision",
+        "credential resolver fallback",
+        "jint newtonsoft serializer coercion",
+        "typenamehandling rce",
+        "managed interop coercion",
+        "jwt algorithm confusion",
+        "rs256 to hs256",
+        "legacy verifier drift",
+        "active directory acl chain",
+        "shadow credentials acl chain",
+        "gpo acl chain",
+        "layered mobile request signing",
+        "x-khronos x-gorgon x-ladon",
+        "ticketguard device-bound signing",
+        "ai to database authorization",
+        "natural language to sql idor",
+        "ai query confused deputy",
+        "dataset entitlement bypass",
+        "cross-user ai memory",
+        "sas export authorization",
+        "ai result fan-out",
+        "libheif image upload chain",
+        "heif heic avif decoder chain",
+        "native image decoder to sso",
+        "image worker rce to sso",
+        "sso to connected integration",
+        "heif heist",
+        "hacking openai libheif",
+        "signed session secret reuse",
+        "client-carried signing key",
+        "forged session deserialization",
+        "integrity to deserialization",
+        "unsafe deserialization terminal oracle",
+        "consensus accounting invariant",
+        "dual accumulator overflow",
+        "ledger supply invariant",
+        "same-width accumulator chain",
+        "modular arithmetic invariant bypass",
+        "bookstep xrpnotcreated",
+        "xrpl infinite mint"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_COMPOSITIONAL_EXPLOIT_CHAIN_AUDIT.md",
+        "skill/compositional-exploit-chain-hunter/references/pattern-atlas.md",
+        "skill/compositional-exploit-chain-hunter/references/wordpress-xss2shell-seven-boundary-method.md",
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/CROSS_BOUNDARY_COMPOSITION_METHOD.md",
+        "references/IMAGE_DECODER_SSO_CONNECTOR_CHAIN_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md",
+        "references/EVIDENCE_TO_TERMINAL_ORACLE_BUG_BOUNTY_METHOD.md",
+        "references/CONSENSUS_ACCOUNTING_INVARIANT_CHAIN_METHOD.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "exploit-chain-research-orchestrator": {
+      "mode": "conditional",
+      "tags": [
+        "exploit-chain-research",
+        "attacker-state",
+        "capability-delta",
+        "primitive-registry",
+        "chain-graph",
+        "failure-driven-mutation",
+        "runtime-validation",
+        "xchain-lab"
+      ],
+      "triggers": [
+        "full exploit chain",
+        "exploit chain research",
+        "attacker state transition",
+        "attacker state registry",
+        "primitive to capability",
+        "primitive hunter",
+        "capability expander",
+        "capability analyzer",
+        "newly reachable surface",
+        "chain edge validation",
+        "capability continuity",
+        "severity escalation",
+        "maximum proven severity",
+        "eskalasi severity",
+        "severity maksimum",
+        "kunci severity",
+        "failure driven mutation",
+        "failed assumption registry",
+        "exploit attempt registry",
+        "runtime chain validation",
+        "xchain lab",
+        "xchain-lab-v1"
+      ],
+      "companions": [
+        "skill/exploit-chain-research-orchestrator/prompts/CHAIN_ROOT_PROMPT.md",
+        "skill/exploit-chain-research-orchestrator/prompts/PRIMITIVE_HUNTER_PROMPT.md",
+        "skill/exploit-chain-research-orchestrator/prompts/CAPABILITY_ANALYZER_PROMPT.md",
+        "skill/exploit-chain-research-orchestrator/prompts/CHAIN_LINKER_PROMPT.md",
+        "skill/exploit-chain-research-orchestrator/prompts/EXPLOIT_ENGINEER_PROMPT.md",
+        "skill/exploit-chain-research-orchestrator/prompts/CHAIN_FALSIFIER_PROMPT.md",
+        "skill/exploit-chain-research-orchestrator/references/ATTACKER_STATE_TRANSITION_METHOD.md",
+        "skill/exploit-chain-research-orchestrator/references/PRIMITIVE_TO_CAPABILITY_METHOD.md",
+        "skill/exploit-chain-research-orchestrator/references/CHAIN_COMPOSITION_METHOD.md",
+        "skill/exploit-chain-research-orchestrator/references/EXPLOITABILITY_ESCALATION_METHOD.md",
+        "skill/exploit-chain-research-orchestrator/references/RUNTIME_CHAIN_VALIDATION.md",
+        "references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md",
+        "skill/exploit-chain-research-orchestrator/config/ATTACKER_STATE_SCHEMA.json",
+        "skill/exploit-chain-research-orchestrator/config/PRIMITIVE_SCHEMA.json",
+        "skill/exploit-chain-research-orchestrator/config/CHAIN_GRAPH_SCHEMA.json",
+        "skill/exploit-chain-research-orchestrator/scripts/xchain_engine.py",
+        "skill/exploit-chain-research-orchestrator/scripts/test_xchain_engine.py",
+        "config/SEVERITY_ESCALATION_SCHEMA.json"
+      ]
+    },
+    "credential-exposure-capability-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "credential-exposure",
+        "secret-leak",
+        "capability-validation",
+        "revocation",
+        "collaboration-artifact",
+        "container-image",
+        "cloud-credential",
+        "database-credential",
+        "oauth-bearer-token",
+        "staging-environment",
+        "pii-safe-evidence"
+      ],
+      "triggers": [
+        "credential exposure",
+        "credential disclosure",
+        "exposed credential",
+        "leaked credential",
+        "hard-coded api token",
+        "hardcoded api token",
+        "api token disclosure",
+        "api token in slack",
+        "secret in slack",
+        "secret in teams",
+        "credentials in chat",
+        "credential in ci log",
+        "credential in public ci log",
+        "token exposed in public ci logs",
+        "public ci log credential",
+        "taskcluster live.log token",
+        "netlify authentication token",
+        "netlify personal access token",
+        "netlify api token",
+        "secret in artifact",
+        "token disclosure",
+        "jira api token",
+        "mastodon admin api token",
+        "mastodon api key disclosure",
+        "admin api token in slack",
+        "staging admin token",
+        "aws access key exposure",
+        "aws secret access key exposure",
+        "database credentials exposed",
+        "database username and password exposed",
+        "credentials in docker image",
+        "credential in image layer",
+        "secret in container image",
+        "docker hub credentials",
+        "github token in git config",
+        "actions checkout persisted credentials",
+        "fork pr runner token",
+        "cross-step secret exposure",
+        "workspace to secret authority bridge",
+        "credential validity",
+        "effective permissions",
+        "admin:read:accounts",
+        "admin:write:accounts",
+        "roles_allowed",
+        "selected_access_site_ids",
+        "site_access: selected",
+        "crash-pings.mozilla.org",
+        "residual copies",
+        "oauth client secret in cookie",
+        "signing key stored in signed state",
+        "cross-purpose secret reuse"
+      ],
+      "companions": [
+        "skill/credential-exposure-capability-hunter/references/credential-exposure-capability-method.md",
+        "references/EVIDENCE_TO_TERMINAL_ORACLE_BUG_BOUNTY_METHOD.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "cross-language-script-injection-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "source",
+        "code-generation",
+        "cross-runtime",
+        "script-injection",
+        "rce"
+      ],
+      "triggers": [
+        "cross-language script injection",
+        "generated javascript",
+        "generated node script",
+        "ruby heredoc javascript",
+        "heredoc injection",
+        "javascript string injection",
+        "playwrightservice",
+        "playwright service",
+        "open3.capture3",
+        "open3.popen3 string command",
+        "shell command string interpolation",
+        "archive path shell interpolation",
+        "node temp file",
+        "temporary javascript file",
+        "user input interpolated into javascript",
+        "script code generation",
+        "runtime bridge rce"
+      ],
+      "companions": [
+        "skill/cross-language-script-injection-hunter/references/cross-language-script-injection-rce-method.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "deadlock-lock-graph-dos-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "deadlock",
+        "lock-graph",
+        "concurrency",
+        "availability",
+        "rpc",
+        "logging"
+      ],
+      "triggers": [
+        "remote rpc deadlock",
+        "logging lock deadlock",
+        "lock-order inversion",
+        "circular wait",
+        "wait-for graph",
+        "thread dump deadlock",
+        "recursive logging deadlock",
+        "stack_trace logging lock",
+        "easylogging writer lock",
+        "monero 3307874",
+        "monero logging deadlock",
+        "monero pr 10065",
+        "monero pr 10066",
+        "complete node paralysis",
+        "sigkill deadlock"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_DEADLOCK_LOCK_GRAPH_DOS.md",
+        "skill/deadlock-lock-graph-dos-hunter/references/deadlock-lock-graph-dos-method.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "dynamic-filter-evaluator-rce-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "api",
+        "graphql",
+        "filter-dsl",
+        "operator-injection",
+        "dynamic-evaluation",
+        "rce"
+      ],
+      "triggers": [
+        "graphql filter",
+        "filter: json",
+        "free-form filter",
+        "dynamic filter",
+        "query evaluator",
+        "predicate compiler",
+        "operator injection",
+        "$where",
+        "$function",
+        "sift",
+        "new function"
+      ],
+      "companions": [
+        "skill/dynamic-filter-evaluator-rce-hunter/references/dynamic-filter-evaluator-rce-method.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "executable-binary-auditor": {
+      "mode": "conditional",
+      "tags": [
+        "binary",
+        "desktop",
+        "installer",
+        "native"
+      ],
+      "triggers": [
+        "binary",
+        "executable",
+        "desktop",
+        "installer",
+        "updater",
+        "native",
+        "electron",
+        "tauri",
+        "service",
+        "helper"
+      ],
+      "companions": [
+        "references/EXECUTABLE_AUDIT_PLAYBOOK.md"
+      ]
+    },
+    "executable-rce-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "binary",
+        "rce",
+        "privileged-helper",
+        "updater"
+      ],
+      "triggers": [
+        "binary rce",
+        "desktop rce",
+        "installer",
+        "updater",
+        "privileged helper",
+        "native plugin",
+        "native parser"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXECUTABLE_RCE_AUDIT.md",
+        "references/EXECUTABLE_RCE_EVIDENCE_WORKSHEET.md"
+      ]
+    },
+    "expert-ai-model-bug-bounty-auditor": {
+      "mode": "conditional",
+      "tags": [
+        "ai-model",
+        "agent",
+        "rag",
+        "tools",
+        "memory"
+      ],
+      "triggers": [
+        "ai model",
+        "llm",
+        "agent",
+        "rag",
+        "mcp",
+        "tool use",
+        "connector",
+        "prompt injection",
+        "model hosting",
+        "inference",
+        "repeated token attack",
+        "repeated tokens",
+        "token repetition",
+        "instruction blackout",
+        "model divergence",
+        "memorized training data",
+        "training data extraction",
+        "tokenizer boundary",
+        "cl100k_base",
+        "llm-security",
+        "ai to database authorization",
+        "natural language to sql",
+        "ai generated sql",
+        "ai query confused deputy",
+        "dataset entitlement bypass",
+        "cross-user ai memory",
+        "sas export authorization",
+        "ai result fan-out"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_AI_MODEL_AUDIT.md",
+        "references/EXPERT_AI_MODEL_AUDIT_MATRIX.md"
+      ]
+    },
+    "expert-authentication-authorization-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "auth",
+        "session",
+        "identity",
+        "authorization"
+      ],
+      "triggers": [
+        "auth",
+        "authorization",
+        "oauth",
+        "oidc",
+        "saml",
+        "session",
+        "token",
+        "cookie",
+        "role",
+        "permission",
+        "tenant",
+        "resource scope",
+        "object scope",
+        "permission api",
+        "permissions api",
+        "credential validity",
+        "effective permissions",
+        "jira api token",
+        "mastodon admin api token",
+        "admin:read:accounts",
+        "admin:write:accounts",
+        "netlify authentication token",
+        "netlify personal access token",
+        "roles_allowed",
+        "selected_access_site_ids",
+        "site_access: selected",
+        "application password",
+        "application passwords",
+        "authorize-application.php",
+        "application password approval",
+        "fail-open authentication",
+        "missing authentication provider",
+        "nil authentication callback",
+        "no-op authentication",
+        "optional authentication middleware",
+        "authorized resource mismatch",
+        "shared context identity overwrite",
+        "credential resolver fallback",
+        "jwt algorithm confusion",
+        "rs256 to hs256",
+        "legacy verifier drift",
+        "dataset entitlement bypass",
+        "ai query confused deputy",
+        "cross-user ai memory",
+        "sas export authorization",
+        "sso relying party compromise",
+        "sso session to connected integration",
+        "connected integration authority"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_AUTH_IDENTITY.md",
+        "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md"
+      ]
+    },
+    "expert-authorized-hacker": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "authorization",
+        "adversarial-analysis"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_AUTHORIZED_HACKER.md"
+      ]
+    },
+    "expert-bug-hunter": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "bug-bounty",
+        "security-audit"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_BUG_HUNTER.md",
+        "references/EXPERT_CORE_PROTOCOL.md"
+      ]
+    },
+    "expert-c-cpp-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "c",
+        "cpp",
+        "native"
+      ],
+      "triggers": [
+        "c++",
+        "cpp",
+        ".c",
+        ".cc",
+        ".cpp",
+        ".h",
+        ".hpp",
+        "cmake",
+        "makefile",
+        "native code"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-cache-proxy-parser-differential-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "cache",
+        "proxy",
+        "parser",
+        "canonicalization"
+      ],
+      "triggers": [
+        "cache",
+        "cdn",
+        "proxy",
+        "parser",
+        "canonicalization",
+        "serializer",
+        "desync",
+        "duplicate key",
+        "delimiter",
+        "request smuggling",
+        "graphql filter",
+        "filter: json",
+        "operator injection",
+        "query evaluator",
+        "$where",
+        "cross-language script injection",
+        "heredoc injection",
+        "javascript string injection",
+        "user input interpolated into javascript",
+        "repeated token attack",
+        "tokenizer boundary",
+        "instruction blackout",
+        "prompt injection with control characters",
+        "xss2shell",
+        "strip_tags kses",
+        "html sanitizer differential",
+        "dom clobbering",
+        "jsonp",
+        "same origin method execution",
+        "selector consumer mismatch",
+        "validated node differs from consumed node",
+        "string-built html",
+        "kroki filter",
+        "url scheme allowlist",
+        "repository import file scheme",
+        "url validator protocol consumer",
+        "dynamic resource method override",
+        "to_s bytesize mismatch",
+        "resp framing",
+        "magic method protocol framing",
+        "import metadata attribute confusion",
+        "optional dependency interpreter activation",
+        "archive entry type differential",
+        "symlink followed by file open",
+        "encoded path browser differential",
+        "upload filename markup injection",
+        "inline kramdown options",
+        "reserved url option namespace",
+        "decode depth markup reparse",
+        "stored record html composition",
+        "configuration key grammar injection",
+        "signed multipart nested parser collision",
+        "virtual setter assignment order",
+        "regex path capture authorization",
+        "argv operand option differential",
+        "sanitizer javascript gadget",
+        "ref option grammar",
+        "working directory mode expansion"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_STATE_RACE_CACHE_PARSER.md",
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "expert-cloud-ci-cd-supply-chain-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "cloud",
+        "ci-cd",
+        "supply-chain",
+        "release"
+      ],
+      "triggers": [
+        "cloud",
+        "iam",
+        "github actions",
+        "gitlab ci",
+        "pipeline",
+        "runner",
+        "artifact",
+        "signing",
+        "release",
+        "package",
+        "dependency",
+        "updater",
+        "credential exposure",
+        "hard-coded api token",
+        "secret in slack",
+        "secret in artifact",
+        "public ci log credential",
+        "token exposed in public ci logs",
+        "taskcluster live.log token",
+        "netlify authentication token",
+        "netlify personal access token",
+        "docker hub",
+        "container image",
+        "image layer",
+        "credentials in docker image",
+        "aws access key exposure"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_CLOUD_SUPPLY_CHAIN.md"
+      ]
+    },
+    "expert-crypto-signature-protocol-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "crypto",
+        "signature",
+        "protocol",
+        "replay"
+      ],
+      "triggers": [
+        "signature",
+        "crypto",
+        "nonce",
+        "replay",
+        "canonicalization",
+        "jwt",
+        "jws",
+        "transaction",
+        "verifier",
+        "jwt algorithm confusion",
+        "rs256 to hs256",
+        "legacy verifier drift",
+        "request signing stack",
+        "device-bound signing"
+      ],
+      "companions": []
+    },
+    "expert-dotnet-csharp-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "csharp",
+        "dotnet",
+        "clr"
+      ],
+      "triggers": [
+        "c#",
+        "csharp",
+        ".cs",
+        ".csproj",
+        ".sln",
+        ".net",
+        "dotnet",
+        "asp.net",
+        "clr",
+        "jint",
+        "newtonsoft",
+        "typenamehandling",
+        "clr interop",
+        "managed interop coercion"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-go-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "go"
+      ],
+      "triggers": [
+        "golang",
+        ".go",
+        "go.mod",
+        "go.sum",
+        "gitaly create from url",
+        "git config key grammar",
+        "git ref option grammar",
+        "child argv option injection",
+        "git subcommand grammar"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "expert-java-kotlin-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "java",
+        "kotlin",
+        "jvm"
+      ],
+      "triggers": [
+        "java",
+        "kotlin",
+        ".java",
+        ".kt",
+        "gradle",
+        "maven",
+        "pom.xml",
+        "jvm",
+        "spring"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-javascript-typescript-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "javascript",
+        "typescript"
+      ],
+      "triggers": [
+        "javascript",
+        "typescript",
+        ".js",
+        ".ts",
+        "package.json",
+        "node.js",
+        "nodejs",
+        "deno",
+        "bun",
+        "react",
+        "next.js",
+        "sanitizer to javascript gadget",
+        "attribute to dynamic html gadget",
+        "rdoc wiki gadget",
+        "jint",
+        "javascript clr interop"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "expert-mobile-client-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "mobile",
+        "android",
+        "ios",
+        "webview"
+      ],
+      "triggers": [
+        "android",
+        "ios",
+        "mobile",
+        "apk",
+        "ipa",
+        "deep link",
+        "webview",
+        "intent",
+        "exported component",
+        "native bridge",
+        "layered mobile request signing",
+        "x-khronos",
+        "x-gorgon",
+        "x-ladon",
+        "ticketguard",
+        "ttencrypt"
+      ],
+      "companions": []
+    },
+    "expert-php-ruby-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "php",
+        "ruby"
+      ],
+      "triggers": [
+        "php",
+        ".php",
+        "composer.json",
+        "laravel",
+        "wordpress",
+        "ruby",
+        ".rb",
+        "gemfile",
+        "rails",
+        "sawyer::resource",
+        "redis resp ruby",
+        "open3.popen3",
+        "wikicloth",
+        "rubyluabridge",
+        "letter_opener_web",
+        "designreferencefilter",
+        "referenceredactor",
+        "premailer-rails",
+        "kramdown inline options",
+        "safeparamshelper",
+        "reference redactor decoded markup",
+        "pypi simple html presenter",
+        "rack nested parameter provenance",
+        "carrierwave remote setter",
+        "uploadsrewriter",
+        "path capture canonical root",
+        "rdoc sanitizer gadget",
+        "signed cookie impact bridge"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "expert-python-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "python"
+      ],
+      "triggers": [
+        "python",
+        ".py",
+        "pyproject.toml",
+        "requirements.txt",
+        "django",
+        "flask",
+        "fastapi"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-race-condition-state-machine-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "race",
+        "toctou",
+        "state-machine",
+        "replay"
+      ],
+      "triggers": [
+        "race",
+        "toctou",
+        "concurrency",
+        "idempotency",
+        "replay",
+        "state machine",
+        "double spend",
+        "parallel request"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_STATE_RACE_CACHE_PARSER.md"
+      ]
+    },
+    "expert-reverse-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "reverse-engineering",
+        "binary",
+        "firmware",
+        "bytecode"
+      ],
+      "triggers": [
+        "reverse engineer",
+        "disassemble",
+        "decompile",
+        "ida",
+        "ghidra",
+        "binary diff",
+        "firmware",
+        "pe",
+        "elf",
+        "mach-o",
+        "binary",
+        "executable",
+        "desktop",
+        "native request signing",
+        "layered mobile request signing",
+        "ticketguard",
+        "ttencrypt"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_REVERSE_ENGINEERING.md"
+      ]
+    },
+    "expert-rust-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "rust"
+      ],
+      "triggers": [
+        "rust",
+        ".rs",
+        "cargo.toml",
+        "cargo.lock"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-shell-powershell-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "shell",
+        "powershell",
+        "automation"
+      ],
+      "triggers": [
+        "bash",
+        "shell",
+        ".sh",
+        "powershell",
+        ".ps1",
+        "cmd.exe",
+        "batch file",
+        "workflow script"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-source-code-bug-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "source",
+        "repository",
+        "code-audit",
+        "call-graph"
+      ],
+      "triggers": [
+        "source code",
+        "repository",
+        "repo",
+        "github",
+        "gitlab",
+        "code review",
+        "call graph",
+        "dynamic method protocol boundary",
+        "remote import metadata worker",
+        "optional dependency interpreter",
+        "archive object identity",
+        "secondary renderer consumer",
+        "framework reserved option",
+        "decoded representation reparse",
+        "secondary configuration grammar",
+        "signed provenance parser handoff",
+        "generated setter side effect",
+        "path regex to file copy",
+        "argv data to option grammar",
+        "sanitizer to shipped gadget",
+        "thin slice source audit",
+        "minimal scaffolding vulnerability research",
+        "context rot source audit",
+        "threat model compression",
+        "needle in the haystack vulnerability research"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_SOURCE_CODE_AUDIT.md",
+        "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md",
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "expert-sql-database-engineer": {
+      "mode": "conditional",
+      "tags": [
+        "language",
+        "sql",
+        "database",
+        "orm"
+      ],
+      "triggers": [
+        "sql",
+        "database",
+        "postgres",
+        "mysql",
+        "sqlite",
+        "sql server",
+        "orm",
+        "query builder",
+        "migration",
+        "natural language to sql",
+        "ai generated sql",
+        "dataset entitlement bypass",
+        "ai query confused deputy"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md"
+      ]
+    },
+    "expert-web-api-business-logic-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "web",
+        "api",
+        "business-logic",
+        "tenant"
+      ],
+      "triggers": [
+        "business logic",
+        "idor",
+        "bola",
+        "bac",
+        "workflow",
+        "tenant",
+        "order",
+        "checkout",
+        "object authorization",
+        "resource scope",
+        "object scope",
+        "permission api",
+        "permissions api",
+        "fail-open authentication",
+        "missing authentication provider",
+        "authorized resource mismatch",
+        "stored xss gadget chain",
+        "kroki filter",
+        "repository import",
+        "bulk import",
+        "import pipeline",
+        "remote import metadata",
+        "import attribute provenance",
+        "queued importer execution",
+        "optional dependency interpreter",
+        "git fetch file",
+        "application password approval",
+        "application password to rest",
+        "browser-assisted credential issuance",
+        "bulk import uploads pipeline",
+        "browser method override delete",
+        "upload metadata to markup",
+        "notification resource loader",
+        "framework url option namespace",
+        "stored xss reference redaction",
+        "package metadata html presenter",
+        "signed multipart ambient override",
+        "import virtual setter network side effect",
+        "uploads rewriter issue move",
+        "git ref flag injection",
+        "rdoc wiki stored xss gadget",
+        "search scope patch variant",
+        "natural language to sql idor",
+        "dataset entitlement bypass",
+        "ai query confused deputy",
+        "cross-user ai memory",
+        "sas export authorization",
+        "ai result fan-out"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_WEB_API_BUSINESS_LOGIC.md",
+        "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md",
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "expert-windows-internals-vulnerability-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "windows",
+        "service",
+        "driver",
+        "ntfs",
+        "token"
+      ],
+      "triggers": [
+        "windows",
+        "win32",
+        "ntfs",
+        "registry",
+        "service",
+        "driver",
+        "token",
+        "impersonation",
+        "reparse",
+        "oplock",
+        "defender",
+        "winre",
+        "bitlocker",
+        "active directory acl chain",
+        "genericall machine account",
+        "genericwrite machine account",
+        "shadow credentials",
+        "resource-based constrained delegation",
+        "gpcfilesyspath",
+        "gpoddity",
+        "cluster name object"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_EXPERT_WINDOWS_INTERNALS_RESEARCH.md",
+        "references/WINDOWS_EXPLOIT_RESEARCH_SAFETY_PROTOCOL.md"
+      ]
+    },
+    "greatxml-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "winre",
+        "xml"
+      ],
+      "triggers": [
+        "greatxml",
+        "winre",
+        "defender offline",
+        "answer file"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "greenplasma-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "object-manager",
+        "ctfmon"
+      ],
+      "triggers": [
+        "greenplasma",
+        "ctfmon",
+        "object manager",
+        "section creation"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "github-actions-fork-trust-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "github-actions",
+        "fork",
+        "pull-request",
+        "runner",
+        "credential",
+        "supply-chain"
+      ],
+      "triggers": [
+        "github actions fork trust",
+        "pull_request_target checkout fork",
+        "pull request target checkout fork",
+        "fork pr npm ci",
+        "fork pull request postinstall",
+        "actions checkout persist-credentials",
+        "actions checkout persisted credentials",
+        "github token in git config",
+        "untrusted fork code github actions",
+        "pwn request",
+        "fork artifact privileged workflow",
+        "workflow_run untrusted artifact",
+        "fork pr runner token",
+        "fork checkout secret exfiltration",
+        "fork pr supply chain",
+        "same job workspace tampering",
+        "untrusted build before secret step",
+        "trusted script after untrusted build",
+        "semver-label.yml",
+        "content-scope-scripts 3619287"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_GITHUB_ACTIONS_FORK_TRUST.md",
+        "skill/github-actions-fork-trust-hunter/references/github-actions-fork-trust-method.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "legacyhive-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "registry-hive"
+      ],
+      "triggers": [
+        "legacyhive",
+        "user profile service",
+        "registry hive"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "llm-tokenization-boundary-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "ai-model",
+        "tokenizer",
+        "repeated-token",
+        "prompt-injection",
+        "boundary-impact"
+      ],
+      "triggers": [
+        "repeated token attack",
+        "repeated tokens",
+        "token repetition",
+        "repeated character sequence",
+        "prompt injection with control characters",
+        "instruction blackout",
+        "instruction betrayal",
+        "model divergence",
+        "memorized training data",
+        "training data extraction",
+        "repetition filter bypass",
+        "tokenizer boundary",
+        "cl100k_base",
+        "dropbox llm-security",
+        "llm-security"
+      ],
+      "companions": [
+        "skill/llm-tokenization-boundary-hunter/references/repeated-token-llm-security-method.md",
+        "references/EXPERT_AI_MODEL_AUDIT_MATRIX.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "native-js-binding-lifetime-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "native-binding",
+        "javascript-lifetime",
+        "v8",
+        "gin",
+        "use-after-free",
+        "renderer"
+      ],
+      "triggers": [
+        "native javascript binding lifetime",
+        "javascript native binding uaf",
+        "javascript-to-native use-after-free",
+        "v8 binding uaf",
+        "v8 native lifetime",
+        "gin::wrappable",
+        "gin wrappable lifetime",
+        "base::unretained provider",
+        "retained child object uaf",
+        "gc-triggered uaf",
+        "renderer binding uaf",
+        "renderer use-after-free",
+        "javascript reachability native lifetime",
+        "jsethereumprovider",
+        "ethereum._metamask",
+        "isUnlocked native callback"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_NATIVE_JS_BINDING_LIFETIME.md",
+        "skill/native-js-binding-lifetime-hunter/references/native-js-binding-lifetime-uaf-method.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "chromium-v8-variant-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "chromium",
+        "v8",
+        "jit",
+        "compiler",
+        "patch-variant",
+        "metadata-equivalence",
+        "deoptimization"
+      ],
+      "triggers": [
+        "chromium v8 variant",
+        "v8 patch diff",
+        "framestatefunctioninfo",
+        "frame state equality",
+        "derived metadata equality",
+        "jit metadata cache",
+        "cve-2026-6307",
+        "cve-2026-0899",
+        "cve-2021-30632",
+        "turbofan js-to-wasm",
+        "maglev variant analysis",
+        "turboshaft metadata"
+      ],
+      "companions": [
+        "prompts/CHROMIUM_V8_VARIANT_HUNTER.md",
+        "skill/chromium-v8-variant-hunter/references/DERIVED_METADATA_EQUIVALENCE_VARIANT_METHOD.md",
+        "skill/chromium-v8-variant-hunter/references/CHROME_PUBLIC_REPORT_ROUTING.md",
+        "skill/chromium-v8-variant-hunter/prompts/v8-type-reasoning-agent.md",
+        "skill/chromium-v8-variant-hunter/prompts/v8-representation-agent.md",
+        "skill/chromium-v8-variant-hunter/prompts/v8-jit-assumption-agent.md",
+        "skill/chromium-v8-variant-hunter/prompts/v8-gc-lifetime-agent.md",
+        "skill/chromium-v8-variant-hunter/prompts/v8-sandbox-boundary-agent.md",
+        "skill/chromium-v8-variant-hunter/prompts/v8-exploitability-agent.md",
+        "skill/chromium-v8-variant-hunter/prompts/chrome-chain-linker.md",
+        "skill/exploit-chain-research-orchestrator/prompts/CHAIN_ROOT_PROMPT.md",
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md",
+        "references/EXPERT_TEST_DESIGN_MATRIX.md"
+      ]
+    },
+    "novel-vulnerability-hypothesis-engine": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "novelty",
+        "code-derived-hypothesis",
+        "invariant-mining",
+        "state-machine",
+        "metamorphic-differential",
+        "resource-amplification",
+        "cross-feature-composition",
+        "evaluation-first",
+        "micro-inspiration",
+        "deterministic-oracle",
+        "research-cascade",
+        "context-isolation",
+        "prior-art-embargo",
+        "anti-overfitting"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/MASTER_PROMPT_NOVEL_INVARIANT_FRONTIER.md",
+        "references/NOVEL_INVARIANT_FRONTIER_METHOD.md",
+        "references/STATE_MACHINE_SECURITY_METHOD.md",
+        "references/METAMORPHIC_DIFFERENTIAL_METHOD.md",
+        "references/RESOURCE_AMPLIFICATION_METHOD.md",
+        "references/CROSS_FEATURE_COMPOSITION_METHOD.md",
+        "references/EVALUATION_FIRST_RESEARCH_CASCADE_METHOD.md",
+        "config/CODEX_CLI_CANDIDATE_SCHEMA.json",
+        "automation/validate-novel-vulnerability-frontier.py"
+      ]
+    },
+    "program-impact-boundary-gate": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "program-impact",
+        "capability-delta",
+        "informative-filter",
+        "trust-boundary",
+        "severity-floor",
+        "production-impact",
+        "production-reachability",
+        "threat-model",
+        "race-realism",
+        "security-property-purpose",
+        "collision-feasibility",
+        "counterfactual-defense",
+        "control-plane",
+        "authorization-issuance-time",
+        "credential-lineage",
+        "temporal-trust-equivalence",
+        "protected-consumer-bridge",
+        "lifecycle-contract",
+        "known-duplicate",
+        "falsification"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "config/PROGRAM_IMPACT_NEGATIVE_CONTROL_CASES.json",
+        "config/PROGRAM_IMPACT_POSITIVE_CONTROL_CASES.json",
+        "references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md",
+        "config/SEVERITY_ESCALATION_SCHEMA.json"
+      ]
+    },
+    "counterfactual-methodology-synthesizer": {
+      "mode": "conditional",
+      "tags": [
+        "post-no-valid-finding",
+        "counterfactual-methodology",
+        "what-if",
+        "architecture-substitution",
+        "semantic-axis",
+        "method-independence",
+        "bounded-research"
+      ],
+      "triggers": [
+        "no valid finding",
+        "new methodology",
+        "methodology synthesis",
+        "counterfactual methodology",
+        "what if",
+        "bagaimana jika",
+        "ganti ini menjadi",
+        "replace this with"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_COUNTERFACTUAL_METHODOLOGY_SYNTHESIS.md",
+        "references/COUNTERFACTUAL_METHODOLOGY_SYNTHESIS_METHOD.md",
+        "config/COUNTERFACTUAL_METHODOLOGY_REGRESSION_CASES.json",
+        "automation/validate-counterfactual-methodology.py",
+        "automation/test-counterfactual-methodology.py"
+      ]
+    },
+    "autonomous-research-cascade-engine": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "target-native-research",
+        "objective-compiler",
+        "micro-inspiration",
+        "generic-evaluator",
+        "clean-probe",
+        "permutation-synthesis",
+        "anomaly-ledger",
+        "shared-semantic-reuse",
+        "harness-falsification",
+        "deterministic-verdict",
+        "discovery-cascade",
+        "human-amplifier"
+      ],
+      "triggers": [],
+      "companions": [
+        "references/EVALUATION_FIRST_RESEARCH_CASCADE_METHOD.md",
+        "references/MICRO_INSPIRATION_RESEARCH_METHOD.md",
+        "references/GENERIC_ANOMALY_EVALUATION_METHOD.md",
+        "references/CLEAN_PROBE_REASONING_METHOD.md",
+        "references/DISCOVERY_CASCADE_METHOD.md",
+        "references/SHARED_SEMANTIC_REUSE_METHOD.md",
+        "references/HARNESS_FALSIFICATION_METHOD.md",
+        "config/CODEX_CLI_CANDIDATE_SCHEMA.json",
+        "automation/validate-autonomous-research-cascade.py"
+      ]
+    },
+    "mandatory-auto-router": {
+      "mode": "always",
+      "tags": [
+        "bootstrap",
+        "routing",
+        "all-security"
+      ],
+      "triggers": [],
+      "companions": [
+        "prompts/SYSTEM_PROMPT_AUTHORIZED_OFFENSIVE_IMPACT_GATE.md",
+        "prompts/MASTER_PROMPT_MANDATORY_AUTO_ROUTER.md",
+        "references/AUTO_ROUTING_PROTOCOL.md",
+        "references/BUGBOUNTY_INFO_ATTACK_SURFACE_CHAIN_TOOLING_METHOD.md",
+        "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md",
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "config/PROGRAM_IMPACT_NEGATIVE_CONTROL_CASES.json",
+        "config/PROGRAM_IMPACT_POSITIVE_CONTROL_CASES.json"
+      ]
+    },
+    "miniplasma-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "cloud-files",
+        "race"
+      ],
+      "triggers": [
+        "miniplasma",
+        "cloud files",
+        "minifilter",
+        "thread impersonation"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "modern-rce-chain-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "rce",
+        "multi-stage",
+        "dynamic-load",
+        "sandbox",
+        "file-consumer"
+      ],
+      "triggers": [
+        "rce",
+        "code execution",
+        "command injection",
+        "exec(",
+        "eval(",
+        "new function",
+        "$where",
+        "$function",
+        "query evaluator",
+        "predicate compiler",
+        "operator injection",
+        "cross-language script injection",
+        "generated javascript",
+        "generated node script",
+        "heredoc injection",
+        "open3.capture3",
+        "temporary javascript file",
+        "dynamic import",
+        "deserialization",
+        "sandbox escape",
+        "hook",
+        "plugin load",
+        "arbitrary file write",
+        "protocol handler",
+        "double free",
+        "xss2shell",
+        "plugin upload to php execution",
+        "application password to plugin upload",
+        "direct php execution",
+        "redis command injection to deserialization",
+        "open3.popen3 string command",
+        "optional dependency sandbox escape",
+        "wikicloth lua",
+        "decompressed archive size validator",
+        "sawyer resource redis",
+        "inline option dynamic class loader",
+        "kramdown formatter class",
+        "secondary renderer to file read",
+        "file read to signing capability",
+        "file overwrite to capability",
+        "signed cookie serializer bridge",
+        "pickle.loads forged session",
+        "forged session deserialization",
+        "sanitizer gadget to terminal action",
+        "native image decoder rce",
+        "libheif rce",
+        "image worker sandbox escape"
+      ],
+      "companions": [
+        "references/MODERN_RCE_CHAIN_ATLAS_2026.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md",
+        "references/EXECUTABLE_RCE_EVIDENCE_WORKSHEET.md",
+        "prompts/MASTER_PROMPT_EXECUTABLE_RCE_AUDIT.md"
+      ]
+    },
+    "patch-diff-root-cause-analyzer": {
+      "mode": "conditional",
+      "tags": [
+        "patch",
+        "diff",
+        "cve",
+        "prior-art"
+      ],
+      "triggers": [
+        "patch",
+        "diff",
+        "commit",
+        "cve",
+        "advisory",
+        "changelog",
+        "fixed version",
+        "regression",
+        "patch variant",
+        "incomplete guard",
+        "error domain",
+        "incomplete fix",
+        "ghsa-47ww-ff84-4jrg",
+        "ghsa-x5vx-95h7-rv4p",
+        "cve-2022-2185",
+        "gitlab issue 371884",
+        "gitlab issue 366088",
+        "gitlab issue 345892",
+        "dynamic data execution consumer patch",
+        "gitlab issue 349524",
+        "gdk issue 1314",
+        "cve-2021-22238",
+        "gitlab issue 324452",
+        "gitlab issue 232829",
+        "archive renderer framework patch",
+        "gitlab issue 213273",
+        "gitlab issue 215640",
+        "gitlab issue 215212",
+        "gitlab issue 214636",
+        "gitlab issue 212089",
+        "cve-2020-10956",
+        "reparse config provenance patch",
+        "gitlab issue 212175",
+        "gitaly issue 1801",
+        "gitaly issue 1799",
+        "gitlab issue 65335",
+        "gitaly issue 1892",
+        "cve-2019-14944",
+        "path cli gadget chain patch",
+        "libheif backport",
+        "ghsa-vhm9-85gw-x335",
+        "cve-2026-32882",
+        "dsa-6417-1",
+        "checked addition invariant patch",
+        "wide invariant accumulator",
+        "accounting overflow patch"
+      ],
+      "companions": [
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md",
+        "references/IMAGE_DECODER_SSO_CONNECTOR_CHAIN_METHOD.md",
+        "references/CONSENSUS_ACCOUNTING_INVARIANT_CHAIN_METHOD.md"
+      ]
+    },
+    "redsun-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "defender",
+        "links"
+      ],
+      "triggers": [
+        "redsun",
+        "defender remediation",
+        "link resolution"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "rogueplanet-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "defender",
+        "toctou"
+      ],
+      "triggers": [
+        "rogueplanet",
+        "defender quarantine",
+        "remediation toctou",
+        "junction"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "secure-code-reviewer": {
+      "mode": "conditional",
+      "tags": [
+        "source",
+        "secure-review",
+        "taint"
+      ],
+      "triggers": [
+        "source",
+        "code review",
+        "audit code",
+        "sink",
+        "taint",
+        "dynamic method protocol boundary",
+        "import metadata execution sink",
+        "optional interpreter activation",
+        "archive object identity sink",
+        "browser destructive sink",
+        "secondary renderer sink",
+        "framework option sink",
+        "decoded markup reparse sink",
+        "config grammar authority sink",
+        "signed field ambient override sink",
+        "virtual setter network sink",
+        "canonical path copy sink",
+        "git argv option grammar sink",
+        "shipped javascript gadget sink"
+      ],
+      "companions": [
+        "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md",
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md",
+        "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md",
+        "references/REPARSE_CONFIG_PROVENANCE_METHOD.md",
+        "references/PATH_CLI_GADGET_CHAIN_METHOD.md"
+      ]
+    },
+    "security-automation-tool-installer": {
+      "mode": "conditional",
+      "tags": [
+        "tooling",
+        "installation",
+        "recon"
+      ],
+      "triggers": [
+        "install tools",
+        "setup tools",
+        "kali",
+        "nuclei",
+        "ffuf",
+        "projectdiscovery"
+      ],
+      "companions": [
+        "automation/install-authorized-blackbox-tools.sh",
+        "automation/init-blackbox-workspace.sh"
+      ]
+    },
+    "software-engineer-copilot": {
+      "mode": "conditional",
+      "tags": [
+        "implementation",
+        "fix",
+        "tests",
+        "refactor"
+      ],
+      "triggers": [
+        "implement",
+        "implement fix",
+        "fix code",
+        "write patch",
+        "refactor",
+        "write tests",
+        "regression test",
+        "secure implementation"
+      ],
+      "companions": []
+    },
+    "undefend-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "defender",
+        "dos"
+      ],
+      "triggers": [
+        "undefend",
+        "defender denial of service",
+        "update starvation",
+        "resource lock"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "wallet-node-bridge-reviewer": {
+      "mode": "conditional",
+      "tags": [
+        "web3",
+        "wallet",
+        "node",
+        "bridge"
+      ],
+      "triggers": [
+        "wallet",
+        "node",
+        "validator",
+        "bridge",
+        "relayer",
+        "mempool",
+        "finality",
+        "cross-chain",
+        "signer",
+        "cosmos sdk",
+        "endblocker",
+        "finalizeblock",
+        "group weights",
+        "chain halt",
+        "consensus halt",
+        "rippled",
+        "xrpl",
+        "ledger supply invariant",
+        "consensus accounting invariant"
+      ],
+      "companions": [
+        "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md",
+        "references/CONSENSUS_ACCOUNTING_INVARIANT_CHAIN_METHOD.md"
+      ]
+    },
+    "web-target-auditor": {
+      "mode": "conditional",
+      "tags": [
+        "web",
+        "http",
+        "browser",
+        "server"
+      ],
+      "triggers": [
+        "website",
+        "web app",
+        "http",
+        "https",
+        "browser",
+        "endpoint",
+        "xss2shell",
+        "reflected xss",
+        "dom clobbering",
+        "jsonp"
+      ],
+      "companions": []
+    },
+    "ai-web3-security-hub": {
+      "mode": "conditional",
+      "tags": [
+        "web3",
+        "catalog",
+        "reference-only",
+        "pashov"
+      ],
+      "triggers": [
+        "ai-web3-security",
+        "pashov/ai-web3-security",
+        "web3 security tools hub",
+        "pashov web3 tools",
+        "ai tools for smart-contract",
+        "ai tools for smart contract"
+      ],
+      "companions": [
+        "skill/ai-web3-security-hub/agents/openai.yaml",
+        "skill/external-ai-security-tool-governor/SKILL.md"
+      ]
+    },
+    "modern-web-guidance": {
+      "mode": "conditional",
+      "tags": [
+        "chrome",
+        "web-platform",
+        "extensions",
+        "reference-only"
+      ],
+      "triggers": [
+        "modern-web-guidance",
+        "modern web guidance",
+        "GoogleChrome/modern-web-guidance-src",
+        "skills-src/chrome-extensions",
+        "chrome extensions skill"
+      ],
+      "companions": [
+        "skill/modern-web-guidance/agents/openai.yaml"
+      ]
+    },
+    "control-bypass-variation-engine": {
+      "mode": "conditional",
+      "tags": [
+        "web",
+        "api",
+        "csrf",
+        "cors",
+        "auth",
+        "waf",
+        "bypass-variation"
+      ],
+      "triggers": [
+        "variasi bypass",
+        "bypass variation",
+        "bypass besides cors",
+        "bukan hanya cors",
+        "csrf bypass",
+        "cors bypass",
+        "post to get",
+        "post \u2192 get",
+        "body to query",
+        "body \u2192 query",
+        "method override",
+        "403 bypass",
+        "waf bypass",
+        "control bypass",
+        "buat variasi bypass"
+      ],
+      "companions": [
+        "skill/control-bypass-variation-engine/references/VARIATION_FAMILIES.md",
+        "skill/control-bypass-variation-engine/agents/openai.yaml"
+      ]
+    },
+    "web3-smart-contract-auditor": {
+      "mode": "conditional",
+      "tags": [
+        "web3",
+        "smart-contract",
+        "defi"
+      ],
+      "triggers": [
+        "smart contract",
+        "solidity",
+        "defi",
+        "token",
+        "vault",
+        "staking",
+        "oracle",
+        "governance",
+        "evm",
+        "rippled",
+        "xrpl",
+        "ledger supply invariant",
+        "consensus accounting invariant",
+        "unauthorized native token mint"
+      ],
+      "companions": [
+        "references/CONSENSUS_ACCOUNTING_INVARIANT_CHAIN_METHOD.md"
+      ]
+    },
+    "yellowkey-defensive-researcher": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "windows",
+        "winre",
+        "bitlocker"
+      ],
+      "triggers": [
+        "yellowkey",
+        "bitlocker",
+        "physical access",
+        "winre"
+      ],
+      "companions": [
+        "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md",
+        "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md"
+      ]
+    },
+    "webhacklist-2026-research-corpus": {
+      "mode": "conditional",
+      "tags": [
+        "webhacklist",
+        "2026-ai",
+        "prior-art",
+        "research-corpus",
+        "reference-only",
+        "methodology"
+      ],
+      "triggers": [
+        "webhacklist",
+        "web hack list",
+        "webhacklist 2026 ai",
+        "2026-ai evidence",
+        "2026 ai evidence archive",
+        "investigation board evidence archive",
+        "web security research archive"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_WEBHACKLIST_2026_RESEARCH_CORPUS.md",
+        "prompts/HERMES_WEBHACKLIST_PRIOR_ART_ANALYST.md",
+        "references/WEBHACKLIST_2026_CORPUS_METHOD.md",
+        "config/WEBHACKLIST_2026_AI_CORPUS.json",
+        "automation/validate-webhacklist-2026-corpus.py",
+        "skill/webhacklist-2026-research-corpus/agents/webhacklist-corpus-analyst.md",
+        "skill/webhacklist-2026-research-corpus/agents/openai.yaml"
+      ]
+    },
+    "openai-kernel-research-pipeline": {
+      "mode": "conditional",
+      "tags": [
+        "linux-kernel",
+        "lpe",
+        "openai-pipeline",
+        "isolated-validation"
+      ],
+      "triggers": [
+        "thousand fewer paths to root",
+        "openai kernel pipeline",
+        "openai cyber model",
+        "948 lpe",
+        "1,724 vulnerabilities",
+        "patch the planet",
+        "stock linux desktop",
+        "linux kernel privilege escalation pipeline",
+        "autonomous linux kernel vulnerability"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_AGENTIC_SECURITY_RESEARCH_HARNESS.md",
+        "references/AGENTIC_SECURITY_RESEARCH_HARNESS_METHOD.md",
+        "config/AGENTIC_SECURITY_HARNESS_SOURCE_CATALOG.json",
+        "prompts/MASTER_PROMPT_EXTERNAL_AI_SECURITY_TOOL_INTEGRATION.md",
+        "references/EXTERNAL_AI_SECURITY_TOOL_INTEGRATION_METHOD.md",
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md"
+      ]
+    },
+    "apple-macos-research": {
+      "mode": "conditional",
+      "tags": [
+        "macos",
+        "xnu",
+        "apple",
+        "xpc",
+        "iokit"
+      ],
+      "triggers": [
+        "appleresearch",
+        "dawgyg",
+        "macos lpe",
+        "xnu",
+        "iokit",
+        "xpc helper",
+        "sip tcc",
+        "smbd macos",
+        "rpcsecgss",
+        "macos webgpu",
+        "installd",
+        "syspolicyd",
+        "remoted"
+      ],
+      "companions": [
+        "references/EXECUTABLE_AUDIT_PLAYBOOK.md",
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md"
+      ]
+    },
+    "pwn-hunter": {
+      "mode": "conditional",
+      "tags": [
+        "pwn",
+        "binary-exploitation",
+        "ctf-lab",
+        "memory-corruption"
+      ],
+      "triggers": [
+        "pwn-hunter",
+        "pwn-skill",
+        "bountyforge-xyz/pwn-skill",
+        "pwn this binary",
+        "ret2libc",
+        "format string exploit",
+        "tcache",
+        "heap exploit",
+        "seccomp bypass",
+        "kernel pwn",
+        "rop chain",
+        "ctf pwn"
+      ],
+      "companions": [
+        "references/EXECUTABLE_AUDIT_PLAYBOOK.md",
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md"
+      ]
+    },
+    "zephrfish-harness-kit": {
+      "mode": "conditional",
+      "tags": [
+        "harness",
+        "llm-orchestration",
+        "staged-validation"
+      ],
+      "triggers": [
+        "zephrfish harness kit",
+        "zephrfish/harness-kit",
+        "harnessing harnesses",
+        "climbing the llm hills",
+        "recon hunt validate trace report",
+        "context budgets",
+        "harness kit"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_AGENTIC_SECURITY_RESEARCH_HARNESS.md",
+        "references/AGENTIC_SECURITY_RESEARCH_HARNESS_METHOD.md",
+        "config/AGENTIC_SECURITY_HARNESS_SOURCE_CATALOG.json",
+        "automation/validate-agentic-security-research-harness.py",
+        "prompts/MASTER_PROMPT_EXTERNAL_AI_SECURITY_TOOL_INTEGRATION.md",
+        "references/EXTERNAL_AI_SECURITY_TOOL_INTEGRATION_METHOD.md"
+      ]
+    },
+    "claude-bughunter": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt-skills",
+        "claude-bughunter"
+      ],
+      "triggers": [
+        "claude-bughunter",
+        "claude bughunter",
+        "elementalsouls",
+        "hunt-xss",
+        "hunt-idor",
+        "hunt-ssrf",
+        "recon-scope-triage",
+        "cbh skill"
+      ],
+      "companions": [
+        "prompts/MASTER_PROMPT_AI_BUG_BOUNTY.md",
+        "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md",
+        "references/PROGRAM_IMPACT_BOUNDARY_GATE.md"
+      ]
+    },
+    "nobcoder": {
+      "mode": "conditional",
+      "tags": [
+        "harness",
+        "nobcoder",
+        "reference"
+      ],
+      "triggers": [
+        "nobcoder",
+        "nobcoderr/nobcoder",
+        "bbp-harness",
+        "autonomous audit"
+      ],
+      "companions": [
+        "skill/nobcoder/SKILL.md"
+      ]
+    },
+    "hackerone-reports": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "hackerone",
+        "corpus",
+        "reference-only"
+      ],
+      "triggers": [
+        "hackerone-reports",
+        "reddelexc/hackerone-reports",
+        "codebygk/hackerone-bug-bounty-reports",
+        "hackerone report corpus",
+        "prior art"
+      ],
+      "companions": [
+        "skill/hackerone-reports/SKILL.md",
+        "skill/hackerone-reports/agents/corpus-card-router.md",
+        "skill/hackerone-reports/scripts/query-corpus-cards.py"
+      ]
+    },
+    "bug-bounty-account": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "account",
+        "otp"
+      ],
+      "triggers": [
+        "signup",
+        "register",
+        "create account",
+        "otp",
+        "verification code",
+        "wearehackerone",
+        "gmail"
+      ],
+      "companions": [
+        "skill/bug-bounty-account/SKILL.md"
+      ]
+    },
+    "burp-suite": {
+      "mode": "conditional",
+      "tags": [
+        "burp",
+        "proxy",
+        "mcp",
+        "web"
+      ],
+      "triggers": [
+        "burp",
+        "burp suite",
+        "repeater",
+        "intercept",
+        "proxy history",
+        "http proxy"
+      ],
+      "companions": [
+        "skill/burp-suite/SKILL.md"
+      ]
+    },
+    "valid-bug-hunt": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "critical-first",
+        "triager-proof"
+      ],
+      "triggers": [
+        "bug bounty",
+        "hackerone",
+        "intigriti",
+        "valid bug",
+        "report ready",
+        "critical",
+        "rce",
+        "hacktivity",
+        "cve"
+      ],
+      "companions": [
+        "skill/valid-bug-hunt/SKILL.md"
+      ]
+    },
+    "security-review": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "evidence-review",
+        "triager-proof"
+      ],
+      "triggers": [
+        "security review",
+        "security audit",
+        "triager proof",
+        "report ready",
+        "independent verifier",
+        "duplicate risk"
+      ],
+      "companions": [
+        "skill/security-review/SKILL.md"
+      ]
+    },
+    "bug-bounty-tool-bootstrap": {
+      "mode": "conditional",
+      "tags": [
+        "tool-installation",
+        "bug-bounty",
+        "local"
+      ],
+      "triggers": [
+        "install tool",
+        "missing tool",
+        "tool bootstrap",
+        "semgrep",
+        "slither",
+        "solc-select",
+        "checkov",
+        "zizmor",
+        "arjun",
+        "uro"
+      ],
+      "companions": [
+        "skill/bug-bounty-tool-bootstrap/SKILL.md"
+      ]
+    },
+    "gtm-recon": {
+      "mode": "conditional",
+      "tags": [
+        "javascript",
+        "recon",
+        "gtm",
+        "bug-bounty"
+      ],
+      "triggers": [
+        "gtm",
+        "google tag manager",
+        "googletagmanager",
+        "gtm.js",
+        "javascript recon",
+        "datalayer"
+      ],
+      "companions": [
+        "skill/gtm-recon/SKILL.md",
+        "skill/valid-bug-hunt/SKILL.md"
+      ]
+    },
+    "target-system-model": {
+      "mode": "conditional",
+      "tags": [
+        "recon",
+        "threat-model",
+        "attack-surface",
+        "bug-bounty"
+      ],
+      "triggers": [
+        "recon",
+        "fingerprinting",
+        "threat model",
+        "attack surface",
+        "how the system works",
+        "passive recon",
+        "active recon"
+      ],
+      "companions": [
+        "skill/target-system-model/SKILL.md",
+        "skill/target-system-model/agents/system-model-explorer.md",
+        "skill/target-system-model/references/model-schema.md"
+      ]
+    },
+    "vuln-variant-coverage": {
+      "mode": "conditional",
+      "tags": [
+        "owasp",
+        "variants",
+        "bug-bounty"
+      ],
+      "triggers": [
+        "owasp",
+        "xss",
+        "sqli",
+        "csrf",
+        "idor",
+        "ssrf",
+        "rce",
+        "file upload",
+        "rfi",
+        "vulnerability variant",
+        "program a",
+        "cross program",
+        "scope b"
+      ],
+      "companions": [
+        "skill/vuln-variant-coverage/SKILL.md",
+        "skill/vuln-variant-coverage/agents/corpus-shape-analyst.md",
+        "skill/vuln-variant-coverage/agents/variant-hypothesis-tester.md",
+        "skill/vuln-variant-coverage/references/variant-coverage-matrix.md",
+        "skill/hackerone-reports/SKILL.md"
+      ]
+    },
+    "bounty-auto": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "autoload"
+      ],
+      "triggers": [],
+      "companions": [
+        "skill/bounty-auto/SKILL.md",
+        "skill/valid-bug-hunt/SKILL.md",
+        "skill/target-system-model/SKILL.md",
+        "skill/vuln-variant-coverage/SKILL.md",
+        "skill/hackerone-reports/SKILL.md",
+        "skill/hunt-director/SKILL.md",
+        "skill/hunt-orchestrator/SKILL.md",
+        "skill/hunt-severity-climb/SKILL.md",
+        "skill/adaptive-plan-check-loop/SKILL.md",
+        "skill/capability-gap-skill-builder/SKILL.md"
+      ]
+    },
+    "hunt-api-misconfig": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "api misconfig"
+      ],
+      "triggers": [
+        "api misconfig",
+        "hunt-api-misconfig"
+      ],
+      "companions": [
+        "skill/hunt-api-misconfig/SKILL.md"
+      ]
+    },
+    "hunt-aspnet": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "aspnet"
+      ],
+      "triggers": [
+        "aspnet",
+        "hunt-aspnet"
+      ],
+      "companions": [
+        "skill/hunt-aspnet/SKILL.md"
+      ]
+    },
+    "hunt-ato": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "ato"
+      ],
+      "triggers": [
+        "ato",
+        "hunt-ato"
+      ],
+      "companions": [
+        "skill/hunt-ato/SKILL.md"
+      ]
+    },
+    "hunt-auth-bypass": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "auth bypass"
+      ],
+      "triggers": [
+        "auth bypass",
+        "hunt-auth-bypass"
+      ],
+      "companions": [
+        "skill/hunt-auth-bypass/SKILL.md"
+      ]
+    },
+    "hunt-brute-force": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "brute force"
+      ],
+      "triggers": [
+        "brute force",
+        "hunt-brute-force"
+      ],
+      "companions": [
+        "skill/hunt-brute-force/SKILL.md"
+      ]
+    },
+    "hunt-business-logic": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "business logic"
+      ],
+      "triggers": [
+        "business logic",
+        "hunt-business-logic"
+      ],
+      "companions": [
+        "skill/hunt-business-logic/SKILL.md"
+      ]
+    },
+    "hunt-cache-poison": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "cache poison"
+      ],
+      "triggers": [
+        "cache poison",
+        "hunt-cache-poison"
+      ],
+      "companions": [
+        "skill/hunt-cache-poison/SKILL.md"
+      ]
+    },
+    "hunt-captcha-bypass": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "captcha bypass"
+      ],
+      "triggers": [
+        "captcha bypass",
+        "hunt-captcha-bypass"
+      ],
+      "companions": [
+        "skill/hunt-captcha-bypass/SKILL.md"
+      ]
+    },
+    "hunt-cicd": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "cicd"
+      ],
+      "triggers": [
+        "cicd",
+        "hunt-cicd"
+      ],
+      "companions": [
+        "skill/hunt-cicd/SKILL.md"
+      ]
+    },
+    "hunt-clickjacking": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "clickjacking"
+      ],
+      "triggers": [
+        "clickjacking",
+        "hunt-clickjacking"
+      ],
+      "companions": [
+        "skill/hunt-clickjacking/SKILL.md"
+      ]
+    },
+    "hunt-cloud-misconfig": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "cloud misconfig"
+      ],
+      "triggers": [
+        "cloud misconfig",
+        "hunt-cloud-misconfig"
+      ],
+      "companions": [
+        "skill/hunt-cloud-misconfig/SKILL.md"
+      ]
+    },
+    "hunt-cors": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "cors"
+      ],
+      "triggers": [
+        "cors",
+        "hunt-cors"
+      ],
+      "companions": [
+        "skill/hunt-cors/SKILL.md"
+      ]
+    },
+    "hunt-csrf": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "csrf"
+      ],
+      "triggers": [
+        "csrf",
+        "hunt-csrf"
+      ],
+      "companions": [
+        "skill/hunt-csrf/SKILL.md"
+      ]
+    },
+    "hunt-deserialization": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "deserialization"
+      ],
+      "triggers": [
+        "deserialization",
+        "hunt-deserialization"
+      ],
+      "companions": [
+        "skill/hunt-deserialization/SKILL.md"
+      ]
+    },
+    "hunt-dispatch": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "dispatch"
+      ],
+      "triggers": [
+        "dispatch",
+        "hunt-dispatch"
+      ],
+      "companions": [
+        "skill/hunt-dispatch/SKILL.md"
+      ]
+    },
+    "hunt-dom": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "dom"
+      ],
+      "triggers": [
+        "dom",
+        "hunt-dom"
+      ],
+      "companions": [
+        "skill/hunt-dom/SKILL.md"
+      ]
+    },
+    "hunt-exceptional-conditions": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "exceptional conditions"
+      ],
+      "triggers": [
+        "exceptional conditions",
+        "hunt-exceptional-conditions"
+      ],
+      "companions": [
+        "skill/hunt-exceptional-conditions/SKILL.md"
+      ]
+    },
+    "hunt-file-upload": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "file upload"
+      ],
+      "triggers": [
+        "file upload",
+        "hunt-file-upload"
+      ],
+      "companions": [
+        "skill/hunt-file-upload/SKILL.md"
+      ]
+    },
+    "hunt-fintech-graphql": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "fintech graphql"
+      ],
+      "triggers": [
+        "fintech graphql",
+        "hunt-fintech-graphql"
+      ],
+      "companions": [
+        "skill/hunt-fintech-graphql/SKILL.md"
+      ]
+    },
+    "hunt-forgot-password": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "forgot password"
+      ],
+      "triggers": [
+        "forgot password",
+        "hunt-forgot-password"
+      ],
+      "companions": [
+        "skill/hunt-forgot-password/SKILL.md"
+      ]
+    },
+    "hunt-graphql": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "graphql"
+      ],
+      "triggers": [
+        "graphql",
+        "hunt-graphql"
+      ],
+      "companions": [
+        "skill/hunt-graphql/SKILL.md"
+      ]
+    },
+    "hunt-grpc": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "grpc"
+      ],
+      "triggers": [
+        "grpc",
+        "hunt-grpc"
+      ],
+      "companions": [
+        "skill/hunt-grpc/SKILL.md"
+      ]
+    },
+    "hunt-host-header": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "host header"
+      ],
+      "triggers": [
+        "host header",
+        "hunt-host-header"
+      ],
+      "companions": [
+        "skill/hunt-host-header/SKILL.md"
+      ]
+    },
+    "hunt-html-injection": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "html injection"
+      ],
+      "triggers": [
+        "html injection",
+        "hunt-html-injection"
+      ],
+      "companions": [
+        "skill/hunt-html-injection/SKILL.md"
+      ]
+    },
+    "hunt-http-smuggling": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "http smuggling"
+      ],
+      "triggers": [
+        "http smuggling",
+        "hunt-http-smuggling"
+      ],
+      "companions": [
+        "skill/hunt-http-smuggling/SKILL.md"
+      ]
+    },
+    "hunt-idor": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "idor"
+      ],
+      "triggers": [
+        "idor",
+        "hunt-idor"
+      ],
+      "companions": [
+        "skill/hunt-idor/SKILL.md"
+      ]
+    },
+    "hunt-jwt-crypto": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "jwt crypto"
+      ],
+      "triggers": [
+        "jwt crypto",
+        "hunt-jwt-crypto"
+      ],
+      "companions": [
+        "skill/hunt-jwt-crypto/SKILL.md"
+      ]
+    },
+    "hunt-k8s": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "k8s"
+      ],
+      "triggers": [
+        "k8s",
+        "hunt-k8s"
+      ],
+      "companions": [
+        "skill/hunt-k8s/SKILL.md"
+      ]
+    },
+    "hunt-laravel": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "laravel"
+      ],
+      "triggers": [
+        "laravel",
+        "hunt-laravel"
+      ],
+      "companions": [
+        "skill/hunt-laravel/SKILL.md"
+      ]
+    },
+    "hunt-ldap": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "ldap"
+      ],
+      "triggers": [
+        "ldap",
+        "hunt-ldap"
+      ],
+      "companions": [
+        "skill/hunt-ldap/SKILL.md"
+      ]
+    },
+    "hunt-lfi": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "lfi"
+      ],
+      "triggers": [
+        "lfi",
+        "hunt-lfi"
+      ],
+      "companions": [
+        "skill/hunt-lfi/SKILL.md"
+      ]
+    },
+    "hunt-llm-ai": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "llm ai"
+      ],
+      "triggers": [
+        "llm ai",
+        "hunt-llm-ai"
+      ],
+      "companions": [
+        "skill/hunt-llm-ai/SKILL.md"
+      ]
+    },
+    "hunt-mfa-bypass": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "mfa bypass"
+      ],
+      "triggers": [
+        "mfa bypass",
+        "hunt-mfa-bypass"
+      ],
+      "companions": [
+        "skill/hunt-mfa-bypass/SKILL.md"
+      ]
+    },
+    "hunt-misc": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "misc"
+      ],
+      "triggers": [
+        "misc",
+        "hunt-misc"
+      ],
+      "companions": [
+        "skill/hunt-misc/SKILL.md"
+      ]
+    },
+    "hunt-nextjs": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "nextjs"
+      ],
+      "triggers": [
+        "nextjs",
+        "hunt-nextjs"
+      ],
+      "companions": [
+        "skill/hunt-nextjs/SKILL.md"
+      ]
+    },
+    "hunt-nodejs": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "nodejs"
+      ],
+      "triggers": [
+        "nodejs",
+        "hunt-nodejs"
+      ],
+      "companions": [
+        "skill/hunt-nodejs/SKILL.md"
+      ]
+    },
+    "hunt-nosqli": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "nosqli"
+      ],
+      "triggers": [
+        "nosqli",
+        "hunt-nosqli"
+      ],
+      "companions": [
+        "skill/hunt-nosqli/SKILL.md"
+      ]
+    },
+    "hunt-ntlm-info": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "ntlm info"
+      ],
+      "triggers": [
+        "ntlm info",
+        "hunt-ntlm-info"
+      ],
+      "companions": [
+        "skill/hunt-ntlm-info/SKILL.md"
+      ]
+    },
+    "hunt-oauth": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "oauth"
+      ],
+      "triggers": [
+        "oauth",
+        "hunt-oauth"
+      ],
+      "companions": [
+        "skill/hunt-oauth/SKILL.md"
+      ]
+    },
+    "hunt-open-redirect": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "open redirect"
+      ],
+      "triggers": [
+        "open redirect",
+        "hunt-open-redirect"
+      ],
+      "companions": [
+        "skill/hunt-open-redirect/SKILL.md"
+      ]
+    },
+    "hunt-race-condition": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "race condition"
+      ],
+      "triggers": [
+        "race condition",
+        "hunt-race-condition"
+      ],
+      "companions": [
+        "skill/hunt-race-condition/SKILL.md"
+      ]
+    },
+    "hunt-rag-vector": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "rag vector"
+      ],
+      "triggers": [
+        "rag vector",
+        "hunt-rag-vector"
+      ],
+      "companions": [
+        "skill/hunt-rag-vector/SKILL.md"
+      ]
+    },
+    "hunt-rce": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "rce"
+      ],
+      "triggers": [
+        "rce",
+        "hunt-rce"
+      ],
+      "companions": [
+        "skill/hunt-rce/SKILL.md"
+      ]
+    },
+    "hunt-saml": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "saml"
+      ],
+      "triggers": [
+        "saml",
+        "hunt-saml"
+      ],
+      "companions": [
+        "skill/hunt-saml/SKILL.md"
+      ]
+    },
+    "hunt-session": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "session"
+      ],
+      "triggers": [
+        "session",
+        "hunt-session"
+      ],
+      "companions": [
+        "skill/hunt-session/SKILL.md"
+      ]
+    },
+    "hunt-shadow-api": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "shadow api"
+      ],
+      "triggers": [
+        "shadow api",
+        "hunt-shadow-api"
+      ],
+      "companions": [
+        "skill/hunt-shadow-api/SKILL.md"
+      ]
+    },
+    "hunt-sharepoint": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "sharepoint"
+      ],
+      "triggers": [
+        "sharepoint",
+        "hunt-sharepoint"
+      ],
+      "companions": [
+        "skill/hunt-sharepoint/SKILL.md"
+      ]
+    },
+    "hunt-source-leak": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "source leak"
+      ],
+      "triggers": [
+        "source leak",
+        "hunt-source-leak"
+      ],
+      "companions": [
+        "skill/hunt-source-leak/SKILL.md"
+      ]
+    },
+    "hunt-spa-api": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "spa api"
+      ],
+      "triggers": [
+        "spa api",
+        "hunt-spa-api"
+      ],
+      "companions": [
+        "skill/hunt-spa-api/SKILL.md"
+      ]
+    },
+    "hunt-springboot": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "springboot"
+      ],
+      "triggers": [
+        "springboot",
+        "hunt-springboot"
+      ],
+      "companions": [
+        "skill/hunt-springboot/SKILL.md"
+      ]
+    },
+    "hunt-sqli": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "sqli"
+      ],
+      "triggers": [
+        "sqli",
+        "hunt-sqli"
+      ],
+      "companions": [
+        "skill/hunt-sqli/SKILL.md"
+      ]
+    },
+    "hunt-ssrf": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "ssrf"
+      ],
+      "triggers": [
+        "ssrf",
+        "hunt-ssrf"
+      ],
+      "companions": [
+        "skill/hunt-ssrf/SKILL.md"
+      ]
+    },
+    "hunt-ssti": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "ssti"
+      ],
+      "triggers": [
+        "ssti",
+        "hunt-ssti"
+      ],
+      "companions": [
+        "skill/hunt-ssti/SKILL.md"
+      ]
+    },
+    "hunt-subdomain": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "subdomain"
+      ],
+      "triggers": [
+        "subdomain",
+        "hunt-subdomain"
+      ],
+      "companions": [
+        "skill/hunt-subdomain/SKILL.md"
+      ]
+    },
+    "hunt-tls-network": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "tls network"
+      ],
+      "triggers": [
+        "tls network",
+        "hunt-tls-network"
+      ],
+      "companions": [
+        "skill/hunt-tls-network/SKILL.md"
+      ]
+    },
+    "hunt-websocket": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "websocket"
+      ],
+      "triggers": [
+        "websocket",
+        "hunt-websocket"
+      ],
+      "companions": [
+        "skill/hunt-websocket/SKILL.md"
+      ]
+    },
+    "hunt-xss": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "xss"
+      ],
+      "triggers": [
+        "xss",
+        "hunt-xss"
+      ],
+      "companions": [
+        "skill/hunt-xss/SKILL.md"
+      ]
+    },
+    "hunt-xxe": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hunt",
+        "xxe"
+      ],
+      "triggers": [
+        "xxe",
+        "hunt-xxe"
+      ],
+      "companions": [
+        "skill/hunt-xxe/SKILL.md"
+      ]
+    },
+    "local-sudo-install": {
+      "mode": "conditional",
+      "tags": [
+        "install",
+        "sudo",
+        "local"
+      ],
+      "triggers": [
+        "sudo",
+        "apt",
+        "apt-get",
+        "password",
+        "install package"
+      ],
+      "companions": [
+        "skill/local-sudo-install/SKILL.md"
+      ]
+    },
+    "bug-bounty-browser": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "browser",
+        "playwright"
+      ],
+      "triggers": [
+        "browser",
+        "playwright",
+        "chromium",
+        "login wall",
+        "signup",
+        "browser challenge",
+        "cursor",
+        "mouse",
+        "click"
+      ],
+      "companions": [
+        "skill/bug-bounty-browser/SKILL.md",
+        "skill/bug-bounty-browser/agents/browser-operator.md"
+      ]
+    },
+    "adaptive-plan-check-loop": {
+      "mode": "always",
+      "tags": [
+        "plan",
+        "retry",
+        "loop"
+      ],
+      "triggers": [
+        "plan",
+        "retry",
+        "coba lagi",
+        "new technique",
+        "teknik baru"
+      ],
+      "companions": [
+        "skill/adaptive-plan-check-loop/SKILL.md",
+        "skill/adaptive-plan-check-loop/agents/adaptive-loop-agent.md"
+      ]
+    },
+    "capability-gap-skill-builder": {
+      "mode": "always",
+      "tags": [
+        "skill-builder",
+        "missing-skill"
+      ],
+      "triggers": [
+        "missing skill",
+        "buat skill",
+        "create skill",
+        "create agent"
+      ],
+      "companions": [
+        "skill/capability-gap-skill-builder/SKILL.md",
+        "skill/capability-gap-skill-builder/agents/capability-gap-evaluator.md"
+      ]
+    },
+    "hunt-director": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "director",
+        "pengarah"
+      ],
+      "triggers": [
+        "director",
+        "pengarah",
+        "assign lanes"
+      ],
+      "companions": [
+        "skill/hunt-director/SKILL.md",
+        "skill/hunt-director/agents/director.md"
+      ]
+    },
+    "hunt-orchestrator": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "orchestrator"
+      ],
+      "triggers": [
+        "orchestrator",
+        "orkestrator",
+        "coordinate agents"
+      ],
+      "companions": [
+        "skill/hunt-orchestrator/SKILL.md",
+        "skill/hunt-orchestrator/agents/orchestrator.md"
+      ]
+    },
+    "hunt-severity-climb": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "severity"
+      ],
+      "triggers": [
+        "severity",
+        "critical",
+        "naikkan severity",
+        "do not submit"
+      ],
+      "companions": [
+        "skill/hunt-severity-climb/SKILL.md",
+        "skill/hunt-severity-climb/agents/severity-climber.md",
+        "references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md"
+      ]
+    },
+    "hunt-reentrancy": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "web3",
+        "reentrancy"
+      ],
+      "triggers": [
+        "reentrancy",
+        "callback",
+        "erc777",
+        "read-only reentrancy"
+      ],
+      "companions": [
+        "skill/hunt-reentrancy/SKILL.md",
+        "skill/hunt-reentrancy/agents/reentrancy-hunter.md"
+      ]
+    },
+    "hunt-logic-vulnerability": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "logic"
+      ],
+      "triggers": [
+        "logic vulnerability",
+        "business logic",
+        "state machine",
+        "entitlement"
+      ],
+      "companions": [
+        "skill/hunt-logic-vulnerability/SKILL.md",
+        "skill/hunt-logic-vulnerability/agents/logic-hunter.md"
+      ]
+    },
+    "finding-validator": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "validation"
+      ],
+      "triggers": [
+        "validate finding",
+        "kill pass",
+        "triage candidate"
+      ],
+      "companions": [
+        "skill/finding-validator/SKILL.md",
+        "skill/finding-validator/agents/finding-validator.md"
+      ]
+    }
+  },
+  "artifact_routes": {
+    "AUTOLOAD.md": {
+      "mode": "always",
+      "tags": [
+        "bootstrap",
+        "metadata"
+      ]
+    },
+    "CHANGELOG.md": {
+      "mode": "conditional",
+      "tags": [
+        "prior-art",
+        "package-history",
+        "metadata"
+      ]
+    },
+    "PACKAGE_MANIFEST.sha256": {
+      "mode": "conditional",
+      "tags": [
+        "integrity",
+        "metadata"
+      ]
+    },
+    "README.md": {
+      "mode": "conditional",
+      "tags": [
+        "documentation",
+        "metadata"
+      ]
+    },
+    "VERSION": {
+      "mode": "always",
+      "tags": [
+        "version",
+        "metadata"
+      ]
+    },
+    "automation/authorized-recon.sh": {
+      "mode": "conditional",
+      "tags": [
+        "automation"
+      ]
+    },
+    "automation/init-blackbox-workspace.sh": {
+      "mode": "conditional",
+      "tags": [
+        "automation"
+      ]
+    },
+    "automation/init-codex-cli-audit-workspace.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "codex-cli",
+        "workspace"
+      ]
+    },
+    "automation/validate-adaptive-research-orchestration.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "codex-cli",
+        "multi-agent",
+        "research-path-registry",
+        "validator",
+        "explicit-opt-in"
+      ]
+    },
+    "automation/test-adaptive-research-orchestration.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "codex-cli",
+        "multi-agent",
+        "adaptive-wave",
+        "regression-test",
+        "explicit-opt-in"
+      ]
+    },
+    "automation/validate-adaptive-execution-provenance.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "codex-cli",
+        "multi-agent",
+        "adaptive-execution-provenance",
+        "validator",
+        "explicit-opt-in"
+      ]
+    },
+    "automation/test-adaptive-execution-provenance.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "codex-cli",
+        "multi-agent",
+        "real-spawn",
+        "regression-test",
+        "explicit-opt-in"
+      ]
+    },
+    "automation/run-v11-adaptive-execution-smoke.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "codex-cli",
+        "multi-agent",
+        "real-spawn",
+        "synthetic-regression",
+        "explicit-opt-in"
+      ]
+    },
+    "automation/install-authorized-blackbox-tools.sh": {
+      "mode": "conditional",
+      "tags": [
+        "automation"
+      ]
+    },
+    "automation/route-security-task.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation"
+      ]
+    },
+    "automation/test-route-security-task.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "routing-test"
+      ]
+    },
+    "automation/test-authorization-invariant-gate.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "authorization",
+        "regression-test"
+      ]
+    },
+    "automation/validate-auto-routing.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation"
+      ]
+    },
+    "automation/test-program-impact-boundary-gate.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "program-impact",
+        "negative-control",
+        "regression-test"
+      ]
+    },
+    "config/AUTO_ROUTING_MAP.json": {
+      "mode": "conditional",
+      "tags": [
+        "config"
+      ]
+    },
+    "config/BOUNTYFORGE_SOURCE_CATALOG.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "bountyforge",
+        "provenance",
+        "source-catalog",
+        "quarantine"
+      ]
+    },
+    "config/OFFENSIVE_RESEARCH_GRAPH_SCHEMA.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "multi-agent",
+        "dag",
+        "evidence-contract",
+        "explicit-opt-in"
+      ]
+    },
+    "config/SEVERITY_ESCALATION_SCHEMA.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "severity-escalation",
+        "capability-delta",
+        "severity-lock"
+      ]
+    },
+    "config/AUTHORIZATION_REASONING_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "authorization",
+        "regression-test"
+      ]
+    },
+    "config/PROGRAM_IMPACT_NEGATIVE_CONTROL_CASES.json": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "config",
+        "program-impact",
+        "informative",
+        "production-impact",
+        "production-reachability",
+        "threat-model",
+        "race-realism",
+        "lifecycle-contract",
+        "known-duplicate",
+        "negative-control"
+      ]
+    },
+    "config/PROGRAM_IMPACT_POSITIVE_CONTROL_CASES.json": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "config",
+        "program-impact",
+        "resolved",
+        "rewarded",
+        "capability-delta",
+        "protected-consumer",
+        "positive-control",
+        "known-fixed-burn"
+      ]
+    },
+    "config/CODEX_CLI_CANDIDATE_SCHEMA.json": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "codex-cli",
+        "schema",
+        "evidence"
+      ]
+    },
+    "config/CODEX_CLI_RESEARCH_PATH_REGISTRY_SCHEMA.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "codex-cli",
+        "multi-agent",
+        "research-path-registry",
+        "explicit-opt-in"
+      ]
+    },
+    "config/ADAPTIVE_RESEARCH_ORCHESTRATION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "codex-cli",
+        "adaptive-wave",
+        "anti-convergence",
+        "regression-test",
+        "explicit-opt-in"
+      ]
+    },
+    "config/CODEX_CLI_ADAPTIVE_EXECUTION_PROVENANCE_SCHEMA.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "codex-cli",
+        "multi-agent",
+        "adaptive-execution-provenance",
+        "explicit-opt-in"
+      ]
+    },
+    "config/ADAPTIVE_EXECUTION_PROVENANCE_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "codex-cli",
+        "adaptive-execution-provenance",
+        "regression-test",
+        "explicit-opt-in"
+      ]
+    },
+    "config/scope.example.txt": {
+      "mode": "conditional",
+      "tags": [
+        "config"
+      ]
+    },
+    "config/test-accounts.env.example": {
+      "mode": "conditional",
+      "tags": [
+        "config"
+      ]
+    },
+    "prompts/MASTER_PROMPT_AI_BUG_BOUNTY.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EVIDENCE_TO_TERMINAL_ORACLE_BUG_BOUNTY.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "bug-bounty",
+        "evidence-chain",
+        "terminal-oracle"
+      ]
+    },
+    "prompts/HERMES_PASSIVE_EVIDENCE_ANALYST.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "hermes",
+        "passive-analysis",
+        "captured-evidence"
+      ]
+    },
+    "prompts/MASTER_PROMPT_BOUNTYFORGE_RESEARCH_SUITE.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "bountyforge",
+        "thin-slice",
+        "evidence-gate"
+      ]
+    },
+    "prompts/MASTER_PROMPT_OFFENSIVE_RESEARCH_GRAPH_ENGINEERING.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "multi-agent",
+        "red-team",
+        "offensive-security",
+        "severity-escalation",
+        "explicit-opt-in"
+      ]
+    },
+    "prompts/MASTER_PROMPT_AUTHORIZED_UNIVERSAL_JAILBREAK_EVAL.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_CODEX_CLI_MULTI_AGENT_AUDIT.md": {
+      "mode": "conditional",
+      "tags": [
+        "codex-cli",
+        "prompt",
+        "adaptive-wave",
+        "research-path-registry",
+        "explicit-opt-in"
+      ]
+    },
+    "prompts/MASTER_PROMPT_COMPOSITIONAL_EXPLOIT_CHAIN_AUDIT.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "multi-stage",
+        "composition",
+        "authority-bridge"
+      ]
+    },
+    "prompts/MASTER_PROMPT_DEADLOCK_LOCK_GRAPH_DOS.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "deadlock",
+        "lock-graph",
+        "availability",
+        "rpc"
+      ]
+    },
+    "prompts/CHROMIUM_V8_VARIANT_HUNTER.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "chromium",
+        "v8",
+        "jit",
+        "patch-variant",
+        "metadata-equivalence"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXECUTABLE_RCE_AUDIT.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_AI_MODEL_AUDIT.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_AUTHORIZED_HACKER.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_AUTH_IDENTITY.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_BUG_HUNTER.md": {
+      "mode": "always",
+      "tags": [
+        "core"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_CLOUD_SUPPLY_CHAIN.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_GITHUB_ACTIONS_FORK_TRUST.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "github-actions",
+        "fork-trust",
+        "credential",
+        "supply-chain"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_PROGRAMMING_LANGUAGES.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_REVERSE_ENGINEERING.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_SOURCE_CODE_AUDIT.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_STATE_RACE_CACHE_PARSER.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_WEB_API_BUSINESS_LOGIC.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXPERT_WINDOWS_INTERNALS_RESEARCH.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "prompts/MASTER_PROMPT_MANDATORY_AUTO_ROUTER.md": {
+      "mode": "always",
+      "tags": [
+        "bootstrap",
+        "routing"
+      ]
+    },
+    "prompts/SYSTEM_PROMPT_AUTHORIZED_OFFENSIVE_IMPACT_GATE.md": {
+      "mode": "always",
+      "tags": [
+        "system-prompt-overlay",
+        "core",
+        "authorized-offensive",
+        "program-impact"
+      ]
+    },
+    "prompts/MASTER_PROMPT_PROGRAM_IMPACT_BOUNDARY_GATE.md": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "prompt",
+        "program-impact",
+        "capability-delta",
+        "informative-filter"
+      ]
+    },
+    "prompts/MASTER_PROMPT_NATIVE_JS_BINDING_LIFETIME.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "native-binding",
+        "javascript-lifetime",
+        "use-after-free"
+      ]
+    },
+    "prompts/MASTER_PROMPT_NOVEL_INVARIANT_FRONTIER.md": {
+      "mode": "always",
+      "tags": [
+        "prompt",
+        "novelty",
+        "invariant-frontier",
+        "prior-art-embargo",
+        "anti-overfitting"
+      ]
+    },
+    "prompts/MASTER_PROMPT_NIGHTMARE_ECLIPSE_DEFENSIVE_ANALYSIS.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt"
+      ]
+    },
+    "references/AUTO_ROUTING_PROTOCOL.md": {
+      "mode": "always",
+      "tags": [
+        "bootstrap",
+        "routing"
+      ]
+    },
+    "references/BOUNTYFORGE_ADAPTIVE_RESEARCH_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "bountyforge",
+        "methodology",
+        "progressive-disclosure",
+        "capability-delta"
+      ]
+    },
+    "references/OFFENSIVE_RESEARCH_GRAPH_ENGINEERING_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "multi-agent",
+        "dag-scheduling",
+        "fresh-context-verification",
+        "workspace-isolation"
+      ]
+    },
+    "references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "severity-escalation",
+        "attacker-state",
+        "capability-continuity",
+        "severity-lock"
+      ]
+    },
+    "references/AUTHORIZATION_INVARIANT_KILL_CHALLENGE.md": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "authorization",
+        "falsification",
+        "kill-challenge"
+      ]
+    },
+    "references/BLACKBOX_EVIDENCE_WORKSHEET.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/BUGBOUNTY_INFO_ATTACK_SURFACE_CHAIN_TOOLING_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "bug-bounty",
+        "attack-surface",
+        "chains",
+        "tooling",
+        "methodology"
+      ]
+    },
+    "references/PROGRAM_IMPACT_BOUNDARY_GATE.md": {
+      "mode": "always",
+      "tags": [
+        "core",
+        "reference",
+        "program-impact",
+        "capability-delta",
+        "informative",
+        "negative-control",
+        "severity-floor"
+      ]
+    },
+    "references/CODEX_CLI_MULTI_AGENT_WORKFLOW.md": {
+      "mode": "conditional",
+      "tags": [
+        "codex-cli",
+        "workflow",
+        "falsification",
+        "adaptive-wave",
+        "research-path-registry",
+        "explicit-opt-in"
+      ]
+    },
+    "references/ADAPTIVE_RESEARCH_PATH_ORCHESTRATION_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "codex-cli",
+        "multi-agent",
+        "research-path-registry",
+        "adaptive-wave",
+        "anti-convergence",
+        "primitive-chain",
+        "implementation-escalation",
+        "termination",
+        "explicit-opt-in"
+      ]
+    },
+    "references/EXECUTABLE_AUDIT_PLAYBOOK.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/EXECUTABLE_RCE_EVIDENCE_WORKSHEET.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/EXPERT_AI_MODEL_AUDIT_MATRIX.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/EXPERT_CANDIDATE_LEDGER.md": {
+      "mode": "always",
+      "tags": [
+        "evidence",
+        "triage"
+      ]
+    },
+    "references/EXPERT_CORE_PROTOCOL.md": {
+      "mode": "always",
+      "tags": [
+        "core"
+      ]
+    },
+    "references/EXPERT_PROGRAMMING_LANGUAGE_MATRIX.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/EXPERT_SCOPE_REACHABILITY_CHECKLIST.md": {
+      "mode": "always",
+      "tags": [
+        "scope",
+        "reachability"
+      ]
+    },
+    "references/EXPERT_TEST_DESIGN_MATRIX.md": {
+      "mode": "always",
+      "tags": [
+        "safe-test",
+        "negative-control"
+      ]
+    },
+    "references/MODERN_RCE_CHAIN_ATLAS_2026.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/PATCH_VARIANT_CONSUMER_BOUNDARY_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "patch-variant",
+        "consumer-boundary",
+        "parser-differential",
+        "protocol-capability",
+        "consensus-availability"
+      ]
+    },
+    "references/NIGHTMARE_ECLIPSE_REPOSITORY_MAP.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/PAYLOADSALLTHETHINGS_USAGE.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/UNIVERSAL_JAILBREAK_EVIDENCE_WORKSHEET.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "references/WINDOWS_EXPLOIT_RESEARCH_SAFETY_PROTOCOL.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference"
+      ]
+    },
+    "config/PATCH_VARIANT_CONSUMER_BOUNDARY_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "patch-variant",
+        "consumer-boundary",
+        "regression-test"
+      ]
+    },
+    "automation/test-patch-variant-consumer-boundary.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "patch-variant",
+        "consumer-boundary",
+        "regression-test"
+      ]
+    },
+    "references/DYNAMIC_DATA_EXECUTION_CONSUMER_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "dynamic-data",
+        "protocol-framing",
+        "import-provenance",
+        "execution-consumer"
+      ]
+    },
+    "references/CROSS_BOUNDARY_COMPOSITION_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "cross-boundary",
+        "workflow-context",
+        "managed-interop",
+        "jwt-verifier",
+        "active-directory",
+        "mobile-signing",
+        "ai-data-authority",
+        "result-fan-out"
+      ]
+    },
+    "references/IMAGE_DECODER_SSO_CONNECTOR_CHAIN_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "native-media-decoder",
+        "dependency-backport",
+        "process-authority",
+        "sso-binding",
+        "connected-integration",
+        "exploit-chain"
+      ]
+    },
+    "config/DYNAMIC_DATA_EXECUTION_CONSUMER_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "dynamic-data",
+        "execution-consumer",
+        "regression-test"
+      ]
+    },
+    "automation/test-dynamic-data-execution-consumer.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "dynamic-data",
+        "execution-consumer",
+        "regression-test"
+      ]
+    },
+    "references/ARCHIVE_RENDERER_FRAMEWORK_CONSUMER_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "archive-object-identity",
+        "browser-normalization",
+        "secondary-renderer",
+        "framework-option"
+      ]
+    },
+    "config/ARCHIVE_RENDERER_FRAMEWORK_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "archive-renderer-framework",
+        "regression-test"
+      ]
+    },
+    "automation/test-archive-renderer-framework.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "archive-renderer-framework",
+        "regression-test"
+      ]
+    },
+    "references/REPARSE_CONFIG_PROVENANCE_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "decode-reparse",
+        "configuration-grammar",
+        "signed-provenance",
+        "virtual-setter"
+      ]
+    },
+    "config/REPARSE_CONFIG_PROVENANCE_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "reparse-config-provenance",
+        "regression-test"
+      ]
+    },
+    "automation/test-reparse-config-provenance.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "reparse-config-provenance",
+        "regression-test"
+      ]
+    },
+    "references/PATH_CLI_GADGET_CHAIN_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "canonical-path",
+        "cli-option-grammar",
+        "javascript-gadget",
+        "impact-bridge"
+      ]
+    },
+    "config/PATH_CLI_GADGET_CHAIN_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "path-cli-gadget-chain",
+        "regression-test"
+      ]
+    },
+    "automation/test-path-cli-gadget-chain.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "path-cli-gadget-chain",
+        "regression-test"
+      ]
+    },
+    "references/NOVEL_INVARIANT_FRONTIER_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "novelty",
+        "invariant-mining",
+        "assumption-mining",
+        "counterfactual-reasoning",
+        "prior-art-embargo"
+      ]
+    },
+    "references/STATE_MACHINE_SECURITY_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "state-machine",
+        "lifecycle",
+        "retry",
+        "revocation"
+      ]
+    },
+    "references/METAMORPHIC_DIFFERENTIAL_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "metamorphic-testing",
+        "differential-path",
+        "equivalent-operation"
+      ]
+    },
+    "references/RESOURCE_AMPLIFICATION_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "resource-amplification",
+        "cpu",
+        "memory",
+        "fanout"
+      ]
+    },
+    "references/CROSS_FEATURE_COMPOSITION_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "cross-feature-composition",
+        "delayed-consumer",
+        "primitive-chain"
+      ]
+    },
+    "references/EVALUATION_FIRST_RESEARCH_CASCADE_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "evaluation-first",
+        "micro-inspiration",
+        "deterministic-oracle",
+        "context-isolation",
+        "research-cascade"
+      ]
+    },
+    "references/EVIDENCE_TO_TERMINAL_ORACLE_BUG_BOUNTY_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "signed-client-state",
+        "secret-reuse",
+        "unsafe-deserialization",
+        "passive-evidence-analysis",
+        "state-machine",
+        "terminal-oracle",
+        "bug-bounty-methodology"
+      ]
+    },
+    "references/CONSENSUS_ACCOUNTING_INVARIANT_CHAIN_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "web3",
+        "consensus-accounting",
+        "integer-overflow",
+        "economic-invariant",
+        "supply-conservation",
+        "commit-finality",
+        "bug-bounty-methodology"
+      ]
+    },
+    "prompts/MASTER_PROMPT_EXTERNAL_AI_SECURITY_TOOL_INTEGRATION.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "external-security-tool",
+        "mcp",
+        "integration-governance",
+        "reference-only"
+      ]
+    },
+    "prompts/HERMES_EXTERNAL_SECURITY_TOOL_EVIDENCE_ANALYST.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "hermes",
+        "passive-evidence",
+        "external-security-tool"
+      ]
+    },
+    "references/EXTERNAL_AI_SECURITY_TOOL_INTEGRATION_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "external-security-tool",
+        "mcp",
+        "supply-chain",
+        "execution-policy"
+      ]
+    },
+    "config/EXTERNAL_AI_SECURITY_TOOL_SOURCE_CATALOG.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "source-catalog",
+        "hackerai",
+        "hexstrike",
+        "pinned-provenance"
+      ]
+    },
+    "prompts/MASTER_PROMPT_AGENTIC_SECURITY_RESEARCH_HARNESS.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "agentic-security",
+        "research-harness",
+        "evidence-gating"
+      ]
+    },
+    "prompts/HERMES_AGENTIC_HARNESS_EVIDENCE_ANALYST.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "hermes",
+        "passive-evidence",
+        "research-harness"
+      ]
+    },
+    "references/AGENTIC_SECURITY_RESEARCH_HARNESS_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "agentic-security",
+        "finding-quarantine",
+        "knowledge-loop",
+        "methodology"
+      ]
+    },
+    "config/AGENTIC_SECURITY_HARNESS_SOURCE_CATALOG.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "source-catalog",
+        "pinned-provenance",
+        "reference-only"
+      ]
+    },
+    "automation/validate-agentic-security-research-harness.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "agentic-security",
+        "network-free-validator"
+      ]
+    },
+    "references/MICRO_INSPIRATION_RESEARCH_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "micro-inspiration",
+        "objective",
+        "anchoring-control"
+      ]
+    },
+    "references/GENERIC_ANOMALY_EVALUATION_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "generic-evaluator",
+        "anomaly-ledger",
+        "invariant"
+      ]
+    },
+    "references/CLEAN_PROBE_REASONING_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "clean-probe",
+        "semantic-proof",
+        "permutation"
+      ]
+    },
+    "references/DISCOVERY_CASCADE_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "discovery-cascade",
+        "genealogy",
+        "cascade-lead"
+      ]
+    },
+    "references/SHARED_SEMANTIC_REUSE_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "shared-semantic-reuse",
+        "domain-asymmetry"
+      ]
+    },
+    "references/HARNESS_FALSIFICATION_METHOD.md": {
+      "mode": "always",
+      "tags": [
+        "reference",
+        "harness-falsification",
+        "independent-runner",
+        "deterministic-gate"
+      ]
+    },
+    "automation/validate-autonomous-research-cascade.py": {
+      "mode": "always",
+      "tags": [
+        "automation",
+        "validator",
+        "research-cascade",
+        "audit-only"
+      ]
+    },
+    "config/AUTONOMOUS_RESEARCH_CASCADE_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "research-cascade",
+        "regression-test",
+        "anti-overfitting"
+      ]
+    },
+    "automation/test-autonomous-research-cascade.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "research-cascade",
+        "regression-test",
+        "anti-overfitting"
+      ]
+    },
+    "config/NOVEL_DEVELOPMENT_LINEAGE_EXCLUSIONS.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "curator",
+        "held-out",
+        "development-lineage",
+        "post-proof"
+      ]
+    },
+    "automation/validate-novel-vulnerability-frontier.py": {
+      "mode": "always",
+      "tags": [
+        "automation",
+        "validator",
+        "novelty",
+        "prior-art-embargo"
+      ]
+    },
+    "config/NOVEL_FRONTIER_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "novelty",
+        "frontier",
+        "anti-overfitting",
+        "regression-test"
+      ]
+    },
+    "automation/test-novel-vulnerability-frontier.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "novelty",
+        "frontier",
+        "anti-overfitting",
+        "regression-test"
+      ]
+    },
+    "prompts/MASTER_PROMPT_COUNTERFACTUAL_METHODOLOGY_SYNTHESIS.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "post-no-valid-finding",
+        "counterfactual-methodology"
+      ]
+    },
+    "references/COUNTERFACTUAL_METHODOLOGY_SYNTHESIS_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "counterfactual-methodology",
+        "what-if",
+        "bounded-research"
+      ]
+    },
+    "config/COUNTERFACTUAL_METHODOLOGY_REGRESSION_CASES.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "counterfactual-methodology",
+        "regression-test"
+      ]
+    },
+    "automation/validate-counterfactual-methodology.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "validator",
+        "counterfactual-methodology",
+        "audit-only"
+      ]
+    },
+    "automation/test-counterfactual-methodology.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "counterfactual-methodology",
+        "regression-test"
+      ]
+    },
+    "prompts/MASTER_PROMPT_WEBHACKLIST_2026_RESEARCH_CORPUS.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "webhacklist",
+        "prior-art",
+        "reference-only"
+      ]
+    },
+    "prompts/HERMES_WEBHACKLIST_PRIOR_ART_ANALYST.md": {
+      "mode": "conditional",
+      "tags": [
+        "prompt",
+        "hermes",
+        "webhacklist",
+        "passive-analysis"
+      ]
+    },
+    "references/WEBHACKLIST_2026_CORPUS_METHOD.md": {
+      "mode": "conditional",
+      "tags": [
+        "reference",
+        "webhacklist",
+        "prior-art",
+        "methodology"
+      ]
+    },
+    "config/WEBHACKLIST_2026_AI_CORPUS.json": {
+      "mode": "conditional",
+      "tags": [
+        "config",
+        "webhacklist",
+        "2026-ai",
+        "pinned-provenance"
+      ]
+    },
+    "automation/validate-webhacklist-2026-corpus.py": {
+      "mode": "conditional",
+      "tags": [
+        "automation",
+        "webhacklist",
+        "network-free-validator"
+      ]
+    }
+  }
+}

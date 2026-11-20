@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/severity-escalation.schema.json",
+  "title": "Evidence-backed Severity Escalation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["candidate_id", "initial_severity", "max_proven_severity", "status", "post_state_capabilities", "newly_reachable_surfaces", "edges", "severity_locked"],
+  "properties": {
+    "candidate_id": {"type": "string", "minLength": 1},
+    "initial_severity": {"enum": ["NONE", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+    "max_proven_severity": {"enum": ["NONE", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+    "status": {"enum": ["PROVISIONAL", "ESCALATION_ACTIVE", "LOCKED"]},
+    "post_state_capabilities": {"type": "array", "items": {"type": "string"}},
+    "newly_reachable_surfaces": {"type": "array", "items": {"type": "string"}},
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["surface", "required_capability", "match_proof", "result", "evidence"],
+        "properties": {
+          "surface": {"type": "string", "minLength": 1},
+          "required_capability": {"type": "string", "minLength": 1},
+          "match_proof": {"type": "string"},
+          "result": {"enum": ["PROVEN", "FALSIFIED", "BLOCKED"]},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "program_impact_gate": {"enum": ["PASS", "BLOCKED", "FAIL", "NOT_RUN"]},
+    "severity_locked": {"type": "boolean"},
+    "lock_reason": {
+      "enum": ["UNLOCKED", "LOCK_TERMINAL_IMPACT_PROVEN", "LOCK_NO_CAPABILITY_EXPANDING_EDGE", "LOCK_PROGRAM_CEILING", "LOCK_SCOPE_OR_SAFETY_BOUNDARY", "LOCK_ENVIRONMENT_BLOCKED"]
+    }
+  }
+}

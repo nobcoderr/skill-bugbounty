@@ -1,0 +1,6 @@
+interface:
+  display_name: "BountyForge Research Suite"
+  short_description: "Focused authorized Web2 and Web3 research corpus"
+  default_prompt: "Use $bountyforge-research-suite with a model-agnostic authorized offensive-first posture to select one focused BountyForge lane, preserve exact scope, and retain only independently verified evidence."
+policy:
+  allow_implicit_invocation: true

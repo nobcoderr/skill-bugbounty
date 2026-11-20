@@ -1,0 +1,6 @@
+interface:
+  display_name: "Local sudo install"
+  short_description: "Enter the authorized sudo password for local installs"
+  default_prompt: "Use $local-sudo-install when an install on this machine asks for sudo. Do not print the password."
+policy:
+  allow_implicit_invocation: true

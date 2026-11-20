@@ -1,0 +1,21 @@
+{
+  "record_type": "COVERAGE_GAP_PACKET",
+  "audit_snapshot_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "coverage_gap_count": 0,
+  "gaps": [
+    {
+      "gap_id": "GAP-FULLY-COVERED",
+      "factual_basis": [
+        {"anchor": "all callers enumerated", "artifact_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+        {"anchor": "all consumers tested", "artifact_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}
+      ],
+      "why_material": "This record exists as a negative control and is not material.",
+      "existing_coverage": ["METH-V12-EXACT-ROOT"],
+      "what_remains_uncovered": "Nothing remains after exact-root completion and negative controls.",
+      "required_new_reasoning_property": "no additional reasoning required",
+      "coverage_dimension": "FULL",
+      "evidence_availability": "LOCAL",
+      "status": "REJECTED"
+    }
+  ]
+}

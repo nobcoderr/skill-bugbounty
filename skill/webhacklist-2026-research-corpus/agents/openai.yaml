@@ -1,0 +1,7 @@
+interface:
+  display_name: "WebHackList 2026 Corpus Analyst"
+  short_description: "Use the pinned preliminary corpus as prior-art evidence"
+  default_prompt: "Use $webhacklist-2026-research-corpus with a model-agnostic authorized offensive-first posture to compare this candidate against the pinned WebHackList 2026 AI corpus without executing archive examples or treating metadata matches as findings."
+policy:
+  allow_implicit_invocation: true
+

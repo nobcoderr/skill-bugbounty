@@ -1,0 +1,21 @@
+{
+  "record_type": "COVERAGE_GAP_PACKET",
+  "audit_snapshot_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "coverage_gap_count": 1,
+  "gaps": [
+    {
+      "gap_id": "GAP-AUTHORITY-EPOCH",
+      "factual_basis": [
+        {"anchor": "authorization decision persists as a derived capability", "artifact_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+        {"anchor": "later consumer reads the capability after mutable policy state changes", "artifact_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}
+      ],
+      "why_material": "A protected consumer is present but the decision-to-use lifetime has not been measured.",
+      "existing_coverage": ["METH-V12-AUTHORIZATION-INVARIANT", "METH-V12-STATE-MACHINE"],
+      "what_remains_uncovered": "No prior path reconstructed the exact fact lineage at issuance and consumption epochs.",
+      "required_new_reasoning_property": "paired authority-epoch lineage reconstruction",
+      "coverage_dimension": "PARTIAL",
+      "evidence_availability": "LOCAL",
+      "status": "MATERIAL"
+    }
+  ]
+}

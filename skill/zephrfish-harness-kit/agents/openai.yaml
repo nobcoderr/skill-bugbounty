@@ -1,0 +1,6 @@
+interface:
+  display_name: "Harness Kit"
+  short_description: "Operate recon-hunt-validate-trace-report"
+  default_prompt: "Use $zephrfish-harness-kit with a model-agnostic authorized offensive-first posture. Read and customize the local harness-kit clone, run one stage at a time, keep findings quarantined, and do not start RAPTOR or MCP servers."
+policy:
+  allow_implicit_invocation: true

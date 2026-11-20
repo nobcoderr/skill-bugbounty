@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "v13-coverage-gap.schema.json",
+  "title": "V13 factual coverage gap packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["record_type", "audit_snapshot_digest", "coverage_gap_count", "gaps"],
+  "properties": {
+    "record_type": {"const": "COVERAGE_GAP_PACKET"},
+    "audit_snapshot_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "coverage_gap_count": {"type": "integer", "minimum": 0},
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gap_id",
+          "factual_basis",
+          "why_material",
+          "existing_coverage",
+          "what_remains_uncovered",
+          "required_new_reasoning_property",
+          "coverage_dimension",
+          "evidence_availability",
+          "status"
+        ],
+        "properties": {
+          "gap_id": {"type": "string", "pattern": "^GAP-[A-Z0-9-]+$"},
+          "factual_basis": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["anchor", "artifact_digest"],
+              "properties": {
+                "anchor": {"type": "string", "minLength": 3},
+                "artifact_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+              }
+            }
+          },
+          "why_material": {"type": "string", "minLength": 10},
+          "existing_coverage": {"type": "array", "items": {"type": "string"}},
+          "what_remains_uncovered": {"type": "string", "minLength": 10},
+          "required_new_reasoning_property": {"type": "string", "minLength": 5},
+          "coverage_dimension": {"enum": ["UNSEEN", "PARTIAL", "FULL"]},
+          "evidence_availability": {"enum": ["LOCAL", "BLOCKED"]},
+          "status": {"enum": ["MATERIAL", "BLOCKED", "REJECTED", "METHODOLOGY_EXHAUSTED"]},
+          "parent_new_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

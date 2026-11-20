@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:codex-cli-security-audit:research-path-registry:v11",
+  "title": "Codex CLI Adaptive Research Path Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "audit_id",
+    "package_version",
+    "paths",
+    "waves",
+    "coverage_analysis",
+    "convergence_checks",
+    "adaptive_execution",
+    "termination"
+  ],
+  "properties": {
+    "audit_id": {"type": "string", "minLength": 1},
+    "package_version": {"type": "string", "minLength": 1},
+    "paths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path_id",
+          "attack_surface",
+          "hypothesis_family",
+          "trust_boundary",
+          "release_component",
+          "status",
+          "evidence_inspected",
+          "status_reason",
+          "unblock_evidence",
+          "material_new_evidence",
+          "assigned_roles",
+          "wave_id",
+          "root_cause_family",
+          "status_history"
+        ],
+        "properties": {
+          "path_id": {"type": "string", "minLength": 1},
+          "attack_surface": {"type": "string", "minLength": 1},
+          "hypothesis_family": {"type": "string", "minLength": 1},
+          "trust_boundary": {"type": "string", "minLength": 1},
+          "release_component": {"type": "string", "minLength": 1},
+          "status": {
+            "enum": ["ACTIVE", "PROMISING", "BLOCKED", "EXHAUSTED", "KILLED", "VALIDATED"]
+          },
+          "evidence_inspected": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "status_reason": {"type": "string", "minLength": 1},
+          "unblock_evidence": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "material_new_evidence": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "assigned_roles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "wave_id": {"type": "string", "minLength": 1},
+          "root_cause_family": {"type": "string", "minLength": 1},
+          "status_history": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "evidence", "materially_new_evidence"],
+              "properties": {
+                "status": {
+                  "enum": ["ACTIVE", "PROMISING", "BLOCKED", "EXHAUSTED", "KILLED", "VALIDATED"]
+                },
+                "evidence": {"type": "string", "minLength": 1},
+                "materially_new_evidence": {"type": "boolean"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "waves": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "wave_id",
+          "wave_type",
+          "core_lanes",
+          "launch_conditions",
+          "specialists",
+          "stop_conditions"
+        ],
+        "properties": {
+          "wave_id": {"type": "string", "minLength": 1},
+          "wave_type": {"enum": ["CORE", "ADAPTIVE"]},
+          "core_lanes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": ["AUTHORITY_CAPABILITY", "REPRESENTATION_CONSUMER", "STATE_COMPOSITION"]
+            }
+          },
+          "launch_conditions": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "INITIAL_AUTHORIZED_WAVE",
+                "UNCOVERED_ATTACK_SURFACE",
+                "NEW_TRUST_BOUNDARY",
+                "NEW_IMPLEMENTATION_EVIDENCE",
+                "UNTESTED_DOWNSTREAM_TRANSITION"
+              ]
+            }
+          },
+          "specialists": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "role",
+                "path_id",
+                "coverage_gap",
+                "bounded_question",
+                "falsifier",
+                "required_evidence",
+                "stop_condition"
+              ],
+              "properties": {
+                "role": {"type": "string", "minLength": 1},
+                "path_id": {"type": "string", "minLength": 1},
+                "coverage_gap": {"type": "string", "minLength": 1},
+                "bounded_question": {"type": "string", "minLength": 1},
+                "falsifier": {"type": "string", "minLength": 1},
+                "required_evidence": {"type": "string", "minLength": 1},
+                "stop_condition": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "stop_conditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "coverage_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material_surfaces", "covered_surfaces", "coverage_gaps", "analysis"],
+      "properties": {
+        "material_surfaces": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "covered_surfaces": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "coverage_gaps": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "analysis": {"type": "string", "minLength": 1}
+      }
+    },
+    "convergence_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "root_cause_family",
+          "candidate_ids",
+          "retained_candidate_id",
+          "agreement_counted_as_evidence",
+          "redirected_roles",
+          "neglected_surfaces"
+        ],
+        "properties": {
+          "root_cause_family": {"type": "string", "minLength": 1},
+          "candidate_ids": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "retained_candidate_id": {"type": "string", "minLength": 1},
+          "agreement_counted_as_evidence": {"const": false},
+          "redirected_roles": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "neglected_surfaces": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "adaptive_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "triggered",
+        "provenance_file",
+        "transcript_sha256",
+        "spawn_attempts",
+        "spawn_successes",
+        "spawn_failures",
+        "unique_specialist_ids",
+        "separate_specialist_inputs",
+        "separate_specialist_outputs",
+        "root_consumed_specialist_outputs",
+        "executed_specialist_count",
+        "execution_proven",
+        "failure_reason"
+      ],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "provenance_file": {"type": "string"},
+        "transcript_sha256": {
+          "oneOf": [
+            {"type": "string", "maxLength": 0},
+            {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          ]
+        },
+        "spawn_attempts": {"type": "integer", "minimum": 0},
+        "spawn_successes": {"type": "integer", "minimum": 0},
+        "spawn_failures": {"type": "integer", "minimum": 0},
+        "unique_specialist_ids": {"type": "integer", "minimum": 0},
+        "separate_specialist_inputs": {"type": "integer", "minimum": 0},
+        "separate_specialist_outputs": {"type": "integer", "minimum": 0},
+        "root_consumed_specialist_outputs": {"type": "integer", "minimum": 0},
+        "executed_specialist_count": {"type": "integer", "minimum": 0, "maximum": 3},
+        "execution_proven": {"type": "boolean"},
+        "failure_reason": {"type": "string"}
+      }
+    },
+    "termination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "reasons", "unavailable_evidence", "another_wave_authorized"],
+      "properties": {
+        "decision": {"enum": ["CONTINUE", "STOP"]},
+        "reasons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "unavailable_evidence": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "another_wave_authorized": {"type": "boolean"}
+      }
+    }
+  }
+}

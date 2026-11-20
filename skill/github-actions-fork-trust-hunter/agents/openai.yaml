@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Actions Fork Trust Hunter"
+  short_description: "Validate fork, workspace, and credential paths"
+  default_prompt: "Use $github-actions-fork-trust-hunter to audit an authorized GitHub Actions fork workflow for proven untrusted execution, same-job workspace tampering, credential reach, and downstream authority with safe controls. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."

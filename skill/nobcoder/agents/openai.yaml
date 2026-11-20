@@ -1,0 +1,6 @@
+interface:
+  display_name: "nobcoder"
+  short_description: "Pinned nobcoder harness clone"
+  default_prompt: "Use $nobcoder. Read /home/kali/security-research/nobcoder. Do not treat the clone as authorization for a live target."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "External AI Security Tool Governor"
+  short_description: "Govern high-authority AI security integrations"
+  default_prompt: "Use $external-ai-security-tool-governor with an authorized offensive-first boundary review to assess this external AI security platform as a pinned, reference-only integration before any installation or execution. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true
+

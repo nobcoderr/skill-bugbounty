@@ -1,0 +1,6 @@
+interface:
+  display_name: "HackerOne Reports Corpus"
+  short_description: "Search the pinned public-report corpus"
+  default_prompt: "Use $hackerone-reports-corpus to find relevant public HackerOne prior-art leads and separate corpus metadata from verified primary-source facts."
+policy:
+  allow_implicit_invocation: true

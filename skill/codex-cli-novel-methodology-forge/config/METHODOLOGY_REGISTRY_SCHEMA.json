@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "v13-methodology-definition.schema.json",
+  "title": "V13 immutable methodology definition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "methodology_id",
+    "name",
+    "origin",
+    "status",
+    "target_gap_ids",
+    "security_reasoning_principle",
+    "core_question",
+    "procedure_graph",
+    "reasoning_signature",
+    "required_inputs",
+    "expected_signal",
+    "negative_signal",
+    "oracle",
+    "falsification_strategy",
+    "termination_condition",
+    "overlaps_existing_methodologies",
+    "why_this_is_materially_distinct",
+    "potential_false_positive_modes",
+    "definition_digest",
+    "definition_frozen"
+  ],
+  "properties": {
+    "record_type": {"const": "METHODOLOGY_DEFINITION"},
+    "methodology_id": {"type": "string", "pattern": "^METH-(V12|[0-9]{4})-[A-Z0-9-]+$"},
+    "name": {"type": "string", "minLength": 3},
+    "origin": {"enum": ["FROZEN_V12", "GENERATED"]},
+    "status": {"enum": ["BASELINE_FROZEN", "EXPERIMENTAL", "KILLED"]},
+    "target_gap_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "security_reasoning_principle": {"type": "string", "minLength": 10},
+    "core_question": {"type": "string", "minLength": 10},
+    "procedure_graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_fact_types", "nodes", "oracle_class", "falsifier_class", "termination_class"],
+      "properties": {
+        "start_fact_types": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "nodes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["step_id", "operator", "consumes", "produces", "depends_on"],
+            "properties": {
+              "step_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"},
+              "operator": {"type": "string", "minLength": 2},
+              "consumes": {"type": "array", "items": {"type": "string"}},
+              "produces": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+              "depends_on": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+            }
+          }
+        },
+        "oracle_class": {"type": "string", "minLength": 3},
+        "falsifier_class": {"type": "string", "minLength": 3},
+        "termination_class": {"type": "string", "minLength": 3}
+      }
+    },
+    "reasoning_signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_point",
+        "traversal_direction",
+        "temporal_model",
+        "authority_model",
+        "representation_model",
+        "failure_model",
+        "composition_arity",
+        "oracle_class"
+      ],
+      "properties": {
+        "start_point": {"type": "string"},
+        "traversal_direction": {"type": "string"},
+        "temporal_model": {"type": "string"},
+        "authority_model": {"type": "string"},
+        "representation_model": {"type": "string"},
+        "failure_model": {"type": "string"},
+        "composition_arity": {"type": "string"},
+        "oracle_class": {"type": "string"}
+      }
+    },
+    "required_inputs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "expected_signal": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "negative_signal": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "oracle": {"type": "string", "minLength": 5},
+    "falsification_strategy": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "termination_condition": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "overlaps_existing_methodologies": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "why_this_is_materially_distinct": {"type": "string", "minLength": 10},
+    "potential_false_positive_modes": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "definition_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "definition_frozen": {"const": true},
+    "source_reference": {"type": "string"},
+    "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sequence": {"type": "integer", "minimum": 1},
+    "previous_record_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "record_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

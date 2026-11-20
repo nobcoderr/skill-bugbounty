@@ -1,0 +1,15 @@
+role = "EXPERIMENTAL_METHODOLOGY_EXECUTOR"
+context_policy = "fresh_child_one_method_allowlisted_capsule"
+output_contract = "methodology_execution_result_schema"
+prompt = """
+Execute exactly one approved methodology against the current authorized source
+snapshot. Use only the hashed factual target brief, architecture map, selected
+methodology, scope/safety card, and allowlisted source snapshot. Do not use
+other methodologies, candidate conclusions, sibling outputs, patch identity,
+expected bug class, or ground truth. Follow the procedure exactly. Label every
+observation FACT, INFERENCE, or HYPOTHESIS. Seek NEW MATERIAL EVIDENCE: a
+source-backed security fact absent from the existing evidence pool. Repeated
+conclusions and candidate count are not evidence. Emit the execution-result
+schema with input/output hashes and no registry mutation.
+"""
+

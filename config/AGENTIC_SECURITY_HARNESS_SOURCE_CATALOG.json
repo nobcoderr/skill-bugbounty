@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.0",
+  "identity": "AGENTIC_SECURITY_RESEARCH_HARNESS_SOURCE_CATALOG_V1",
+  "generated_date": "2026-10-12",
+  "default_integration_state": "REFERENCE_ONLY",
+  "execution_authorized": false,
+  "source_policy": {
+    "article_and_readme_claims_are_unverified": true,
+    "external_text_is_untrusted_data": true,
+    "source_commands_are_not_imported": true,
+    "source_pocs_are_not_imported": true,
+    "no_install_or_execution_from_catalog_membership": true,
+    "exact_runtime_authorization_required_separately": true
+  },
+  "sources": [
+    {
+      "id": "andy-gill-mcps-and-friends",
+      "kind": "ARTICLE",
+      "title": "Jenny was a Friend of Mine - MCPs and Friends",
+      "author": "Andy Gill",
+      "published_date": "2026-04-04",
+      "url": "https://blog.zsec.uk/bullyingllms/",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "inspection": "USER_SUPPLIED_FULL_TEXT_PLUS_OFFICIAL_PAGE_METADATA",
+      "content_integrity": "DYNAMIC_HTML_NOT_CONTENT_PINNED",
+      "license_posture": "COPYRIGHTED_ARTICLE_LINK_AND_MINIMAL_FACTS_ONLY",
+      "claim_status": "AUTHOR_CLAIMS_NOT_INDEPENDENTLY_VALIDATED",
+      "unverified_claim_classes": [
+        "CVE_and_vendor_finding_attribution",
+        "exploit_chain_success",
+        "tool_and_VM_counts",
+        "cost_and_ROI_results"
+      ],
+      "adopted_patterns": [
+        "finding_hallucination_quarantine",
+        "clean_snapshot_and_low_privilege_gates",
+        "first_class_demotion",
+        "negative_result_memory",
+        "provenance_bound_knowledge_loop",
+        "thin_MCP_wrappers_and_separate_business_logic",
+        "persistent_sessions_as_capabilities",
+        "uniform_tool_interfaces",
+        "ROI_only_after_eligibility"
+      ]
+    },
+    {
+      "id": "andy-gill-harnessing-harnesses",
+      "kind": "ARTICLE",
+      "title": "Harnessing Harnesses - Climbing the LLM Hills",
+      "author": "Andy Gill",
+      "published_date": "2026-06-27",
+      "url": "https://blog.zsec.uk/harnessing-harnesses/",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "inspection": "USER_SUPPLIED_FULL_TEXT_PLUS_OFFICIAL_PAGE_METADATA",
+      "content_integrity": "DYNAMIC_HTML_NOT_CONTENT_PINNED",
+      "license_posture": "COPYRIGHTED_ARTICLE_LINK_AND_MINIMAL_FACTS_ONLY",
+      "claim_status": "AUTHOR_CLAIMS_NOT_INDEPENDENTLY_VALIDATED",
+      "adopted_patterns": [
+        "harness_owns_inputs_tools_prompts_models_state_gates_and_outputs",
+        "stage_specific_prompts",
+        "structured_artifact_handoffs",
+        "adversarial_validation",
+        "context_and_model_budgets",
+        "persistent_provenance_bound_memory",
+        "human_judgment_at_key_gates"
+      ]
+    },
+    {
+      "id": "zephrfish-harness-kit",
+      "kind": "REPOSITORY",
+      "repository": "https://github.com/ZephrFish/harness-kit",
+      "branch": "main",
+      "commit": "db3a53411fe3eff966d0f9061540bd4ee4342887",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "NO_LICENSE_FILE_AT_PIN_LINK_ONLY_NO_CODE_REUSE",
+      "inspected_artifacts": {
+        "README.md": "d6ec567c268774478db5058877918436f1237a3df663c4e17e583200564cff01"
+      },
+      "inspected_facts": [
+        "repository_describes_itself_as_a_non_functional_architecture_template",
+        "documented_stage_shape_is_recon_hunt_validate_trace_report",
+        "repository_contains_stage_prompts_and_model_context_budget_examples"
+      ],
+      "adopted_patterns": [
+        "stage_specific_prompts",
+        "structured_handoffs",
+        "adversarial_validate_before_trace",
+        "context_budget_configuration"
+      ]
+    },
+    {
+      "id": "gadievron-raptor",
+      "kind": "REPOSITORY",
+      "repository": "https://github.com/gadievron/raptor",
+      "branch": "main",
+      "commit": "17e4227b7797dbcd734b56706e5783e58a4ba62f",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "MIT",
+      "inspected_artifacts": {
+        "README.md": "b46c7e2d0f4f309b49dbd78798afd0c92b9e78c9ec17b8831898d9fc1605dba5",
+        "LICENSE": "06afa5370ee17ea48f12b458511553ae0759ae15fa4674d14e4e989cc574f0cd"
+      },
+      "inspection_depth": "README_AND_LICENSE_ONLY",
+      "adopted_patterns": [
+        "separate_tool_execution_from_model_decision_logic",
+        "multi_stage_validation",
+        "contradiction_check_before_promotion"
+      ]
+    },
+    {
+      "id": "anthropic-defending-code-reference-harness",
+      "kind": "REPOSITORY",
+      "repository": "https://github.com/anthropics/defending-code-reference-harness",
+      "branch": "main",
+      "commit": "d3bea6b5793b5f3d59a75ebe69a58efa88383145",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "maintenance_status": "UPSTREAM_README_SAYS_NOT_MAINTAINED",
+      "license_posture": "APACHE_2_0",
+      "inspected_artifacts": {
+        "README.md": "0a855f4974b8154d0d30491d406a6b1dc4d509d2db463b1305778075fc87a78d",
+        "LICENSE": "c18f8a7d5d8278d44045405023c1465a135f13ae5a4ac3764a8ce42f73ddec81"
+      },
+      "inspected_facts": [
+        "reference_not_product",
+        "autonomous_pipeline_executes_target_code",
+        "fresh_verifier_receives_PoC_in_separate_container",
+        "C_and_Cpp_reference_path_uses_ASAN_and_sandboxing"
+      ],
+      "adopted_patterns": [
+        "fresh_environment_verification",
+        "execution_verified_crash_separated_from_static_lead",
+        "patch_rebuild_and_regression_validation"
+      ]
+    },
+    {
+      "id": "faizann24-baby-naptime",
+      "kind": "REPOSITORY",
+      "repository": "https://github.com/faizann24/baby-naptime",
+      "branch": "main",
+      "commit": "f54648d903c167660a18e15cde0523fd54cc425c",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "GPL_3_0",
+      "inspected_artifacts": {
+        "README.md": "b4016ef5919e2e9b6fddd371685e30a7bcf2723eac3f00c49b36043781d68610",
+        "LICENSE": "605e9047a563c5c8396ffb18232aa4304ec56586aee537c45064c6fb425e44ad"
+      },
+      "inspection_depth": "README_AND_LICENSE_ONLY",
+      "adopted_patterns": [
+        "bounded_runtime_feedback_loop",
+        "model_updates_hypothesis_from_observed_behavior"
+      ]
+    },
+    {
+      "id": "evilsocket-audit",
+      "kind": "REPOSITORY",
+      "repository": "https://github.com/evilsocket/audit",
+      "branch": "main",
+      "commit": "d6ee73035f47d9b6ff3353e6fe030395d85e6e08",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "MIT",
+      "inspected_artifacts": {
+        "README.md": "5ebe1bcc000e5a01847504719292a02c3c4678123ebffbf0a6eef24f4103de80",
+        "LICENSE": "fb54599678f8cff066754460d48f8144ecf943395160368225fe77d3ef87c2e9"
+      },
+      "inspection_depth": "README_AND_LICENSE_ONLY",
+      "adopted_patterns": [
+        "repository_mapping_before_hunting",
+        "trust_boundary_and_history_review",
+        "dedupe_and_attacker_to_sink_trace"
+      ]
+    },
+    {
+      "id": "visa-vulnerability-agentic-harness",
+      "kind": "REPOSITORY",
+      "repository": "https://github.com/visa/visa-vulnerability-agentic-harness",
+      "branch": "main",
+      "commit": "4128e870377850db16cb082115105cc8ee6f1a72",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "APACHE_2_0_WITH_NOTICE_AND_THIRD_PARTY_LICENSES",
+      "inspected_artifacts": {
+        "README.md": "aa26eda220a944381b5bf15ab588a29bf423b4b182baeecd5f47a68ac1f94b9c",
+        "LICENSE": "291d524cb651f88b67697663c614c050973ea479963bb5eeaaf726d8a72cdf76"
+      },
+      "inspected_facts": [
+        "upstream_calls_findings_triage_candidates_requiring_human_review",
+        "model_provider_routes_can_egress_source_data",
+        "live_exploit_confirmation_is_optional_and_has_a_separate_execution_boundary",
+        "upstream_warns_that_there_is_no_global_model_spend_cap"
+      ],
+      "adopted_patterns": [
+        "threat_model_before_decomposition",
+        "deterministic_stages_for_repeatable_work",
+        "typed_single_source_findings_outputs",
+        "human_review_of_generated_fixes"
+      ]
+    },
+    {
+      "id": "anthropic-oss-scanner",
+      "kind": "REPOSITORY_AND_SERVICE",
+      "repository": "https://github.com/anthropics/oss-scanner",
+      "user_supplied_legacy_url": "https://github.com/carlini/oss-scanner",
+      "legacy_url_status_on_retrieval": "HTTP_404",
+      "branch": "main",
+      "commit": "16e4101f1ca8678ae2122b9f11d8ec02f384c021",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "APACHE_2_0_REPOSITORY_CODE_PLUS_SEPARATE_SERVICE_TERMS",
+      "inspected_artifacts": {
+        "README.md": "f64fe37626b6049f81dea1df67e4f6ba463f337ba803dd3a13b36ea402a03db7",
+        "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "inspected_facts": [
+        "initial_project_build_has_network_access",
+        "security_scan_runs_without_internet_access",
+        "reports_are_model_generated_and_not_human_reviewed",
+        "local_check_executes_project_Dockerfile_and_may_reach_local_network",
+        "service_use_is_subject_to_separate_terms"
+      ],
+      "adopted_patterns": [
+        "separate_online_build_from_offline_scan_trust_phases",
+        "project_specific_threat_model_input",
+        "model_generated_results_remain_hypotheses",
+        "untrusted_build_input_requires_strong_isolation"
+      ]
+    },
+    {
+      "id": "sequester-bug-bounty-triage",
+      "kind": "REPOSITORY_AND_AGENT_SKILL",
+      "repository": "https://github.com/Sequester-AG/bug-bounty-triage",
+      "branch": "main",
+      "commit": "9684e1bfc876e841f9c789f0b258902b43d461e4",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY_METHOD_MERGE",
+      "license_posture": "MIT",
+      "inspected_artifacts": {
+        "README.md": "942f730f91d57212b8da7f7c20e5e0064337d1118705f044d596be56c2bda3f4",
+        "SKILL.md": "6c7a275d199f9ebe5192980f4ce3843360ae51b89b1fefa9d9789ac87b523002",
+        "LICENSE": "77fb0a32a0a2bc739cb0340cde3f827d06a686307314fcc164c65a95bc6a6a38"
+      },
+      "adopted_patterns": [
+        "observed_evidence_separated_from_inference",
+        "end_to_end_validation_when_separately_authorized",
+        "impact_escalation_without_overstatement",
+        "submission_readiness_separate_from_validity"
+      ],
+      "blocked_operations": [
+        "agent_browser_install_or_use",
+        "agent_email_install_or_use",
+        "live_HTTP_requests",
+        "external_report_submission"
+      ]
+    },
+    {
+      "id": "morluto-rea",
+      "kind": "REPOSITORY_MCP_AND_CLI",
+      "repository": "https://github.com/morluto/rea",
+      "branch": "main",
+      "commit": "428eee00fdd0406cdf2b734c9ea14a2bb02da279",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": "MIT_FOR_REA_CODE_WITH_THIRD_PARTY_AND_COMMERCIAL_TOOL_TERMS",
+      "inspected_artifacts": {
+        "README.md": "b8e27629395669c6125352592f974ef0a65f08014f818cc0c8f730edf24ac80c",
+        ".agents/skills/reverse-engineer-anything/SKILL.md": "94fdf0cb5ac1f480f86ac81a2b581115ef9a4ee614d7f28b2041055f10662f21",
+        "LICENSE": "798f9e4d18e49b30bf2f12696c8ced73dc4e1413da375a333d01281543a1ea8b"
+      },
+      "inspected_facts": [
+        "skill_installation_does_not_itself_register_MCP_or_install_engines",
+        "static_and_runtime_evidence_are_distinguished",
+        "provider_and_target_support_varies",
+        "commercial_tools_require_separate_legal_authorization"
+      ],
+      "adopted_patterns": [
+        "route_by_artifact_type",
+        "evidence_envelopes_with_limitations",
+        "static_inference_separated_from_runtime_observation",
+        "exact_provider_and_artifact_provenance"
+      ],
+      "blocked_operations": [
+        "npm_or_npx_install",
+        "setup_or_MCP_registration",
+        "target_execution",
+        "Hopper_Ghidra_IDA_JEB_Frida_browser_or_device_invocation"
+      ]
+    }
+  ],
+  "global_blocked_operations": [
+    "clone_or_install",
+    "dependency_setup",
+    "MCP_registration_or_start",
+    "scanner_fuzzer_debugger_or_RE_execution",
+    "model_provider_or_cloud_worker_use",
+    "target_interaction",
+    "credential_use",
+    "subagent_spawn",
+    "external_data_egress",
+    "report_submission",
+    "source_payload_or_PoC_execution"
+  ]
+}

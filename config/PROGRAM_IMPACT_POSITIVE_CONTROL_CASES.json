@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "source": "user-supplied HackerOne Resolved and rewarded adjudications",
+  "purpose": "positive controls for capability-delta, protected-consumer, and report-ready triage",
+  "cases": [
+    {
+      "report_id": "3931777",
+      "program": "WordPress",
+      "adjudication_status": "RESOLVED",
+      "reward_status": "PAID",
+      "pattern": "low_privilege_metadata_poisoning_to_arbitrary_file_deletion",
+      "starting_authority": "Author can upload and edit only an attachment they own",
+      "attacker_input": "client-side media finalization stores attacker-controlled attachment filenames in metadata",
+      "consumer_chain": "poisoned size metadata is copied into backup metadata and later consumed by attachment deletion",
+      "protected_sink": "filesystem deletion whose target and confinement directory are both derived from attacker-controlled metadata",
+      "resulting_capability": "deletion of a PHP-process-writable file outside the uploads and document roots",
+      "capability_delta": "an Author gains a filesystem deletion capability unavailable through the intended media role",
+      "production_reachability": "released Gutenberg path and independently reproduced WordPress core trunk path intended for HTTPS production",
+      "negative_controls": "Contributor was rejected and Author access to an Administrator-owned attachment was rejected",
+      "manual_proof": "researcher-owned canary files were deleted in throwaway labs with before-and-after filesystem evidence",
+      "safe_proof_rule": "use only disposable canary files and stop after proving boundary escape; never delete real configuration or third-party data",
+      "future_disposition": "the exact finalize-to-backup-size deletion root is public and fixed; use KILL_KNOWN_OR_DUPLICATE unless a current release has a distinct bypass or consumer"
+    },
+    {
+      "report_id": "3931771",
+      "program": "WordPress",
+      "adjudication_status": "RESOLVED",
+      "reward_status": "PAID",
+      "pattern": "low_privilege_metadata_poisoning_to_privileged_stored_xss",
+      "starting_authority": "Author can upload and edit only an attachment they own and lacks unfiltered_html",
+      "attacker_input": "client-side media finalization stores an attacker-controlled sub-size filename verbatim",
+      "consumer_chain": "image metadata is converted into an image URL and rendered without contextual escaping in authenticated administration views",
+      "protected_sink": "Administrator browser execution in the wp-admin origin",
+      "resulting_capability": "stored script execution across the Author-to-Administrator privilege boundary",
+      "capability_delta": "an Author without script-posting authority gains code execution in a higher-privileged Administrator session",
+      "production_reachability": "released Gutenberg path and independently reproduced WordPress core trunk path with browser execution",
+      "negative_controls": "Contributor and cross-owner attachment writes were rejected, clean neighboring attachments did not inject, and unaffected views were checked",
+      "manual_proof": "real browser execution changed an observable property in the Administrator session on genuine administration URLs",
+      "safe_proof_rule": "use an inert DOM canary in a disposable owned lab and do not create users, install plugins, steal nonces, or perform post-exploitation",
+      "future_disposition": "the exact finalize-to-unescaped-media-view root is public and fixed; use KILL_KNOWN_OR_DUPLICATE unless a current release has a distinct bypass or consumer"
+    }
+  ]
+}

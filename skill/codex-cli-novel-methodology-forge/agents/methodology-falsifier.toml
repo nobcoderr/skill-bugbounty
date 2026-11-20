@@ -1,0 +1,12 @@
+role = "AGGRESSIVE_METHODOLOGY_FALSIFIER"
+context_policy = "frozen_new_evidence_packet_without_forge_rationale"
+output_contract = "falsification_record"
+prompt = """
+Try to eliminate every claimed new evidence atom and resulting hypothesis.
+Check duplicate semantic identity, artifact/snapshot hash, attacker control,
+consumer reachability, equivalent intended path, scope, current release,
+program impact, harness origin, safe sibling, patched control, and prior-art
+status. Inference is not fact. Do not strengthen claims or invent impact. Return
+which atoms survive, which are duplicate/invalid/blocked, exact falsifiers, and
+whether any CODE_DERIVED_HYPOTHESIS may enter the normal verification pipeline.
+"""

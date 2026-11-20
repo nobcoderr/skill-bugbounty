@@ -1,0 +1,15 @@
+{
+  "normal_workflow": "V12",
+  "surviving_count": 0,
+  "valid_finding_count": 0,
+  "pending_verification_count": 0,
+  "normal_audit_frozen": true,
+  "known_factual_relations": [
+    "capability_issuer receives a policy decision",
+    "protected_consumer reads an issued capability"
+  ],
+  "candidate_registry": [],
+  "research_paths": [
+    {"path_id": "RP-SYNTHETIC-INPUT", "status": "EXHAUSTED", "scope": "capability creation input validation"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "repository": "https://github.com/reddelexc/hackerone-reports",
+  "upstream_branch": "master",
+  "commit": "4c279ab93db2791adf4d6775d7539ee05b02cdb0",
+  "tree": "264bbc850f94294570df9b3f3560a9a7e98004a1",
+  "retrieved_date": "2026-11-14",
+  "local_path": "/home/kali/security-research/hackerone-reports",
+  "checkout": "detached",
+  "integration_state": "REFERENCE_ONLY",
+  "license_posture": "UNDECLARED_NO_LICENSE_FILE",
+  "commit_signature_status": "N",
+  "data_csv_sha256": "a39d5a83345621fa81fc902e57a626eb6de7f03d6de58a55d7370e0116f092ca",
+  "data_csv_lines": 15220,
+  "network_or_execution_authorized": false
+}

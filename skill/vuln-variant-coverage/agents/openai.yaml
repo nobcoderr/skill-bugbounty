@@ -1,0 +1,6 @@
+interface:
+  display_name: "Vulnerability variant coverage"
+  short_description: "Test program A report shapes on program B"
+  default_prompt: "Use $vuln-variant-coverage after the system model. Take a disclosed report from program A and test that bug shape on authorized program B, one hypothesis at a time. Do not replay A's request."
+policy:
+  allow_implicit_invocation: true

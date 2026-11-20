@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "repository": "https://github.com/nobcoderr/nobcoder",
+  "upstream_branch": "main",
+  "commit": "1775d268508cb2ae5805062b00e7f82c3ee23c91",
+  "tree": "06261eee2fd34a09e8d9657b296207b6f245b2af",
+  "retrieved_date": "2026-11-14",
+  "local_path": "/home/kali/security-research/nobcoder",
+  "checkout": "detached",
+  "integration_state": "REFERENCE_ONLY",
+  "license_posture": "APACHE_2_0_PROJECT_AUTHORED_THIRD_PARTY_SEPARATE",
+  "commit_signature_status": "N",
+  "readme_sha256": "5693d9618d54de1b1adb8316ee58559a6b2ceac6a3d401157b103e16ea2d6227",
+  "upstream_skill_sha256": "1f44e3954e3568cb573f6cf4d9ef738a3ee4783a1c114dd54a6d3f522483eb30",
+  "runtime_installed": false,
+  "network_or_campaign_execution_authorized": false
+}

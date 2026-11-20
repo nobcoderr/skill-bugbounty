@@ -1,0 +1,9 @@
+# One explicitly authorized domain or hostname per line.
+# Exact host: app.example.com
+# Domain plus approved subdomains: .example.com
+# Blank lines and # comments are ignored.
+# Do not add third-party SaaS/CDN/storage hosts unless they are explicitly in scope.
+
+example.com
+.example.com
+api.example.net

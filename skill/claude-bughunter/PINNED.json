@@ -1,0 +1,12 @@
+{
+  "id": "elementalsouls-claude-bughunter",
+  "repository": "https://github.com/elementalsouls/Claude-BugHunter",
+  "commit": "ce84ad24cbe8a97a4193ffdd46443789037ec9ca",
+  "retrieved_date": "2026-11-13",
+  "local_clone": "/home/kali/security-research/Claude-BugHunter",
+  "integration_state": "METHODOLOGY_ACTIVE",
+  "writable": true,
+  "do_not_run": [
+    "official -Agents installer against the skill pack root"
+  ]
+}

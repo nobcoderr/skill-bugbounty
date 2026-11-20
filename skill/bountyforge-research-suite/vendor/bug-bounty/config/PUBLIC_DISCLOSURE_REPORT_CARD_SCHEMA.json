@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.codex.invalid/schemas/public-disclosure-report-card.json",
+  "title": "Public Disclosure Semantic Learning Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "source_id",
+    "canonical_url",
+    "analysis_status",
+    "attacker_start",
+    "attacker_control",
+    "entry_point",
+    "primitive",
+    "boundary",
+    "sink",
+    "capability_delta",
+    "prerequisites",
+    "proof_oracle",
+    "root_cause",
+    "duplicate_signature",
+    "evidence_urls"
+  ],
+  "properties": {
+    "source": {
+      "enum": [
+        "google-bughunters",
+        "disclosure-index",
+        "bug-bounty-daily",
+        "redlimit-bbrd",
+        "other-public-source"
+      ]
+    },
+    "source_id": {"type": "string", "minLength": 1},
+    "canonical_url": {"type": "string", "format": "uri"},
+    "analysis_status": {
+      "enum": [
+        "DEEPLY_REVIEWED",
+        "EXACT_ROOT_EXTRACTED",
+        "STALE_NEEDS_REVIEW",
+        "REJECTED_INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "attacker_start": {"type": "string"},
+    "attacker_control": {"type": "string"},
+    "entry_point": {"type": "string"},
+    "primitive": {"type": "string"},
+    "boundary": {"type": "string"},
+    "enforcing_component": {"type": "string"},
+    "sink": {"type": "string"},
+    "capability_delta": {"type": "string"},
+    "prerequisites": {"type": "string"},
+    "proof_oracle": {"type": "string"},
+    "root_cause": {"type": "string"},
+    "chain_edges": {"type": "array", "items": {"type": "string"}},
+    "negative_controls": {"type": "array", "items": {"type": "string"}},
+    "patch_or_fix": {"type": "string"},
+    "current_reachability": {"type": "string"},
+    "duplicate_signature": {"type": "string"},
+    "evidence_urls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "format": "uri"}
+    },
+    "analyst_notes": {"type": "string"}
+  }
+}

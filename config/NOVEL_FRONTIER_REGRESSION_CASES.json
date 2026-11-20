@@ -1,0 +1,319 @@
+{
+  "package_version": "2026.09.04-xchain-lab-v1-live-audit-only",
+  "schema_version": 1,
+  "classification": "RULE_REGRESSION_NOT_DISCOVERY_BENCHMARK",
+  "acceptance_targets": {
+    "false_positive_bounty_grade": 0,
+    "hard_failure": 0,
+    "prior_art_leakage": 0,
+    "context_contamination": 0,
+    "evaluator_gaming": 0,
+    "code_derived_hypotheses_min": 1,
+    "held_out_discovery": "PASS"
+  },
+  "current_capability_status": {
+    "held_out_discovery": "NOT_RUN",
+    "blind_generalization": "NOT_PROVEN"
+  },
+  "blind_benchmark_tracks": [
+    {
+      "id": "V8-A",
+      "target": "unknown seeded state-machine bug",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V8-B",
+      "target": "unknown cross-feature composition",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V8-C",
+      "target": "unknown resource amplification",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V8-D",
+      "target": "unknown differential path",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    },
+    {
+      "id": "V8-E",
+      "target": "anti-overfitting safe repository",
+      "seed_location": "EXTERNAL_EVALUATOR_ONLY",
+      "ground_truth_in_package": false
+    }
+  ],
+  "historical_held_out_protocol": {
+    "family_count_min": 3,
+    "family_count_max": 5,
+    "exclude_all_v1_v9_development_lineages": true,
+    "curator_gate_required": true,
+    "auditor_ground_truth_isolation_required": true,
+    "status": "NOT_STARTED"
+  },
+  "rule_cases": [
+    {
+      "id": "RULE-V8-A",
+      "name": "code-derived state-machine hypothesis",
+      "expected_valid": true,
+      "overrides": {
+        "discovery_axes": ["INVARIANT_MINING", "STATE_MACHINE"],
+        "state_sequence": ["created", "revoked", "delayed-consume"]
+      }
+    },
+    {
+      "id": "RULE-V8-B",
+      "name": "unresolved cross-feature edge remains live",
+      "expected_valid": true,
+      "overrides": {
+        "discovery_axes": ["CROSS_FEATURE_COMPOSITION"],
+        "composition_candidates": [
+          {
+            "primitive_a": "stored attacker metadata",
+            "primitive_b": "delayed trusted consumer",
+            "downstream_consumer": "owned fixture worker",
+            "status": "UNTESTED"
+          }
+        ],
+        "composition_search_complete": false
+      }
+    },
+    {
+      "id": "RULE-V8-C",
+      "name": "measured resource amplification model",
+      "expected_valid": true,
+      "overrides": {
+        "discovery_axes": ["RESOURCE_AMPLIFICATION"],
+        "resource_amplification": {
+          "dimension": "memory",
+          "attacker_controlled_axis": "logical offset",
+          "attacker_cost": 8,
+          "victim_cost": 8192,
+          "amplification_ratio": 1024,
+          "bound_or_cap": "no fixture cap before allocation",
+          "measurement_evidence": "isolated allocator counter"
+        }
+      }
+    },
+    {
+      "id": "RULE-V8-D",
+      "name": "differential equivalent paths",
+      "expected_valid": true,
+      "overrides": {
+        "discovery_axes": ["DIFFERENTIAL_EQUIVALENCE"],
+        "equivalent_paths_compared": ["fixture direct path", "fixture queued path"]
+      }
+    },
+    {
+      "id": "RULE-V8-E",
+      "name": "safe repository yields no bounty-grade finding",
+      "expected_valid": true,
+      "safe_repository_case": true,
+      "overrides": {
+        "stage": "KILLED",
+        "verdict": "KILL"
+      }
+    },
+    {
+      "id": "RULE-EMBARGO-1",
+      "name": "prior art before proof is rejected",
+      "expected_valid": false,
+      "prior_art_leakage_probe": true,
+      "expected_error": "prior art embargo violated",
+      "overrides": {
+        "prior_art": {
+          "status": "NO_OVERLAP_FOUND",
+          "sources_checked": ["premature vulnerability lookup"],
+          "overlap_analysis": "searched too early"
+        }
+      }
+    },
+    {
+      "id": "RULE-EMBARGO-2",
+      "name": "post-proof flag cannot precede unlock",
+      "expected_valid": false,
+      "expected_error": "cannot precede embargo unlock",
+      "overrides": {
+        "prior_art_checked_after_proof": true
+      }
+    },
+    {
+      "id": "RULE-COMPOSE-KILL",
+      "name": "unresolved composition cannot be killed",
+      "expected_valid": false,
+      "expected_error": "retains an unresolved composition path",
+      "overrides": {
+        "stage": "KILLED",
+        "verdict": "KILL",
+        "discovery_axes": ["CROSS_FEATURE_COMPOSITION"],
+        "composition_candidates": [
+          {
+            "primitive_a": "weak primitive a",
+            "primitive_b": "weak primitive b",
+            "downstream_consumer": "fixture consumer",
+            "status": "UNTESTED"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RULE-ZERO-DAY",
+      "name": "zero-day certainty field is forbidden",
+      "expected_valid": false,
+      "expected_error": "is forbidden",
+      "overrides": {
+        "zero_day": true
+      }
+    },
+    {
+      "id": "RULE-DERIVATION",
+      "name": "non-target-native derivation is rejected",
+      "expected_valid": false,
+      "expected_error": "must be TARGET_NATIVE",
+      "overrides": {
+        "derivation_origin": "PATTERN_REPLAY"
+      }
+    },
+    {
+      "id": "RULE-ANCHORS",
+      "name": "one source fact is insufficient",
+      "expected_valid": false,
+      "expected_error": "at least two anchors",
+      "overrides": {
+        "code_fact_anchors": [
+          {
+            "source_type": "CODE",
+            "location": "fixture/producer:10",
+            "fact": "producer emits a delayed handle"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RULE-AMPLIFICATION",
+      "name": "non-amplifying cost model is rejected",
+      "expected_valid": false,
+      "expected_error": "victim_cost > attacker_cost",
+      "overrides": {
+        "discovery_axes": ["RESOURCE_AMPLIFICATION"],
+        "resource_amplification": {
+          "dimension": "cpu",
+          "attacker_controlled_axis": "count",
+          "attacker_cost": 100,
+          "victim_cost": 10,
+          "amplification_ratio": 0.1,
+          "bound_or_cap": "bounded",
+          "measurement_evidence": "fixture counter"
+        }
+      }
+    },
+    {
+      "id": "RULE-DIFFERENTIAL",
+      "name": "one differential path is insufficient",
+      "expected_valid": false,
+      "expected_error": "requires two distinct paths",
+      "overrides": {
+        "discovery_axes": ["DIFFERENTIAL_EQUIVALENCE"],
+        "equivalent_paths_compared": ["only one path"]
+      }
+    },
+    {
+      "id": "RULE-STRONG",
+      "name": "strong candidate cannot skip proofs",
+      "expected_valid": false,
+      "expected_error": "STRONG_CANDIDATE requires",
+      "overrides": {
+        "stage": "STRONG_CANDIDATE",
+        "verdict": "STRONG"
+      }
+    },
+    {
+      "id": "RULE-NOVELTY",
+      "name": "novelty remains unverified before final checks",
+      "expected_valid": false,
+      "expected_error": "must remain UNVERIFIED",
+      "overrides": {
+        "novelty_status": "NO_OVERLAP_FOUND"
+      }
+    },
+    {
+      "id": "RULE-CONTEXT-LEAKAGE",
+      "name": "hidden target answer contamination is rejected",
+      "expected_valid": false,
+      "context_contamination_probe": true,
+      "expected_error": "context is contaminated",
+      "overrides": {
+        "research_cascade": {
+          "stage_isolation": {
+            "target_answer_leakage": true
+          }
+        }
+      }
+    },
+    {
+      "id": "RULE-EVALUATOR-GAMING",
+      "name": "model-only acceptance is rejected",
+      "expected_valid": false,
+      "evaluator_gaming_probe": true,
+      "expected_error": "evaluation decision must be deterministic",
+      "overrides": {
+        "research_cascade": {
+          "responsibility_partition": {
+            "evaluation_decision": "MODEL_ONLY"
+          }
+        }
+      }
+    },
+    {
+      "id": "RULE-INSPIRATION-GROUND-TRUTH",
+      "name": "micro-inspiration cannot reveal vulnerability ground truth",
+      "expected_valid": false,
+      "context_contamination_probe": true,
+      "expected_error": "contains vulnerability ground truth",
+      "overrides": {
+        "research_cascade": {
+          "inspiration_fragments": [
+            {
+              "source_id": "fixture/hidden-answer",
+              "source_kind": "TARGET_CODE",
+              "abstract_signal": "the expected vulnerable operation and affected path",
+              "contains_vulnerability_ground_truth": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "RULE-ORACLE",
+      "name": "empty deterministic oracle is rejected",
+      "expected_valid": false,
+      "evaluator_gaming_probe": true,
+      "expected_error": "deterministic_acceptance_rules must not be empty",
+      "overrides": {
+        "research_cascade": {
+          "evaluation_oracle": {
+            "deterministic_acceptance_rules": []
+          }
+        }
+      }
+    },
+    {
+      "id": "RULE-CASCADE-PROVENANCE",
+      "name": "cascade children preserve parent and child provenance",
+      "expected_valid": false,
+      "expected_error": "cascade child must preserve parent and child discovery provenance",
+      "overrides": {
+        "research_cascade": {
+          "cascade": {
+            "parent_candidate_id": "frontier-parent-fixture",
+            "discovery_chain": ["parent observation only"]
+          }
+        }
+      }
+    }
+  ]
+}

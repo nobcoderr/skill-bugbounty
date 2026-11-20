@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "package_version": "2026.09.04-xchain-lab-v1-live-audit-only",
+  "description": "Abstract non-blind development regressions for patch-variant, checked-versus-consumed, and validator-versus-protocol-consumer KILL decisions.",
+  "cases": [
+    {
+      "id": "zero-only-guard-leaves-decimal-error-domain",
+      "checked_matches_consumed": true,
+      "operation_error_domain_complete": false,
+      "downstream_protocol_capability_bounded": true,
+      "failure_rejected_before_critical_consumer": false,
+      "protected_effect_observed": true,
+      "evidence_complete": true,
+      "expected": "DO_NOT_KILL"
+    },
+    {
+      "id": "all-arithmetic-errors-rejected-before-state",
+      "checked_matches_consumed": true,
+      "operation_error_domain_complete": true,
+      "downstream_protocol_capability_bounded": true,
+      "failure_rejected_before_critical_consumer": true,
+      "protected_effect_observed": false,
+      "evidence_complete": true,
+      "expected": "KILL_ALLOWED"
+    },
+    {
+      "id": "selector-validates-child-consumer-uses-parent",
+      "checked_matches_consumed": false,
+      "operation_error_domain_complete": true,
+      "downstream_protocol_capability_bounded": true,
+      "failure_rejected_before_critical_consumer": true,
+      "protected_effect_observed": true,
+      "evidence_complete": true,
+      "expected": "DO_NOT_KILL"
+    },
+    {
+      "id": "selected-node-used-with-typed-dom-construction",
+      "checked_matches_consumed": true,
+      "operation_error_domain_complete": true,
+      "downstream_protocol_capability_bounded": true,
+      "failure_rejected_before_critical_consumer": true,
+      "protected_effect_observed": false,
+      "evidence_complete": true,
+      "expected": "KILL_ALLOWED"
+    },
+    {
+      "id": "url-validator-accepts-file-protocol-consumer",
+      "checked_matches_consumed": true,
+      "operation_error_domain_complete": true,
+      "downstream_protocol_capability_bounded": false,
+      "failure_rejected_before_critical_consumer": true,
+      "protected_effect_observed": true,
+      "evidence_complete": true,
+      "expected": "DO_NOT_KILL"
+    },
+    {
+      "id": "explicit-scheme-set-matches-client-capability",
+      "checked_matches_consumed": true,
+      "operation_error_domain_complete": true,
+      "downstream_protocol_capability_bounded": true,
+      "failure_rejected_before_critical_consumer": true,
+      "protected_effect_observed": false,
+      "evidence_complete": true,
+      "expected": "KILL_ALLOWED"
+    },
+    {
+      "id": "async-consumer-placement-not-yet-proven",
+      "checked_matches_consumed": false,
+      "operation_error_domain_complete": true,
+      "downstream_protocol_capability_bounded": false,
+      "failure_rejected_before_critical_consumer": false,
+      "protected_effect_observed": false,
+      "evidence_complete": false,
+      "expected": "NEEDS_CONSUMER_PROOF"
+    }
+  ]
+}

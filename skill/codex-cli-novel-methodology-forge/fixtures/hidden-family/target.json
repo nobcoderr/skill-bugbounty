@@ -1,0 +1,16 @@
+{
+  "snapshot_id": "synthetic-hidden-family-v1",
+  "components": ["policy_writer", "capability_issuer", "protected_consumer"],
+  "authority_decision": {
+    "facts": ["principal_id", "tenant_id", "role", "authority_epoch"],
+    "encoded_into_capability": ["principal_id", "tenant_id"]
+  },
+  "mutable_authorizing_facts": ["role", "authority_epoch"],
+  "mutations": ["role_revocation_increments_authority_epoch"],
+  "revocation_projection": {"role": "authority_epoch", "authority_epoch": "authority_epoch"},
+  "consumer": {
+    "reads_capability_fields": ["principal_id", "tenant_id"],
+    "revalidates_current_facts": []
+  },
+  "documented_revocation_contract": "retroactive_before_later_consumption"
+}

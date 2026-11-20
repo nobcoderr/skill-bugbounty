@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dynamic Filter Evaluator RCE Hunter"
+  short_description: "Audit query filters that become executable code"
+  default_prompt: "Use $dynamic-filter-evaluator-rce-hunter to audit an authorized API or source path where untrusted filters may reach an executable evaluator. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

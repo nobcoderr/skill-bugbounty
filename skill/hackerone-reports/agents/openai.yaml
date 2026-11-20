@@ -1,0 +1,6 @@
+interface:
+  display_name: "HackerOne reports"
+  short_description: "Local HackerOne prior-art corpus"
+  default_prompt: "Use $hackerone-reports. Read /home/kali/security-research/hackerone-reports. Do not scrape HackerOne unless asked to refresh the corpus."
+policy:
+  allow_implicit_invocation: true

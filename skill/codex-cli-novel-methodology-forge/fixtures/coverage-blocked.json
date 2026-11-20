@@ -1,0 +1,21 @@
+{
+  "record_type": "COVERAGE_GAP_PACKET",
+  "audit_snapshot_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "coverage_gap_count": 0,
+  "gaps": [
+    {
+      "gap_id": "GAP-HOSTED-RUNTIME",
+      "factual_basis": [
+        {"anchor": "hosted consumer is not available locally", "artifact_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+        {"anchor": "program authorization does not permit live execution", "artifact_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}
+      ],
+      "why_material": "The question could matter but cannot be answered within available authorization.",
+      "existing_coverage": [],
+      "what_remains_uncovered": "Hosted-only runtime semantics remain unavailable.",
+      "required_new_reasoning_property": "hosted runtime observation",
+      "coverage_dimension": "UNSEEN",
+      "evidence_availability": "BLOCKED",
+      "status": "BLOCKED"
+    }
+  ]
+}

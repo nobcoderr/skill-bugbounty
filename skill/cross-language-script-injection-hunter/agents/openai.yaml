@@ -1,0 +1,6 @@
+interface:
+  display_name: "Cross-Language Script Injection Hunter"
+  short_description: "Audit generated scripts for injection-to-RCE"
+  default_prompt: "Use $cross-language-script-injection-hunter to audit an authorized source path where one runtime generates and executes another runtime's code. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

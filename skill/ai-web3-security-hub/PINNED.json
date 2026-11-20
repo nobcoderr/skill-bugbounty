@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "repository": "https://github.com/pashov/ai-web3-security",
+  "upstream_branch": "master",
+  "commit": "988f6f4b84ca74289766cc0d9ca46afb8c1cb536",
+  "tree": "498d8aa39ad6e84149750412c7c704fccf008417",
+  "retrieved_date": "2026-11-14",
+  "local_path": "/home/kali/security-research/ai-web3-security",
+  "checkout": "detached",
+  "integration_state": "REFERENCE_ONLY",
+  "license_posture": "UNDECLARED_NO_LICENSE_FILE",
+  "commit_signature_status": "E_UNABLE_TO_CHECK",
+  "readme_sha256": "5066ccf1d77b2c8bc9e2710f6c516e2776a89a16d24bad49305c81c0f72e4e14",
+  "install_or_execution_authorized": false
+}

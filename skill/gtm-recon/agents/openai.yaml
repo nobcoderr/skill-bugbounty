@@ -1,0 +1,6 @@
+interface:
+  display_name: "GTM recon"
+  short_description: "Public GTM JavaScript attack-surface mapping"
+  default_prompt: "Use $gtm-recon on an in-scope site. Extract GTM IDs and review gtm.js. Do not treat a public GTM ID or URL as a vulnerability."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,691 @@
+{
+  "schema_version": "1.0",
+  "source": "user-supplied HackerOne Informative and Not Applicable adjudications",
+  "purpose": "negative controls for program-impact and capability-delta triage",
+  "cases": [
+    {
+      "report_id": "3975775",
+      "pattern": "debug_log_credential_exposure",
+      "technical_behavior": "OIDC value appears in Runtime Logs when DEBUG is enabled",
+      "starting_authority": "runtime-log reader",
+      "missing_security_proof": "independent project-identity boundary and concrete protected use of the short-lived token",
+      "gate_result": "INFORMATIVE_LIKELY",
+      "unblock": "prove the role cannot obtain equivalent identity and the token reaches a protected action unavailable to that role"
+    },
+    {
+      "report_id": "3973303",
+      "pattern": "consented_provider_content_scope_expansion",
+      "technical_behavior": "provider-controlled skill path changes install scope and broadens installed provider content",
+      "starting_authority": "provider already selected to supply agent skills",
+      "missing_security_proof": "independently trusted victim artifact or new protected capability",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove overwrite and automatic use of a distinct trusted skill with concrete protected impact"
+    },
+    {
+      "report_id": "3973467",
+      "pattern": "trusted_repository_command_resolution",
+      "technical_behavior": "repository-local Windows command shim executes and receives a project token",
+      "starting_authority": "attacker-controlled repository trusted for local tooling execution",
+      "missing_security_proof": "pre-trust or higher-privilege capability beyond repository code execution",
+      "gate_result": "KILL_TRUSTED_DOMAIN",
+      "unblock": "prove execution or token exposure before trust or across a stronger sandbox/privilege boundary"
+    },
+    {
+      "report_id": "3971480",
+      "pattern": "cryptographic_identity_purpose_mismatch",
+      "technical_behavior": "signature key identity and code-signing EKU identity differ",
+      "starting_authority": "serverAuth-scoped signing credential",
+      "missing_security_proof": "current program-eligible high-impact downstream artifact acceptance",
+      "gate_result": "KILL_PROGRAM_SEVERITY",
+      "unblock": "prove a real protected consumer and impact meeting the current program severity floor"
+    },
+    {
+      "report_id": "3972786",
+      "pattern": "trusted_repository_deploy_scope_expansion",
+      "technical_behavior": "repository configuration changes deployment root and collects an out-of-tree file",
+      "starting_authority": "repository contributor plus destination project reader",
+      "missing_security_proof": "documented source-root boundary and recipient without equivalent project access",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove upload to a principal or project not otherwise readable or controllable by the attacker"
+    },
+    {
+      "report_id": "3972687",
+      "pattern": "documented_programmatic_config_execution",
+      "technical_behavior": "linking evaluates executable repository configuration",
+      "starting_authority": "trusted repository with documented programmatic config",
+      "missing_security_proof": "explicit non-execution promise or pre-trust execution",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove the command crosses a documented inert/pre-trust boundary"
+    },
+    {
+      "report_id": "3968095",
+      "pattern": "routing_inconsistency_without_authority_gain",
+      "technical_behavior": "callee omitted from one representation is directly accepted by another execution set",
+      "starting_authority": "model can invoke the same callee through a documented caller",
+      "missing_security_proof": "bypass of a supported approval or authorization control",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove the direct route grants an action or arguments unavailable through all intended routes"
+    },
+    {
+      "report_id": "3624130",
+      "pattern": "integrity_primitive_treated_as_authorization",
+      "technical_behavior": "signed precompute code can be replayed across compatible flag groups",
+      "starting_authority": "holder of a valid public rollout code",
+      "missing_security_proof": "SDK-owned authorization boundary and concrete protected effect without application misuse",
+      "gate_result": "INFORMATIVE_LIKELY",
+      "unblock": "prove a program-owned protected action relies on the primitive as its documented security boundary"
+    },
+    {
+      "report_id": "3926585",
+      "pattern": "shared_org_resource_mutation",
+      "technical_behavior": "organization writer replaces an organization job artifact later run with creator-supplied secrets",
+      "starting_authority": "organization WRITE member trusted to create and modify org resources",
+      "missing_security_proof": "promised per-member isolation for the shared job artifact or secret consumer",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove explicit denial of mutation/use for this member and a protected member-private consumer"
+    },
+    {
+      "report_id": "3955537",
+      "pattern": "persistent_user_resource_survives_client_revocation",
+      "technical_behavior": "read-scoped client creates a user-owned scheduled export that survives client deletion",
+      "starting_authority": "same user has view access to the exported analytics",
+      "missing_security_proof": "data beyond read scope or documented client-revocation cascade to user resources",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove cross-principal data disclosure or an explicit revocation invariant"
+    },
+    {
+      "report_id": "3923008",
+      "pattern": "tracked_symlink_archive_dereference",
+      "technical_behavior": "cloud deployment archive dereferences a tracked symlink into ignored local bytes",
+      "starting_authority": "source contributor influencing a deployment checkout",
+      "missing_security_proof": "program-recognized tracked-source isolation and unauthorized protected recipient",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "prove the tool promises source-root isolation and attacker receives protected bytes without equivalent authority"
+    },
+    {
+      "report_id": "3950679",
+      "pattern": "post_workspace_trust_endpoint_redirection",
+      "technical_behavior": "trusted project environment redirects a credential-bearing client connection",
+      "starting_authority": "repository configuration accepted through directory trust",
+      "missing_security_proof": "pre-trust execution, narrower consent, or bypass of the workspace trust control",
+      "gate_result": "KILL_TRUSTED_DOMAIN",
+      "unblock": "prove the credential leaves before trust or outside the configuration authority explicitly granted"
+    },
+    {
+      "report_id": "3857254",
+      "pattern": "development_preview_loopback_hijack",
+      "technical_behavior": "an unrelated website reaches an unauthenticated loopback development WebSocket, mutates extension assets, and obtains execution plus authenticated read capability inside the active development preview",
+      "starting_authority": "external website visited by a developer running an active local preview",
+      "missing_security_proof": "program-eligible effect outside the development-preview impact ceiling, such as protected production merchant data, non-development authenticated action, credential replay, or persistence",
+      "gate_result": "KILL_NON_PRODUCTION_TARGET",
+      "unblock": "prove a current in-scope production effect beyond the local preview context that meets the program's written impact bar"
+    },
+    {
+      "report_id": "3948952",
+      "pattern": "documented_local_demo_permissive_cors",
+      "technical_behavior": "a public web origin reads synthetic mailbox data from an unauthenticated local demo API with permissive CORS",
+      "starting_authority": "website visited by the single operator of a documented local-only demonstration application",
+      "missing_security_proof": "a production product or supported multi-user deployment whose authentication or origin boundary the program defends",
+      "gate_result": "KILL_NON_PRODUCTION_TARGET",
+      "unblock": "prove the same root cause on a current eligible production asset with a cross-user protected-data boundary and no duplicate prior art"
+    },
+    {
+      "report_id": "3948366",
+      "pattern": "local_user_self_bypass_via_git_configuration",
+      "technical_behavior": "the local user's Git URL rewrite changes the destination after a managed marketplace URL check",
+      "starting_authority": "the same local user can deliberately modify the Git configuration used by the enforcing client",
+      "missing_security_proof": "an administrator-versus-user enforcement promise that remains authoritative despite user control of the downstream resolver configuration",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "prove a distinct lower-privilege actor can alter resolution without controlling the policy subject's local environment or that the feature explicitly promises resistance to such user changes"
+    },
+    {
+      "report_id": "3948342",
+      "pattern": "self_hosted_workdir_symlink_escape",
+      "technical_behavior": "automatic skill setup follows an attacker-planted workdir symlink and replaces a same-named directory outside the workdir",
+      "starting_authority": "party already trusted to populate the self-hosted worker's working directory in a model that provides unrestricted shell access",
+      "missing_security_proof": "a protected host boundary not already available through the accepted workdir and execution authority",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove the symlink is introduced by a lower-privilege principal and reaches a protected host resource unavailable through all intended worker capabilities"
+    },
+    {
+      "report_id": "3934602",
+      "pattern": "quickstart_local_api_dns_rebinding",
+      "technical_behavior": "DNS rebinding reaches an unauthenticated quickstart API, reads demo transcripts, and approves a tool inside the operator's own hosted sandbox session",
+      "starting_authority": "website visited by the single operator of a documented unauthenticated local quickstart",
+      "missing_security_proof": "a production or multi-user product boundary, credential disclosure, or effect outside the quickstart-created session",
+      "gate_result": "KILL_NON_PRODUCTION_TARGET",
+      "unblock": "prove the same primitive against an eligible production asset or a protected cross-user resource the program states the local service must defend"
+    },
+    {
+      "report_id": "3934184",
+      "pattern": "documented_debug_body_logging",
+      "technical_behavior": "explicit DEBUG mode records a credential-bearing request-body field while default logging does not",
+      "starting_authority": "operator who enables documented full request and response body logging and exposes those logs to another reader",
+      "missing_security_proof": "a documented guarantee that DEBUG output redacts body credentials or a default/non-consensual logging path",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove credential disclosure at a supported default level or a violation of an explicit schema-aware redaction guarantee"
+    },
+    {
+      "report_id": "3910136",
+      "pattern": "valid_but_previously_known_stale_auth_cache",
+      "technical_behavior": "a deleted API key remains authorized by a warmed positive cache and can perform a protected write until expiration",
+      "starting_authority": "holder of a previously valid key who primed the cache before revocation",
+      "missing_security_proof": "novelty or eligibility because the program knew the issue and remediation was already in progress before submission",
+      "gate_result": "KILL_KNOWN_OR_DUPLICATE",
+      "unblock": "none for the same root cause; retain the technical validation separately but pursue only materially distinct, independently novel roots"
+    },
+    {
+      "report_id": "3933799",
+      "pattern": "unrestricted_same_uid_shell_reads_parent_environment",
+      "technical_behavior": "an unrestricted same-UID shell reads credential-bearing parent-process metadata despite best-effort child environment scrubbing",
+      "starting_authority": "model-controlled unrestricted shell in the worker's UID and PID trust domain",
+      "missing_security_proof": "a documented process-isolation boundary or capability unavailable to the unrestricted same-UID execution context",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "prove the product promises isolation from the parent process or that a constrained tool without equivalent same-UID access crosses the credential boundary"
+    },
+    {
+      "report_id": "3930172",
+      "pattern": "equivalent_supported_dependency_fetch",
+      "technical_behavior": "a raw lockfile source line causes a privileged evaluator to fetch a private Git source that becomes readable through the shared Nix store",
+      "starting_authority": "workspace author who can already declare an ordinary Git dependency for the same repository",
+      "missing_security_proof": "a fetch or disclosure capability not attainable through the documented dependency declaration path",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove attacker input accepted as inert by the supported format triggers access to a protected repository that no equivalent valid dependency declaration can fetch"
+    },
+    {
+      "report_id": "3929882",
+      "pattern": "configured_registry_metadata_resolution_difference",
+      "technical_behavior": "configuration hierarchy differences cause dependency metadata to be interpreted from a lower-trust registry already selected by workspace configuration",
+      "starting_authority": "operator-configured replacement registry controls metadata for artifacts still constrained by the lockfile",
+      "missing_security_proof": "introduction of an unauthorized artifact, identity, or capability outside the configured registry and locked artifact set",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove the differential selects bytes or authority outside the victim's locked and configured trust set and reaches a protected consumer"
+    },
+    {
+      "report_id": "3924650",
+      "pattern": "remote_library_load_with_disputed_nondefault_prerequisites",
+      "technical_behavior": "opening an untrusted project can cause startup loading of a disabled PKCS#11 library from an attacker-selected UNC path",
+      "starting_authority": "attacker can convince a Windows user to open a supplied project while project trust remains disabled",
+      "missing_security_proof": "reliable exploitation on the program's accepted default or common Windows configuration without extra firewall, share, policy, credential, or mapping prerequisites",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "reproduce on a program-accepted stock configuration, freeze every network prerequisite, and obtain program confirmation that the untrusted-project mode promises to block this startup load"
+    },
+    {
+      "report_id": "3925580",
+      "pattern": "unmaintained_source_without_live_production_reachability",
+      "technical_behavior": "a limited editor can move an unauthorized page across permission subtrees and gain edit and delete authority in a local reproduction",
+      "starting_authority": "authenticated limited editor against a repository whose last maintenance activity was many years earlier",
+      "missing_security_proof": "a live production system operated by the program and running the vulnerable component",
+      "gate_result": "KILL_NO_PRODUCTION_REACHABILITY",
+      "unblock": "prove the exact vulnerable code is currently deployed on an eligible production asset and reproduce the cross-subtree authorization transition there safely"
+    },
+    {
+      "report_id": "3919124",
+      "pattern": "explicit_active_content_render_mode",
+      "technical_behavior": "attacker-controlled HTML rendered by the user can receive a credential-bearing Site map response from another context",
+      "starting_authority": "user intentionally selects or leaves active a mode that executes and completes attacker-controlled HTML",
+      "missing_security_proof": "execution and credential-context substitution without consent to active rendering or despite a documented isolation guarantee for rendered responses",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove automatic execution under the safe/default viewer or a documented guarantee that Render never reuses responses across credential contexts"
+    },
+    {
+      "report_id": "3885945",
+      "pattern": "operator_trusted_forwarding_header_identity",
+      "technical_behavior": "tracker-proxy converts client-supplied forwarding headers into an authenticated visitor IP that can evade IP-based spam bans",
+      "starting_authority": "unauthenticated tracking client in a deployment whose edge or web-server topology determines whether forwarding headers are trustworthy",
+      "missing_security_proof": "a product-owned trusted-proxy invariant independent of operator front-end configuration and an impact the program recognizes beyond analytics pollution",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "prove the current supported deployment promises direct-client header rejection or trusted-proxy enforcement and demonstrate a protected effect beyond the operator-selected visitor-IP model"
+    },
+    {
+      "report_id": "3646244",
+      "pattern": "layered_validation_summary_preserves_nested_failure",
+      "technical_behavior": "top-level manifest validation remains valid while an embedded ingredient exposes its invalid state and exact failure through nested validation results",
+      "starting_authority": "application consuming a layered validation API with both summary and ingredient-level result surfaces",
+      "missing_security_proof": "a documented guarantee that the top-level state enforces strict ingredient-chain validity or a default protected consumer that accepts an artifact it must reject",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove the API contract requires nested invalidity to fail the top-level state and trace the mismatch into a concrete unauthorized acceptance decision"
+    },
+    {
+      "report_id": "3905967",
+      "pattern": "trusted_build_schema_input_code_generation",
+      "technical_behavior": "an attacker-chosen protobuf source path injects Rust through a generated line comment and executes when generated code is compiled and run",
+      "starting_authority": "party trusted to supply schema and descriptor metadata to a build-time code-generation pipeline",
+      "missing_security_proof": "a build-input isolation promise or execution capability unavailable through other trusted schema, manifest, or build inputs",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove a lower-trust schema-only source is contractually non-executable and cannot reach equivalent build-time execution through any intended input"
+    },
+    {
+      "report_id": "3887461",
+      "pattern": "delayed_cross_system_role_synchronization",
+      "technical_behavior": "a WordPress role downgrade is not immediately reflected in Matomo, so a still-valid Application Password continues using the previously synchronized Matomo authorization until synchronization",
+      "starting_authority": "former administrator retaining a valid authentication credential issued while legitimately privileged",
+      "missing_security_proof": "a documented invariant that every WordPress role mutation immediately revokes Matomo authorization or the existing credential itself",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove the product promises immediate cross-system authorization revocation for that role-change path and that no supported credential or synchronization lifecycle permits the stale state"
+    },
+    {
+      "report_id": "3894878",
+      "pattern": "authenticated_session_stepup_defense_in_depth",
+      "technical_behavior": "an already fully authenticated session reaches a 2FA enrollment path that returns recovery codes and replaces the TOTP secret without sibling password reauthentication",
+      "starting_authority": "attacker already controls a fully authenticated account session",
+      "missing_security_proof": "a program-recognized step-up boundary that intentionally withholds persistent credential-management capability from an authenticated session",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove the program treats recent-password or existing-factor verification as an independent security boundary and demonstrate durable access unavailable to the starting session"
+    },
+    {
+      "report_id": "3896366",
+      "pattern": "lab_forced_inflight_session_revocation_race",
+      "technical_behavior": "an authenticated request that overlaps logout-all can write its stale session state back after deletion and temporarily restore the old cookie",
+      "starting_authority": "attacker already holds a valid session and must keep a request in flight across the exact revocation moment",
+      "missing_security_proof": "an attacker-controllable and reliably exploitable overlap window under realistic production request timing without a lab-only table lock",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "measure a realistic unprivileged trigger, success rate, timing window, and persistence against all supported revocation actions including password change"
+    },
+    {
+      "report_id": "3895960",
+      "pattern": "read_scope_creates_user_owned_scheduled_export",
+      "technical_behavior": "a read-scoped OAuth client creates a scheduled export to an external address and the user-owned report survives deletion of the OAuth client",
+      "starting_authority": "principal already authorized to read the same analytics and create reports owned by its Matomo login",
+      "missing_security_proof": "data beyond existing view authority or a documented client-revocation cascade over separately user-owned scheduled reports",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove cross-principal data access or an explicit lifecycle guarantee that deleting the OAuth client revokes reports created under that delegated lineage"
+    },
+    {
+      "report_id": "3895989",
+      "pattern": "same_second_password_change_session_race",
+      "technical_behavior": "a session created with the old password in the same one-second timestamp bucket as a password change can remain authenticated",
+      "starting_authority": "attacker knows the victim's valid password, already has full account access, and must win a sub-second race with the password change",
+      "missing_security_proof": "material added authority or realistic reliability sufficient for the current program's severity threshold",
+      "gate_result": "KILL_PROGRAM_SEVERITY",
+      "unblock": "prove a practical post-revocation capability materially beyond the starting full-account authority and impact meeting the written program bar"
+    },
+    {
+      "report_id": "3885565",
+      "pattern": "self_hosted_workdir_skill_symlink_escape",
+      "technical_behavior": "skill bootstrap follows a repository-controlled workdir symlink and deletes, writes, then cleans up a same-named directory outside the configured workdir",
+      "starting_authority": "repository contributor already trusted to populate a self-hosted worker workdir whose toolset includes unrestricted shell execution",
+      "missing_security_proof": "a protected host capability not already implied by the accepted workdir and worker-user execution authority",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove a distinct lower-trust source can plant the symlink and modify a protected resource unavailable through every intended worker capability"
+    },
+    {
+      "report_id": "3820783",
+      "pattern": "valid_legacy_authorization_bypass_below_program_impact_bar",
+      "technical_behavior": "a legacy release-management endpoint lets a user without release-delete remove another operator's scheduled release insert while the newer endpoint rejects the action",
+      "starting_authority": "authenticated release operator with create and modify but without delete permission",
+      "missing_security_proof": "concrete release-integrity consequence severe enough for the program after the engineering team assessed the validated effect as minimal",
+      "gate_result": "KILL_PROGRAM_SEVERITY",
+      "unblock": "prove a current production release disruption or protected integrity consequence that meets the program's written severity and impact requirements"
+    },
+    {
+      "report_id": "3849097",
+      "pattern": "signed_but_readable_precompute_payload",
+      "technical_behavior": "a signed shareable URL code reveals raw unlisted request-derived flag values and reconstructs the same state when replayed without the original request context",
+      "starting_authority": "party able to observe or receive a precompute URL intentionally designed to reconstruct flag state",
+      "missing_security_proof": "a documented confidentiality or encryption boundary for the signed code and a first-party protected secret placed there by an intended product flow",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove the current contract promises confidentiality rather than integrity and demonstrate disclosure of program-owned sensitive data that the supported precompute flow itself places in the URL"
+    },
+    {
+      "report_id": "3867328",
+      "pattern": "credential_userinfo_in_configuration_key_metadata",
+      "technical_behavior": "a mirror configuration key containing URI userinfo is copied into Bundler's User-Agent and sent to an unrelated project gem source, where the credential can be replayed",
+      "starting_authority": "attacker controls a gem source referenced by the project while the operator has a global mirror key containing authenticated URI userinfo",
+      "missing_security_proof": "authoritative evidence that credential-bearing mirror source keys are a supported realistic configuration rather than credentials being stored only as protected values",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "establish current official support or native tests for authenticated mirror-key userinfo, reproduce on the current release, and prove access to a protected unrelated registry with no equivalent attacker authority"
+    },
+    {
+      "report_id": "3849853",
+      "pattern": "malicious_gem_source_cache_path_escape",
+      "technical_behavior": "an attacker-controlled configured gem source supplies a crafted name tuple that writes a constrained gemspec path outside the intended cache before SafeMarshal validation",
+      "starting_authority": "malicious or compromised gem source selected as a package trust anchor by the user",
+      "missing_security_proof": "a protected local capability not already available to a hostile trusted source through ordinary package metadata, package contents, or installation behavior",
+      "gate_result": "KILL_TRUSTED_DOMAIN",
+      "unblock": "prove the source is lower trust than ordinary package content and that the path write reaches a protected target unavailable through all intended source-controlled inputs"
+    },
+    {
+      "report_id": "3857175",
+      "pattern": "disabled_subscription_form_still_accepts_anonymous_writes",
+      "technical_behavior": "a disabled or trashed form ID continues creating subscribers, list membership, and welcome-email tasks through the anonymous subscription endpoint",
+      "starting_authority": "unauthenticated party that previously observed public form metadata",
+      "missing_security_proof": "a material confidentiality, availability, account, or cross-site impact above subscriber and mailing-list integrity",
+      "gate_result": "KILL_PROGRAM_SEVERITY",
+      "unblock": "prove an impact class and magnitude the current program rewards, such as protected-content disclosure, account compromise, cross-site effect, or meaningful availability loss"
+    },
+    {
+      "report_id": "3847712",
+      "pattern": "cross_user_temporary_upload_collision_with_low_predictability",
+      "technical_behavior": "an authenticated uploader can finalize a shared partial upload and receive victim prefix bytes when temporary state is not bound to user or session",
+      "starting_authority": "authenticated uploader who must match another user's exact filename and extension while an uncommon incomplete upload remains present",
+      "missing_security_proof": "a reliable way to learn or predict the collision key and encounter a victim partial upload at meaningful frequency",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "measure real filename entropy, partial-upload prevalence and lifetime, collision success rate, and an attacker-controlled discovery channel for the exact name and extension"
+    },
+    {
+      "report_id": "3830857",
+      "pattern": "lenient_any_parser_reaches_equivalent_well_formed_state",
+      "technical_behavior": "malformed JSON Any values are accepted and canonicalized to empty or default wire messages before handler logic",
+      "starting_authority": "client able to invoke the handler and submit a well-formed empty or default Any producing the same application-visible state",
+      "missing_security_proof": "a handler state or protected operation reachable only through the lenient differential rather than an equivalent valid request",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "identify a current production consumer where the malformed representation bypasses a security check that rejects every semantically equivalent well-formed input"
+    },
+    {
+      "report_id": "3799781",
+      "pattern": "intentional_legacy_http_update_fallback",
+      "technical_behavior": "an SSL-incapable runtime intentionally falls back to HTTP update metadata that an on-path attacker can modify and render in an administrator page",
+      "starting_authority": "on-path attacker against an operator-selected legacy runtime without SSL-capable transports",
+      "missing_security_proof": "a current security guarantee forbidding the documented fallback and realistic prevalence on supported production deployments",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove the current program treats authenticated update transport as mandatory on that supported runtime and demonstrate material admin action on a realistic deployed configuration"
+    },
+    {
+      "report_id": "3808838",
+      "pattern": "connectivity_control_plane_outside_data_plane_permission",
+      "technical_behavior": "a peer with incoming data access disabled can still participate in connectivity checks, exchange endpoint candidates, and trigger traversal probes",
+      "starting_authority": "authenticated Meshnet peer permitted to participate in the connectivity control plane but denied final incoming data traffic",
+      "missing_security_proof": "bypass of the enforced data-plane permission or documentation that the incoming permission also forbids connectivity-check control messages",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove final protected incoming traffic or another denied capability succeeds, or establish an explicit product invariant gating the traversal control plane with the same permission"
+    },
+    {
+      "report_id": "3803376",
+      "pattern": "installer_signature_check_counterfactual_does_not_reduce_attacker_power",
+      "technical_behavior": "the official RPM installer uses nogpgcheck and accepts an unsigned substituted package whose post-install script executes as root",
+      "starting_authority": "attacker controls the TLS path serving both package content and publisher key material in the stated interception model",
+      "missing_security_proof": "a counterfactual in which enabling package signature verification prevents the same attacker from substituting a signing key or otherwise installing equivalent content",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove package-body substitution without authority to alter the pinned trust root, then show enforced signature verification blocks that attacker on the exact supported path"
+    },
+    {
+      "report_id": "3803950",
+      "pattern": "forward_only_denylist_does_not_revoke_preissued_settlement_authority",
+      "technical_behavior": "a transfer package signed and attested before denylisting remains permissionlessly redeemable afterward while fresh deposits and new attestations are blocked",
+      "starting_authority": "the same depositor already signed the destination-specific transfer, already received Circle's attestation, and can use an intended withdrawal path for the same balance",
+      "missing_security_proof": "a protocol promise that denylisting retroactively revokes already-issued attestations or a distinct victim whose funds or authority are affected",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove a post-denylist operator signature, theft or movement outside the depositor's preauthorized bounds, or an explicit retroactive-revocation invariant compatible with settlement correctness"
+    },
+    {
+      "report_id": "3792094",
+      "pattern": "revoked_bearer_cached_then_exchanged_for_independent_native_token",
+      "technical_behavior": "a revoked FxA bearer remains accepted until its cached introspection result expires and can retrieve a Relay-native API token that remains usable after the FxA bearer expires",
+      "starting_authority": "an actor who possessed a valid FxA bearer and could retrieve the same Relay API token during the bearer's original authorized lifetime",
+      "missing_security_proof": "a documented lineage rule requiring FxA revocation or expiry to invalidate the separately issued Relay token, plus proof that the stale cache creates authority unavailable before revocation",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "establish the official derived-token revocation contract and show an attacker obtains or retains a protected capability that was not already mintable or readable while the original bearer was valid"
+    },
+    {
+      "report_id": "3680070",
+      "pattern": "operation_specific_signature_scope_mistaken_for_cross_operation_symmetry",
+      "technical_behavior": "a payer-signed cancel authorization omits attester identity, so another registered attester can consume the nonce and force the payer to re-sign a payment intent",
+      "starting_authority": "a configurator-approved attester holding a cancel signature whose signed fields intentionally authorize nonce consumption and a bounded fee to the payer-selected beneficiary",
+      "missing_security_proof": "a realistic channel exposing another flow's cancel signature and a protected outcome beyond the payer's signed authorization or recoverable per-nonce denial",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove the protocol promises attester-bound cancellation, demonstrate unauthorized value movement, or show reliable material denial beyond one retryable nonce using a signature the attacker can realistically obtain"
+    },
+    {
+      "report_id": "3797857",
+      "pattern": "local_profile_target_switch_reuses_same_user_token_cache",
+      "technical_behavior": "after a local user edits a saved federation profile target, the first request reuses a fresh cached token for the previous workspace or service account",
+      "starting_authority": "the same local user or process controls both the profile configuration and adjacent credentials file containing the cached token",
+      "missing_security_proof": "an attacker-victim split or protected target inaccessible to the local principal that already owns the cached credential",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "prove a lower-trust actor can cause the target switch without reading or using the credential cache and thereby obtain access outside the identity or organization already authorized"
+    },
+    {
+      "report_id": "3796714",
+      "pattern": "live_snapshot_rebinding_with_same_untrusted_content_authority",
+      "technical_behavior": "a trusted PR review run created for head A later reads workflow and job-log content from force-pushed head B through a live head lookup",
+      "starting_authority": "the same PR author already controls CI and log content for both heads, while the workflow token has repository-wide actions-read permission and only write-authorized users can trigger the action",
+      "missing_security_proof": "a later snapshot controlled by a stronger or different principal, or a trigger-time snapshot guarantee that serves as an enforced security boundary rather than a relevance filter",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "show later-head content comes from an otherwise unauthorized principal or reaches a protected action that equivalent trigger-head untrusted content cannot influence"
+    },
+    {
+      "report_id": "3968729",
+      "pattern": "cross_origin_digest_response_without_protected_replay_proof",
+      "technical_behavior": "a reused libcurl handle can send a Digest response derived from one peer's challenge and the user's password to another peer when parsed challenge state lacks an origin binding",
+      "starting_authority": "a malicious second server can receive an authentication-derived Digest header for public challenge parameters under a specialized handle-reuse and auth-mask transition",
+      "missing_security_proof": "successful acceptance by the protected first peer, replay or oracle capability beyond public challenge data, and a realistic application path using the required reuse sequence",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "demonstrate end-to-end authentication to the original protected peer with the captured or freshly induced response on a current real consumer, including nonce, method, URI, and replay-control behavior"
+    },
+    {
+      "report_id": "3970639",
+      "pattern": "remote_etag_truncates_user_selected_append_output",
+      "technical_behavior": "an ETag response truncates stdout redirected by the user with append mode when --etag-save selects stdout, replacing prior contents of the chosen file",
+      "starting_authority": "the user explicitly directs a single-ETag output stream into a local file while the remote peer controls whether an ETag exists and its value",
+      "missing_security_proof": "a protected file or security decision for which this immediately observable explicit-output bug creates material confidentiality, integrity, or availability impact",
+      "gate_result": "INFORMATIVE_LIKELY",
+      "unblock": "identify a supported production workflow where an untrusted peer reliably destroys security-critical state outside the intended semantics and prove the resulting protected consequence"
+    },
+    {
+      "report_id": "3972196",
+      "pattern": "uninitialized_printf_value_without_observable_secret_consumer",
+      "technical_behavior": "curl_mprintf reads a double for documented long-double conversions, producing garbage and an uninitialized-value diagnostic on some ABIs",
+      "starting_authority": "a downstream application developer explicitly chooses the discouraged printf API, format, and long-double argument",
+      "missing_security_proof": "remote reachability, a shipped production consumer, and attacker-observable disclosure of protected bytes rather than incorrect numeric output or control flow influenced by undefined data",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "find a current production consumer with attacker-reachable formatting whose returned output reproducibly contains protected process data across a real trust boundary"
+    },
+    {
+      "report_id": "3971496",
+      "pattern": "specialized_socket_callback_contract_without_security_consumer",
+      "technical_behavior": "the HTTP/3 UDP path reconnects an application-provided socket despite CURL_SOCKOPT_ALREADY_CONNECTED and sends QUIC datagrams to the URL destination",
+      "starting_authority": "an application deliberately supplies a preconnected UDP descriptor through specialized callbacks and selects HTTP/3",
+      "missing_security_proof": "a current production application that treats the callback-selected peer as an enforced egress or relay boundary and suffers a protected consequence",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "demonstrate the behavior in a shipped consumer whose documented security policy depends on the already-connected socket and prove unauthorized network reach or data exposure"
+    },
+    {
+      "report_id": "3972316",
+      "pattern": "generated_example_code_retains_local_option_across_operations",
+      "technical_behavior": "--libcurl emits example C code that reuses one easy handle, causing --insecure from an earlier operation to persist across --next even though the CLI itself resets local options",
+      "starting_authority": "a developer explicitly requests generated example source, reviews or compiles the incomplete output, and deploys it without restoring per-operation security options",
+      "missing_security_proof": "a product guarantee that generated code is a security-equivalent executable and a current production consumer that deploys the affected output into an attacker-reachable TLS path",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "prove an officially supported generated-code workflow consumed unchanged by a shipped application and demonstrate a real network attacker crossing its intended TLS verification boundary"
+    },
+    {
+      "report_id": "3739926",
+      "pattern": "cache_poisoning_partial_widget_denial_with_policy_conflict",
+      "technical_behavior": "an anonymous embed cache omits Referer from its key and can serve another origin's postMessage target, preventing iframe resize until the cache entry expires",
+      "starting_authority": "an unauthenticated requester able to prime the same public embed cache variant before a victim loads it",
+      "missing_security_proof": "resolution of the apparent conflict with the program's current cache-poisoning severity examples, realistic victim prevalence and cache-hit reliability, and the exact prior-knowledge timeline",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "preserve dated live-at-submission evidence, verify current policy wording and prior knowledge, and measure a repeatable material availability effect on an eligible live deployment",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "IMPACT_AND_EXPLOIT_REALISM"
+    },
+    {
+      "report_id": "3800002",
+      "pattern": "sandbox_fail_open_report_closed_for_inactivity",
+      "technical_behavior": "a documented strict sandbox can fail to apply in a no-TTY session while a repository-defined MCP child still starts and writes outside the documented roots",
+      "starting_authority": "an attacker controls repository configuration processed by a user who explicitly selected the strict sandbox",
+      "missing_security_proof": "the requested realistic attacker-victim reproduction and timely response to the program's Needs More Info request; the closure did not adjudicate the technical merits",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "complete the concise end-to-end victim workflow and all requested evidence before the response deadline, then obtain a merits-based program decision",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "PROCEDURAL_INACTIVITY"
+    },
+    {
+      "report_id": "3862436",
+      "pattern": "local_acl_harness_omits_production_file_stack",
+      "technical_behavior": "a local WordPress and Nginx harness serves image derivatives after the primary attachment path is denied by an imported VIP ACL component",
+      "starting_authority": "an anonymous requester knows a previously public derivative URL",
+      "missing_security_proof": "reproduction through the complete WordPress VIP production file-handling stack rather than a partial locally assembled environment",
+      "gate_result": "KILL_ENVIRONMENT_MISMATCH",
+      "unblock": "demonstrate the same disclosure on an authorized VIP environment or an exact production-equivalent stack including every middleware and file-serving layer",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "ENVIRONMENTAL_MISMATCH"
+    },
+    {
+      "report_id": "3863692",
+      "pattern": "approved_custom_rpc_redirect_inside_consented_endpoint_authority",
+      "technical_behavior": "a user-approved custom RPC follows a 307 redirect to loopback, preserves JSON-RPC POST data, and returns a compatible local service response to the dApp",
+      "starting_authority": "a malicious dApp convinces the user to add and switch to its attacker-controlled custom RPC endpoint",
+      "missing_security_proof": "an explicit promise that approval is restricted to one origin and excludes redirects, plus a concrete protected local service and capability unavailable through the trusted RPC relationship",
+      "gate_result": "KILL_TRUSTED_DOMAIN",
+      "unblock": "prove a documented per-hop destination boundary and demonstrate compromise of a realistic protected service outside the authority delegated to the approved RPC",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "CONSENTED_TRUST_AND_SCOPE"
+    },
+    {
+      "report_id": "3863048",
+      "pattern": "privileged_background_redirect_without_exact_navigation_control",
+      "technical_behavior": "an opt-in browser background fetch follows a public redirect to loopback and causes a blind unauthenticated GET without returning the response",
+      "starting_authority": "a public page operator can cause the victim to visit its URL while the optional background feature is enabled",
+      "missing_security_proof": "a same-URL top-level navigation redirect control proving the background component adds network capability, and a concrete protected local service affected by the blind request",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "compare ordinary top-level navigation and background fetch against the exact redirect under identical browser settings, then prove a protected local action only the latter can reach",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "NO_CAPABILITY_DELTA_DISPUTE"
+    },
+    {
+      "report_id": "3816519",
+      "pattern": "single_node_pending_cache_acceptance_without_consensus",
+      "technical_behavior": "a locally cached transaction validly signed before key revocation retains isVerified and is accepted by one test node after a later permission update",
+      "starting_authority": "the old key validly signed and submitted the transaction while still authorized, and the harness controls requeue ordering while stubbing consensus checks",
+      "missing_security_proof": "unmodified multi-node canonical acceptance and finality despite independent nodes revalidating the transaction against the updated permission state",
+      "gate_result": "KILL_ENVIRONMENT_MISMATCH",
+      "unblock": "prove attacker-controlled inclusion and canonical finality on a production-equivalent multi-node network without consensus stubs or privileged scheduling",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "CONSENSUS_ENVIRONMENT_MISMATCH"
+    },
+    {
+      "report_id": "3810858",
+      "pattern": "unsigned_http_status_reclassification_ends_in_excluded_dos",
+      "technical_behavior": "a trusted on-path actor can rewrite an unsigned HTTP status while preserving signed headers and body, causing the client to log out and clear local session state",
+      "starting_authority": "a trusted on-path interceptor can alter response framing but not the application-signed body",
+      "missing_security_proof": "an eligible terminal impact other than denial of service under a program that explicitly excludes DoS",
+      "gate_result": "KILL_PROGRAM_SEVERITY",
+      "unblock": "demonstrate an in-scope confidentiality, integrity, authentication, or authorization consequence that is not merely forced logout or service disruption",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "EXPLICIT_OUT_OF_SCOPE_IMPACT"
+    },
+    {
+      "report_id": "3802645",
+      "pattern": "release_reproducibility_script_mistaken_for_authenticity_anchor",
+      "technical_behavior": "a release verification helper executes build inputs from the supplied tarball and can report that the tarball reproducibly rebuilds itself",
+      "starting_authority": "the verifier chooses an untrusted tarball while the documented authenticity anchor is the release signature and the helper warns against blind trust",
+      "missing_security_proof": "an explicit current guarantee that the helper independently authenticates provenance without a trusted signature or source tree",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "show a signature-valid malicious release that passes while violating a precise documented verifier security property that users are instructed to rely on",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "SECURITY_PROPERTY_AND_TRUST_ANCHOR"
+    },
+    {
+      "report_id": "3728070",
+      "pattern": "public_invoice_metadata_outside_document_privacy_promise",
+      "technical_behavior": "anonymous invoice pages expose counterparties, amounts, descriptions, history, messages, and document filenames while direct file downloads remain private",
+      "starting_authority": "an anonymous visitor accesses invoice pages intentionally designed for transparency and unauthenticated viewing",
+      "missing_security_proof": "a product promise that page metadata or filenames are private rather than only the uploaded document bytes, plus eligibility under a program paused except for critical issues",
+      "gate_result": "KILL_BY_DESIGN",
+      "unblock": "prove anonymous access to the private document contents or another field explicitly covered by a current confidentiality guarantee and meeting the program's active severity floor",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "INTENDED_PUBLIC_BEHAVIOR_AND_SEVERITY"
+    },
+    {
+      "report_id": "3983944",
+      "pattern": "technically_valid_cardano_address_binding_bypass_already_reported",
+      "technical_behavior": "Cardano VerifyMessage accepts a valid signature and claimed address without binding Blake2b-224 of the public key to the address payment credential",
+      "starting_authority": "an attacker owns an unrelated Cardano signing key and can construct a fresh signed challenge naming a victim address",
+      "missing_security_proof": "bounty novelty because the same missing public-key-to-address validation had already been submitted and was tracked under an earlier report",
+      "gate_result": "KILL_KNOWN_OR_DUPLICATE",
+      "unblock": "retain the technical invariant but submit only a target-specific variant with a distinct root cause, protected consumer, or impact not covered by the earlier report; a private duplicate unknowable before submission is not a preventable research failure",
+      "adjudication_status": "DUPLICATE",
+      "closure_basis": "KNOWN_OR_DUPLICATE"
+    },
+    {
+      "report_id": "3977820",
+      "pattern": "dependabot_untrusted_code_execution_inside_explicitly_ineligible_update_sandbox",
+      "technical_behavior": "a recursively fetched Git submodule gemspec executes in a Dependabot Bundler update and can request configured private-registry content through the job credential proxy",
+      "starting_authority": "repository-controlled dependency code is intentionally processed inside an update job designed to execute untrusted package code and resolve the configured registry",
+      "missing_security_proof": "an eligible boundary beyond updater-job execution and intended dependency resolution, such as sandbox escape, unauthorized private-network reach, raw secret extraction, or cross-tenant data access",
+      "gate_result": "KILL_PROGRAM_SEVERITY",
+      "unblock": "prove a currently eligible impact explicitly outside the updater sandbox and configured registry authority under the current Dependabot bounty policy",
+      "adjudication_status": "NOT_APPLICABLE",
+      "closure_basis": "EXPLICIT_PROGRAM_EXCLUSION"
+    },
+    {
+      "report_id": "3975896",
+      "pattern": "unverified_sdk_identity_trusted_only_by_synthetic_consumer",
+      "technical_behavior": "a plain HeaderRecord token field reaches the local-token path and returns an attacker-chosen Passport identity marked verified false and tokenSource local",
+      "starting_authority": "an unauthenticated HTTP caller can supply headers to an application that chooses an undocumented raw-header integration and decides whether the returned object is authoritative",
+      "missing_security_proof": "a real deployed integration or SDK contract that authenticates on a non-null identity despite the explicit unverified status",
+      "gate_result": "IMPACT_GATE_BLOCKED",
+      "unblock": "identify a current shipped consumer using the affected input form and prove it grants a protected action while following documented SDK guidance or despite checking the verification status",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "SYNTHETIC_CONSUMER_AND_UNVERIFIED_RESULT"
+    },
+    {
+      "report_id": "3973127",
+      "pattern": "plaintext_proxy_zone_routing_mismatch_without_recognized_confidentiality_boundary",
+      "technical_behavior": "an explicit link-local IPv6 proxy zone is parsed but not applied, so a multi-interface fallback can send plaintext proxy authentication to the same address on another interface",
+      "starting_authority": "an attacker controls the matching link-local endpoint on another interface while the user deliberately configures an unauthenticated transport to a literal link-local proxy",
+      "missing_security_proof": "a program-recognized confidentiality or route-isolation guarantee for the unsecured proxy mode and a realistic deployed topology where the remote attacker can establish all prerequisites",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "demonstrate the same credential or traffic disclosure across an authenticated or encrypted proxy boundary, or prove an explicit route-isolation promise and a current production consumer",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "UNSECURED_TRANSPORT_THREAT_MODEL"
+    },
+    {
+      "report_id": "3971585",
+      "pattern": "caller_controlled_connect_only_share_detach_lifecycle",
+      "technical_behavior": "after CONNECT_ONLY a caller detaches a shared pool and raw I/O resolves a pool-local connection ID to an unrelated connection",
+      "starting_authority": "the application itself creates both pools and connections, enables CONNECT_ONLY, detaches the share after transfer, and then invokes raw I/O",
+      "missing_security_proof": "a remotely triggerable current production consumer whose attacker can force the complete unusual API lifecycle and cross a protected peer boundary",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "prove the full sequence in a shipped application where an untrusted peer controls the transition and receives protected bytes without application misuse",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "APPLICATION_CONTROLLED_API_MISUSE"
+    },
+    {
+      "report_id": "3973158",
+      "pattern": "closed_standard_descriptor_pipe_reuse_requires_local_launch_antipattern",
+      "technical_behavior": "repairing simultaneously closed stdin and stderr with opposite pipe ends can feed verbose proxy-authentication diagnostics into a stdin-based HTTPS upload",
+      "starting_authority": "a local launcher closes descriptors zero and two while deliberately requesting verbose mode, proxy authentication, and an upload sourced from the closed stdin descriptor",
+      "missing_security_proof": "remote attacker control of the launch configuration, portable descriptor behavior, and a current shipped workflow that unknowingly satisfies all prerequisites",
+      "gate_result": "KILL_THREAT_MODEL",
+      "unblock": "demonstrate a real deployed wrapper whose remote peer can reliably trigger the credential transfer without controlling local process launch or command-line construction",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "LOCAL_LAUNCH_CONFIGURATION_AND_EXPLOIT_REALISM"
+    },
+    {
+      "report_id": "3973093",
+      "pattern": "ocsp_validation_gap_in_nonstandard_build_without_deployed_consumer",
+      "technical_behavior": "a GCC plus Apple SecTrust build can discard a nonempty stapled OCSP response while treating certificate verification as successful",
+      "starting_authority": "a network attacker has a hostname-valid but revoked certificate and targets a client compiled with a niche GCC, CMake, OpenSSL, and Apple SecTrust combination",
+      "missing_security_proof": "evidence that any current production or shipped consumer uses the affected compiler and TLS-backend configuration",
+      "gate_result": "KILL_NO_PRODUCTION_REACHABILITY",
+      "unblock": "identify and reproduce against a current distributed application or supported binary using the exact affected configuration and prove invalid OCSP acceptance end to end",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "NO_PRODUCTION_DEPLOYMENT_EVIDENCE"
+    },
+    {
+      "report_id": "3948506",
+      "pattern": "reapproved_trusted_workspace_reconfigures_oauth_credential_recipient",
+      "technical_behavior": "after project MCP approval is cleared and a changed authorization-server metadata URL is approved again, the client sends a previously stored refresh token to the newly configured server",
+      "starting_authority": "an attacker can modify MCP configuration inside a workspace the user chose to trust, and the user explicitly approves the changed project server configuration",
+      "missing_security_proof": "a credential-recipient isolation promise that survives approval of changed trusted-workspace configuration and a resulting capability unavailable through equivalent trusted-workspace hooks, MCP definitions, settings, or execution paths",
+      "gate_result": "KILL_TRUSTED_DOMAIN",
+      "unblock": "prove token disclosure before trust or without renewed approval, or prove an explicit authorization-server binding guarantee whose bypass grants authority unavailable through every other capability of the trusted workspace",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "TRUSTED_WORKSPACE_EQUIVALENT_AUTHORITY"
+    },
+    {
+      "report_id": "3928810",
+      "pattern": "transitive_build_metadata_override_with_existing_build_script_execution",
+      "technical_behavior": "a transitive crate's normalized links metadata can replace direct-dependency metadata and cause attacker-controlled source to be embedded in builder output",
+      "starting_authority": "the attacker-controlled crate is already present in the victim's locked dependency graph and can execute its own build script during the same build",
+      "missing_security_proof": "a protected build or data capability beyond the crate's existing build-time code execution, or a documented lower-trust metadata-only boundary that forbids equivalent build-script effects",
+      "gate_result": "KILL_NO_CAPABILITY_DELTA",
+      "unblock": "prove the influencing dependency cannot execute code or otherwise modify the build under the supported configuration, then demonstrate that the metadata collision alone crosses a protected direct-dependency or secret boundary",
+      "adjudication_status": "INFORMATIVE",
+      "closure_basis": "EXISTING_BUILD_TIME_EXECUTION_AUTHORITY"
+    }
+  ]
+}

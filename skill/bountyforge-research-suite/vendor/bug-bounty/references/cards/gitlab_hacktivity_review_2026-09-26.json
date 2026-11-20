@@ -1,0 +1,89 @@
+[
+  {
+    "report_id": "1439593",
+    "analysis_status": "EXACT_ROOT_EXTRACTED",
+    "attacker_start": "Authenticated user able to initiate a group bulk import in the historical GitLab deployment.",
+    "attacker_control": "The upload archive supplied by the import source, including a symbolic-link entry and its link target.",
+    "entry_point": "BulkImports::Common::Pipelines::UploadsPipeline extracts uploads.tar.gz during group import.",
+    "primitive": "An archive symlink survives extraction and is later followed as a local file.",
+    "boundary": "Untrusted imported archive content crosses into the GitLab server's local filesystem read authority.",
+    "enforcing_component": "UploadsPipeline extract/load path, including untar_zxf, file-path enumeration, and File.open.",
+    "sink": "UploadService copies the opened file content into a group upload that the importing user can read.",
+    "capability_delta": "The importer can obtain server-local files readable by the GitLab process, beyond files contained in the source archive.",
+    "prerequisites": "A group import permitted to the attacker and an import source/archive the attacker can control; local file permissions still limit readable targets.",
+    "proof_oracle": "The public historical report shows an imported upload returning content from a server-local file. This card records the report's evidence; it is not a fresh reproduction.",
+    "root_cause": "The extraction path did not reject the symlink, and the later File.open consumed its resolved target without enforcing containment within the extracted archive tree.",
+    "chain_edges": [
+      "Attacker-controlled archive member -> retained symlink in extracted uploads",
+      "Retained symlink -> server-local file read by File.open",
+      "Server-local file read -> content stored and served through the import upload"
+    ],
+    "negative_controls": [],
+    "patch_or_fix": "The historical issue identifies the UploadsPipeline link/containment boundary. GitLab's later merge request !107161 describes additional path checks as defense in depth; it is not asserted here to be the original fix.",
+    "duplicate_signature": "GitLab group bulk import UploadsPipeline | symlink in uploaded tar archive | no link-target containment before File.open | UploadService with server-local read authority | imported upload exposes local file content",
+    "evidence_urls": [
+      "https://hackerone.com/reports/1439593",
+      "https://gitlab.com/gitlab-org/gitlab/-/work_items/349524",
+      "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107161"
+    ],
+    "analyst_notes": "Historical, publicly disclosed root only. The issue mirrors the researcher report and includes source snippets and observed upload read-back. No independently executed reproduction or original fixing commit was verified. The later MR explicitly calls its changes defense in depth. Do not infer current-release vulnerability from this card."
+  },
+  {
+    "report_id": "1679624",
+    "analysis_status": "EXACT_ROOT_EXTRACTED",
+    "attacker_start": "A user able to start a GitHub repository import in the historical GitLab 15.3.1-ee test environment.",
+    "attacker_control": "A GitHub-compatible API response consumed by the importer, including a non-scalar default_branch value with keys that become Ruby methods.",
+    "entry_point": "GitLab GitHub importer's repository metadata processing and default-branch update.",
+    "primitive": "Sawyer::Resource turns attacker-controlled JSON keys into methods, allowing inconsistent to_s and bytesize behavior at Redis command serialization.",
+    "boundary": "Untrusted upstream API JSON crosses into trusted Ruby object behavior, then Redis protocol framing and session-state consumption.",
+    "enforcing_component": "Gitlab::GithubImport::Importer::RepositoryImporter, repository branch cache, and Redis command helper.",
+    "sink": "Redis command stream; the historical report further chains injected session state into Marshal deserialization.",
+    "capability_delta": "The historical test demonstrated attacker-influenced Redis commands and reported command execution through a session-deserialization chain.",
+    "prerequisites": "A permitted GitHub import, a GitHub API response source under attacker control in the tested configuration, vulnerable Sawyer/Redis behavior, and a reachable session-deserialization consumer for the terminal effect.",
+    "proof_oracle": "The public report includes historical Redis traffic and a GitLab 15.3.1-ee test trace for the chain. This card does not claim an independent reproduction or current production reachability.",
+    "root_cause": "The importer passed a dynamic Sawyer::Resource value as a branch identifier to a Redis-backed branch cache without normalizing it to a trusted scalar. Redis length calculation and emitted value could then disagree, permitting protocol-command injection.",
+    "chain_edges": [
+      "Attacker-controlled API JSON -> dynamic Sawyer::Resource method behavior",
+      "Dynamic branch value -> Redis protocol framing discrepancy and command injection",
+      "Injected Redis session state -> historical Marshal-deserialization command-execution chain"
+    ],
+    "negative_controls": [],
+    "patch_or_fix": "Normalize Octokit/Sawyer responses before authority-bearing consumers and prevent dynamic methods from overriding Ruby behavior. GitLab MR !98231 describes the latter hardening, but is not asserted to be the exact initial fix for this report.",
+    "duplicate_signature": "GitLab GitHub import RepositoryImporter | API JSON default_branch represented as Sawyer::Resource | no scalar normalization before Redis cache | Redis serializer and session consumer | Redis command injection with historical command-execution chain",
+    "evidence_urls": [
+      "https://hackerone.com/reports/1679624",
+      "https://gitlab.com/gitlab-org/gitlab/-/work_items/371884",
+      "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/98231"
+    ],
+    "analyst_notes": "Historical, publicly disclosed root only. The public issue states that GitLab 15.3.1-ee was affected in the researcher's test. The Hacktivity-generated summary instead claims it was patched in 15.3.1-ee; that patch-version claim is contradicted by the primary report and must not be propagated. The exact first fixing release and current-release state were not independently verified. No executable payloads are stored in this card."
+  },
+  {
+    "report_id": "1609965",
+    "analysis_status": "EXACT_ROOT_EXTRACTED",
+    "attacker_start": "Authenticated GitLab user authorized to import projects, in a historical deployment with the bulk_import_projects and size-validation paths enabled.",
+    "attacker_control": "Imported project attributes, including an import_source value that reaches an archive path after incomplete attribute filtering.",
+    "entry_point": "BulkImports::Projects::Pipelines::ProjectPipeline creates an imported project whose archive is processed by Gitlab::ImportExport::FileImporter.",
+    "primitive": "An attacker-controlled archive path is interpolated into a shell command string passed to Open3.popen3.",
+    "boundary": "Untrusted project-import metadata crosses into server-side command interpretation under the GitLab worker's authority.",
+    "enforcing_component": "ProjectPipeline attribute transformers and Gitlab::ImportExport::DecompressedArchiveSizeValidator.",
+    "sink": "Open3.popen3 executes the archive-size command constructed with the import_source-derived path.",
+    "capability_delta": "In the historical vulnerable configuration, the importing user can execute commands as the GitLab import worker.",
+    "prerequisites": "Project-import authority; the relevant bulk-import feature and archive-size validation path enabled; crafted import metadata accepted by the pipeline. The report says bulk project imports were disabled by default for self-managed installations and scoped on GitLab.com at the time.",
+    "proof_oracle": "The maintainer-mirrored report includes a historical GitLab 15.1.0-ee local test and worker output showing the controlled command effect. This card is not an independent reproduction.",
+    "root_cause": "ProjectPipeline failed to remove the import_source attribute before project creation, and DecompressedArchiveSizeValidator embedded the resulting archive path into a shell-interpreted string instead of passing separated arguments.",
+    "chain_edges": [
+      "Imported project metadata -> retained import_source",
+      "Retained import_source -> FileImporter archive_file",
+      "Archive path -> shell-interpreted size-validation command"
+    ],
+    "negative_controls": [],
+    "patch_or_fix": "GitLab's CVE-2022-2185 record lists fixed branches at 14.10.5, 15.0.4, and 15.1.1. The report identifies attribute allowlisting and argument-array command execution as the relevant fix loci; exact commit-level lineage was not checked here.",
+    "duplicate_signature": "GitLab Project BulkImports and DecompressedArchiveSizeValidator | import_source attribute in untrusted project metadata | incomplete attribute filter plus shell-interpreted archive-path interpolation | Open3.popen3 in import worker | historical command execution",
+    "evidence_urls": [
+      "https://hackerone.com/reports/1609965",
+      "https://gitlab.com/gitlab-org/gitlab/-/work_items/366088",
+      "https://gitlab.com/gitlab-org/cves/-/blob/master/2022/CVE-2022-2185.json"
+    ],
+    "analyst_notes": "Historical, publicly disclosed root only. The public issue explicitly records the feature-flag and deployment caveat; do not generalize the local 15.1.0-ee proof to default self-managed or current GitLab.com exposure. The CVE gives historical fixed version ranges, not proof about today's release. No executable payloads are stored in this card."
+  }
+]

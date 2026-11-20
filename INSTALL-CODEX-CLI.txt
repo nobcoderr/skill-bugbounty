@@ -1,0 +1,24 @@
+Pasang di Codex CLI
+====================
+
+Isi zip:
+- skill-pack/     paket skill (84 skill + prompts + AUTO_ROUTING_MAP)
+- codex-skills/   folder siap tempel ke ~/.codex/skills (junction sudah di-resolve)
+- AGENTS.md       instruksi agent lokal
+
+Di mesin ini paket sudah hidup di:
+  /home/kali/skill
+  /home/kali/.codex/skills
+
+Untuk Codex CLI di mesin lain / home baru:
+
+1. Extract zip.
+2. Salin seluruh isi `codex-skills\` ke `%USERPROFILE%\.codex\skills\`
+   (gabungkan, jangan hapus skill Codex bawaan kecuali Anda memang mengganti).
+3. Salin `skill-pack\` ke `%USERPROFILE%\skill\` agar path
+   C:/Users/<nama>/skill pada SKILL.md dan AGENTS.md cocok.
+   Jika username bukan `nitro 5`, ganti path itu di AGENTS.md.
+4. Restart Codex CLI. Cek: skill `control-bypass-variation-engine` muncul.
+
+Zip ini tidak berisi secret MCP, Chrome profile, atau clone GitHub
+modern-web-guidance / ai-web3-security.

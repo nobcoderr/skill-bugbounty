@@ -1,0 +1,908 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:codex-cli-security-audit:candidate:v10",
+  "title": "Codex CLI Security Audit Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "stage",
+    "title",
+    "class",
+    "research_path_id",
+    "discovery_wave",
+    "root_cause_family",
+    "derivation_origin",
+    "novel_discovery_mode",
+    "discovery_axes",
+    "research_cascade",
+    "research_objective",
+    "micro_inspiration_id",
+    "micro_inspiration_scope",
+    "known_attack_terms_withheld",
+    "hypothesis",
+    "falsifier",
+    "probe_cleanliness",
+    "probe_semantic_proof",
+    "evaluation_primitive",
+    "baseline_fingerprint",
+    "anomaly_fingerprint",
+    "harness_independent_reproduction",
+    "independent_runners",
+    "anomaly_origin",
+    "shared_semantic_domains",
+    "counterfactuals",
+    "composition_paths",
+    "cascade_parent",
+    "observation_parent",
+    "invariant_parent",
+    "cascade_depth",
+    "second_order_questions",
+    "derived_detection_strategy",
+    "deterministic_validator",
+    "authoritative_readback",
+    "authorized_scope",
+    "impact_ceiling",
+    "cleanup_status",
+    "security_invariant",
+    "attacker_control",
+    "trust_boundary",
+    "code_fact_anchors",
+    "equivalent_paths_compared",
+    "state_sequence",
+    "representation_changes",
+    "resource_amplification",
+    "assumption_under_test",
+    "counterfactuals_tested",
+    "consumer_identity",
+    "composition_candidates",
+    "composition_search_complete",
+    "negative_controls",
+    "runtime_proof",
+    "production_reachability",
+    "proof_gates",
+    "prior_art_embargo_respected",
+    "prior_art_checked_after_proof",
+    "novelty_status",
+    "scope",
+    "attacker_condition",
+    "server_condition",
+    "security_impact",
+    "primitive_chain",
+    "implementation_escalation",
+    "source_trace",
+    "authorization_kill_challenge",
+    "consumer_boundary_challenge",
+    "execution_consumer_challenge",
+    "archive_renderer_framework_challenge",
+    "reparse_config_provenance_challenge",
+    "path_cli_gadget_chain_challenge",
+    "missing_invariant",
+    "evidence",
+    "prior_art",
+    "invalidation_factors",
+    "missing_proof",
+    "verdict",
+    "manual_status"
+  ],
+  "properties": {
+    "candidate_id": {"type": "string", "minLength": 1},
+    "stage": {
+      "enum": [
+        "MICRO_INSPIRATION",
+        "CODE_DERIVED_HYPOTHESIS",
+        "TESTABILITY_GATE",
+        "SAFE_PROBE",
+        "GENERIC_EVALUATION",
+        "ANOMALY",
+        "HARNESS_FALSIFICATION",
+        "ROOT_CAUSE_HYPOTHESES",
+        "INVARIANT_PROOF",
+        "NEEDS_INVARIANT_PROOF",
+        "NEEDS_CONSUMER_PROOF",
+        "NEEDS_STATE_PROOF",
+        "NEEDS_RUNTIME_PROOF",
+        "NEEDS_REACHABILITY_PROOF",
+        "DISCOVERY_CASCADE",
+        "AUTHORITATIVE_READBACK",
+        "NEEDS_PRIOR_ART_CHECK",
+        "CASCADE_LEAD",
+        "STRONG_CANDIDATE",
+        "KILLED",
+        "BLOCKED"
+      ]
+    },
+    "title": {"type": "string", "minLength": 1},
+    "class": {"type": "string", "minLength": 1},
+    "research_path_id": {"type": "string", "minLength": 1},
+    "discovery_wave": {"enum": ["CORE_A_AUTHORITY", "CORE_B_REPRESENTATION", "CORE_C_STATE_COMPOSITION", "ADAPTIVE", "SINGLE_AGENT"]},
+    "root_cause_family": {"type": "string", "minLength": 1},
+    "derivation_origin": {"const": "TARGET_NATIVE"},
+    "novel_discovery_mode": {"type": "boolean"},
+    "discovery_axes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "INVARIANT_MINING",
+          "DIFFERENTIAL_EQUIVALENCE",
+          "STATE_MACHINE",
+          "METAMORPHIC_TRANSFORM",
+          "RESOURCE_AMPLIFICATION",
+          "CROSS_FEATURE_COMPOSITION",
+          "ASSUMPTION_MINING",
+          "COUNTERFACTUAL_REASONING"
+        ]
+      }
+    },
+    "research_cascade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective",
+        "evaluation_strategy",
+        "inspiration_fragments",
+        "evaluation_oracle",
+        "stage_isolation",
+        "responsibility_partition",
+        "cascade"
+      ],
+      "properties": {
+        "objective": {"type": "string", "minLength": 1},
+        "evaluation_strategy": {"type": "string", "minLength": 1},
+        "inspiration_fragments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_id",
+              "source_kind",
+              "abstract_signal",
+              "contains_vulnerability_ground_truth"
+            ],
+            "properties": {
+              "source_id": {"type": "string", "minLength": 1},
+              "source_kind": {
+                "enum": [
+                  "TARGET_CODE",
+                  "TARGET_TEST",
+                  "TARGET_TYPE",
+                  "TARGET_ARCHITECTURE",
+                  "NON_SECURITY_SPEC",
+                  "RUNTIME_ANOMALY",
+                  "PROVEN_DISCOVERY"
+                ]
+              },
+              "abstract_signal": {"type": "string", "minLength": 1},
+              "contains_vulnerability_ground_truth": {"const": false}
+            }
+          }
+        },
+        "evaluation_oracle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "security_property",
+            "baseline",
+            "one_variable_perturbation",
+            "authoritative_observable",
+            "deterministic_acceptance_rules",
+            "false_positive_controls",
+            "anomaly_channels"
+          ],
+          "properties": {
+            "security_property": {"type": "string", "minLength": 1},
+            "baseline": {"type": "string", "minLength": 1},
+            "one_variable_perturbation": {"type": "string", "minLength": 1},
+            "authoritative_observable": {"type": "string", "minLength": 1},
+            "deterministic_acceptance_rules": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            },
+            "false_positive_controls": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            },
+            "anomaly_channels": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "stage_isolation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ideation",
+            "evaluation",
+            "impact_proof",
+            "cascade_generation",
+            "final_judgment",
+            "target_answer_leakage"
+          ],
+          "properties": {
+            "ideation": {"enum": ["FRESH_CONTEXT", "EVIDENCE_ONLY_HANDOFF", "NOT_RUN"]},
+            "evaluation": {"enum": ["FRESH_CONTEXT", "EVIDENCE_ONLY_HANDOFF", "NOT_RUN"]},
+            "impact_proof": {"enum": ["FRESH_CONTEXT", "EVIDENCE_ONLY_HANDOFF", "NOT_RUN"]},
+            "cascade_generation": {"enum": ["FRESH_CONTEXT", "EVIDENCE_ONLY_HANDOFF", "NOT_RUN"]},
+            "final_judgment": {"enum": ["FRESH_CONTEXT", "EVIDENCE_ONLY_HANDOFF", "NOT_RUN"]},
+            "target_answer_leakage": {"const": false}
+          }
+        },
+        "responsibility_partition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hypothesis_generation", "evaluation_decision", "final_judgment"],
+          "properties": {
+            "hypothesis_generation": {"enum": ["AI", "CODE", "HUMAN", "HYBRID"]},
+            "evaluation_decision": {
+              "enum": ["DETERMINISTIC_CODE", "DETERMINISTIC_CODE_WITH_HUMAN_REVIEW"]
+            },
+            "final_judgment": {"enum": ["HUMAN", "HUMAN_AI_REVIEW"]}
+          }
+        },
+        "cascade": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "parent_candidate_id",
+            "discovery_chain",
+            "similarity_question",
+            "origin_question",
+            "routes"
+          ],
+          "properties": {
+            "parent_candidate_id": {"type": ["string", "null"]},
+            "discovery_chain": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            },
+            "similarity_question": {"type": "string", "minLength": 1},
+            "origin_question": {"type": "string", "minLength": 1},
+            "routes": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "research_objective": {"type": "string", "minLength": 1},
+    "micro_inspiration_id": {"type": "string", "minLength": 1},
+    "micro_inspiration_scope": {"type": "string", "minLength": 1, "maxLength": 800},
+    "known_attack_terms_withheld": {"const": true},
+    "hypothesis": {"type": "string", "minLength": 1},
+    "falsifier": {"type": "string", "minLength": 1},
+    "probe_cleanliness": {"enum": ["CLEAN", "DIRTY", "UNKNOWN"]},
+    "probe_semantic_proof": {"type": "string"},
+    "evaluation_primitive": {"type": "string", "minLength": 1},
+    "baseline_fingerprint": {"type": "string", "minLength": 1},
+    "anomaly_fingerprint": {"type": "string"},
+    "harness_independent_reproduction": {"type": "boolean"},
+    "independent_runners": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "anomaly_origin": {"enum": ["TARGET_CONFIRMED", "HARNESS_CONFIRMED", "MIXED", "UNKNOWN"]},
+    "shared_semantic_domains": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "counterfactuals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "composition_paths": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "cascade_parent": {"type": ["string", "null"]},
+    "observation_parent": {"type": ["string", "null"]},
+    "invariant_parent": {"type": ["string", "null"]},
+    "cascade_depth": {"type": "integer", "minimum": 0, "maximum": 8},
+    "second_order_questions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "derived_detection_strategy": {"type": "string"},
+    "deterministic_validator": {
+      "type": "string",
+      "pattern": "^(CODE|RULESET):.+"
+    },
+    "authoritative_readback": {"type": "string"},
+    "authorized_scope": {"type": "string", "minLength": 1},
+    "impact_ceiling": {"type": "string", "minLength": 1},
+    "cleanup_status": {"enum": ["NOT_REQUIRED", "PLANNED", "PASS", "FAILED", "BLOCKED"]},
+    "security_invariant": {"type": "string", "minLength": 1},
+    "attacker_control": {"type": "string", "minLength": 1},
+    "trust_boundary": {"type": "string", "minLength": 1},
+    "code_fact_anchors": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_type", "location", "fact"],
+        "properties": {
+          "source_type": {
+            "enum": ["CODE", "TEST", "TYPE", "COMMENT", "ARCHITECTURE", "CONFIG", "RUNTIME"]
+          },
+          "location": {"type": "string", "minLength": 1},
+          "fact": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "equivalent_paths_compared": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "state_sequence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "representation_changes": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "resource_amplification": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "attacker_controlled_axis",
+            "attacker_cost",
+            "victim_cost",
+            "amplification_ratio",
+            "bound_or_cap",
+            "measurement_evidence"
+          ],
+          "properties": {
+            "dimension": {"enum": ["cpu", "memory", "disk", "database_rows", "queue_jobs", "recursion", "decompression", "network_fanout", "cryptographic_work", "other"]},
+            "attacker_controlled_axis": {"type": "string", "minLength": 1},
+            "attacker_cost": {"type": "number", "exclusiveMinimum": 0},
+            "victim_cost": {"type": "number", "exclusiveMinimum": 0},
+            "amplification_ratio": {"type": "number", "exclusiveMinimum": 0},
+            "bound_or_cap": {"type": "string", "minLength": 1},
+            "measurement_evidence": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "assumption_under_test": {"type": "string", "minLength": 1},
+    "counterfactuals_tested": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "consumer_identity": {"type": "string", "minLength": 1},
+    "composition_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["primitive_a", "primitive_b", "downstream_consumer", "status"],
+        "properties": {
+          "primitive_a": {"type": "string", "minLength": 1},
+          "primitive_b": {"type": "string", "minLength": 1},
+          "downstream_consumer": {"type": "string", "minLength": 1},
+          "status": {
+            "enum": ["UNTESTED", "SOURCE_LINKED", "RUNTIME_LINKED", "COMPOSES", "PROVEN_NO_PATH", "NON_COMPOSABLE"]
+          }
+        }
+      }
+    },
+    "composition_search_complete": {"type": "boolean"},
+    "negative_controls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "runtime_proof": {"type": "string"},
+    "production_reachability": {
+      "enum": ["PROVEN", "PARTIAL", "UNPROVEN", "UNREACHABLE"]
+    },
+    "proof_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hypothesis_created",
+        "invariant_proven",
+        "consumer_proven",
+        "state_proven",
+        "source_to_sink_proven",
+        "runtime_effect_proven",
+        "negative_control_pass",
+        "reachability_proven",
+        "prior_art_complete",
+        "duplicate_check_complete"
+      ],
+      "properties": {
+        "hypothesis_created": {"type": "boolean"},
+        "invariant_proven": {"type": "boolean"},
+        "consumer_proven": {"type": "boolean"},
+        "state_proven": {"type": "boolean"},
+        "source_to_sink_proven": {"type": "boolean"},
+        "runtime_effect_proven": {"type": "boolean"},
+        "negative_control_pass": {"type": "boolean"},
+        "reachability_proven": {"type": "boolean"},
+        "prior_art_complete": {"type": "boolean"},
+        "duplicate_check_complete": {"type": "boolean"}
+      }
+    },
+    "prior_art_embargo_respected": {"const": true},
+    "prior_art_checked_after_proof": {"type": "boolean"},
+    "novelty_status": {
+      "enum": ["UNVERIFIED", "NO_OVERLAP_FOUND", "OVERLAP_FOUND", "PUBLIC_KNOWN", "DUPLICATE", "FIXED"]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["program", "asset", "allowed_method", "release_path", "scope_status"],
+      "properties": {
+        "program": {"type": "string"},
+        "asset": {"type": "string"},
+        "allowed_method": {"type": "string"},
+        "release_path": {"type": "string"},
+        "scope_status": {"enum": ["PROVEN", "UNPROVEN", "OUT_OF_SCOPE"]},
+        "exclusions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "attacker_condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_position",
+        "starting_privilege",
+        "account_role_tenant",
+        "controlled_input_or_state",
+        "victim_interaction",
+        "prior_compromise_required"
+      ],
+      "properties": {
+        "network_position": {"type": "string"},
+        "starting_privilege": {"type": "string"},
+        "account_role_tenant": {"type": "string"},
+        "controlled_input_or_state": {"type": "array", "items": {"type": "string"}},
+        "victim_interaction": {"type": "string"},
+        "prior_compromise_required": {"type": "boolean"}
+      }
+    },
+    "server_condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version_or_artifact",
+        "deployment_or_release",
+        "configuration",
+        "feature_plugin_platform_prerequisites",
+        "real_consumer",
+        "reachability_status"
+      ],
+      "properties": {
+        "version_or_artifact": {"type": "string"},
+        "deployment_or_release": {"type": "string"},
+        "configuration": {"type": "string"},
+        "feature_plugin_platform_prerequisites": {"type": "array", "items": {"type": "string"}},
+        "real_consumer": {"type": "string"},
+        "reachability_status": {"enum": ["PROVEN", "PARTIAL", "UNPROVEN", "UNREACHABLE"]},
+        "upstream_downstream_checks": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "security_impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primitive", "affected_principal_or_asset", "boundary_crossed", "security_property", "consequence"],
+      "properties": {
+        "primitive": {"type": "string"},
+        "affected_principal_or_asset": {"type": "string"},
+        "boundary_crossed": {"type": "string"},
+        "security_property": {"type": "array", "items": {"enum": ["CONFIDENTIALITY", "INTEGRITY", "AVAILABILITY", "AUTHENTICATION", "AUTHORIZATION", "TENANT_ISOLATION", "SIGNING_TRUST", "RELEASE_TRUST", "ASSET_OR_FUNDS"]}},
+        "consequence": {"type": "string"}
+      }
+    },
+    "primitive_chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primitive",
+        "next_security_boundary",
+        "transitions",
+        "capability_gain",
+        "protected_resource_or_action",
+        "concrete_security_impact",
+        "chain_status",
+        "stop_reason"
+      ],
+      "properties": {
+        "primitive": {"type": "string", "minLength": 1},
+        "next_security_boundary": {"type": "string"},
+        "transitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from_capability", "to_boundary", "status", "evidence"],
+            "properties": {
+              "from_capability": {"type": "string", "minLength": 1},
+              "to_boundary": {"type": "string", "minLength": 1},
+              "status": {"enum": ["PROVEN", "FAILED", "UNTESTED"]},
+              "evidence": {"type": "string"}
+            }
+          }
+        },
+        "capability_gain": {"type": "string"},
+        "protected_resource_or_action": {"type": "string"},
+        "concrete_security_impact": {"type": "string"},
+        "chain_status": {"enum": ["NOT_REQUIRED", "ACTIVE", "BLOCKED", "EXHAUSTED", "KILLED", "VALIDATED"]},
+        "stop_reason": {"type": "string"}
+      }
+    },
+    "implementation_escalation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "components", "documentation_only", "version_binding", "blocked_reason"],
+      "properties": {
+        "required": {"type": "boolean"},
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "name",
+              "exact_target_version",
+              "source_revision",
+              "implementation_source_inspected",
+              "implementation_anchors",
+              "conclusion"
+            ],
+            "properties": {
+              "kind": {"enum": ["RUNTIME", "PARSER", "FRAMEWORK", "DATABASE", "CRYPTOGRAPHIC_LIBRARY", "SERIALIZER", "PACKAGE_MANAGER", "DEPENDENCY", "PROTOCOL_IMPLEMENTATION", "OTHER"]},
+              "name": {"type": "string", "minLength": 1},
+              "exact_target_version": {"type": "string"},
+              "source_revision": {"type": "string"},
+              "implementation_source_inspected": {"type": "boolean"},
+              "implementation_anchors": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1}
+              },
+              "conclusion": {"type": "string"}
+            }
+          }
+        },
+        "documentation_only": {"type": "boolean"},
+        "version_binding": {"type": "string"},
+        "blocked_reason": {"type": "string"}
+      }
+    },
+    "source_trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entrypoint", "parse_canonicalize", "validation", "state_cache_serialization", "auth_signature_policy", "trust_transition", "sensitive_sink", "observed_locations"],
+      "properties": {
+        "entrypoint": {"type": "string"},
+        "parse_canonicalize": {"type": "string"},
+        "validation": {"type": "string"},
+        "state_cache_serialization": {"type": "string"},
+        "auth_signature_policy": {"type": "string"},
+        "trust_transition": {"type": "string"},
+        "sensitive_sink": {"type": "string"},
+        "observed_locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "symbol_or_range", "evidence"],
+            "properties": {
+              "path": {"type": "string"},
+              "symbol_or_range": {"type": "string"},
+              "evidence": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "authorization_scope": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["subject", "action", "target_resource", "tenant_or_org", "object_state", "policy_helper", "parameters_passed", "suspected_missing_parameter"],
+      "properties": {
+        "subject": {"type": "string"},
+        "action": {"type": "string"},
+        "target_resource": {"type": "string"},
+        "tenant_or_org": {"type": "string"},
+        "object_state": {"type": "string"},
+        "policy_helper": {"type": "string"},
+        "parameters_passed": {"type": "array", "items": {"type": "string"}},
+        "suspected_missing_parameter": {"type": "string"}
+      }
+    },
+    "authorization_kill_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "protected_operation",
+        "enforcing_component",
+        "configured_behavior",
+        "absent_nil_empty_behavior",
+        "explicit_noop_vs_implicit_default",
+        "unknown_error_timeout_behavior",
+        "authorized_resource",
+        "consumed_resource",
+        "intent_evidence",
+        "end_to_end_result",
+        "kill_permitted",
+        "kill_blockers"
+      ],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "protected_operation": {"type": "string"},
+        "enforcing_component": {"type": "string"},
+        "configured_behavior": {"type": "string"},
+        "absent_nil_empty_behavior": {"type": "string"},
+        "explicit_noop_vs_implicit_default": {"type": "string"},
+        "unknown_error_timeout_behavior": {"type": "string"},
+        "authorized_resource": {"type": "string"},
+        "consumed_resource": {"type": "string"},
+        "intent_evidence": {"type": "array", "items": {"type": "string"}},
+        "end_to_end_result": {"type": "string"},
+        "kill_permitted": {"type": "boolean"},
+        "kill_blockers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "consumer_boundary_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "enforcing_check",
+        "checked_object_or_value",
+        "consumed_object_or_value",
+        "operation_error_domain",
+        "downstream_protocol_capability",
+        "lifecycle_error_propagation",
+        "closest_one_variable_control",
+        "patched_control",
+        "kill_permitted",
+        "kill_blockers"
+      ],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "enforcing_check": {"type": "string"},
+        "checked_object_or_value": {"type": "string"},
+        "consumed_object_or_value": {"type": "string"},
+        "operation_error_domain": {"type": "array", "items": {"type": "string"}},
+        "downstream_protocol_capability": {"type": "array", "items": {"type": "string"}},
+        "lifecycle_error_propagation": {"type": "string"},
+        "closest_one_variable_control": {"type": "string"},
+        "patched_control": {"type": "string"},
+        "kill_permitted": {"type": "boolean"},
+        "kill_blockers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "execution_consumer_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "untrusted_representation",
+        "dynamic_method_or_attribute_surface",
+        "normalization_before_protocol_or_interpreter",
+        "protocol_framing_identity",
+        "persisted_or_queued_state",
+        "feature_dependency_activation",
+        "execution_consumer",
+        "intermediate_effect",
+        "terminal_impact_edge",
+        "closest_one_variable_control",
+        "patched_control",
+        "kill_permitted",
+        "kill_blockers"
+      ],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "untrusted_representation": {"type": "string"},
+        "dynamic_method_or_attribute_surface": {"type": "array", "items": {"type": "string"}},
+        "normalization_before_protocol_or_interpreter": {"type": "string"},
+        "protocol_framing_identity": {"type": "string"},
+        "persisted_or_queued_state": {"type": "string"},
+        "feature_dependency_activation": {"type": "string"},
+        "execution_consumer": {"type": "string"},
+        "intermediate_effect": {"type": "string"},
+        "terminal_impact_edge": {"type": "string"},
+        "closest_one_variable_control": {"type": "string"},
+        "patched_control": {"type": "string"},
+        "kill_permitted": {"type": "boolean"},
+        "kill_blockers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "archive_renderer_framework_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "untrusted_carrier",
+        "entry_or_parameter_type",
+        "validated_representation",
+        "consumed_representation",
+        "canonical_root_or_origin",
+        "link_or_alias_resolution",
+        "open_delete_or_render_semantics",
+        "secondary_consumers",
+        "feature_environment_reachability",
+        "browser_framework_normalization",
+        "terminal_impact_edge",
+        "closest_one_variable_control",
+        "patched_control",
+        "kill_permitted",
+        "kill_blockers"
+      ],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "untrusted_carrier": {"type": "string"},
+        "entry_or_parameter_type": {"type": "string"},
+        "validated_representation": {"type": "string"},
+        "consumed_representation": {"type": "string"},
+        "canonical_root_or_origin": {"type": "string"},
+        "link_or_alias_resolution": {"type": "string"},
+        "open_delete_or_render_semantics": {"type": "string"},
+        "secondary_consumers": {"type": "array", "items": {"type": "string"}},
+        "feature_environment_reachability": {"type": "string"},
+        "browser_framework_normalization": {"type": "string"},
+        "terminal_impact_edge": {"type": "string"},
+        "closest_one_variable_control": {"type": "string"},
+        "patched_control": {"type": "string"},
+        "kill_permitted": {"type": "boolean"},
+        "kill_blockers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "reparse_config_provenance_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "untrusted_carrier",
+        "parser_and_decode_stages",
+        "validated_representation",
+        "consumed_representation",
+        "output_or_config_grammar",
+        "trusted_provenance_source",
+        "ambient_override_surface",
+        "generated_or_virtual_setters",
+        "assignment_order",
+        "downstream_authority_consumer",
+        "intermediate_effect",
+        "terminal_impact_edge",
+        "closest_one_variable_control",
+        "patched_control",
+        "kill_permitted",
+        "kill_blockers"
+      ],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "untrusted_carrier": {"type": "string"},
+        "parser_and_decode_stages": {"type": "array", "items": {"type": "string"}},
+        "validated_representation": {"type": "string"},
+        "consumed_representation": {"type": "string"},
+        "output_or_config_grammar": {"type": "string"},
+        "trusted_provenance_source": {"type": "string"},
+        "ambient_override_surface": {"type": "array", "items": {"type": "string"}},
+        "generated_or_virtual_setters": {"type": "array", "items": {"type": "string"}},
+        "assignment_order": {"type": "string"},
+        "downstream_authority_consumer": {"type": "string"},
+        "intermediate_effect": {"type": "string"},
+        "terminal_impact_edge": {"type": "string"},
+        "closest_one_variable_control": {"type": "string"},
+        "patched_control": {"type": "string"},
+        "kill_permitted": {"type": "boolean"},
+        "kill_blockers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "path_cli_gadget_chain_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "untrusted_carrier",
+        "admission_parser_or_regex",
+        "normalized_or_canonical_value",
+        "validated_value",
+        "consumed_argv_path_or_dom_value",
+        "grammar_and_argument_boundary",
+        "canonical_root_or_option_terminator",
+        "downstream_subcommands_or_consumers",
+        "file_or_dom_effect",
+        "secret_or_capability_bridge",
+        "serializer_or_gadget_activation",
+        "environment_and_release_reachability",
+        "intermediate_effect",
+        "terminal_impact_edge",
+        "closest_one_variable_control",
+        "patched_and_sibling_controls",
+        "kill_permitted",
+        "kill_blockers"
+      ],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "untrusted_carrier": {"type": "string"},
+        "admission_parser_or_regex": {"type": "string"},
+        "normalized_or_canonical_value": {"type": "string"},
+        "validated_value": {"type": "string"},
+        "consumed_argv_path_or_dom_value": {"type": "string"},
+        "grammar_and_argument_boundary": {"type": "string"},
+        "canonical_root_or_option_terminator": {"type": "string"},
+        "downstream_subcommands_or_consumers": {"type": "array", "items": {"type": "string"}},
+        "file_or_dom_effect": {"type": "string"},
+        "secret_or_capability_bridge": {"type": "string"},
+        "serializer_or_gadget_activation": {"type": "string"},
+        "environment_and_release_reachability": {"type": "string"},
+        "intermediate_effect": {"type": "string"},
+        "terminal_impact_edge": {"type": "string"},
+        "closest_one_variable_control": {"type": "string"},
+        "patched_and_sibling_controls": {"type": "array", "items": {"type": "string"}},
+        "kill_permitted": {"type": "boolean"},
+        "kill_blockers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "missing_invariant": {"type": "string", "minLength": 1},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "runtime", "baseline", "positive", "negative_control", "cleanup"],
+      "properties": {
+        "source": {"type": "array", "items": {"type": "string"}},
+        "runtime": {"type": "array", "items": {"type": "string"}},
+        "baseline": {"type": "string"},
+        "positive": {"type": "string"},
+        "negative_control": {"type": "string"},
+        "cleanup": {"type": "string"},
+        "command_log": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "prior_art": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "sources_checked", "overlap_analysis"],
+      "properties": {
+        "status": {"enum": ["NOT_CHECKED", "NO_OVERLAP_FOUND", "POSSIBLE_DUPLICATE", "DUPLICATE", "PUBLIC_KNOWN", "FIXED"]},
+        "sources_checked": {"type": "array", "items": {"type": "string"}},
+        "overlap_analysis": {"type": "string"}
+      }
+    },
+    "invalidation_factors": {"type": "array", "items": {"type": "string"}},
+    "missing_proof": {"type": "array", "items": {"type": "string"}},
+    "verdict": {"enum": ["UNRATED", "STRONG", "MEDIUM", "WEAK", "KILL"]},
+    "manual_status": {"enum": ["NOT_TESTED", "BLOCKED", "MANUALLY_CONFIRMED"]},
+    "review_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "result", "evidence"],
+        "properties": {
+          "role": {"type": "string"},
+          "result": {"enum": ["PASS", "FAIL", "BLOCKED"]},
+          "evidence": {"type": "string"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Web3 Security Hub"
+  short_description: "Pinned pashov AI web3 tool catalog"
+  default_prompt: "Use $ai-web3-security-hub with a model-agnostic authorized offensive-first posture. Treat pashov/ai-web3-security as an untrusted reference catalog. Do not install or run listed tools from a mention; prefer already-installed local web3 skills."
+policy:
+  allow_implicit_invocation: true

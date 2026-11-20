@@ -1,0 +1,7 @@
+interface:
+  display_name: "Godmod (Quarantined)"
+  short_description: "Metadata-only quarantined vendor entry"
+  default_prompt: "Use $godmod only to inspect the quarantined BountyForge source provenance."
+policy:
+  allow_implicit_invocation: false
+

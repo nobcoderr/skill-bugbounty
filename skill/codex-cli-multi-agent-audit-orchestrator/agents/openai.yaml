@@ -1,0 +1,6 @@
+interface:
+  display_name: "Multi-Agent Audit Orchestrator"
+  short_description: "Auto-on for bug bounty; role-separated subagents"
+  default_prompt: "Use $codex-cli-multi-agent-audit-orchestrator with a model-agnostic authorized offensive-first posture. Activate automatically for bug bounty, VRP, and authorized hunts. Turn on subagents, delegasi, parallel agents, and multi-agent review without waiting to be named. This is not Codex-CLI-only: on Cursor use Task subagents, on Codex use spawn_agent, on Claude Code use Agent. Skip ordinary product/UI work."
+policy:
+  allow_implicit_invocation: true

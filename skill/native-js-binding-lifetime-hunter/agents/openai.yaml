@@ -1,0 +1,5 @@
+interface:
+  display_name: "Native JS Binding Lifetime Hunter"
+  short_description: "Validate JS-to-native lifetime UAF paths safely"
+  default_prompt: "Use $native-js-binding-lifetime-hunter to audit an authorized JavaScript-to-native binding for a release-reachable lifetime UAF with sanitizer, configuration, and patched controls. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."policy:
+  allow_implicit_invocation: true

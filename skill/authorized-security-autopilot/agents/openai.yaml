@@ -1,0 +1,6 @@
+interface:
+  display_name: "Authorized Security Autopilot"
+  short_description: "Route and run bounded authorized audits"
+  default_prompt: "Use $authorized-security-autopilot with the mandatory offensive impact system overlay, prior-art checks, staged single-agent verification, and the program-impact gate. Prioritize low-privilege attacker data that reaches distinct higher-authority consumers, enumerate every downstream sink, and require direct impact, shipped reachability, authoritative read-back, and exact negative controls. Kill known or fixed roots, explicit exclusions, synthetic unverified consumers, caller-manufactured API lifecycles, and niche non-deployed builds unless a distinct eligible boundary is proven. After a bounded NO VALID FINDING, use $counterfactual-methodology-synthesizer only for a still-eligible target and preserve every proof gate. Do not invoke subagents unless I explicitly request them. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."
+policy:
+  allow_implicit_invocation: true

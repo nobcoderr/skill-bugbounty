@@ -1,0 +1,6 @@
+interface:
+  display_name: "Valid bug hunt"
+  short_description: "Critical-first, triager-proof bounty hunt"
+  default_prompt: "Use $valid-bug-hunt. Cover every in-scope asset, critical first, and do not mark REPORT_READY without an end-to-end PoC and a duplicate check."
+policy:
+  allow_implicit_invocation: true

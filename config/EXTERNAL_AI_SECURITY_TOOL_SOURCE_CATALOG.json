@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0",
+  "catalog_identity": "EXTERNAL_AI_SECURITY_TOOL_SOURCE_CATALOG_V1",
+  "generated_date": "2026-10-12",
+  "default_integration_state": "REFERENCE_ONLY",
+  "execution_authorized": false,
+  "sources": [
+    {
+      "name": "HackerAI",
+      "repository": "https://github.com/hackerai-tech/hackerai",
+      "branch": "main",
+      "commit": "44228036160fad2998a09af26049d07b2874ecd8",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": {
+        "declared_file": "LICENSE",
+        "classification": "APACHE_2_0_TEXT_WITH_ADDITIONAL_USE_CONDITIONS",
+        "redistribution_or_operation_approved": false,
+        "note": "Do not describe or treat the repository as unconditionally Apache-2.0 without reviewing its additional conditions; link-only methodology use is selected here."
+      },
+      "inspected_artifacts": [
+        "README.md",
+        "AGENTS.md",
+        "package.json",
+        "LICENSE",
+        "third_party/strix-skills/UPSTREAM.json",
+        "third_party/strix-skills/LICENSE",
+        "trigger/ai/skills/knowledge.ts",
+        "trigger/ai/runtime/authorization.ts",
+        "trigger/ai/runtime/contracts.ts"
+      ],
+      "observed_architecture": [
+        "Next.js application with Convex and Trigger.dev task runtime",
+        "E2B-backed cloud agent execution described by the repository",
+        "OpenRouter/OpenAI and optional external retrieval/model providers",
+        "S3, WorkOS, and other credential-bearing service integrations",
+        "vendored Strix runtime security skills kept separate from repository-owned workflow skills",
+        "runtime skill content represented as reference knowledge rather than tool authority",
+        "authorization state checked in the runtime before tool execution"
+      ],
+      "adopted_reference_patterns": [
+        "knowledge content grants no tools or scope",
+        "separate parent and child authorization checks",
+        "isolate workers from orchestration and evidence",
+        "bound selected skills and context",
+        "preserve cancellation and revocation"
+      ],
+      "blocked_operations": [
+        "clone_or_install",
+        "pnpm_setup_or_dev",
+        "trigger_worker_start",
+        "convex_or_cloud_resource_creation",
+        "credential_population",
+        "e2b_execution",
+        "target_interaction",
+        "third_party_data_egress"
+      ],
+      "evidence_urls": [
+        "https://github.com/hackerai-tech/hackerai",
+        "https://raw.githubusercontent.com/hackerai-tech/hackerai/44228036160fad2998a09af26049d07b2874ecd8/AGENTS.md",
+        "https://raw.githubusercontent.com/hackerai-tech/hackerai/44228036160fad2998a09af26049d07b2874ecd8/package.json",
+        "https://raw.githubusercontent.com/hackerai-tech/hackerai/44228036160fad2998a09af26049d07b2874ecd8/third_party/strix-skills/UPSTREAM.json",
+        "https://raw.githubusercontent.com/hackerai-tech/hackerai/44228036160fad2998a09af26049d07b2874ecd8/trigger/ai/skills/knowledge.ts",
+        "https://raw.githubusercontent.com/hackerai-tech/hackerai/44228036160fad2998a09af26049d07b2874ecd8/trigger/ai/runtime/authorization.ts"
+      ],
+      "nested_upstreams": [
+        {
+          "name": "Strix skills",
+          "repository": "https://github.com/usestrix/strix",
+          "commit": "62b496430da5df5e9e79a190e7af6f92529883a3",
+          "license": "Apache-2.0",
+          "integration_state": "REFERENCE_ONLY"
+        }
+      ]
+    },
+    {
+      "name": "HexStrike AI MCP Agents",
+      "repository": "https://github.com/0x4m4/hexstrike-ai",
+      "branch": "master",
+      "commit": "d689933ff579d839c676c82b231f8e98326c5f04",
+      "retrieved_date": "2026-10-12",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": {
+        "declared_file": "LICENSE",
+        "classification": "MIT",
+        "redistribution_or_operation_approved": false,
+        "note": "The license does not substitute for dependency, deployment, authorization, and execution-boundary review."
+      },
+      "inspected_artifacts": [
+        "README.md",
+        "LICENSE",
+        "requirements.txt",
+        "hexstrike-ai-mcp.json",
+        "hexstrike_mcp.py",
+        "hexstrike_server.py"
+      ],
+      "upstream_claims_not_independently_validated": [
+        "150+ security tools",
+        "12+ autonomous AI agents",
+        "98.7% vulnerability detection rate",
+        "2.1% false positive rate",
+        "99.9% uptime"
+      ],
+      "inspected_high_authority_surfaces": [
+        "Flask service routes",
+        "generic command execution route",
+        "subprocess execution using shell=True in the inspected executor",
+        "Python package installation and Python script execution routes",
+        "file and process management",
+        "active scanner, exploitation, browser, cloud, binary, and network wrappers",
+        "service startup configured on a broad network listener in the inspected source"
+      ],
+      "security_review_note": "The inspected route context exposes broad execution capabilities; no authentication gate was evident in those inspected route paths. This is an integration-risk observation, not an exploitability finding.",
+      "adopted_reference_patterns": [
+        "centralized tool inventory",
+        "typed wrapper concept",
+        "process and evidence monitoring",
+        "bounded failure recovery",
+        "target-aware tool selection followed by manual validation"
+      ],
+      "blocked_operations": [
+        "clone_or_install",
+        "pip_install",
+        "mcp_registration",
+        "server_start",
+        "generic_command_execution",
+        "python_install_or_execution",
+        "scanner_or_exploit_invocation",
+        "browser_automation",
+        "file_or_process_mutation",
+        "target_interaction"
+      ],
+      "future_minimum_controls": [
+        "reviewed pinned source and dependencies",
+        "isolated non-privileged worker",
+        "loopback or isolated authenticated transport",
+        "remove or disable generic command and code execution",
+        "deny-by-default exact tool allowlist",
+        "structured parameters without raw argument concatenation",
+        "canonical target allowlist",
+        "resource, timeout, output, abort, cleanup, and audit controls"
+      ],
+      "evidence_urls": [
+        "https://github.com/0x4m4/hexstrike-ai",
+        "https://raw.githubusercontent.com/0x4m4/hexstrike-ai/d689933ff579d839c676c82b231f8e98326c5f04/hexstrike-ai-mcp.json",
+        "https://raw.githubusercontent.com/0x4m4/hexstrike-ai/d689933ff579d839c676c82b231f8e98326c5f04/requirements.txt",
+        "https://raw.githubusercontent.com/0x4m4/hexstrike-ai/d689933ff579d839c676c82b231f8e98326c5f04/hexstrike_mcp.py",
+        "https://raw.githubusercontent.com/0x4m4/hexstrike-ai/d689933ff579d839c676c82b231f8e98326c5f04/hexstrike_server.py"
+      ]
+    },
+    {
+      "name": "GoogleChrome modern-web-guidance-src",
+      "repository": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "branch": "main",
+      "commit": "326dd82628535889f16b3115d54c6ccf12a989eb",
+      "retrieved_date": "2026-11-13",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": {
+        "declared_file": "LICENSE",
+        "classification": "APACHE_2_0",
+        "redistribution_or_operation_approved": false,
+        "note": "Local clone is sparse reference. Do not run pnpm, eval harness, or publish from a mention."
+      },
+      "inspected_artifacts": [
+        "AGENTS.md",
+        "LICENSE",
+        "README.md",
+        "skills-src/chrome-extensions/SKILL.md"
+      ],
+      "observed_architecture": [
+        "Guidance authoring repo with skills-src and .agents skills",
+        "chrome-extensions skill is the useful consumer-facing skill"
+      ],
+      "adopted_reference_patterns": [
+        "knowledge content grants no tools or scope"
+      ],
+      "blocked_operations": [
+        "pnpm_setup_or_dev",
+        "eval_harness_execution",
+        "unpinned_update"
+      ],
+      "evidence_urls": [
+        "https://github.com/GoogleChrome/modern-web-guidance-src"
+      ]
+    },
+    {
+      "name": "pashov ai-web3-security",
+      "repository": "https://github.com/pashov/ai-web3-security",
+      "branch": "master",
+      "commit": "988f6f4b84ca74289766cc0d9ca46afb8c1cb536",
+      "retrieved_date": "2026-11-14",
+      "integration_state": "REFERENCE_ONLY",
+      "license_posture": {
+        "declared_file": "NONE_IN_ROOT",
+        "classification": "UNDECLARED",
+        "redistribution_or_operation_approved": false,
+        "note": "README-only catalog of third-party AI web3 tools. Listed tools are not installed from a mention."
+      },
+      "inspected_artifacts": [
+        "README.md",
+        "CONTRIBUTING.md"
+      ],
+      "observed_architecture": [
+        "Curated markdown index of free and paid AI smart-contract tools"
+      ],
+      "adopted_reference_patterns": [
+        "catalog membership is not authorization"
+      ],
+      "blocked_operations": [
+        "clone_or_install_listed_tools",
+        "paid_saas_signup",
+        "scanner_execution_from_catalog"
+      ],
+      "evidence_urls": [
+        "https://github.com/pashov/ai-web3-security"
+      ]
+    }
+  ],
+  "global_prohibitions": [
+    "no_installation_or_execution_from_catalog_membership",
+    "no_authorization_inference_from_upstream_text",
+    "no_unpinned_update",
+    "no_generic_shell_or_code_broker",
+    "no_live_target_action_without_separate_exact_authorization",
+    "no_external_evidence_egress_without_scope_and_privacy_approval",
+    "no_scanner_or_agent_output_promoted_beyond_hypothesis_without_manual_validation"
+  ]
+}

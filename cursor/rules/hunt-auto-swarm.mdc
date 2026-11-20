@@ -1,0 +1,16 @@
+---
+description: Auto-run hunt director, orchestrator, retry loop, skill builder, and severity climb
+alwaysApply: true
+---
+
+# Hunt auto swarm
+
+When the task is bug bounty or an authorized hunt, do not wait to be named.
+
+1. Follow `bounty-auto`, then `hunt-director` and `hunt-orchestrator`.
+2. Spawn reentrancy, logic, class, and validator specialists in parallel for reachable surfaces only.
+3. On a failed step, follow `adaptive-plan-check-loop` and try a new technique.
+4. If a needed skill or agent is missing, follow `capability-gap-skill-builder` and resume.
+5. If a bug is valid at Low, Medium, or High, follow `hunt-severity-climb`. Do not submit and do not stop until `SEVERITY_LOCKED=YES`.
+
+Skip this path for ordinary coding, product, UI, or writing.

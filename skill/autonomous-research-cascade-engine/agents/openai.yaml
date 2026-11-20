@@ -1,0 +1,4 @@
+interface:
+  display_name: "Autonomous Research Cascade Engine"
+  short_description: "Run bounded target-native research cascades"
+  default_prompt: "Use $autonomous-research-cascade-engine to derive and evaluate target-native security hypotheses through deterministic, scope-safe discovery cascades. On bounded NO VALID FINDING, preserve the exhausted-path digest for $counterfactual-methodology-synthesizer and never inherit proof. Authorized offensive-first: prioritize attacker objectives, exploit chains, privilege transitions, protected sinks, and concrete impact; keep defensive guidance secondary unless explicitly requested. This skill is model-agnostic."

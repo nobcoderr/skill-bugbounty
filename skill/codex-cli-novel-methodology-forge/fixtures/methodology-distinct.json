@@ -1,0 +1,40 @@
+{
+  "methodology_id": "METH-2026-AUTHORITY-EPOCH-LINEAGE",
+  "name": "Authority Epoch Lineage Reconstruction",
+  "target_gap_ids": ["GAP-AUTHORITY-EPOCH"],
+  "security_reasoning_principle": "Authorization must be evaluated against the exact fact lineage that each later consumer treats as authoritative.",
+  "core_question": "Does the later protected consumer rely on facts from a different authority epoch than the facts currently governing the capability?",
+  "procedure_graph": {
+    "start_fact_types": ["protected_consumer", "issued_capability", "mutable_authorizing_fact"],
+    "nodes": [
+      {"step_id": "consumer", "operator": "locate_protected_consumer", "consumes": ["protected_consumer"], "produces": ["consumed_authority_fields"], "depends_on": []},
+      {"step_id": "lineage", "operator": "reconstruct_issuance_fact_lineage", "consumes": ["issued_capability", "consumed_authority_fields"], "produces": ["issuance_epoch_graph"], "depends_on": ["consumer"]},
+      {"step_id": "mutation", "operator": "enumerate_interepoch_fact_mutations", "consumes": ["mutable_authorizing_fact", "issuance_epoch_graph"], "produces": ["epoch_transition_pairs"], "depends_on": ["lineage"]},
+      {"step_id": "fork", "operator": "fork_fresh_and_carried_capability_trials", "consumes": ["epoch_transition_pairs"], "produces": ["paired_consumer_trials"], "depends_on": ["mutation"]},
+      {"step_id": "oracle", "operator": "compare_authoritative_epoch_results", "consumes": ["paired_consumer_trials"], "produces": ["epoch_binding_evidence"], "depends_on": ["fork"]},
+      {"step_id": "falsify", "operator": "eliminate_equivalent_preissued_authority", "consumes": ["epoch_binding_evidence"], "produces": ["falsified_or_surviving_fact"], "depends_on": ["oracle"]}
+    ],
+    "oracle_class": "paired_epoch_authoritative_state",
+    "falsifier_class": "equivalent_preissued_authority_control",
+    "termination_class": "all_mutable_authorizing_facts_partitioned"
+  },
+  "reasoning_signature": {
+    "start_point": "protected_later_consumer",
+    "traversal_direction": "backward_then_temporal_fork",
+    "temporal_model": "authority_epoch_lineage",
+    "authority_model": "parent_and_derived_capability_lineage",
+    "representation_model": "fact_set_encoded_into_capability",
+    "failure_model": "interepoch_mutation_without_rebinding",
+    "composition_arity": "issuer_mutator_consumer",
+    "oracle_class": "paired_epoch_authoritative_state"
+  },
+  "required_inputs": ["factual_target_brief", "architecture_map", "consumer_call_graph", "mutable_state_writers", "local_authoritative_readback"],
+  "expected_signal": ["different fact lineage is consumed for otherwise paired authority epochs"],
+  "negative_signal": ["consumer rebinds every authority fact or both trials are intentionally equivalent"],
+  "oracle": "A local authoritative read-back distinguishes fresh and carried capabilities while all attacker authority is held constant.",
+  "falsification_strategy": ["prove whether pre-issued authority is intentionally irrevocable", "compare an equivalent supported path", "repeat with a fresh capability after mutation"],
+  "termination_condition": ["all mutable authorizing facts have paired epoch controls", "two independent trials add no new factual relation"],
+  "overlaps_existing_methodologies": ["METH-V12-AUTHORIZATION-INVARIANT", "METH-V12-STATE-MACHINE"],
+  "why_this_is_materially_distinct": "It constructs and experimentally forks the lineage of the exact authorizing facts encoded at issuance rather than merely enumerating states or asking whether a capability delta exists.",
+  "potential_false_positive_modes": ["intentional irrevocability", "fresh and carried trials use different attacker authority", "read-back is from a non-authoritative cache"]
+}

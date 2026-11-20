@@ -1,0 +1,6 @@
+interface:
+  display_name: "Apple macOS Research"
+  short_description: "Apply and adapt dawgyg AppleResearch guidance"
+  default_prompt: "Use $apple-macos-research with a model-agnostic authorized offensive-first posture. Read agent_guidance first, map the Apple surface, and do not execute submission packages or host PoCs without an explicit go."
+policy:
+  allow_implicit_invocation: true

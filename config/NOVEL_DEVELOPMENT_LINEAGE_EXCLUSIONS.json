@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "package_version": "2026.11.14-control-bypass-variation-engine-v1",
+  "classification": "CURATOR_ONLY_DEVELOPMENT_LINEAGE_EXCLUSION",
+  "auditor_auto_load": false,
+  "sources": [
+    {
+      "source_id": "portswigger-http-terminator-2026",
+      "title": "Can AI do novel security research? Meet the HTTP Terminator",
+      "url": "https://portswigger.net/research/can-ai-do-novel-security-research",
+      "methodological_use": [
+        "evaluation-first research design",
+        "bounded micro-inspiration",
+        "deterministic evaluation oracles",
+        "generic anomaly evaluation",
+        "clean-probe reasoning",
+        "shared semantic reuse",
+        "harness falsification",
+        "fresh-context stage isolation",
+        "provenance-preserving discovery cascades",
+        "autonomous research-cascade architecture",
+        "AI-code-human responsibility partition"
+      ],
+      "held_out_eligible": false,
+      "exclude_entire_technical_lineage": true,
+      "embedded_payloads": false
+    },
+    {
+      "source_id": "hackerai-external-platform-2026-10-12",
+      "title": "HackerAI external AI pentesting platform",
+      "url": "https://github.com/hackerai-tech/hackerai",
+      "commit": "44228036160fad2998a09af26049d07b2874ecd8",
+      "methodological_use": [
+        "skill knowledge separated from tool authority",
+        "parent and child authorization checks",
+        "isolated agent worker architecture",
+        "bounded skill selection and evidence retention"
+      ],
+      "held_out_eligible": false,
+      "exclude_entire_technical_lineage": true,
+      "embedded_payloads": false
+    },
+    {
+      "source_id": "hexstrike-ai-external-platform-2026-10-12",
+      "title": "HexStrike AI MCP external security automation platform",
+      "url": "https://github.com/0x4m4/hexstrike-ai",
+      "commit": "d689933ff579d839c676c82b231f8e98326c5f04",
+      "methodological_use": [
+        "centralized security tool inventory",
+        "typed wrapper and process-monitoring concepts",
+        "high-authority MCP execution-boundary negative control",
+        "deny-by-default broker design"
+      ],
+      "held_out_eligible": false,
+      "exclude_entire_technical_lineage": true,
+      "embedded_payloads": false
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "methodology_id": "METH-2026-STATE-JOURNEY",
+  "name": "State Journey Exploration",
+  "target_gap_ids": ["GAP-AUTHORITY-EPOCH"],
+  "security_reasoning_principle": "Enumerate state transitions and test forbidden states.",
+  "core_question": "Can a transition enter a forbidden state after failure or retry?",
+  "procedure_graph": {
+    "start_fact_types": ["state_machine"],
+    "nodes": [
+      {"step_id": "a", "operator": "list_states", "consumes": ["state_machine"], "produces": ["states"], "depends_on": []},
+      {"step_id": "b", "operator": "list_transitions", "consumes": ["states"], "produces": ["transitions"], "depends_on": ["a"]},
+      {"step_id": "c", "operator": "simulate_failure_retry", "consumes": ["transitions"], "produces": ["retry_states"], "depends_on": ["b"]},
+      {"step_id": "d", "operator": "check_forbidden_state", "consumes": ["retry_states"], "produces": ["state_result"], "depends_on": ["c"]}
+    ],
+    "oracle_class": "state_invariant",
+    "falsifier_class": "normal_transition_control",
+    "termination_class": "transition_graph_exhausted"
+  },
+  "reasoning_signature": {
+    "start_point": "state_machine",
+    "traversal_direction": "transition_graph",
+    "temporal_model": "ordered",
+    "authority_model": "state_bound_authority",
+    "representation_model": "state_projection",
+    "failure_model": "failure_retry",
+    "composition_arity": "multi_transition",
+    "oracle_class": "forbidden_state"
+  },
+  "required_inputs": ["state_machine"],
+  "expected_signal": ["forbidden state"],
+  "negative_signal": ["all transitions preserve invariant"],
+  "oracle": "State invariant comparison.",
+  "falsification_strategy": ["run normal transition control"],
+  "termination_condition": ["all transitions evaluated"],
+  "overlaps_existing_methodologies": [],
+  "why_this_is_materially_distinct": "It uses a different name for state exploration.",
+  "potential_false_positive_modes": ["invalid transition", "test-only state"]
+}

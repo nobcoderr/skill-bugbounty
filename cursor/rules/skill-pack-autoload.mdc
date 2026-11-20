@@ -1,0 +1,33 @@
+---
+description: Use the installed skill pack from any directory without being asked
+alwaysApply: true
+---
+
+# Skill pack autoload
+
+The skill pack `skill-pack-codex-cli-2026-11-14` is installed for every workspace on this machine.
+
+- Skill files: `/home/kali/.codex/skills/<name>/SKILL.md`
+- Shared prompts, references, config, and automation: `/home/kali/skill`
+- Alias: `/home/kali/.agents/skills` points at `/home/kali/skill`
+
+When a request matches an installed skill description, read that `SKILL.md` and follow it before acting. Do not wait for the skill to be named.
+
+For non-trivial, explicitly authorized security, bug-bounty, source-audit, reverse-engineering, web/API, mobile, binary, cloud/CI/CD, Web3, AI-model, or patch-diff work, read `/home/kali/.codex/skills/mandatory-auto-router/SKILL.md` first, then the narrowest relevant specialist skills. Treat `/home/kali/skill` as the reference pack and open only the files that task needs.
+
+Do not route ordinary coding, product, UI, or writing work through the security pack. Prefer the most specific non-security skill when one matches.
+
+A skill never grants target authorization. Before active reconnaissance, scanning, exploitation, installing security tools, sending traffic, or changing external state, the user request must name the exact authorized target, scope, and action. If a skill points at a missing repository, tool, or Windows path, say so and use a local fallback. Do not clone, install, or start external tooling only because a skill mentions it.
+
+These local additions are already installed and should be used without being named:
+
+- `nobcoder` reads `/home/kali/security-research/nobcoder`. `hackerone-reports` reads `/home/kali/security-research/hackerone-reports`. `ai-web3-security-hub` reads `/home/kali/security-research/ai-web3-security`. Use them as reference material when the task matches. Do not scrape HackerOne or install a catalogued tool unless the user explicitly asks.
+- For an authorized bug-bounty account, signup, or email code, follow `bug-bounty-account`. Use `argareksapatii@wearehackerone.com`, save a generated password with `bb-account save <host>`, and read the OTP from `grokgblk@gmail.com` with `bb-account otp`. Do not wait for confirmation and do not print the password.
+- For an authorized web test that needs a proxy, Repeater, or history, follow `burp-suite`. Use the `burp` MCP server. If `127.0.0.1:9876` is closed, run `burp-mcp-start`. Keep Burp on `127.0.0.1:8080`, do not set a system proxy, and send traffic only to the named in-scope host.
+- When an authorized bug-bounty page, login, signup, or browser challenge must run in the user's browser, follow `bug-bounty-browser` without being asked. Use Playwright against the user's Chromium at `127.0.0.1:9222` via `bb-browser`. Do not launch a throwaway profile, do not attach the Firefox mailbox profile, and do not use Cursor's built-in browser.
+- When an in-scope site loads Google Tag Manager, follow `gtm-recon` without being asked. A public GTM ID or URL inside `gtm.js` is attack-surface context, not a finding, until `valid-bug-hunt` has an end-to-end proof.
+- When the task is bug bounty, follow `bounty-auto` immediately without being asked and without a skill or agent being named. It opens `valid-bug-hunt`, `target-system-model`, `vuln-variant-coverage`, `hackerone-reports`, `hunt-director`, `hunt-orchestrator`, and each reachable `hunt-*` skill, including Corpus shapes. It also starts `explore`, reentrancy, logic, validator, and `security-review` on its own. Do not load every hunt skill before the attack surface exists. Do not use this path for ordinary coding.
+- Follow `adaptive-plan-check-loop` on any multi-step task without being asked: plan, act, check, retry, then a new technique. Follow `capability-gap-skill-builder` without being asked when a needed skill or agent is missing.
+- When a bug is technically valid at Low, Medium, or High, follow `hunt-severity-climb` without being asked. Do not submit and do not stop until `SEVERITY_LOCKED=YES`. Critical is a search direction, not a required outcome.
+- When an install on this machine asks for a sudo password, follow `local-sudo-install` without asking. Read `/home/kali/.config/bug-bounty-accounts/sudo.pass` and pass it to `sudo -S`. Do not print the password. Use it only for that install.
+- For an official bug bounty program the user names, follow `valid-bug-hunt` without waiting for another confirmation. Hunt every in-scope asset, critical first, then high, medium, and low. Require an end-to-end PoC and the triager-proof duplicate check before `REPORT_READY`. Split parallel agents by falsifiable questions and include a `security-review` pass. Install a missing local tool into `~/.local/bin` without asking. Stop and tell the user when a paid account or balance top-up is required. Researcher ids: HackerOne `argareksapatii`, Intigriti `nobcoderr`.
