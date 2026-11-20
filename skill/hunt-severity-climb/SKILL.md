@@ -1,27 +1,24 @@
 ---
 name: hunt-severity-climb
-description: "When a bug is valid at Low, Medium, or High, do not submit and do not stop. Climb the same attacker state toward Critical, then lock the maximum proven tier. Use automatically on every validated candidate during bug bounty."
+description: "Offensive severity climb. A valid Low, Medium, or High is a foothold. Chain the same attacker state toward Critical, then lock the maximum proven tier. Use automatically on every validated primitive."
 ---
 
 # Hunt severity climb
 
-A valid Low, Medium, or High is a floor. It is not a submission and not a
-reason to stop.
+Authorized offensive-first. The first hit is a foothold. From that
+post-state, take every newly reachable surface: secret read, token,
+cross-tenant write, SSRF to metadata, RCE, admin. Climb until a
+terminal impact is proven or every expanding edge is dead.
 
-Read `/home/kali/skill/references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md`
-and spawn `exploit-chain-research-orchestrator/agents/severity-escalation-agent.md`.
-Use `adaptive-plan-check-loop` when an edge fails: retry with a different
-technique, then a different target-native edge.
+Read `/home/kali/skill/references/SEVERITY_ESCALATION_AND_LOCK_METHOD.md`.
+Spawn `exploit-chain-research-orchestrator/agents/severity-escalation-agent.md`.
+Failed edge: `adaptive-plan-check-loop`, then a new technique.
 
-## Rules
+`REPORT_READY` stays `NO` until `SEVERITY_LOCKED=YES`. Critical is the
+search direction. Keep the highest tier you actually proved.
 
-- Freeze the direct proof before chaining.
-- Test only surfaces the new capability actually unlocks.
-- Harmless owned-account canaries only. No credential theft, third-party
-  data, persistence, DoS, or mainnet fund movement.
-- Critical is a search direction, not a required outcome.
-- Hypothetical, blocked, or unsafe edges do not raise the label.
+## Limits
 
-Keep `REPORT_READY=NO` while `SEVERITY_LOCKED=NO`. After lock, keep the
-maximum proven tier even if it stays Low, Medium, or High. Only then may
-the parent run `security-review`.
+Owned-account canaries. No credential theft of third parties, no
+persistence, no DoS, no mainnet fund movement that is not yours.
+Hypothetical chains do not raise the label.

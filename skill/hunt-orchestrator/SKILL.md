@@ -1,49 +1,36 @@
 ---
 name: hunt-orchestrator
-description: "Coordinate parallel bug-bounty specialists, collect their results, and evaluate them. Spawn reentrancy, logic, class, and validator agents without being asked. Use during an authorized hunt after hunt-director assigns lanes. Skip ordinary coding."
+description: "Offensive hunt orchestrator. Spawn attack specialists in parallel, keep pushing failed lanes with new techniques, and chain any valid hit toward Critical. Use automatically after hunt-director."
 ---
 
 # Hunt orchestrator
 
-Run the director's lanes. One specialist, one question. The parent still
-owns scope, severity lock, and `REPORT_READY`.
+Authorized offensive-first. Run the director's attack lanes. One child,
+one exploit question. Keep pressure on until the primitive hits or the
+budgeted techniques are exhausted.
 
-Do not wait for the user to name this skill, an agent, or a class.
+## Spawn
 
-## Spawn without being asked
-
-Use Cursor `Task` with `generalPurpose` and `run_in_background` false
-unless the parent asked for background. Give each child the exact host,
-scope, question, and kill observation. Do not give it `REPORT_READY`.
-
-Default parallel set when those surfaces exist:
+Cursor `Task` / `generalPurpose`. Give host, attacker position, entry,
+and the protected effect to prove.
 
 - `hunt-reentrancy/agents/reentrancy-hunter.md`
 - `hunt-logic-vulnerability/agents/logic-hunter.md`
-- one `vuln-variant-coverage/agents/variant-hypothesis-tester.md` card
-  per other reachable class
-- `finding-validator/agents/finding-validator.md` for each survivor
+- `vuln-variant-coverage/agents/variant-hypothesis-tester.md`
+- `corpus-writeup-transfer/agents/writeup-poc-tester.md`
+- `oss-scanner/agents/oss-source-auditor.md` on GitHub source
+- `finding-validator/agents/finding-validator.md` on survivors
 
-If a step fails, follow `adaptive-plan-check-loop`: diagnose, then retry
-with a materially different technique. Do not repeat the same request.
+Failed lane: `adaptive-plan-check-loop`, then a new technique. Missing
+skill: `capability-gap-skill-builder`, then resume the same attack.
 
-If a needed skill or agent is missing, follow
-`capability-gap-skill-builder` once, then continue the original lane.
-
-## Evaluate
-
-For each child return, keep only evidence that names attacker condition,
-server condition, and a protected effect. Mark the rest `KILLED`.
-
-A valid Low, Medium, or High is not finished. Hand it to
-`hunt-severity-climb` before any submit-or-stop decision.
-
-## Output
+A proven Low/Medium/High goes to `hunt-severity-climb` immediately.
+Chain it. Do not stop at the first label.
 
 ```text
 WAVE=
 SPAWNED=
-SURVIVORS=
+HITS=
 KILLED=
 BLOCKED=
 RETRY_WAVES=

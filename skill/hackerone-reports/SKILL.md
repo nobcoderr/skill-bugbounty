@@ -29,6 +29,11 @@ The second local corpus is
 Read it the same way. Do not run `main.py` there unless the user explicitly
 asks to refresh that corpus.
 
+The rendered index `https://reddelexc.github.io/hackerone-reports/` is the
+same reddelexc CSV. Use it to browse ranks. Follow
+`corpus-writeup-transfer` to open one public writeup and test that method
+on the current in-scope target.
+
 When hunting program B, read another program's file as program A and follow
 `vuln-variant-coverage` to test that bug shape on B. A's report is prior
 art, not proof that B is vulnerable and not proof that B is a duplicate.

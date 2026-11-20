@@ -1,6 +1,6 @@
 interface:
   display_name: "Reentrancy Hunter"
-  short_description: "Prove or kill one reentrancy window"
-  default_prompt: "Use $hunt-reentrancy with a model-agnostic authorized offensive-first posture to prove or kill one reentrancy window on the named in-scope contract. Do not submit."
+  short_description: "Re-enter a mid-flight call and move an owned asset"
+  default_prompt: "Use $hunt-reentrancy with a model-agnostic authorized offensive-first posture. Find a callback or hook window on the in-scope contract and move an owned-account asset or authority."
 policy:
   allow_implicit_invocation: true

@@ -1,0 +1,18 @@
+{
+  "name": "oss-scanner",
+  "repository": "https://github.com/anthropics/oss-scanner",
+  "upstream_branch": "main",
+  "commit": "a7e4e111abcfcc16783f988c66305cdc4d88ea24",
+  "tree": "2fe0755a2ac54fcc9720f6f25768cd973f6c1323",
+  "local_path": "/home/kali/security-research/oss-scanner",
+  "checkout": "detached",
+  "integration_state": "REFERENCE_ONLY",
+  "license": "Apache-2.0",
+  "docs": "https://red.anthropic.com/oss-scanner",
+  "blocked_without_separate_request": [
+    "enrollment pull request to anthropics/oss-scanner",
+    "tools/check against an untrusted Dockerfile",
+    "tools/check --qemu",
+    "installing Claude Code into a random image"
+  ]
+}

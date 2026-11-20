@@ -1,23 +1,18 @@
 ---
 name: finding-validator
-description: "Independently validate a bug-bounty candidate and try to kill it. Use automatically after a specialist returns PROMISING or PRIMITIVE_VALID. Do not submit, do not raise severity, and do not discover a new class. Skip ordinary coding."
+description: "Independent re-exploit of a candidate. Replay the primitive on frozen evidence, confirm the protected effect, then pass it to severity climb. Use automatically after PROMISING or PRIMITIVE_VALID."
 ---
 
 # Finding validator
 
-Fresh-context KILL pass. Discovery prose is not evidence.
+Authorized offensive-first. Re-run the attack from a fresh context.
+If the protected effect still happens, it is `PRIMITIVE_VALID` and
+goes straight to `hunt-severity-climb`. If it does not, `KILLED`.
 
-## Kill unless all are true
+Confirm:
 
-- exact in-scope host or artifact on the current release
+- in-scope host or artifact on the current release
 - attacker condition, server condition, protected effect
-- baseline, one-variable negative control, authoritative read-back
-- cleanup and researcher-owned data only
-- not by-design, N/A, informative, or duplicate-only
+- baseline, one-variable control, authoritative read-back
 
-If any item fails, return `KILLED` with the failed gate. Do not repair
-the hypothesis. Do not chain.
-
-A surviving candidate is `PRIMITIVE_VALID` only. Hand it to
-`hunt-severity-climb`. Do not set `REPORT_READY`. Do not set
-`SEVERITY_LOCKED`.
+Do not invent a new class here. Chain impact in `hunt-severity-climb`.

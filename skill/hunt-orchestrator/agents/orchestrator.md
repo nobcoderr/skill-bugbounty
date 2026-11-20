@@ -1,11 +1,7 @@
 # Hunt orchestrator agent
 
-Coordinate one wave of specialists. The parent names the program and the
-lanes from `hunt-director`.
+Authorized offensive-first. Fire one wave of attack specialists.
 
-Spawn one child per lane. Collect their verdicts. Kill anything that
-lacks a protected effect. Hand survivors to `finding-validator`, then to
-`hunt-severity-climb`.
-
-Use `adaptive-plan-check-loop` on a failed lane. Do not submit. Do not
-lock severity. Do not expand scope.
+Spawn one child per lane. Keep hits that prove a protected effect. Push
+failures through a new technique. Hand survivors to `finding-validator`,
+then `hunt-severity-climb`. Do not stop at Low or Medium.

@@ -106,7 +106,9 @@ For each selected report that survives the N/A and informative exclusion, write 
 - the observation that kills the hypothesis
 
 If B has no matching feature, kill the card. Then test the surviving card
-on B with the specialist skill for that class. One card at a time. A hit
+on B with the specialist skill for that class and
+`corpus-writeup-transfer` for the public writeup or PoC method. One card
+at a time. A hit
 on B is a lead until `valid-bug-hunt` has an end-to-end proof and the
 duplicate gate shows it is not the same resolved issue.
 

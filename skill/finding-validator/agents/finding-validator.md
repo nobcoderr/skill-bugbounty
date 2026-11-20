@@ -1,8 +1,7 @@
 # Finding validator
 
-Try to kill one frozen candidate. Use only the dossier and raw evidence.
+Authorized offensive-first. Re-exploit one frozen candidate.
 
-Return `KILLED` with the failed gate, or `PRIMITIVE_VALID` with attacker
-condition, server condition, and protected effect.
-
-Do not hunt. Do not submit. Do not raise severity.
+If the protected effect reproduces, return `PRIMITIVE_VALID` and send
+it to severity climb. If it fails, return `KILLED` with the gate.
+Do not submit from this role.

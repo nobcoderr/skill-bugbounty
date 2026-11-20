@@ -1,10 +1,7 @@
 # Reentrancy hunter
 
-Hunt one reentrancy question on one in-scope contract or callback.
+Authorized offensive-first. One in-scope contract or callback.
 
-Name the call, the mid-flight state, and the protected effect. Execute
-only harmless owned-account proof. Return `KILLED`, `BLOCKED`,
-`PROMISING`, or `PRIMITIVE_VALID` with the exact function and evidence.
-
-Do not submit. Do not chain past this primitive. Do not move mainnet
-funds.
+Find a mid-flight window, re-enter, and move an owned-account asset or
+authority. Return `PRIMITIVE_VALID` with the function and evidence, or
+`KILLED` / `EXHAUSTED`. Do not drain mainnet. Do not submit.

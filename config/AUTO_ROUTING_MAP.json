@@ -3569,8 +3569,11 @@
         "hackerone-reports",
         "reddelexc/hackerone-reports",
         "codebygk/hackerone-bug-bounty-reports",
+        "reddelexc.github.io",
         "hackerone report corpus",
-        "prior art"
+        "prior art",
+        "writeup",
+        "poc"
       ],
       "companions": [
         "skill/hackerone-reports/SKILL.md",
@@ -3773,7 +3776,9 @@
         "skill/hunt-orchestrator/SKILL.md",
         "skill/hunt-severity-climb/SKILL.md",
         "skill/adaptive-plan-check-loop/SKILL.md",
-        "skill/capability-gap-skill-builder/SKILL.md"
+        "skill/capability-gap-skill-builder/SKILL.md",
+        "skill/corpus-writeup-transfer/SKILL.md",
+        "skill/oss-scanner/SKILL.md"
       ]
     },
     "hunt-api-misconfig": {
@@ -4823,6 +4828,53 @@
       "companions": [
         "skill/finding-validator/SKILL.md",
         "skill/finding-validator/agents/finding-validator.md"
+      ]
+    },
+    "corpus-writeup-transfer": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "hackerone",
+        "writeup",
+        "poc"
+      ],
+      "triggers": [
+        "writeup",
+        "poc",
+        "hackerone-reports",
+        "reddelexc",
+        "codebygk",
+        "reddelexc.github.io",
+        "same vulnerability",
+        "try the poc"
+      ],
+      "companions": [
+        "skill/corpus-writeup-transfer/SKILL.md",
+        "skill/corpus-writeup-transfer/agents/writeup-poc-tester.md",
+        "skill/hackerone-reports/SKILL.md",
+        "skill/vuln-variant-coverage/SKILL.md"
+      ]
+    },
+    "oss-scanner": {
+      "mode": "conditional",
+      "tags": [
+        "source",
+        "github",
+        "oss",
+        "audit"
+      ],
+      "triggers": [
+        "oss-scanner",
+        "anthropics/oss-scanner",
+        "open source audit",
+        "github repo",
+        "source code audit",
+        "oss audit"
+      ],
+      "companions": [
+        "skill/oss-scanner/SKILL.md",
+        "skill/oss-scanner/agents/oss-source-auditor.md",
+        "skill/oss-scanner/PINNED.json"
       ]
     }
   },

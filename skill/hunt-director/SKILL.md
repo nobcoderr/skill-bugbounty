@@ -1,54 +1,43 @@
 ---
 name: hunt-director
-description: "Direct an authorized bug-bounty hunt. Assign one falsifiable lane per specialist, keep scope, and refuse REPORT_READY. Use as soon as the task is bug bounty, a named program, or an in-scope hunt. Do not wait to be named. Skip ordinary coding."
+description: "Offensive hunt director. Name attacker position, high-impact lanes, and which specialist fires first. Use automatically on bug bounty. Critical and chainable primitives first."
 ---
 
 # Hunt director
 
-The director does not hunt. It names the in-scope system, the attacker
-position, and the lanes. `hunt-orchestrator` runs those lanes. The parent
-owns `REPORT_READY`.
+Authorized offensive-first. Point the swarm at the highest-impact
+reachable attacks. `hunt-orchestrator` fires the lanes. The parent owns
+`REPORT_READY`.
 
-Do not wait for the user to say director, pengarah, or orchestrator. If
-the task is ordinary coding, leave this skill unused.
+## Order
 
-## Open without being asked
+Critical first: RCE, auth bypass, ATO, IDOR cross-tenant, SSRF to
+cloud metadata, reentrancy with asset movement, then high, medium, low.
 
-1. `valid-bug-hunt`
-2. `target-system-model`
-3. `hunt-orchestrator`
-4. `adaptive-plan-check-loop`
-5. `capability-gap-skill-builder` when a needed skill is missing
-6. `hunt-severity-climb` as soon as any candidate is technically valid
+Open without being asked: `valid-bug-hunt`, `target-system-model`,
+`hunt-orchestrator`, `corpus-writeup-transfer`, `adaptive-plan-check-loop`.
+Use `oss-scanner` when the asset is GitHub source.
 
-## Assign lanes
+## Lanes
 
-Give each specialist one independent question: entry, protected effect,
-and the observation that kills it. Default swarm when the surface exists:
+Each lane is an attack question: entry, privilege change, protected
+effect.
 
-- `hunt-reentrancy` for callbacks, tokens with hooks, external calls, or
-  contracts
-- `hunt-logic-vulnerability` for workflows, money, entitlement, or state
-  machines
-- class `hunt-*` skills for every other reachable class
-- `finding-validator` for every surviving candidate
-- `security-review` only after `SEVERITY_LOCKED=YES`
+- `hunt-reentrancy` on callbacks, hooks, external calls, contracts
+- `hunt-logic-vulnerability` on money, entitlement, state machines
+- every other reachable `hunt-*` class
+- `corpus-writeup-transfer` to land paid writeup methods on this target
+- `oss-scanner` on GitHub/OSS assets
+- `finding-validator` then `hunt-severity-climb` on survivors
 
-Do not load every `hunt-*` body before the surface exists. A class the
-system cannot reach stays unused. If the needed specialist is absent,
-follow `capability-gap-skill-builder` once, then resume.
-
-## Output
+Load a class only after the surface exists. If a specialist is missing,
+build it with `capability-gap-skill-builder` and keep attacking.
 
 ```text
 PROGRAM=
 SCOPE=
 ATTACKER_POSITION=
+OBJECTIVE=
 LANES=
-DEFERRED=
-NOT_APPLICABLE=
-MISSING_SKILL=
 NEXT_ORCHESTRATOR_WAVE=
 ```
-
-Do not test. Do not submit. Do not raise or lock severity.

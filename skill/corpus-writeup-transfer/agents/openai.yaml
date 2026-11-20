@@ -1,0 +1,6 @@
+interface:
+  display_name: "Corpus Writeup Transfer"
+  short_description: "Retest disclosed HackerOne writeups on the current target"
+  default_prompt: "Use $corpus-writeup-transfer with a model-agnostic authorized offensive-first posture. Pull a high-impact public HackerOne writeup from the local corpora and land that attack method on the current in-scope target. Rebuild it for program B; do not fire another program's host or token."
+policy:
+  allow_implicit_invocation: true

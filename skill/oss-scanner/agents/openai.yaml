@@ -1,0 +1,6 @@
+interface:
+  display_name: "OSS Scanner"
+  short_description: "Apply OSS Scanner workflow to authorized source audits"
+  default_prompt: "Use $oss-scanner with a model-agnostic authorized offensive-first posture on a GitHub or open-source target. Trace untrusted input to a privileged sink and land a working reproducer. Do not enroll a third-party project."
+policy:
+  allow_implicit_invocation: true

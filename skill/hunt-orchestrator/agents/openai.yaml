@@ -1,6 +1,6 @@
 interface:
   display_name: "Hunt Orchestrator"
-  short_description: "Coordinate specialists and evaluate results"
-  default_prompt: "Use $hunt-orchestrator with a model-agnostic authorized offensive-first posture to spawn reentrancy, logic, and validator agents, evaluate their results, and retry failed lanes with new techniques."
+  short_description: "Fire attack specialists and chain hits"
+  default_prompt: "Use $hunt-orchestrator with a model-agnostic authorized offensive-first posture. Spawn attack specialists in parallel, retry misses with a new technique, and chain every hit toward Critical."
 policy:
   allow_implicit_invocation: true

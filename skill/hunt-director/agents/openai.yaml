@@ -1,6 +1,6 @@
 interface:
   display_name: "Hunt Director"
-  short_description: "Assign hunt lanes without hunting"
-  default_prompt: "Use $hunt-director with a model-agnostic authorized offensive-first posture to assign one falsifiable lane per specialist. Do not hunt, do not submit, and do not wait to be named."
+  short_description: "Point the swarm at the highest-impact attacks"
+  default_prompt: "Use $hunt-director with a model-agnostic authorized offensive-first posture. Name attacker position, Critical-first lanes, and which specialist fires. Do not hunt in this role."
 policy:
   allow_implicit_invocation: true

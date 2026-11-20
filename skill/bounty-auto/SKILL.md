@@ -1,15 +1,15 @@
 ---
 name: bounty-auto
-description: "Automatically run the bug-bounty skill chain when an official program or in-scope hunt is the task. Do not wait for the user to name a skill, an agent, Burp, or a vulnerability class. Ordinary coding does not enter this skill."
+description: "Authorized offensive-first bug-bounty chain. Map the in-scope surface, fire the highest-impact class, land matching public writeups as PoCs, then chain toward Critical. Use automatically on an official program. Ordinary coding does not enter this skill."
 ---
 
 # Automatic bug bounty
 
-Use this as soon as the task is bug bounty: the user names an official
-program, continues a hunt, or asks to find vulnerabilities on a program
-they have already authorized. Do not wait for them to name a skill or an
-agent. If the task is ordinary coding, product, UI, or writing, stop and
-leave this skill unused.
+Authorized offensive-first. As soon as the task is a named official
+program or an in-scope hunt, attack: map the surface, pick the highest
+impact reachable class, steal matching public writeups, land a PoC, then
+chain toward Critical. Do not wait for a skill or class to be named.
+Ordinary coding, product, UI, or writing does not enter this skill.
 
 ## Open without being asked
 
@@ -19,19 +19,20 @@ Read these before testing:
 2. `target-system-model`
 3. `vuln-variant-coverage`
 4. `hackerone-reports`
-5. `hunt-director`
-6. `hunt-orchestrator`
-7. `adaptive-plan-check-loop`
+5. `corpus-writeup-transfer`
+6. `hunt-director`
+7. `hunt-orchestrator`
+8. `adaptive-plan-check-loop`
+9. `oss-scanner` when the target is a GitHub or open-source repository
 
 Then follow them. Program policy still wins over this skill.
 
 ## Specialists
 
 When the system model shows a class can be reached, read that `hunt-*`
-skill, including its `Corpus shapes` section, and test one hypothesis.
-Do this for every reachable class, not only IDOR. Do not wait for the
-user to name the class. Do not load every `hunt-*` body before the
-surface exists. A class the system cannot reach stays unused.
+skill, including its `Corpus shapes` section, and fire one attack
+hypothesis. Cover every reachable class, not only IDOR. Load a class
+only after its surface exists.
 
 A technology skill such as `hunt-nodejs` or `hunt-laravel` only routes
 the title to the class skill. It does not replace that class skill.
@@ -64,6 +65,10 @@ Spawn these without being asked, one question each:
   wave
 - `capability-gap-skill-builder` when a needed skill or agent is missing
 - a passive corpus-shape analyst when local disclosed reports are relevant
+- `generalPurpose` using `corpus-writeup-transfer/agents/writeup-poc-tester.md`
+  for one disclosed writeup at a time
+- `generalPurpose` using `oss-scanner/agents/oss-source-auditor.md` when the
+  in-scope asset is a GitHub or open-source repository
 - `hunt-severity-climb` as soon as a candidate is technically valid
 - `security-review` only after `SEVERITY_LOCKED=YES`
 
