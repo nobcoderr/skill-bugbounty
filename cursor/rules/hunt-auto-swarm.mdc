@@ -8,9 +8,10 @@ alwaysApply: true
 When the task is bug bounty or an authorized hunt, attack without waiting to be named. Authorized offensive-first: attacker objective, entrypoint, exploit chain, privilege transition, protected sink, concrete impact.
 
 1. Follow `bounty-auto`, then `hunt-director` and `hunt-orchestrator`.
-2. Spawn reentrancy, logic, class, writeup-transfer, and validator specialists in parallel on reachable surfaces. Use `oss-scanner` on GitHub or open-source assets.
-3. Land public HackerOne writeup methods on the current in-scope target via `corpus-writeup-transfer`.
-4. On a miss, follow `adaptive-plan-check-loop` and switch technique.
+2. Spawn reentrancy, logic, class, writeup-transfer, and validator specialists in parallel on reachable surfaces of the **current** asset. Use `oss-scanner` on GitHub or open-source assets. Follow `hunt-scope-exhaustion`: do not stop after one empty scope.
+3. Land public HackerOne writeup methods on the current in-scope target via `corpus-writeup-transfer` and via `nobcoder-writeup-transfer` from `https://github.com/nobcoderr/writeup`.
+4. On a miss, follow `adaptive-plan-check-loop` and switch technique. When the current asset is fully audited with no finding, rotate to the next official scope.
 5. On a hit at Low, Medium, or High, follow `hunt-severity-climb` and chain toward Critical until `SEVERITY_LOCKED=YES`.
+6. Follow `hunt-terminal-verdict`. Do not tell the user `NO VALID FINDING` or a hasil audit while todos or lanes are still working. One conclusion, after there is nothing left to do.
 
 Skip this path for ordinary coding, product, UI, or writing.

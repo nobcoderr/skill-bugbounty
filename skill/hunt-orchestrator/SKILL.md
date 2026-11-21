@@ -18,6 +18,8 @@ and the protected effect to prove.
 - `hunt-logic-vulnerability/agents/logic-hunter.md`
 - `vuln-variant-coverage/agents/variant-hypothesis-tester.md`
 - `corpus-writeup-transfer/agents/writeup-poc-tester.md`
+- `nobcoder-writeup-transfer/agents/writeup-shape-tester.md`
+- `hunt-scope-exhaustion/agents/scope-rotator.md` for the current asset
 - `oss-scanner/agents/oss-source-auditor.md` on GitHub source
 - `finding-validator/agents/finding-validator.md` on survivors
 
@@ -26,6 +28,10 @@ skill: `capability-gap-skill-builder`, then resume the same attack.
 
 A proven Low/Medium/High goes to `hunt-severity-climb` immediately.
 Chain it. Do not stop at the first label.
+
+A killed wave is not `NO VALID FINDING`. Do not write a user-facing
+audit conclusion while spawned children or todos are still open.
+`hunt-terminal-verdict` owns the single terminal message.
 
 ```text
 WAVE=

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "package_version": "2026.11.14-control-bypass-variation-engine-v1",
+  "package_version": "2026.11.21-terminal-verdict-v1",
   "policy": {
     "research_posture": "AUTHORIZED_OFFENSIVE_RED_TEAM_FIRST",
     "model_agnostic_posture": true,
@@ -743,7 +743,10 @@
     "capability-gap-skill-builder",
     "hunt-director",
     "hunt-orchestrator",
-    "hunt-severity-climb"
+    "hunt-severity-climb",
+    "hunt-scope-exhaustion",
+    "nobcoder-writeup-transfer",
+    "hunt-terminal-verdict"
   ],
   "reroute_events": [
     "new repository, package, artifact, deployment, or scoped component discovered",
@@ -3778,7 +3781,10 @@
         "skill/adaptive-plan-check-loop/SKILL.md",
         "skill/capability-gap-skill-builder/SKILL.md",
         "skill/corpus-writeup-transfer/SKILL.md",
-        "skill/oss-scanner/SKILL.md"
+        "skill/oss-scanner/SKILL.md",
+        "skill/nobcoder-writeup-transfer/SKILL.md",
+        "skill/hunt-scope-exhaustion/SKILL.md",
+        "skill/hunt-terminal-verdict/SKILL.md"
       ]
     },
     "hunt-api-misconfig": {
@@ -4742,7 +4748,9 @@
       ],
       "companions": [
         "skill/hunt-director/SKILL.md",
-        "skill/hunt-director/agents/director.md"
+        "skill/hunt-director/agents/director.md",
+        "skill/hunt-scope-exhaustion/SKILL.md",
+        "skill/nobcoder-writeup-transfer/SKILL.md"
       ]
     },
     "hunt-orchestrator": {
@@ -4758,7 +4766,9 @@
       ],
       "companions": [
         "skill/hunt-orchestrator/SKILL.md",
-        "skill/hunt-orchestrator/agents/orchestrator.md"
+        "skill/hunt-orchestrator/agents/orchestrator.md",
+        "skill/hunt-scope-exhaustion/SKILL.md",
+        "skill/nobcoder-writeup-transfer/SKILL.md"
       ]
     },
     "hunt-severity-climb": {
@@ -4875,6 +4885,74 @@
         "skill/oss-scanner/SKILL.md",
         "skill/oss-scanner/agents/oss-source-auditor.md",
         "skill/oss-scanner/PINNED.json"
+      ]
+    },
+    "hunt-scope-exhaustion": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "coverage",
+        "scope"
+      ],
+      "triggers": [
+        "scope",
+        "in-scope asset",
+        "next scope",
+        "all features",
+        "all vulnerability classes"
+      ],
+      "companions": [
+        "skill/hunt-scope-exhaustion/SKILL.md",
+        "skill/hunt-scope-exhaustion/agents/scope-rotator.md",
+        "skill/hunt-scope-exhaustion/references/scope-coverage-matrix.md",
+        "skill/valid-bug-hunt/SKILL.md",
+        "skill/target-system-model/SKILL.md"
+      ]
+    },
+    "nobcoder-writeup-transfer": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "writeup",
+        "poc",
+        "nobcoderr"
+      ],
+      "triggers": [
+        "writeup",
+        "nobcoderr/writeup",
+        "same vulnerability",
+        "try the poc",
+        "github.com/nobcoderr/writeup"
+      ],
+      "companions": [
+        "skill/nobcoder-writeup-transfer/SKILL.md",
+        "skill/nobcoder-writeup-transfer/agents/writeup-shape-tester.md",
+        "skill/nobcoder-writeup-transfer/PINNED.json",
+        "skill/corpus-writeup-transfer/SKILL.md",
+        "skill/vuln-variant-coverage/SKILL.md"
+      ]
+    },
+    "hunt-terminal-verdict": {
+      "mode": "always",
+      "tags": [
+        "bug-bounty",
+        "cursor",
+        "verdict",
+        "todos"
+      ],
+      "triggers": [
+        "NO VALID FINDING",
+        "tidak ada temuan",
+        "kesimpulan",
+        "hasil audit",
+        "REPORT_READY",
+        "todo still working"
+      ],
+      "companions": [
+        "skill/hunt-terminal-verdict/SKILL.md",
+        "skill/hunt-terminal-verdict/agents/verdict-lock.md",
+        "skill/hunt-scope-exhaustion/SKILL.md",
+        "skill/valid-bug-hunt/SKILL.md"
       ]
     }
   },

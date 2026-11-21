@@ -1,0 +1,6 @@
+interface:
+  display_name: "nobcoderr Writeup Transfer"
+  short_description: "Replay local writeup methods onto the current target"
+  default_prompt: "Use $nobcoder-writeup-transfer with a model-agnostic authorized offensive-first posture. Search /home/kali/security-research/writeup for the same bug class, steal the attack method, and land it on the current in-scope target. Rebuild it for program B; do not fire another program's host or token."
+policy:
+  allow_implicit_invocation: true

@@ -16,6 +16,10 @@ Indexes:
 - `/home/kali/security-research/hackerone-bug-bounty-reports` at `cb5d63c`
 - `https://reddelexc.github.io/hackerone-reports/`
 
+Personal writeups in `/home/kali/security-research/writeup`
+(`https://github.com/nobcoderr/writeup`) are a separate lane:
+`nobcoder-writeup-transfer`. Run both.
+
 ```bash
 python3 /home/kali/.codex/skills/hackerone-reports/scripts/query-corpus-cards.py \
   --skill HUNT_SKILL --program-b "PROGRAM B" --format markdown --limit 8

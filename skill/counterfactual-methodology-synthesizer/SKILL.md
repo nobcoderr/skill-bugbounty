@@ -29,7 +29,9 @@ Load:
 Remain `DEFERRED` while the current methodology still has live candidates.
 Activate only when:
 
-1. the prior pass records `NO_VALID_FINDING`;
+1. the prior pass records `NO_VALID_FINDING` and `hunt-terminal-verdict`
+   has `HUNT_CLOSED=YES` (todos and assets are actually finished, not a
+   mid-Cursor premature summary);
 2. its killed, blocked, and exhausted paths are frozen as an exclusion digest;
 3. the target remains explicitly authorized, in scope, current, and eligible;
 4. at least one architecture or semantics axis remains unexplored; and

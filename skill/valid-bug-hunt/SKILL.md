@@ -32,12 +32,15 @@ tell the user. Do not spend money.
 
 ## Severity order
 
-Search every in-scope asset, not one scope. Schedule critical first across
-the whole program: remote code execution and other program-critical impact.
-When the critical lanes for the current pass are killed, blocked, or
-exhausted, move to high, then medium, then low. A failed hypothesis rotates
-to another falsifiable lane inside the same program. It is not a reason to
-leave the program or to stay on a single host.
+Search every in-scope asset, not one scope. Follow `hunt-scope-exhaustion`:
+finish every feature and every reachable vulnerability class on the current
+asset before rotating. An empty first host is not a stop. Schedule critical
+first inside the current asset: remote code execution and other
+program-critical impact. When the critical lanes for the current asset are
+killed, blocked, or exhausted, move to high, then medium, then low on that
+same asset, then rotate. A failed hypothesis rotates to another falsifiable
+lane inside the same asset. It is not a reason to leave the program or to
+stay on a single host after that host is fully audited.
 
 Maintain this portfolio for every official in-scope asset:
 
@@ -156,3 +159,8 @@ No stage may self-certify the next. `REPORT_READY=YES` requires all of:
 Otherwise preserve `REPORT_READY=NO` with exact blockers. A scanner hit,
 source-only argument, theoretical bridge, unknown release, missing negative
 control, or missing protected read-back cannot be promoted.
+
+A lane with no survivor is `KILLED`, not a hunt close. Follow
+`hunt-terminal-verdict`: do not tell the user `NO VALID FINDING` or
+`REPORT_READY` while todos, assets, or child agents are still working.
+One terminal kesimpulan, after `HUNT_CLOSED=YES`, like Codex CLI.

@@ -1,0 +1,20 @@
+{
+  "name": "nobcoderr-writeup",
+  "repository": "https://github.com/nobcoderr/writeup",
+  "upstream_branch": "main",
+  "commit": "b9433b58cbfe3171d8022b07147445c4e35701e9",
+  "tree": "0ecaeb3ba6c5e1a08b99321c9e452efcb36ecbb5",
+  "local_path": "/home/kali/security-research/writeup",
+  "checkout": "detached",
+  "integration_state": "REFERENCE_ONLY",
+  "layout": {
+    "programs": "programs/<handle>/*.md",
+    "index": "programs/<handle>/README.md"
+  },
+  "blocked_without_separate_request": [
+    "hackerone-reports/refresh_all.py",
+    "hackerone-reports/build_program_writeups.py",
+    "HackerOne crawling or JSON fetching",
+    "corpus regeneration"
+  ]
+}

@@ -1,0 +1,18 @@
+---
+description: Do not give a final hunt or audit conclusion while todos or lanes are still working
+alwaysApply: true
+---
+
+# Terminal verdict lock
+
+Codex CLI only concludes when there is nothing left to do. Cursor must match that.
+
+While any TodoWrite item is `pending` or `in_progress`, or a subagent/shell/MCP call is still running, or an in-scope hunt asset is still `UNMAPPED`/`ACTIVE`/`PROMISING`:
+
+- Do not write `NO VALID FINDING`, "tidak ada temuan", `REPORT_READY`, hasil audit, or any message that reads as a final kesimpulan.
+- A missed class is a ledger `KILLED`, not a user-facing audit close.
+- Short progress is allowed. A verdict is not.
+
+Emit at most one terminal conclusion, as the last user-visible message, after every todo is `completed` or `cancelled` and `hunt-terminal-verdict` sets `HUNT_CLOSED=YES`.
+
+If you already concluded and then kept working, that conclusion is void. Continue the remaining work. Do not send another audit summary until the work is actually finished.

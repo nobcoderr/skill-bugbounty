@@ -11,6 +11,26 @@ impact reachable class, steal matching public writeups, land a PoC, then
 chain toward Critical. Do not wait for a skill or class to be named.
 Ordinary coding, product, UI, or writing does not enter this skill.
 
+## Offensive-first execution
+
+Run every lane as adversary emulation:
+
+`attacker state -> reachable entry -> bypass or primitive -> capability delta -> protected sink -> concrete impact`
+
+Prioritize target-native exploitability, alternate control paths, chainable
+primitives, authorization transitions, cross-tenant effects, code execution,
+credential or sensitive-data access, signing or supply-chain compromise, and
+fund or integrity impact when the real surface supports them. Do not replace
+this work with generic headers, configuration advice, detection ideas,
+compliance, or remediation. Use defensive controls to design negative tests
+and attempt bounded bypasses; write remediation only after the candidate is
+proven or killed, unless the user explicitly requested blue-team output.
+
+Offensive-first does not mean speculative or destructive. Preserve exact
+scope, program rules, rate limits, owned test data, harmless proof, cleanup,
+and the evidence gates below. The maximum reportable impact is the maximum
+actually demonstrated capability.
+
 ## Open without being asked
 
 Read these before testing:
@@ -20,10 +40,13 @@ Read these before testing:
 3. `vuln-variant-coverage`
 4. `hackerone-reports`
 5. `corpus-writeup-transfer`
-6. `hunt-director`
-7. `hunt-orchestrator`
-8. `adaptive-plan-check-loop`
-9. `oss-scanner` when the target is a GitHub or open-source repository
+6. `nobcoder-writeup-transfer`
+7. `hunt-scope-exhaustion`
+8. `hunt-director`
+9. `hunt-orchestrator`
+10. `adaptive-plan-check-loop`
+11. `hunt-terminal-verdict`
+12. `oss-scanner` when the target is a GitHub or open-source repository
 
 Then follow them. Program policy still wins over this skill.
 
@@ -39,10 +62,13 @@ the title to the class skill. It does not replace that class skill.
 
 For each reachable class, automatically query the two pinned HackerOne corpora
 with `hackerone-reports/scripts/query-corpus-cards.py --skill HUNT_SKILL
+--program-b PROGRAM_B`, and query `github.com/nobcoderr/writeup` with
+`nobcoder-writeup-transfer/scripts/query-writeup-cards.py --skill HUNT_SKILL
 --program-b PROGRAM_B`. Run the passive corpus-card router, exclude N/A,
 informative, by-design, duplicate-only, spam, and impact-free cards, then give
 one surviving program-A shape at a time to the variant tester for program B.
-Do not wait for the user to name the corpus or the class.
+Do not wait for the user to name the corpus or the class. Follow
+`hunt-scope-exhaustion` so an empty first scope does not end the hunt.
 
 ## Agents and tools
 
@@ -67,9 +93,16 @@ Spawn these without being asked, one question each:
 - a passive corpus-shape analyst when local disclosed reports are relevant
 - `generalPurpose` using `corpus-writeup-transfer/agents/writeup-poc-tester.md`
   for one disclosed writeup at a time
+- `generalPurpose` using
+  `nobcoder-writeup-transfer/agents/writeup-shape-tester.md` for one local
+  writeup from `github.com/nobcoderr/writeup` at a time
+- `generalPurpose` using `hunt-scope-exhaustion/agents/scope-rotator.md` to
+  finish the current asset before rotating to the next official scope
 - `generalPurpose` using `oss-scanner/agents/oss-source-auditor.md` when the
   in-scope asset is a GitHub or open-source repository
 - `hunt-severity-climb` as soon as a candidate is technically valid
+- `generalPurpose` using `hunt-terminal-verdict/agents/verdict-lock.md`
+  before any user-facing audit conclusion
 - `security-review` only after `SEVERITY_LOCKED=YES`
 
 There is no cap on how many independent questions run together. The

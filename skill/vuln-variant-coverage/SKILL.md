@@ -118,8 +118,9 @@ Each lane states the entry, the expected protected effect, and the
 observation that kills it. Active testing uses the program's allowed
 methods, a researcher-owned account, and the smallest harmless proof. A
 lane ends as validated, killed, blocked, or exhausted. Then move to the
-next uncovered class on the same program, across every in-scope asset, not
-only the first host.
+next uncovered class on the same asset. `hunt-scope-exhaustion` rotates to
+the next official scope only after this asset's matrix is terminal, not
+after the first empty host.
 
 Maintain a per-asset queue with `CARD_ID`, class, variant, entry condition,
 protected effect, specialist skill, current release, negative control,

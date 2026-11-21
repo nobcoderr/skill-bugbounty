@@ -15,7 +15,8 @@ Critical first: RCE, auth bypass, ATO, IDOR cross-tenant, SSRF to
 cloud metadata, reentrancy with asset movement, then high, medium, low.
 
 Open without being asked: `valid-bug-hunt`, `target-system-model`,
-`hunt-orchestrator`, `corpus-writeup-transfer`, `adaptive-plan-check-loop`.
+`hunt-scope-exhaustion`, `hunt-orchestrator`, `corpus-writeup-transfer`,
+`nobcoder-writeup-transfer`, `adaptive-plan-check-loop`.
 Use `oss-scanner` when the asset is GitHub source.
 
 ## Lanes
@@ -27,6 +28,8 @@ effect.
 - `hunt-logic-vulnerability` on money, entitlement, state machines
 - every other reachable `hunt-*` class
 - `corpus-writeup-transfer` to land paid writeup methods on this target
+- `nobcoder-writeup-transfer` to land methods from `github.com/nobcoderr/writeup`
+- `hunt-scope-exhaustion` so one empty asset never ends the hunt
 - `oss-scanner` on GitHub/OSS assets
 - `finding-validator` then `hunt-severity-climb` on survivors
 

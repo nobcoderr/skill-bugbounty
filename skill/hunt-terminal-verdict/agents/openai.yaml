@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hunt Terminal Verdict"
+  short_description: "Block premature NO VALID FINDING while work remains"
+  default_prompt: "Use $hunt-terminal-verdict with a model-agnostic authorized offensive-first posture. Do not emit NO VALID FINDING, REPORT_READY, or an audit conclusion while todos or hunt lanes are still open. Match Codex CLI: one terminal verdict after there is nothing left to do."
+policy:
+  allow_implicit_invocation: true
