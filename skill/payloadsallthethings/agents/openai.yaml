@@ -1,0 +1,6 @@
+interface:
+  display_name: "PayloadsAllTheThings"
+  short_description: "Apply swisskyrepo methodology on the current target"
+  default_prompt: "Use $payloadsallthethings with a model-agnostic authorized offensive-first posture. Open the matching PayloadsAllTheThings chapter for the current hunt class, steal the detection and exploit method, forge a B-specific payload, and land it on the named in-scope host. Do not spray Intruder lists."
+policy:
+  allow_implicit_invocation: true

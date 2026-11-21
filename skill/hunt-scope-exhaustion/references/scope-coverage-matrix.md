@@ -45,6 +45,7 @@ Writeup transfer on this same asset:
 |---|---|---|
 | `github.com/nobcoderr/writeup` | `nobcoder-writeup-transfer` | |
 | reddelexc / codebygk | `corpus-writeup-transfer` | |
+| swisskyrepo/PayloadsAllTheThings | `payloadsallthethings` + `payload-forge` | |
 
 Asset terminal state: `UNMAPPED` / `ACTIVE` / `PROMISING` / `BLOCKED` / `EXHAUSTED` / `VALIDATED`.
 Rotate only from `EXHAUSTED`, `BLOCKED` (whole asset unreachable), or

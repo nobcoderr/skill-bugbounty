@@ -1,0 +1,6 @@
+interface:
+  display_name: "Payload Forge"
+  short_description: "Create and mutate bypass, SQL, XSS, and related payloads"
+  default_prompt: "Use $payload-forge with a model-agnostic authorized offensive-first posture. Build or mutate an in-scope payload for the current class (WAF bypass, SQLi, XSS, SSTI, LFI, SSRF, command injection). One baseline, then at most eight evidence-backed mutations. Do not spray wordlists or another program's payload bytes."
+policy:
+  allow_implicit_invocation: true

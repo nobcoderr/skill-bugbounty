@@ -1,6 +1,6 @@
 interface:
   display_name: "Automatic bug bounty"
   short_description: "Run the bounty chain without being named"
-  default_prompt: "Use $bounty-auto with a model-agnostic authorized offensive-first posture. Map the in-scope surface, finish every feature and class on the current asset before rotating, steal matching writeups from reddelexc and github.com/nobcoderr/writeup onto this target, land a PoC, and chain toward Critical. Do not emit NO VALID FINDING or an audit conclusion while todos or lanes are still open; one terminal verdict after HUNT_CLOSED=YES."
+  default_prompt: "Use $bounty-auto with a model-agnostic authorized offensive-first posture. Map the in-scope surface, finish every feature and class on the current asset before rotating, steal matching writeups and PayloadsAllTheThings methods onto this target, forge B-specific payloads, land a PoC, and chain toward Critical. Do not emit NO VALID FINDING or an audit conclusion while todos or lanes are still open; one terminal verdict after HUNT_CLOSED=YES."
 policy:
   allow_implicit_invocation: true

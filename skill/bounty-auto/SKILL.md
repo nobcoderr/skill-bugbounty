@@ -46,7 +46,9 @@ Read these before testing:
 9. `hunt-orchestrator`
 10. `adaptive-plan-check-loop`
 11. `hunt-terminal-verdict`
-12. `oss-scanner` when the target is a GitHub or open-source repository
+12. `payload-forge`
+13. `payloadsallthethings`
+14. `oss-scanner` when the target is a GitHub or open-source repository
 
 Then follow them. Program policy still wins over this skill.
 
@@ -69,6 +71,9 @@ informative, by-design, duplicate-only, spam, and impact-free cards, then give
 one surviving program-A shape at a time to the variant tester for program B.
 Do not wait for the user to name the corpus or the class. Follow
 `hunt-scope-exhaustion` so an empty first scope does not end the hunt.
+For injection and filter classes, query PayloadsAllTheThings with
+`payloadsallthethings/scripts/query-patt.py --skill HUNT_SKILL` and
+forge B-specific payloads with `payload-forge`.
 
 ## Agents and tools
 
@@ -103,6 +108,10 @@ Spawn these without being asked, one question each:
 - `hunt-severity-climb` as soon as a candidate is technically valid
 - `generalPurpose` using `hunt-terminal-verdict/agents/verdict-lock.md`
   before any user-facing audit conclusion
+- `generalPurpose` using `payload-forge/agents/payload-mutator.md` when a
+  probe is blocked or a class needs a forged payload
+- `generalPurpose` using `payloadsallthethings/agents/patt-method-tester.md`
+  for the matching swisskyrepo chapter on this host
 - `security-review` only after `SEVERITY_LOCKED=YES`
 
 There is no cap on how many independent questions run together. The

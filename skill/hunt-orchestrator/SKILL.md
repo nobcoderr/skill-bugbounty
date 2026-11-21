@@ -20,6 +20,8 @@ and the protected effect to prove.
 - `corpus-writeup-transfer/agents/writeup-poc-tester.md`
 - `nobcoder-writeup-transfer/agents/writeup-shape-tester.md`
 - `hunt-scope-exhaustion/agents/scope-rotator.md` for the current asset
+- `payload-forge/agents/payload-mutator.md` on a blocked or injectable entry
+- `payloadsallthethings/agents/patt-method-tester.md` for the matching chapter
 - `oss-scanner/agents/oss-source-auditor.md` on GitHub source
 - `finding-validator/agents/finding-validator.md` on survivors
 

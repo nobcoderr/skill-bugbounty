@@ -9,7 +9,7 @@ When the task is bug bounty or an authorized hunt, attack without waiting to be 
 
 1. Follow `bounty-auto`, then `hunt-director` and `hunt-orchestrator`.
 2. Spawn reentrancy, logic, class, writeup-transfer, and validator specialists in parallel on reachable surfaces of the **current** asset. Use `oss-scanner` on GitHub or open-source assets. Follow `hunt-scope-exhaustion`: do not stop after one empty scope.
-3. Land public HackerOne writeup methods on the current in-scope target via `corpus-writeup-transfer` and via `nobcoder-writeup-transfer` from `https://github.com/nobcoderr/writeup`.
+3. Land public HackerOne writeup methods on the current in-scope target via `corpus-writeup-transfer` and via `nobcoder-writeup-transfer` from `https://github.com/nobcoderr/writeup`. For injection and filter classes, follow `payloadsallthethings` and `payload-forge`: steal the swisskyrepo method, then create or mutate a B-specific payload (bypass, SQL, XSS, SSTI, and related). Do not spray Intruder lists.
 4. On a miss, follow `adaptive-plan-check-loop` and switch technique. When the current asset is fully audited with no finding, rotate to the next official scope.
 5. On a hit at Low, Medium, or High, follow `hunt-severity-climb` and chain toward Critical until `SEVERITY_LOCKED=YES`.
 6. Follow `hunt-terminal-verdict`. Do not tell the user `NO VALID FINDING` or a hasil audit while todos or lanes are still working. One conclusion, after there is nothing left to do.

@@ -17,7 +17,7 @@ Load `references/VARIATION_FAMILIES.md` after the control snapshot. Do not emit 
 - A named in-scope request returned 401/403/CORS fail/CSRF fail/WAF/CSP block, and a same-session sibling still proves the sink exists.
 - After a CORS-only pass that found nothing, rotate to other control families on the same asset.
 
-Do **not** use this as a generic payload fuzzer, a WAF-spam list, or a substitute for `hunt-cors` / `hunt-csrf` deep dives.
+Do **not** use this as a generic payload fuzzer, a WAF-spam list, or a substitute for `hunt-cors` / `hunt-csrf` deep dives. Payload syntax mutations (SQL comments, XSS encodings, SSTI polyglots) belong to `payload-forge` and `payloadsallthethings`.
 
 ## Hard gates
 

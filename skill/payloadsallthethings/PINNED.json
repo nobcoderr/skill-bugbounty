@@ -1,0 +1,17 @@
+{
+  "name": "payloadsallthethings",
+  "repository": "https://github.com/swisskyrepo/PayloadsAllTheThings",
+  "upstream_branch": "master",
+  "commit": "08ea40e77db3f42ef8f20c65196f3936a19b6c86",
+  "tree": "6ed2d81cfc938873c5d0389a6baf8da4407c5618",
+  "local_path": "/home/kali/security-research/PayloadsAllTheThings",
+  "checkout": "detached",
+  "integration_state": "REFERENCE_ONLY",
+  "web": "https://swisskyrepo.github.io/PayloadsAllTheThings/",
+  "license": "MIT",
+  "blocked_without_separate_request": [
+    "re-clone or pull",
+    "firing an entire Intruder directory",
+    "out-of-scope Internal/AD/Windows persistence chapters"
+  ]
+}

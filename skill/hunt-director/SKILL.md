@@ -16,7 +16,8 @@ cloud metadata, reentrancy with asset movement, then high, medium, low.
 
 Open without being asked: `valid-bug-hunt`, `target-system-model`,
 `hunt-scope-exhaustion`, `hunt-orchestrator`, `corpus-writeup-transfer`,
-`nobcoder-writeup-transfer`, `adaptive-plan-check-loop`.
+`nobcoder-writeup-transfer`, `payload-forge`, `payloadsallthethings`,
+`adaptive-plan-check-loop`.
 Use `oss-scanner` when the asset is GitHub source.
 
 ## Lanes
@@ -30,6 +31,8 @@ effect.
 - `corpus-writeup-transfer` to land paid writeup methods on this target
 - `nobcoder-writeup-transfer` to land methods from `github.com/nobcoderr/writeup`
 - `hunt-scope-exhaustion` so one empty asset never ends the hunt
+- `payload-forge` to create and mutate bypass/SQL/XSS/SSTI payloads
+- `payloadsallthethings` to land swisskyrepo methods on this host
 - `oss-scanner` on GitHub/OSS assets
 - `finding-validator` then `hunt-severity-climb` on survivors
 

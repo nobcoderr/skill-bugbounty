@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "package_version": "2026.11.21-terminal-verdict-v1",
+  "package_version": "2026.11.21-payload-forge-patt-v1",
   "policy": {
     "research_posture": "AUTHORIZED_OFFENSIVE_RED_TEAM_FIRST",
     "model_agnostic_posture": true,
@@ -746,7 +746,9 @@
     "hunt-severity-climb",
     "hunt-scope-exhaustion",
     "nobcoder-writeup-transfer",
-    "hunt-terminal-verdict"
+    "hunt-terminal-verdict",
+    "payload-forge",
+    "payloadsallthethings"
   ],
   "reroute_events": [
     "new repository, package, artifact, deployment, or scoped component discovered",
@@ -3784,7 +3786,9 @@
         "skill/oss-scanner/SKILL.md",
         "skill/nobcoder-writeup-transfer/SKILL.md",
         "skill/hunt-scope-exhaustion/SKILL.md",
-        "skill/hunt-terminal-verdict/SKILL.md"
+        "skill/hunt-terminal-verdict/SKILL.md",
+        "skill/payload-forge/SKILL.md",
+        "skill/payloadsallthethings/SKILL.md"
       ]
     },
     "hunt-api-misconfig": {
@@ -4953,6 +4957,56 @@
         "skill/hunt-terminal-verdict/agents/verdict-lock.md",
         "skill/hunt-scope-exhaustion/SKILL.md",
         "skill/valid-bug-hunt/SKILL.md"
+      ]
+    },
+    "payload-forge": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "payload",
+        "bypass",
+        "injection"
+      ],
+      "triggers": [
+        "payload",
+        "bypass",
+        "waf",
+        "sql injection",
+        "sqli",
+        "xss",
+        "ssti",
+        "mutate payload",
+        "buat payload",
+        "filter bypass"
+      ],
+      "companions": [
+        "skill/payload-forge/SKILL.md",
+        "skill/payload-forge/agents/payload-mutator.md",
+        "skill/payload-forge/references/mutation-axes.md",
+        "skill/payloadsallthethings/SKILL.md",
+        "skill/control-bypass-variation-engine/SKILL.md"
+      ]
+    },
+    "payloadsallthethings": {
+      "mode": "conditional",
+      "tags": [
+        "bug-bounty",
+        "payload",
+        "methodology",
+        "swissky"
+      ],
+      "triggers": [
+        "payloadsallthethings",
+        "payloads all the things",
+        "swissky",
+        "swisskyrepo",
+        "payload methodology"
+      ],
+      "companions": [
+        "skill/payloadsallthethings/SKILL.md",
+        "skill/payloadsallthethings/agents/patt-method-tester.md",
+        "skill/payloadsallthethings/PINNED.json",
+        "skill/payload-forge/SKILL.md"
       ]
     }
   },
