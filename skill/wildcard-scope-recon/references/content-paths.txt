@@ -1,0 +1,22 @@
+# Bounded content-discovery names for in-scope live origins.
+# Comments are ignored. Do not point ffuf at a large wordlist from this skill.
+robots.txt
+sitemap.xml
+.well-known/security.txt
+security.txt
+api
+api/v1
+graphql
+graphiql
+swagger
+swagger/index.html
+openapi.json
+docs
+login
+signin
+admin
+health
+healthz
+ready
+status
+version

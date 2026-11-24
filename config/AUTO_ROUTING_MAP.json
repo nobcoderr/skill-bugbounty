@@ -3711,6 +3711,90 @@
         "skill/valid-bug-hunt/SKILL.md"
       ]
     },
+    "wildcard-scope-recon": {
+      "mode": "conditional",
+      "tags": [
+        "recon",
+        "wildcard",
+        "subdomain",
+        "bug-bounty"
+      ],
+      "triggers": [
+        "wildcard scope",
+        "scope wildcard",
+        "wildcard recon",
+        "subdomain wildcard",
+        "enumerasi wildcard",
+        "/wildcard-scope-recon",
+        "subfinder",
+        "assetfinder",
+        "paramspider",
+        "waybackurls"
+      ],
+      "companions": [
+        "skill/wildcard-scope-recon/SKILL.md",
+        "skill/wildcard-scope-recon/agents/openai.yaml",
+        "skill/wildcard-scope-recon/references/pipeline.md",
+        "automation/authorized-recon.sh",
+        "config/scope.example.txt"
+      ]
+    },
+    "recon-toolkit": {
+      "mode": "conditional",
+      "tags": [
+        "recon",
+        "tooling",
+        "bug-bounty"
+      ],
+      "triggers": [
+        "/recon-toolkit",
+        "recon toolkit",
+        "dirsearch",
+        "feroxbuster",
+        "dalfox",
+        "sqlmap",
+        "secretfinder",
+        "gobypass403",
+        "wpscan",
+        "testssl",
+        "xsser",
+        "eyewitness",
+        "wappalyzer",
+        "webanalyze",
+        "linkfinder",
+        "oneforall",
+        "google dork",
+        "github dork"
+      ],
+      "companions": [
+        "skill/recon-toolkit/SKILL.md",
+        "skill/recon-toolkit/agents/openai.yaml",
+        "skill/recon-toolkit/references/tool-commands.md",
+        "skill/wildcard-scope-recon/SKILL.md"
+      ]
+    },
+    "discovery-trail": {
+      "mode": "conditional",
+      "tags": [
+        "hunting",
+        "provenance",
+        "bug-bounty"
+      ],
+      "triggers": [
+        "/discovery-trail",
+        "discovery trail",
+        "jejak penemuan",
+        "how did you find it",
+        "validated finding",
+        "primitive valid",
+        "novel unblock"
+      ],
+      "companions": [
+        "skill/discovery-trail/SKILL.md",
+        "skill/discovery-trail/agents/openai.yaml",
+        "skill/discovery-trail/references/trace-template.md"
+      ]
+    },
     "target-system-model": {
       "mode": "conditional",
       "tags": [

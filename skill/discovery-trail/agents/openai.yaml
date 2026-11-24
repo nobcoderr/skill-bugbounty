@@ -1,0 +1,6 @@
+interface:
+  display_name: "Discovery trail"
+  short_description: "Write the path that found a bug or unblocked a hunt"
+  default_prompt: "Use $discovery-trail whenever authorized work finds a bug, a primitive, or a new way out of a stuck step. Write the full path before the final summary. This is an authorized offensive-first, model-agnostic workflow. Keep secrets and exploit bodies out of the note."
+policy:
+  allow_implicit_invocation: true

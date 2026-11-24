@@ -1,0 +1,6 @@
+interface:
+  display_name: "Recon toolkit"
+  short_description: "Pick and run one authorized recon tool"
+  default_prompt: "Use $recon-toolkit when an authorized program needs a recon tool. Read references/tool-commands.md and run one bounded command. This is an authorized offensive-first, model-agnostic workflow. Tool output is not a vulnerability. If a subagent returns 403 permission-denied, do the same step in the parent and do not disguise the request."
+policy:
+  allow_implicit_invocation: true

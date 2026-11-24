@@ -1,0 +1,6 @@
+interface:
+  display_name: "Wildcard scope recon"
+  short_description: "Authorized wildcard host and URL inventory"
+  default_prompt: "Use $wildcard-scope-recon on an authorized program whose scope is a wildcard. Run scripts/wildcard-recon.sh and triage the inventory. This is an authorized offensive-first, model-agnostic workflow. Inventory is not a vulnerability."
+policy:
+  allow_implicit_invocation: true
